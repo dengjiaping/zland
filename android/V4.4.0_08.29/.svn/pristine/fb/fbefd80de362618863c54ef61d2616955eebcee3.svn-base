@@ -1,0 +1,298 @@
+package com.zhisland.android.blog.profile.view.block;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.common.dto.User;
+import com.zhisland.android.blog.common.view.AvatarView;
+import com.zhisland.android.blog.profile.controller.contact.FragUserAssistant;
+import com.zhisland.android.blog.profile.controller.contact.FragUserContactInfo;
+import com.zhisland.android.blog.profile.controller.detail.ActProfileDetail;
+import com.zhisland.android.blog.profile.dto.SimpleBlock;
+import com.zhisland.android.blog.profile.dto.UserAssistant;
+import com.zhisland.android.blog.profile.dto.UserContactInfo;
+import com.zhisland.android.blog.profile.dto.UserDetail;
+import com.zhisland.lib.util.IntentUtil;
+import com.zhisland.lib.util.StringUtil;
+import com.zhisland.lib.util.ToastUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
+/**
+ * 基本信息block
+ */
+public class UserContactGroupBlock extends ProfileBaseCustomBlock<UserContactInfo> {
+
+    public static String CONTACT_TYPE_USERE = "USER"; //当前查看的用户信息
+    public static String CONTACT_TYPE_DING = "GARDANER"; //当前查看用户的岛丁
+    public static String CONTACT_TYPE_ASSISTANT = "ASSISTANT"; //当前查看用户的助理
+    public static String CONTACT_TYPE_REFEREE = "REFEREE"; //当前查看用户的认证人
+
+    @InjectView(R.id.ivAvatar)
+    AvatarView ivAvatar;
+
+    @InjectView(R.id.tvName)
+    TextView tvName;
+
+    @InjectView(R.id.ivUserType)
+    ImageView ivUserType;
+
+    @InjectView(R.id.ivPencil)
+    ImageView ivPencil;
+
+    @InjectView(R.id.llMail)
+    LinearLayout llMail;
+    @InjectView(R.id.tvMail)
+    TextView tvMail;
+
+    @InjectView(R.id.llPhone)
+    LinearLayout llPhone;
+    @InjectView(R.id.tvPhone)
+    TextView tvPhone;
+
+    @InjectView(R.id.llAssistant)
+    LinearLayout llAssistant;
+    @InjectView(R.id.tvAssistant)
+    TextView tvAssistant;
+
+    @InjectView(R.id.llDing)
+    LinearLayout llDing;
+    @InjectView(R.id.tvDing)
+    TextView tvDing;
+
+    @InjectView(R.id.llReferee)
+    LinearLayout llReferee;
+    @InjectView(R.id.tvReferee)
+    TextView tvReferee;
+
+    public UserContactGroupBlock(Activity context, UserDetail userDetail,
+                                 SimpleBlock<UserContactInfo> block) {
+        super(context, userDetail, block);
+    }
+
+    @Override
+    protected View setCustomContentView() {
+        View view = LayoutInflater.from(context).inflate(
+                R.layout.item_block_user_contact_group, null);
+        ButterKnife.inject(this, view);
+        return view;
+    }
+
+    @Override
+    protected View setCustomEmptyView() {
+        TextView textView = new TextView(context);
+        textView.setText("Content view");
+        textView.setBackgroundColor(context.getResources().getColor(
+                R.color.white));
+        textView.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                ToastUtil.showShort("click empty view");
+            }
+        });
+        return textView;
+    }
+
+    @Override
+    protected void loadData(List<UserContactInfo> datas) {
+        fillUserBasicInfo();
+        fillAssistantView();
+        fillDingView();
+        fillRefereeView();
+    }
+
+    private void fillUserBasicInfo() {
+        if (isUserSelf()) {
+            ivPencil.setVisibility(View.VISIBLE);
+        } else {
+            ivPencil.setVisibility(View.GONE);
+        }
+
+        User user = getBlockUser();
+        if (user != null) {
+            ivUserType.setImageResource(user.getVipIconWithTxtId());
+            ivAvatar.fill(user.userAvatar, false);
+            tvName.setText(user.name == null ? ""
+                    : user.name);
+        }
+
+        UserContactInfo userBasicInfo = getContactInfoByType(CONTACT_TYPE_USERE);
+        if (userBasicInfo == null) {
+            llMail.setVisibility(GONE);
+            llPhone.setVisibility(GONE);
+            return;
+        }
+        if (StringUtil.isNullOrEmpty(userBasicInfo.email)) {
+            if (isUserSelf()) {
+                llMail.setVisibility(VISIBLE);
+                tvMail.setText("添加");
+                tvMail.setTextColor(getResources().getColor(R.color.color_dc));
+            } else {
+                llMail.setVisibility(GONE);
+            }
+        } else {
+            llMail.setVisibility(VISIBLE);
+            tvMail.setText(userBasicInfo.email);
+            tvMail.setTextColor(getResources().getColor(R.color.color_f2));
+        }
+
+        if (StringUtil.isNullOrEmpty(userBasicInfo.mobile)) {
+            if (isUserSelf()) {
+                llPhone.setVisibility(VISIBLE);
+                tvPhone.setText("添加");
+                tvPhone.setTextColor(getResources().getColor(R.color.color_dc));
+            } else {
+                llPhone.setVisibility(GONE);
+            }
+        } else {
+            llPhone.setVisibility(VISIBLE);
+            if (StringUtil.isNullOrEmpty(userBasicInfo.countryCode)) {
+                tvPhone.setText(userBasicInfo.mobile);
+            } else {
+                tvPhone.setText(userBasicInfo.countryCode + "-"
+                        + userBasicInfo.mobile);
+            }
+            tvMail.setTextColor(getResources().getColor(R.color.color_f2));
+        }
+    }
+
+    private void fillAssistantView() {
+        UserContactInfo assistantInfo = getContactInfoByType(CONTACT_TYPE_ASSISTANT);
+        if (assistantInfo != null) {
+            llAssistant.setVisibility(VISIBLE);
+            Drawable drawable = context.getResources().getDrawable(R.drawable.profile_btn_phone);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());//必须设置图片大小，否则不显示
+            tvAssistant.setCompoundDrawables(null, null, drawable, null);
+            tvAssistant.setText(assistantInfo.userName == null ? "" : assistantInfo.userName);
+        } else {
+            if (isUserSelf()) {
+                tvAssistant.setText("添加");
+                tvAssistant.setCompoundDrawables(null, null, null, null);
+                tvAssistant.setTextColor(getResources().getColor(R.color.color_dc));
+                llAssistant.setVisibility(VISIBLE);
+            } else {
+                llAssistant.setVisibility(GONE);
+            }
+        }
+    }
+
+    private void fillDingView() {
+        UserContactInfo dingInfo = getContactInfoByType(CONTACT_TYPE_DING);
+        if (dingInfo != null) {
+            llDing.setVisibility(VISIBLE);
+            tvDing.setText(dingInfo.userName == null ? "" : dingInfo.userName);
+        } else {
+            llDing.setVisibility(GONE);
+        }
+    }
+
+    private void fillRefereeView() {
+        UserContactInfo refereeInfo = getContactInfoByType(CONTACT_TYPE_REFEREE);
+        if (refereeInfo != null) {
+            llReferee.setVisibility(VISIBLE);
+            tvReferee.setText(refereeInfo.userName == null ? "" : refereeInfo.userName);
+        } else {
+            llReferee.setVisibility(GONE);
+        }
+    }
+
+
+    //-------------------------------------------------------------
+
+    @OnClick(R.id.ivPencil)
+    void onContactInfoEditClick() {
+        FragUserContactInfo.invoke(getContext(), getBlock());
+    }
+
+    @OnClick(R.id.tvPhone)
+    void onPhoneClick() {
+        UserContactInfo userBasicInfo = getContactInfoByType(CONTACT_TYPE_USERE);
+        if (isUserSelf()) {
+            FragUserContactInfo.invoke(getContext(), getBlock());
+        } else {
+            if (userBasicInfo != null) {
+                IntentUtil.dialTo(getContext(), (userBasicInfo.countryCode == null ? ""
+                        : userBasicInfo.countryCode) + userBasicInfo.mobile);
+            }
+        }
+    }
+
+    @OnClick(R.id.tvMail)
+    void onMailClick() {
+        UserContactInfo userBasicInfo = getContactInfoByType(CONTACT_TYPE_USERE);
+        if (isUserSelf()) {
+            FragUserContactInfo.invoke(getContext(), getBlock());
+        } else {
+            if (userBasicInfo != null) {
+                Intent intent = IntentUtil.intentToSendMail(userBasicInfo.email);
+                getContext().startActivity(intent);
+            }
+        }
+    }
+
+    @OnClick(R.id.tvAssistant)
+    void onAssistantClick() {
+        UserContactInfo assistantInfo = getContactInfoByType(CONTACT_TYPE_ASSISTANT);
+        if (isUserSelf()) {
+            SimpleBlock<UserAssistant> assistantBlock = new SimpleBlock<UserAssistant>();
+            if (assistantInfo != null) {
+                UserAssistant userAssistant = new UserAssistant();
+                userAssistant.visibleRange = assistantInfo.visibleRange;
+                userAssistant.assistant = new User();
+                userAssistant.assistant.name = assistantInfo.userName;
+                userAssistant.assistant.countryCodeShow = assistantInfo.countryCode;
+                userAssistant.assistant.userMobile = assistantInfo.mobile;
+                assistantBlock.data = new ArrayList<>();
+                assistantBlock.data.add(userAssistant);
+            }
+            FragUserAssistant.invoke(context, assistantBlock);
+        } else {
+            if (assistantInfo != null) {
+                IntentUtil.dialTo(getContext(), (assistantInfo.countryCode == null ? ""
+                        : assistantInfo.countryCode) + assistantInfo.mobile);
+            }
+        }
+    }
+
+    @OnClick(R.id.tvDing)
+    void onDingClick() {
+        UserContactInfo dingInfo = getContactInfoByType(CONTACT_TYPE_DING);
+        if (dingInfo != null) {
+            IntentUtil.dialTo(getContext(), (dingInfo.countryCode == null ? ""
+                    : dingInfo.countryCode) + dingInfo.mobile);
+        }
+    }
+
+    @OnClick(R.id.tvReferee)
+    void onRefereeClick() {
+        UserContactInfo refereeInfo = getContactInfoByType(CONTACT_TYPE_REFEREE);
+        if (refereeInfo != null && refereeInfo.userId > 0) {
+            ActProfileDetail.invokeNoHistory(context, refereeInfo.userId);
+        }
+    }
+
+    private UserContactInfo getContactInfoByType(String type) {
+        List<UserContactInfo> datas = getBlockDatas();
+        if (datas != null && datas.size() > 0 && !StringUtil.isNullOrEmpty(type)) {
+            for (UserContactInfo contactInfo : datas) {
+                if (contactInfo.contactType.equals(type)) {
+                    return contactInfo;
+                }
+            }
+        }
+        return null;
+    }
+}

@@ -1,0 +1,102 @@
+package com.zhisland.android.blog.feed.view.impl.holder;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.feed.bean.Attach;
+import com.zhisland.android.blog.feed.bean.Feed;
+import com.zhisland.android.blog.feed.bean.FeedType;
+import com.zhisland.lib.util.DensityUtil;
+
+/**
+ * 负责活动和资讯的展示
+ * Created by zhuchuntao on 16/9/2.
+ */
+public class EIHolder implements AttachHolder, View.OnClickListener {
+
+    private Context context;
+
+    private RelativeLayout rootView;
+    private ImageView iconView;
+    private TextView titleView;
+    private TextView infoView;
+    private FeedViewListener listener;
+    private Feed feed;
+
+    private View layout;
+
+    public EIHolder(Context context, boolean isShare) {
+        this.context = context;
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        layout = inflater.inflate(R.layout.layout_ei_mould, null);
+
+        rootView= (RelativeLayout) layout.findViewById(R.id.eimould_layout);
+
+        iconView = (ImageView) layout.findViewById(R.id.eimould_icon);
+        titleView = (TextView) layout.findViewById(R.id.eimould_title);
+        infoView = (TextView) layout.findViewById(R.id.eimould_info);
+
+        iconView.setOnClickListener(this);
+        titleView.setOnClickListener(this);
+        infoView.setOnClickListener(this);
+        rootView.setOnClickListener(this);
+
+        ImageView eimould_next = (ImageView) layout.findViewById(R.id.eimould_next);
+        eimould_next.setVisibility(isShare ? View.GONE : View.VISIBLE);
+    }
+
+    @Override
+    public View getView() {
+        return layout;
+    }
+
+    @Override
+    public void fillAttach(Feed feed, FeedViewListener feedViewListener) {
+        this.feed = feed;
+        this.listener = feedViewListener;
+
+        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) layout.getLayoutParams();
+        lp.setMargins(DensityUtil.dip2px(16), 0, DensityUtil.dip2px(16), 0);
+        layout.setLayoutParams(lp);
+        if (null != feed) {
+            Attach attach = (Attach) feed.attach;
+            if (null != attach) {
+                titleView.setText(attach.title);
+                if (feed.type == FeedType.EVENT) {
+                    infoView.setText(attach.info);
+                    iconView.setBackgroundResource(R.drawable.icon_event);
+                } else {
+                    infoView.setText("来源：" + attach.info);
+                    iconView.setBackgroundResource(R.drawable.icon_info);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void recycleAttach() {
+        this.feed = null;
+        this.listener = null;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (null == listener) {
+            return;
+        }
+        switch (view.getId()) {
+            case R.id.eimould_icon:
+            case R.id.eimould_title:
+            case R.id.eimould_info:
+            case R.id.eimould_layout:
+                listener.onAttachClicked(feed, null);
+                break;
+        }
+    }
+}

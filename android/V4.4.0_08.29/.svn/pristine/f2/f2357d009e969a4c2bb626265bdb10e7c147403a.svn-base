@@ -1,0 +1,581 @@
+package com.zhisland.android.blog.common.app;
+
+import android.app.Fragment;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
+
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.aa.controller.SplashActivity;
+import com.zhisland.android.blog.aa.dto.SplashData;
+import com.zhisland.android.blog.aa.eb.EBSplashStop;
+import com.zhisland.android.blog.common.base.FragBaseTabPageActivity;
+import com.zhisland.android.blog.common.base.ZHApis;
+import com.zhisland.android.blog.common.eb.EBNotify;
+import com.zhisland.android.blog.common.push.NotifyTypeConstants;
+import com.zhisland.android.blog.common.uri.AUriMgr;
+import com.zhisland.android.blog.common.util.DialogUtil;
+import com.zhisland.android.blog.common.util.IMUtil;
+import com.zhisland.android.blog.common.util.PermissionsMgr;
+import com.zhisland.android.blog.common.util.PhoneContactUtil;
+import com.zhisland.android.blog.common.util.ZHNotifyManager;
+import com.zhisland.android.blog.contacts.api.TaskGetFriendListByUid;
+import com.zhisland.android.blog.event.controller.ActEventCreate;
+import com.zhisland.android.blog.feed.view.impl.ActCreateFeed;
+import com.zhisland.android.blog.feed.view.impl.FragFeedList;
+import com.zhisland.android.blog.find.controller.FragFindTab;
+import com.zhisland.android.blog.freshtask.bean.TaskCardList;
+import com.zhisland.android.blog.freshtask.view.impl.FragCommentRecommend;
+import com.zhisland.android.blog.freshtask.view.impl.FragTaskContainer;
+import com.zhisland.android.blog.freshtask.view.impl.FragTaskGuide;
+import com.zhisland.android.blog.freshtask.view.impl.FragTaskList;
+import com.zhisland.android.blog.home.view.ActionAnimBuilder;
+import com.zhisland.android.blog.im.controller.FragChatSessions;
+import com.zhisland.android.blog.info.view.impl.FragInfoHomeTab;
+import com.zhisland.android.blog.info.view.impl.FragLinkEdit;
+import com.zhisland.android.blog.profile.controller.FragProfileTab;
+import com.zhisland.android.blog.profile.dto.UserComment;
+import com.zhisland.android.blog.setting.eb.EBLogout;
+import com.zhisland.android.blog.tabhome.View.IHomeInterceptView;
+import com.zhisland.android.blog.tabhome.eb.EBTabHome;
+import com.zhisland.android.blog.tabhome.model.HomeModelFactory;
+import com.zhisland.android.blog.tabhome.presenter.HomeInterceptPresenter;
+import com.zhisland.android.blog.tracker.bean.TrackerAlias;
+import com.zhisland.im.BeemApplication;
+import com.zhisland.im.data.IMMessage;
+import com.zhisland.im.event.EventLogin;
+import com.zhisland.lib.async.http.task.TaskCallback;
+import com.zhisland.lib.component.act.TitleType;
+import com.zhisland.lib.component.application.EBAppBackAndFore;
+import com.zhisland.lib.component.application.ZHApplication;
+import com.zhisland.lib.view.tab.ZHTabInfo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
+public class TabHome extends FragBaseTabPageActivity implements IHomeInterceptView {
+
+    public static final String KEY_CACH_RECOMMEND_USER = "key_cach_recommend_user";
+
+    public static final int TAB_ID_FEED = 1;
+    public static final int TAB_ID_INFO = 2;
+    public static final int TAB_ID_Find = 3;
+    public static final int TAB_ID_IM = 4;
+    public static final int TAB_ID_PROFILE = 5;
+
+    FragFeedList fragFeedList;
+    FragInfoHomeTab fragInfo;
+    FragProfileTab fragProfile;
+    FragFindTab fragFindTab;
+    FragChatSessions fragChatSessions;
+
+
+    private HomeInterceptPresenter interceptPresener;//开机拦截主导器
+
+
+    //region 发布器
+
+    private static final int ID_EVENT = 1, ID_FEED = 2,
+            ID_INFO = 3;
+
+    private ActionAnimBuilder actionBuilder;
+    private RelativeLayout actionContainer;
+
+    //初始化发布按钮
+    private void initAction() {
+        actionContainer = (RelativeLayout) findViewById(R.id.home_anim);
+        actionBuilder = new ActionAnimBuilder(actionContainer);
+        ArrayList<ActionAnimBuilder.ActionItem> items = new ArrayList<ActionAnimBuilder.ActionItem>();
+
+        items.add(new ActionAnimBuilder.ActionItem(ID_FEED, R.drawable.sel_btn_add_feed, "发新鲜事"));
+        items.add(new ActionAnimBuilder.ActionItem(ID_INFO, R.drawable.sel_btn_add_info, "推荐资讯"));
+        items.add(new ActionAnimBuilder.ActionItem(ID_EVENT, R.drawable.sel_btn_add_event, "发布活动"));
+
+        actionBuilder.build(this, items, new ActionAnimBuilder.OnActionItemClickListener() {
+            @Override
+            public void onItemClick(View view, ActionAnimBuilder.ActionItem item) {
+                switch (item.id) {
+                    case ID_EVENT: {
+                        if (PermissionsMgr.getInstance().canEventPublish()) {
+                            ZhislandApplication.trackerClickEvent(null, TrackerAlias.CLICK_EVENT_PUBLISH_START);
+                            ActEventCreate.invoke(TabHome.this, null, ActEventCreate.FROM_CREATE_SHARE);
+                        } else {
+                            DialogUtil.showPermissionsDialog(TabHome.this, null);
+                        }
+                        break;
+                    }
+                    case ID_FEED: {
+                        ActCreateFeed.invoke(TabHome.this);
+                        break;
+                    }
+                    case ID_INFO: {
+                        FragLinkEdit.TryInvoke(TabHome.this);
+                    }
+
+                }
+                actionBuilder.hide();
+            }
+        }, 1);
+        actionContainer.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                showActions(false);
+            }
+        });
+    }
+
+    public void showActions(boolean isShow) {
+        if (isShow) {
+            actionBuilder.show();
+        } else {
+            actionBuilder.hide();
+        }
+    }
+
+    //endregion
+
+
+    //region 生命周期
+    //TODO 需要整理
+
+    @Override
+    protected Fragment createTabPage(ZHTabInfo tabInfo) {
+        switch (tabInfo.tabId) {
+            case TAB_ID_FEED: {
+                fragFeedList = new FragFeedList();
+                return fragFeedList;
+            }
+            case TAB_ID_INFO: {
+                fragInfo = new FragInfoHomeTab();
+                return fragInfo;
+            }
+            case TAB_ID_Find: {
+                fragFindTab = new FragFindTab();
+                return fragFindTab;
+            }
+            case TAB_ID_IM: {
+                fragChatSessions = new FragChatSessions();
+                return fragChatSessions;
+            }
+            case TAB_ID_PROFILE: {
+                fragProfile = new FragProfileTab();
+                return fragProfile;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    protected ArrayList<ZHTabInfo> tabToAdded() {
+        ArrayList<ZHTabInfo> tabs = new ArrayList<ZHTabInfo>();
+        ZHTabInfo tabInfo = new ZHTabInfo("商圈", TAB_ID_FEED);
+        tabInfo.arg1 = R.drawable.sel_tab_feed;
+        tabs.add(tabInfo);
+
+        tabInfo = new ZHTabInfo("资讯", TAB_ID_INFO);
+        tabInfo.arg1 = R.drawable.sel_tab_info;
+        tabs.add(tabInfo);
+
+        tabInfo = new ZHTabInfo("发现", TAB_ID_Find);
+        tabInfo.arg1 = R.drawable.sel_tab_find;
+        tabs.add(tabInfo);
+
+        tabInfo = new ZHTabInfo("消息", TAB_ID_IM);
+        tabInfo.arg1 = R.drawable.sel_tab_chat;
+        tabs.add(tabInfo);
+
+        tabInfo = new ZHTabInfo("我的", TAB_ID_PROFILE);
+        tabInfo.arg1 = R.drawable.sel_tab_profile;
+        tabs.add(tabInfo);
+        return tabs;
+    }
+
+    @Override
+    public void onContinueCreate(Bundle savedInstanceState) {
+        super.onContinueCreate(savedInstanceState);
+        setSwipeBackEnable(false);
+        ButterKnife.inject(this);
+        EventBus.getDefault().register(this);
+
+        // IM配置
+        IMUtil.setXMppConfig();
+        // 注册个推
+        HomeUtil.registerGeTui();
+        // uri 处理
+        processUriBrowse(getIntent());
+        // 显示新手任务引导 mask
+        DialogUtil.showFreshTaskTitleMask(this);
+        // 新手任务 title 图标
+        refreshTitleFreshTask(false, false);
+
+        // 获取好友列表
+        getContactList();
+        // 新手任务 神评论 开机广告拦截
+        checkIntercept();
+        // 通知 好友申请 用户基础信息
+        getFriendRequestAndUserDetail();
+        // 获取权限
+        getPermissions();
+
+        initAction();
+    }
+
+    /**
+     * 获取权限
+     */
+    private void getPermissions() {
+        ZHApis.getCommonApi().getPermissions(null, null);
+    }
+
+    /**
+     * 好友申请 用户基础信息
+     */
+    private void getFriendRequestAndUserDetail() {
+        ZHApis.getUserApi().getFriendRequestAndUserDetail(this);
+    }
+
+    /**
+     * 新手任务 神评论 开机广告拦截
+     */
+    private void checkIntercept() {
+        interceptPresener = new HomeInterceptPresenter();
+        interceptPresener.setSchedulerSubscribe(Schedulers.io());
+        interceptPresener.setSchedulerObserver(AndroidSchedulers.mainThread());
+        interceptPresener.setSchedulerMain(AndroidSchedulers.mainThread());
+        interceptPresener.setModel(HomeModelFactory.GetHomeInterceptModel());
+        interceptPresener.bindView(this);
+        //应用启动第一次进入home需要检查拦截。
+        interceptPresener.checkIntercept(false);
+    }
+
+    /**
+     * 监听登录事件
+     */
+    public void onEventMainThread(EventLogin login) {
+        IMUtil.setXMppConfig();
+        IMUtil.startXmpp(this);
+    }
+
+    /**
+     * 监听tab 滑动位置/红点
+     */
+    public void onEventMainThread(EBTabHome eb) {
+        switch (eb.type) {
+            case EBTabHome.TYPE_SEL_TAB_POSITION:
+                int position = (int) eb.object;
+                selectByTabId(position + 1);
+                break;
+            case EBTabHome.TYPE_SEL_TAB_CATEGORY:
+                int category = (int) eb.object;
+                selectByTabId(category);
+                break;
+            case EBTabHome.TYPE_TAB_RED_DOT:
+                int tabId = (int) eb.object;
+                showRedDot(tabId - 1);
+                break;
+        }
+    }
+
+    /**
+     * 监听通知事件
+     */
+    public void onEventMainThread(EBNotify eb) {
+        if (NotifyTypeConstants.isEventNotify(eb.notifyType)) {
+            // 更新个人页面的小红点
+            Integer myEvent = PrefUtil.Instance().getByKey(
+                    NotifyTypeConstants.PREF_MY_EVENT, 0);
+            Integer signEvent = PrefUtil.Instance().getByKey(
+                    NotifyTypeConstants.PREF_SIGN_EVENT, 0);
+            if (myEvent + signEvent > 0) {
+                this.showRedDot(TAB_ID_PROFILE - 1);
+            }
+        } else if (eb.notifyType == NotifyTypeConstants.INVITATION_REQUEST) {
+            this.showRedDot(TAB_ID_PROFILE - 1);
+        }
+    }
+
+    /**
+     * 监听退出登录命令
+     */
+    public void onEventMainThread(EBLogout eb) {
+        if (!isFinishing()) {
+            Intent intent = HomeUtil.createHomeIntent(this);
+            intent.putExtra(HomeUtil.INK_FEATURE_URI, HomeUtil.URI_LOGOUT);
+            this.startActivity(intent);
+        }
+    }
+
+    public void onEventMainThread(IMMessage eb) {
+        showRedDot(TAB_ID_IM - 1);
+    }
+
+    /**
+     * 获取好友列表
+     */
+    private void getContactList() {
+        TaskGetFriendListByUid task = new TaskGetFriendListByUid(this,
+                new TaskCallback<Object>() {
+
+                    @Override
+                    public void onSuccess(Object content) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Throwable error) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+                        IMUtil.startXmpp(TabHome.this);
+                    }
+                });
+        task.execute();
+    }
+
+    @Override
+    protected void onDestroy() {
+        BeemApplication.getInstance().stopXmpp(this);
+        EventBus.getDefault().unregister(this);
+        interceptPresener.unbindView();
+        super.onDestroy();
+    }
+
+    @Override
+    public void selectTabView(View view, ZHTabInfo tabInfo) {
+        super.selectTabView(view, tabInfo);
+        switch (tabInfo.tabId) {
+            case TAB_ID_IM:
+                if (fragChatSessions != null) {
+                    fragChatSessions.refreshTitle();
+                }
+                ZHNotifyManager.getInstance().cancel(
+                        ZHNotifyManager.NOTIFY_ID_IM_MSG);
+                break;
+            case TAB_ID_Find:
+                ZHNotifyManager.getInstance().cancel(
+                        ZHNotifyManager.NOTIFY_ID_IM_RELATION);
+                break;
+            case TAB_ID_PROFILE:
+                ZHNotifyManager.getInstance().cancel(
+                        ZHNotifyManager.NOTIFY_ID_PROFILE);
+                break;
+        }
+    }
+
+    protected int layoutResId() {
+        return R.layout.act_home;
+    }
+
+    @Override
+    public void onBackPressed() {
+        int index = getCurIndex();
+        if (index == 0) {
+            this.moveTaskToBack(true);
+        } else {
+            selectByTabId(TAB_ID_FEED);
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        // logout
+        String uri = intent.getStringExtra(HomeUtil.INK_FEATURE_URI);
+        if (uri != null && uri.equals(HomeUtil.URI_LOGOUT)) {
+            HomeUtil.toRegisterAndFinishSelf(this);
+            return;
+        } else if (uri != null && uri.equals(HomeUtil.URI_CLOSE_APP)) {
+            TabHome.this.finish();
+            return;
+        }
+
+        processUriBrowse(intent);
+    }
+
+    /**
+     * 处理程序 uri 逻辑，包括推送 外部链接、内部链接点击
+     */
+    private void processUriBrowse(Intent intent) {
+        if (intent != null) {
+            String uriBrowse = intent.getStringExtra(AUriMgr.URI_BROWSE);
+            AUriMgr.instance().viewRes(this, uriBrowse);
+        }
+    }
+
+    @Override
+    protected int titleType() {
+        return TitleType.TITLE_NONE;
+    }
+
+    @Override
+    protected void didSelectTab(ZHTabInfo tab, ZHTabInfo tabBefor) {
+        super.didSelectTab(tab, tabBefor);
+        if (tabBefor != null) {
+            tabPause(tabBefor.tabId);
+        }
+        tabResume(tab.tabId);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        tabResume(getCurIndex() + 1);
+        // 上传 vcard
+        PhoneContactUtil.syncVCard(PhoneContactUtil.DEFAULT_SEND_SIZE);
+        ((ZHApplication) ZHApplication.APP_CONTEXT).getStartedActivityCount();
+    }
+
+    public void onEventMainThread(EBAppBackAndFore eb) {
+        if (eb.getType() == EBAppBackAndFore.TYPE_CUT_FOREGROUND) {
+            //从后台到前台检查拦截。
+            long backTime = PrefUtil.Instance().getAppToBackgroundTime();
+            if (System.currentTimeMillis() - backTime > 1000 * 60 * 5) {
+                //从前台切后台，再从后台切前台，之间的时间大于5分钟才检查拦截。
+                //为了防止去系统图片裁剪，或发短信等页面返回时触发。
+                interceptPresener.checkIntercept(true);
+            }
+        } else if (eb.getType() == EBAppBackAndFore.TYPE_CUT_BACKGROUND) {
+            //从前台到后台。
+            PrefUtil.Instance().setAppToBackgroundTime(System.currentTimeMillis());
+        }
+    }
+
+    public void onEventMainThread(EBSplashStop eb) {
+        //在从后台到前台检查拦截时，弹出的splash在onstop时，会发EBSplashStop。
+        if (eb.getFrom() == SplashActivity.FROM_HOME) {
+            interceptPresener.checkIntercept(false);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        tabPause(getCurIndex() + 1);
+    }
+
+    /**
+     * Tab 页面可见
+     */
+    private void tabResume(int tabId) {
+        switch (tabId) {
+            case TAB_ID_FEED:
+                fragFeedList.pageStart();
+                break;
+            case TAB_ID_INFO:
+                fragInfo.onPageSelected();
+                fragInfo.pageStart();
+                break;
+            case TAB_ID_Find:
+                fragFindTab.pageStart();
+                break;
+            case TAB_ID_IM:
+                fragChatSessions.pageStart();
+                break;
+            case TAB_ID_PROFILE:
+                fragProfile.pageStart();
+                break;
+        }
+    }
+
+    /**
+     * Tab 页面不可见
+     */
+    private void tabPause(int tabId) {
+        switch (tabId) {
+            case TAB_ID_FEED:
+                fragFeedList.pageEnd();
+                break;
+            case TAB_ID_INFO:
+                fragInfo.onPageUnSelected();
+                fragInfo.pageEnd();
+                break;
+            case TAB_ID_Find:
+                fragFindTab.pageEnd();
+                break;
+            case TAB_ID_IM:
+                fragChatSessions.pageEnd();
+                break;
+            case TAB_ID_PROFILE:
+                fragProfile.pageEnd();
+                break;
+        }
+    }
+
+    //endregion
+
+    //region home intercept methods
+
+
+    @Override
+    public void getSplashData() {
+        ZHApis.getAAApi().getSplashData(this, null);
+    }
+
+    @Override
+    public void showSplash(SplashData splashData) {
+        SplashActivity.invoke(this, splashData);
+    }
+
+    @Override
+    public void showTaskGuide(TaskCardList taskCardList) {
+        FragTaskGuide.invoke(this, taskCardList);
+    }
+
+    @Override
+    public void showTaskCards(TaskCardList taskCardList, int position) {
+        FragTaskContainer.invoke(this, taskCardList, position);
+    }
+
+    @Override
+    public void showTaskList(TaskCardList taskCardList) {
+        FragTaskList.invoke(this, taskCardList);
+    }
+
+    /**
+     * 跳转神评论精选
+     */
+    @Override
+    public void showRecommendComment(List<UserComment> data) {
+        FragCommentRecommend.invoke(this, data);
+    }
+
+    @Override
+    public void showTaskTitleIcon(boolean showFreshTask, boolean showRedDot) {
+        refreshTitleFreshTask(showFreshTask, showRedDot);
+    }
+
+    //endregion
+
+    public void refreshTitleFreshTask(boolean showFreshTask, boolean showRedDot) {
+        PrefUtil.Instance().setIsShowTitleFreshTask(showFreshTask);
+        PrefUtil.Instance().setIsShowTitleFreshTaskRedDot(showRedDot);
+
+        if (fragInfo != null) {
+            fragInfo.refreshTitleFreshTask(showFreshTask, showRedDot);
+        }
+        if (fragFeedList != null) {
+            fragFeedList.refreshTitleFreshTask(showFreshTask, showRedDot);
+        }
+        if (fragFindTab != null) {
+            fragFindTab.refreshTitleFreshTask(showFreshTask, showRedDot);
+        }
+        if (fragChatSessions != null) {
+            fragChatSessions.refreshTitleFreshTask(showFreshTask, showRedDot);
+        }
+    }
+
+    @Override
+    public String getPageName() {
+        return null;
+    }
+}

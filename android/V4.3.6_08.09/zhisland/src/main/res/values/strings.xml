@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">正和岛</string>
+    <string name="app_service_phone">"400-100-9737"</string>
+
+    <!-- download -->
+    <string name="update_info_not_auto">"发现新版本%s是否现在更新？"</string>
+    <string name="download_waiting">等待更新中…</string>
+    <string name="download_percent">正在下载更新，请稍等…%d</string>
+    <string name="update_download_error">更新失败，请检查网络并重试…</string>
+    <string name="download_sdcard_busy_dlg_title">"SD 卡不可用"</string>
+    <string name="install_no_file_found">"未找到安装包"</string>
+
+    <!--
+     Font family used when drawing letters for letter tile avatars.
+     Do not translate.
+    -->
+    <string name="letter_tile_letter_font_family">sans-serif-light</string>
+    <string name="invite_tribe_members">其他部落成员</string>
+    <string name="invite_friends">我的好友列表</string>
+    <string name="invite_wechat_friends">微信好友</string>
+    <string name="invite_link">生成链接(用于朋友圈粘贴)</string>
+    <string name="invite_qr">生成二维码</string>
+    <string name="invite_moments">朋友圈</string>
+    <!-- 活动取消原因 -->
+    <string name="cancel_reason_one">活动时间出现问题，该活动已被取消</string>
+    <string name="cancel_reason_two">活动地点出现问题，该活动已被取消</string>
+    <string name="all_event">全部活动</string>
+
+    <string name="towxstr">公众号已复制到粘贴板</string>
+    
+    <!-- Beem -->
+    <string name="BeemServiceDescription">使用找人服务</string>
+    <string name="profile_select_item_selected">✔</string>
+    
+    <!-- 发现 -->
+    <string name="find_people_search_hint">请输入人脉关键词</string>
+    <string name="find_resource_search_hint">请输入资源或需求关键词</string>
+    <string name="find_people">找人脉</string>
+    <string name="find_resource">找资源</string>
+    <!-- 发现 -->
+
+    <string name="str_haike">海客？</string>
+</resources>

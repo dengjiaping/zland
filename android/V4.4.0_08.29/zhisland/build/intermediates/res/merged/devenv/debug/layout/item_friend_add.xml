@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/RootBg1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+    >
+
+    <com.zhisland.android.blog.common.view.AvatarView
+        android:id="@+id/ivUserAvatar"
+        android:layout_width="@dimen/app_avatar_size"
+        android:layout_height="@dimen/app_avatar_size"
+        />
+
+    <ImageView
+        android:id="@+id/ivRight"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/bg_task_add_friend"/>
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@id/ivRight"
+        android:layout_toRightOf="@id/ivUserAvatar"
+        android:singleLine="true"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_18"/>
+
+    <TextView
+        android:id="@+id/tvComAndPos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tvUserName"
+        android:layout_alignRight="@id/tvUserName"
+        android:layout_below="@id/tvUserName"
+        android:layout_marginTop="8dp"
+        android:singleLine="true"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_14"/>
+</RelativeLayout>

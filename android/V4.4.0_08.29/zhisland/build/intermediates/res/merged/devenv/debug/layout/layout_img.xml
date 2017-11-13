@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/image_one_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="1dip"
+        android:background="@drawable/rect_bbg2_sdiv_image"></ImageView>
+
+
+    <RelativeLayout
+        android:id="@+id/image_two_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_two_layout_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:cropToPadding="true"
+            android:padding="1dip"
+            android:background="@drawable/rect_bbg2_sdiv_image" />
+
+        <ImageView
+            android:id="@+id/image_two_layout_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:cropToPadding="true"
+            android:padding="1dip"
+            android:background="@drawable/rect_bbg2_sdiv_image" />
+    </RelativeLayout>
+
+
+    <HorizontalScrollView
+        android:id="@+id/image_many_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/image_many_layout_container"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"></LinearLayout>
+
+    </HorizontalScrollView>
+
+
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	style="@style/RootBgWhite" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <RadioGroup
+            android:id="@+id/rgCancelReason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RadioButton
+                android:id="@+id/rbtnCancelReasonOne"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:checked="true"
+                android:drawableRight="@drawable/sel_radio_box"
+                android:text="@string/cancel_reason_one"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_16" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_divider_height"
+                android:background="@drawable/line_divider_all" />
+
+            <RadioButton
+                android:id="@+id/rbtnCancelReasonTwo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:drawableRight="@drawable/sel_radio_box"
+                android:text="@string/cancel_reason_two"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_16" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_divider_height"
+                android:background="@drawable/line_divider_all" />
+
+            <RadioButton
+                android:id="@+id/rbtnCancelReasonOther"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:drawableRight="@drawable/sel_radio_box"
+                android:text="其他"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_16" />
+        </RadioGroup>
+
+        <com.zhisland.android.blog.common.view.CountEditText
+            android:id="@+id/etCancelReason"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/white"
+            android:gravity="top"
+            android:padding="10dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</ScrollView>

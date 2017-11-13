@@ -1,0 +1,7 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+     <dimen name="shrink_move_size">25dp</dimen>
+
+    <item name="fling_divider" type="integer">5</item>
+
+</resources>

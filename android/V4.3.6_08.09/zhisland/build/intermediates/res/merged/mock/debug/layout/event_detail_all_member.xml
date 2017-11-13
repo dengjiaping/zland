@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+                android:paddingTop="15dp"
+
+     >
+
+    <TextView
+        android:id="@+id/tv_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="同时分享到"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_14" />
+
+    <ImageView
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_toRightOf="@id/tv_more"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/btn_arrow_rignt_green" />
+
+</RelativeLayout>

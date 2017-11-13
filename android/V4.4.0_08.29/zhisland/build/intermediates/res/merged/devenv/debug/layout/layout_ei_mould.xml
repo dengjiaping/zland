@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rect_bbg2_sdiv_clarge"
+    android:minHeight="68dip"
+    android:paddingBottom="16dip"
+    android:paddingLeft="16dip"
+    android:paddingRight="12dip"
+    android:id="@+id/eimould_layout"
+    android:paddingTop="16dip">
+
+    <ImageView
+        android:id="@+id/eimould_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:layout_alignParentLeft="true" />
+
+    <ImageView
+        android:id="@+id/eimould_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/arrow" />
+
+    <TextView
+        android:id="@+id/eimould_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dip"
+        android:layout_toLeftOf="@id/eimould_next"
+        android:layout_toRightOf="@id/eimould_icon"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/color_f1"
+        android:textSize="16sp"></TextView>
+
+    <TextView
+        android:id="@+id/eimould_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/eimould_title"
+        android:layout_below="@id/eimould_title"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/color_f2"
+        android:textSize="12sp"></TextView>
+
+
+
+
+</RelativeLayout>

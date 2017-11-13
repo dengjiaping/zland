@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/RootBg2" >
+
+    <FrameLayout
+        android:id="@+id/flElse"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="0dp"
+        android:background="@color/color_f2" >
+
+        <RelativeLayout
+            android:id="@+id/rl_express"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <RelativeLayout
+                android:id="@+id/ll_chat_del"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/chat_toolbar"
+                android:padding="0dp"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:id="@+id/iv_express_tabbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_chat_express_tabbar"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingBottom="0dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="0dp"
+                    android:src="@drawable/chat_common_express" />
+
+                <ImageView
+                    android:id="@+id/iv_large_express_tabbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_express_tabbar"
+                    android:background="@drawable/bg_chat_express_tabbar"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingBottom="0dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="0dp"
+                    android:src="@drawable/chat_large_express" />
+
+                <Button
+                    android:id="@+id/btn_chat_del"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/sel_bg_btn_borangered"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="回删"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_18" />
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/view_express_tabbar"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_above="@id/ll_chat_del" >
+
+                <com.zhisland.lib.view.SwipeView
+                    android:id="@+id/sv_chat"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+                </com.zhisland.lib.view.SwipeView>
+
+                <com.zhisland.lib.view.SwipeView
+                    android:id="@+id/sv_large_express"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+                </com.zhisland.lib.view.SwipeView>
+            </FrameLayout>
+
+            <com.zhisland.lib.view.PageControl
+                android:id="@+id/pc_chat"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:layout_alignBottom="@id/view_express_tabbar"
+                android:layout_marginBottom="40dp"
+                android:gravity="center_horizontal" >
+            </com.zhisland.lib.view.PageControl>
+        </RelativeLayout>
+
+        <GridView
+            android:id="@+id/gv_chat_attach"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:listSelector="#00000000"
+            android:visibility="gone" >
+        </GridView>
+    </FrameLayout>
+
+    <com.zhisland.android.blog.common.view.PullToZoomRefreshListView
+        android:id="@+id/lv_feed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/flElse"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:divider="@color/color_bg2"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none"
+        android:showDividers="end" />
+
+    <LinearLayout
+        android:id="@+id/llToolTop"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:background="@color/color_bg1"
+        android:layout_above="@id/flElse"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/switchView"
+            android:layout_width="@dimen/app_titlebar_height"
+            android:layout_height="@dimen/app_titlebar_height"
+            android:scaleType="center"
+            android:src="@drawable/sel_post_emotion" />
+        
+        <EditText
+            android:inputType="text"
+            android:id="@+id/etContent"
+            android:padding="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/color_dc"
+            android:background="@drawable/rect_bwhite_sdiv_clarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    
+    <View
+        android:id="@+id/vMask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/llToolTop" />
+
+    <LinearLayout
+        android:id="@+id/llTitle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_titlebar_height"
+        android:clickable="true"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/app_titlebar_height"
+            android:layout_height="@dimen/app_titlebar_height"
+            android:layout_weight="0"
+            android:scaleType="center"
+            android:src="@drawable/sel_btn_back_white" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/app_titlebar_height"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="乡村音乐"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_18"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/ivSetting"
+            android:layout_width="@dimen/app_titlebar_height"
+            android:layout_height="@dimen/app_titlebar_height"
+            android:layout_weight="0"
+            android:scaleType="center"
+            android:src="@drawable/sel_btn_feed_more" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vTitleLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_below="@id/llTitle"
+        android:background="@color/color_div"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/ivProgress"
+        android:layout_width="@dimen/app_titlebar_height"
+        android:layout_height="@dimen/app_titlebar_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-44dp"
+        android:background="@drawable/progress_circle" />
+
+    <Button
+        android:id="@+id/btnJoin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_titlebar_height"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/sel_bg_btn_bgreen"
+        android:text="加入部落"
+        android:textColor="@color/color_bg1"
+        android:textSize="@dimen/txt_16"
+        android:visibility="invisible" >
+    </Button>
+
+    <ImageView
+        android:id="@+id/ivChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/sel_btn_chat" />
+
+    <LinearLayout
+        android:id="@+id/llRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/ivCreateFeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/sel_btn_add_content"
+            android:visibility="invisible" >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/ivCreatePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/sel_btn_add_pic"
+            android:visibility="invisible" >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/ivCreateEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/sel_btn_add_campaig"
+            android:visibility="invisible" >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/ivMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sel_btn_add" >
+        </ImageView>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBg1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@color/color_bg2"
+        android:gravity="center"
+        android:text="关注后可在商圈收到对方的消息"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14" />
+
+</LinearLayout>

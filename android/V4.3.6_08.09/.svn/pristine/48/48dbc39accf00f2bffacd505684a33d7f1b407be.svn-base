@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:id="@+id/tv_chat_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:paddingBottom="0dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="0dp"
+        android:src="@drawable/video_play" />
+
+    <RelativeLayout
+        android:id="@+id/view_chat_video_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_chat_transblack_bot"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/video_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:paddingBottom="3dp"
+            android:paddingTop="3dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_18" />
+
+        <TextView
+            android:id="@+id/video_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:paddingBottom="3dp"
+            android:paddingLeft="2dp"
+            android:paddingTop="3dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_18" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/view_chat_row_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_chat_transblack"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/tv_chat_progress_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="2dp"
+            android:text=" 0%"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_20" />
+    </RelativeLayout>
+
+</RelativeLayout>

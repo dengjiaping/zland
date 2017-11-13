@@ -1,0 +1,1405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="big_emotion_img_name">
+        <item>bigemotion0</item>
+        <item>bigemotion1</item>
+        <item>bigemotion2</item>
+        <item>bigemotion3</item>
+        <item>bigemotion4</item>
+        <item>bigemotion5</item>
+        <item>bigemotion6</item>
+        <item>bigemotion7</item>
+        <item>bigemotion8</item>
+        <item>bigemotion9</item>
+        <item>bigemotion10</item>
+        <item>bigemotion11</item>
+        <item>bigemotion12</item>
+        <item>bigemotion13</item>
+        <item>bigemotion14</item>
+        <item>bigemotion15</item>
+    </string-array>
+    <string-array name="express_drawable_name">
+
+        <!-- 第一屏  23-->
+        <item>wei_xiao</item>
+        <item>ci_ya</item>
+        <item>de_yi</item>
+        <item>wei_qu</item>
+        <item>tiao_pi</item>
+
+        <item>gu_zhang</item>
+        <item>ke_ai</item>
+        <item>bi_zui</item>
+        <item>shui</item>
+        <item>da_ku</item>
+
+        <item>gan_ga</item>
+        <item>fa_nu</item>
+        <item>bing_le</item>
+        <item>qin_qin</item>
+        <item>jing_ya</item>
+
+        <item>nan_guo</item>
+        <item>ku</item>
+        <item>leng_han</item>
+        <item>zhua_kuang</item>
+        <item>jing_kong</item>
+
+        <item>tou_xiao</item>
+        <item>liu_han</item>
+        <item>zai_jian</item>
+        <!-- 第二屏 23-->
+        <item>se</item>
+        <item>ji_e</item>
+        <item>hai_xiu</item>
+        <item>fa_dai</item>
+        <item>ke_lian</item>
+
+        <item>yin_xian</item>
+        <item>zuo_heng_heng</item>
+        <item>you_heng_heng</item>
+        <item>qiu_da_le</item>
+        <item>yun</item>
+
+        <item>kai_xin</item>
+        <item>pie_zui</item>
+        <item>yi_wen</item>
+        <item>huai_xiao</item>
+        <item>ku_xiao</item>
+
+        <item>fen_dou</item>
+        <item>bao_quan</item>
+        <item>wo_shou</item>
+        <item>lai</item>
+        <item>zan</item>
+
+        <item>ye</item>
+        <item>ok</item>
+        <item>ha_ha</item>
+        <!-- 第三屏 23-->
+        <item>liu_lei</item>
+        <item>ca_han</item>
+        <item>xia</item>
+        <item>xu</item>
+        <item>shuai</item>
+
+        <item>ha_qian</item>
+        <item>dian_tou</item>
+        <item>bi_shi</item>
+        <item>kuai_ku_le</item>
+        <item>kou_bi</item>
+
+        <item>good</item>
+        <item>bu_yao</item>
+        <item>mei_gui</item>
+        <item>ai_xin</item>
+        <item>xin_sui</item>
+
+        <item>wen</item>
+        <item>zheng_neng_liang</item>
+        <item>fu_yun</item>
+        <item>ju_hui</item>
+        <item>pi_jiu</item>
+
+        <item>tai_yang</item>
+        <item>yue_liang</item>
+        <item>zhu_tou</item>
+        <!-- 第四屏  23 -->
+        <item>tai_yang_hua</item>
+        <item>xing_xing</item>
+        <item>xiao_yu</item>
+        <item>xiao_dao</item>
+        <item>pang_tun</item>
+
+        <item>hai_tun</item>
+        <item>hai_xing</item>
+        <item>cheng_zi</item>
+        <item>xian_ren_zhang</item>
+        <item>fen_mei_gui</item>
+
+        <item>jiu_sheng_quan</item>
+        <item>xiao_fen_hua</item>
+        <item>chuan_zhang</item>
+        <item>qiu_zhang</item>
+        <item>chuan</item>
+
+        <item>bei_ke</item>
+        <item>jing_yu</item>
+        <item>qi_qiu</item>
+        <item>gei_li</item>
+        <item>ye_zi_shu</item>
+
+        <item>li_he</item>
+        <item>bo_shi_mao</item>
+        <item>hai_luo</item>
+        <!-- 第五屏  9-->
+        <item>zhen_zhu</item>
+        <item>jiao_yin</item>
+        <item>gao_er_fu</item>
+        <item>da_han</item>
+        <item>shan_dian</item>
+
+        <item>shui_di</item>
+        <item>yin_yue</item>
+        <item>diao_xie</item>
+        <item>zong_zi</item>
+		<item>pian_pao</item>
+
+	    <item>fu</item>
+	    <item>deng_long</item>
+        <item>gong_xi_fa_cai</item>
+        <item>ma_dao_cheng_gong</item>
+    </string-array>
+    <string-array name="express_name">
+
+        <!-- 第一屏 23 -->
+        <item>[微笑]</item>
+        <item>[呲牙]</item>
+        <item>[得意]</item>
+        <item>[委屈]</item>
+        <item>[调皮]</item>
+        <item>[鼓掌]</item>
+        <item>[可爱]</item>
+        <item>[闭嘴]</item>
+        <item>[睡]</item>
+        <item>[大哭]</item>
+        <item>[尴尬]</item>
+        <item>[发怒]</item>
+        <item>[病了]</item>
+        <item>[亲亲]</item>
+        <item>[惊讶]</item>
+        <item>[难过]</item>
+        <item>[酷]</item>
+        <item>[冷汗]</item>
+        <item>[抓狂]</item>
+        <item>[惊恐]</item>
+        <item>[偷笑]</item>
+        <item>[流汗]</item>
+        <item>[再见]</item>
+        <!-- 第二屏 23-->
+        <item>[色]</item>
+        <item>[饥饿]</item>
+        <item>[害羞]</item>
+        <item>[发呆]</item>
+        <item>[可怜]</item>
+        <item>[阴险]</item>
+        <item>[左哼哼]</item>
+        <item>[右哼哼]</item>
+        <item>[糗大了]</item>
+        <item>[晕]</item>
+        <item>[开心]</item>
+        <item>[撇嘴]</item>
+        <item>[疑问]</item>
+        <item>[坏笑]</item>
+        <item>[苦笑]</item>
+        <item>[奋斗]</item>
+        <item>[抱拳]</item>
+        <item>[握手]</item>
+        <item>[来]</item>
+        <item>[赞]</item>
+        <item>[耶]</item>
+        <item>[ok]</item>
+        <item>[haha]</item>
+        <!-- 第三屏 23 -->
+        <item>[流泪]</item>
+        <item>[擦汗]</item>
+        <item>[吓]</item>
+        <item>[嘘]</item>
+        <item>[衰]</item>
+        <item>[哈欠]</item>
+        <item>[点头]</item>
+        <item>[鄙视]</item>
+        <item>[快哭了]</item>
+        <item>[抠鼻]</item>
+        <item>[good]</item>
+        <item>[不要]</item>
+        <item>[玫瑰]</item>
+        <item>[爱心]</item>
+        <item>[心碎]</item>
+        <item>[吻]</item>
+        <item>[正能量]</item>
+        <item>[浮云]</item>
+        <item>[聚会]</item>
+        <item>[啤酒]</item>
+        <item>[太阳]</item>
+        <item>[月亮]</item>
+        <item>[猪头]</item>
+        <!-- 第四屏 23-->
+        <item>[太阳花]</item>
+        <item>[星星]</item>
+        <item>[小鱼]</item>
+        <item>[小岛]</item>
+        <item>[胖豚]</item>
+        <item>[海豚]</item>
+        <item>[海星]</item>
+        <item>[橙子]</item>
+        <item>[仙人掌]</item>
+        <item>[粉玫瑰]</item>
+        <item>[救生圈]</item>
+        <item>[小粉花]</item>
+        <item>[船长]</item>
+        <item>[酋长]</item>
+        <item>[船]</item>
+        <item>[贝壳]</item>
+        <item>[鲸鱼]</item>
+        <item>[气球]</item>
+        <item>[给力]</item>
+        <item>[椰子树]</item>
+        <item>[礼盒]</item>
+        <item>[博士帽]</item>
+        <item>[海螺]</item>
+        <!-- 第五屏 14-->
+        <item>[珍珠]</item>
+        <item>[脚印]</item>
+        <item>[高尔夫]</item>
+        <item>[打鼾]</item>
+        <item>[闪电]</item>
+        <item>[水滴]</item>
+        <item>[音乐]</item>
+        <item>[凋谢]</item>
+        <item>[粽子]</item>
+        <item>[鞭炮]</item>
+	    <item>[福]</item>
+	    <item>[灯笼]</item>
+        <item>[恭喜发财]</item>
+        <item>[马到成功]</item>
+    </string-array>
+    <array name="letter_tile_colors">
+        <item>@color/color_sc</item>
+        <item>@color/color_sc_p</item>
+        <item>@color/color_ac</item>
+    </array>
+    <string-array name="loganim_state">
+        <item>@string/loganim_connecting</item>
+        <item>@string/loganim_authenticating</item>
+        <item>@string/loganim_login_success</item>
+        <item>@string/loganim_login_failed</item>
+    </string-array>
+    <string-array name="pick_photo_items">
+        <item>@string/take_photo</item>
+        <item>@string/pick_photo</item>
+        <item>@string/delete_avatar</item>
+    </string-array>
+    <string-array name="proxy_types">
+        <item>HTTP</item>
+        <item>SOCKS4</item>
+        <item>SOCKS5</item>
+    </string-array>
+    <string-array name="status_types">
+        <item name="AvailableForChat">@string/contact_status_msg_available_chat</item>
+        <item name="Available">@string/contact_status_msg_available</item>
+        <item name="Busy">@string/contact_status_msg_dnd</item>
+        <item name="Away">@string/contact_status_msg_away</item>
+        <item name="Unavailable">@string/contact_status_msg_xa</item>
+        <item name="Disconnected">@string/contact_status_msg_offline</item>
+    </string-array>
+    <attr format="reference" name="SwipeBackLayoutStyle"/>
+    <attr format="reference" name="numberPickerStyle"/>
+    <color name="app_background">#ffffffff</color>
+    <color name="bg_event_tag">#F6FFFFFF</color>
+    <color name="bg_profile_empty">#FFD8D8D8</color>
+    <color name="black">#ff000000</color>
+    <color name="btn_add_sel_color">#ff353535</color>
+    <color name="btn_green">#cf0cb268</color>
+    <color name="chat_row_focus">#f0dbe3e5</color>
+    <color name="chat_row_right_divider">#ffc8c7cc</color>
+    <color name="chat_toolbar">#ff3e4345</color>
+    <color name="chat_toolbar_select">#ff35393b</color>
+    <color name="color_ac">#ffFE3824</color>
+    <color name="color_ac_p">#ffC32820</color>
+    <color name="color_bc">#ff30AACB</color>
+    <color name="color_bc_p">#ff52869D</color>
+    <color name="color_bg1">#ffffffff</color>
+    <color name="color_bg1_p">#E5E5E5</color>
+    <color name="color_bg2">#ffF2F2F2</color>
+    <color name="color_bg3">#ff000000</color>
+    <color name="color_black_80">#CC000000</color>
+    <color name="color_btn">#ff8e8e8e</color>
+    <color name="color_dc">#ff3aa978</color>
+    <color name="color_dc2">#ff87CAAD</color>
+    <color name="color_dc_90">#E53aa978</color>
+    <color name="color_dc_grey">#dcdcdc</color>
+    <color name="color_dc_p">#ff2E8760</color>
+    <color name="color_desc">#ff9fa9af</color>
+    <color name="color_div">#ffE4E4E4</color>
+    <color name="color_div_60">#96e6e6e6</color>
+    <color name="color_em">#ffe7e7e7</color>
+    <color name="color_event_price_tag_ora">#ff8c31</color>
+    <color name="color_f1">#ff1e1e1e</color>
+    <color name="color_f2">#ff6b6b6b</color>
+    <color name="color_f3">#ffB7B7B7</color>
+    <color name="color_f4">#ffD9D9D9</color>
+    <color name="color_f4f4f4">#f4f4f4</color>
+    <color name="color_sc">#ffdbb786</color>
+    <color name="color_sc_p">#ffC3A275</color>
+    <color name="color_user_comment_new">#FFC3A275</color>
+    <color name="color_white_15">#D8ffffff</color>
+    <color name="color_white_20">#33ffffff</color>
+    <color name="color_white_25">#3fffffff</color>
+    <color name="color_white_50">#7fffffff</color>
+    <color name="color_white_70">#B2ffffff</color>
+    <color name="color_white_80">#CCffffff</color>
+    <color name="color_white_85">#d8ffffff</color>
+    <color name="color_white_90">#e5ffffff</color>
+    <color name="dark">#ff222222</color>
+    <color name="drop_text_focus">#81c2fc</color>
+    <color name="letter_tile_default_color">#cccccc</color>
+    <color name="letter_tile_font_color">#ffffff</color>
+    <color name="line_gray">#ffb3b3b3</color>
+    <color name="red">#ffff0000</color>
+    <color name="tab_highlight">#ff018e4e</color>
+    <color name="tabbar_text_unsel_color">#ffC0C4C6</color>
+    <color name="tag_bg">#fff0f0f0</color>
+    <color name="title_drop">#ff303337</color>
+    <color name="translate_60">#96000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="txt_black">#ff333333</color>
+    <color name="txt_blue">#ff0080cb</color>
+    <color name="txt_dark_gray">#ff666666</color>
+    <color name="txt_light_gray">#ff959595</color>
+    <color name="txt_lighter_gray">#ffcccccc</color>
+    <color name="white">#ffffffff</color>
+    <declare-styleable name="BannerView"><attr format="dimension" name="indicator_width"/><attr format="dimension" name="indicator_height"/><attr format="dimension" name="indicator_margin"/><attr format="reference" name="indicator_drawable_selected"/><attr format="reference" name="indicator_drawable_unselected"/></declare-styleable>
+    <declare-styleable name="CustomTheme"><attr format="reference" name="gifViewStyle"/></declare-styleable>
+    <declare-styleable name="DragSortListView"><attr format="dimension" name="collapsed_height"/><attr format="float" name="drag_scroll_start"/><attr format="float" name="max_drag_scroll_speed"/><attr format="color" name="float_background_color"/><attr name="remove_mode">
+      <enum name="clickRemove" value="0"/>
+      <enum name="flingRemove" value="1"/>
+    </attr><attr format="boolean" name="track_drag_sort"/><attr format="float" name="float_alpha"/><attr format="float" name="slide_shuffle_speed"/><attr format="integer" name="remove_animation_duration"/><attr format="integer" name="drop_animation_duration"/><attr format="boolean" name="drag_enabled"/><attr format="boolean" name="sort_enabled"/><attr format="boolean" name="remove_enabled"/><attr name="drag_start_mode">
+      <enum name="onDown" value="0"/>
+      <enum name="onMove" value="1"/>
+      <enum name="onLongPress" value="2"/>
+    </attr><attr format="integer" name="drag_handle_id"/><attr format="integer" name="fling_handle_id"/><attr format="integer" name="click_remove_id"/><attr format="boolean" name="use_default_controller"/></declare-styleable>
+    <declare-styleable name="FlowLayout"><attr name="android:gravity"/><attr format="dimension" name="horizontal_spacing"/><attr format="dimension" name="vertical_spacing"/></declare-styleable>
+    <declare-styleable name="FlowLayout_Layout"><attr name="android:layout_gravity"/></declare-styleable>
+    <declare-styleable name="GifView"><attr format="reference" name="gif"/><attr format="boolean" name="paused"/></declare-styleable>
+    <declare-styleable name="HorizontalListView"><attr format="dimension" name="dividerWidth"/><attr name="android:divider"/><attr name="android:requiresFadingEdge"/><attr name="android:fadingEdgeLength"/></declare-styleable>
+    <declare-styleable name="ImageText"><attr format="reference" name="itSrc"/><attr format="reference|string" name="itText"/><attr format="reference|color" name="textColor"/><attr format="reference|integer" name="textSize"/><attr format="integer" name="imageSize"/></declare-styleable>
+    <declare-styleable name="ImgsLayout"><attr format="integer" name="imgCount"/><attr format="string" name="moreText"/><attr format="boolean" name="isCircle"/></declare-styleable>
+    <declare-styleable name="NumberCircleProgressBar"><attr format="integer" name="progress"/><attr format="integer" name="max"/><attr format="color" name="progress_unreached_color"/><attr format="color" name="progress_reached_color"/><attr format="dimension" name="progress_text_size"/><attr format="color" name="progress_text_color"/><attr format="dimension" name="progress_circle_radius"/><attr format="enum" name="progress_text_visibility">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr><attr format="enum" name="progress_fill_mode">
+            <enum name="rotate" value="0"/>
+            <enum name="rising_water" value="1"/>
+        </attr></declare-styleable>
+    <declare-styleable name="NumberPicker"><attr format="color|reference" name="solidColor"/><attr format="reference" name="selectionDivider"/><attr format="dimension" name="selectionDividerHeight"/><attr format="dimension" name="selectionDividersDistance"/><attr format="dimension" name="internalMinHeight"/><attr format="dimension" name="internalMaxHeight"/><attr format="dimension" name="internalMinWidth"/><attr format="dimension" name="internalMaxWidth"/><attr format="reference" name="internalLayout"/><attr format="reference" name="virtualButtonPressedDrawable"/></declare-styleable>
+    <declare-styleable name="PullToRefresh"><attr format="reference|color" name="ptrRefreshableViewBackground"/><attr format="reference|color" name="ptrHeaderBackground"/><attr format="reference|color" name="ptrHeaderTextColor"/><attr format="reference|color" name="ptrHeaderSubTextColor"/><attr name="ptrMode">
+            <flag name="disabled" value="0x0"/>
+            <flag name="pullFromStart" value="0x1"/>
+            <flag name="pullFromEnd" value="0x2"/>
+            <flag name="both" value="0x3"/>
+            <flag name="manualOnly" value="0x4"/>
+
+            
+            <flag name="pullDownFromTop" value="0x1"/>
+            <flag name="pullUpFromBottom" value="0x2"/>
+        </attr><attr format="reference|boolean" name="ptrShowIndicator"/><attr format="reference" name="ptrDrawable"/><attr format="reference" name="ptrDrawableStart"/><attr format="reference" name="ptrDrawableEnd"/><attr format="reference|boolean" name="ptrOverScroll"/><attr format="reference" name="ptrHeaderTextAppearance"/><attr format="reference" name="ptrSubHeaderTextAppearance"/><attr name="ptrAnimationStyle">
+            <flag name="rotate" value="0x0"/>
+            <flag name="flip" value="0x1"/>
+        </attr><attr format="reference|boolean" name="ptrScrollingWhileRefreshingEnabled"/><attr format="reference|boolean" name="ptrListViewExtrasEnabled"/><attr format="reference|boolean" name="ptrRotateDrawableWhilePulling"/><attr format="reference|color" name="ptrAdapterViewBackground"/><attr format="reference" name="ptrDrawableTop"/><attr format="reference" name="ptrDrawableBottom"/></declare-styleable>
+    <declare-styleable name="PullToZoomView"><attr format="reference" name="headerView"/><attr format="reference" name="contentView"/><attr format="reference" name="zoomView"/><attr format="boolean" name="isHeaderParallax"/></declare-styleable>
+    <declare-styleable name="RecyclerView"><attr format="string" name="layoutManager"/><attr name="android:orientation"/><attr format="integer" name="spanCount"/><attr format="boolean" name="reverseLayout"/><attr format="boolean" name="stackFromEnd"/></declare-styleable>
+    <declare-styleable name="RoundAngleImageView"><attr format="dimension" name="roundWidths"/><attr format="dimension" name="roundHeights"/><attr format="boolean" name="leftUp"/><attr format="boolean" name="leftDown"/><attr format="boolean" name="rightUp"/><attr format="boolean" name="rightDown"/></declare-styleable>
+    <declare-styleable name="RoundProgressBar"><attr format="color" name="roundColor"/><attr format="color" name="roundProgressColor"/><attr format="dimension" name="roundWidth"/><attr format="color" name="text_color"/><attr format="dimension" name="text_size"/><attr format="integer" name="max_progress"/><attr format="boolean" name="textIsDisplayable"/><attr name="style">
+            <enum name="STROKE" value="0"/>
+            <enum name="FILL" value="1"/>
+        </attr></declare-styleable>
+    <declare-styleable name="ScaleImageView"><attr format="integer" name="scaleWidth"/><attr format="integer" name="scaleHeight"/></declare-styleable>
+    <declare-styleable name="SectionHeader"><attr format="reference" name="header_layout"/><attr format="boolean" name="is_collapsable"/></declare-styleable>
+    <declare-styleable name="SwipeBackLayout"><attr format="dimension" name="edge_size"/><attr name="edge_flag"><enum name="left" value="0"/><enum name="right" value="1"/><enum name="bottom" value="2"/><enum name="all" value="3"/></attr><attr format="reference" name="shadow_left"/><attr format="reference" name="shadow_right"/><attr format="reference" name="shadow_bottom"/></declare-styleable>
+    <declare-styleable name="SwipeFlingAdapterView"><attr format="reference" name="SwipeFlingStyle"/><attr format="float" name="rotation_degrees"/><attr format="integer" name="min_adapter_stack"/><attr format="integer" name="max_visible"/></declare-styleable>
+    <declare-styleable name="SwipeListView"><attr format="boolean" name="swipeOpenOnLongPress"/><attr format="integer" name="swipeAnimationTime"/><attr format="dimension" name="swipeOffsetLeft"/><attr format="dimension" name="swipeOffsetRight"/><attr format="boolean" name="swipeCloseAllItemsWhenMoveList"/><attr format="reference" name="swipeFrontView"/><attr format="reference" name="swipeBackView"/><attr format="enum" name="swipeMode">
+            <enum name="none" value="0"/>
+            <enum name="both" value="1"/>
+            <enum name="right" value="2"/>
+            <enum name="left" value="3"/>
+        </attr><attr format="enum" name="swipeActionLeft">
+            <enum name="reveal" value="0"/>
+            <enum name="dismiss" value="1"/>
+            <enum name="choice" value="2"/>
+        </attr><attr format="enum" name="swipeActionRight">
+            <enum name="reveal" value="0"/>
+            <enum name="dismiss" value="1"/>
+            <enum name="choice" value="2"/>
+        </attr><attr format="reference" name="swipeDrawableChecked"/><attr format="reference" name="swipeDrawableUnchecked"/></declare-styleable>
+    <declare-styleable name="TabBar"><attr format="reference" name="tbIndicator"/><attr name="tbMode">
+            <flag name="avg" value="0x0"/>
+            <flag name="wrap" value="0x1"/>
+            <flag name="wrap_fill" value="0x2"/>
+        </attr><attr format="boolean" name="tbDivider"/></declare-styleable>
+    <declare-styleable name="TagFlowLayout"><attr format="boolean" name="auto_select_effect"/><attr format="integer" name="max_select"/></declare-styleable>
+    <declare-styleable name="Themes"><attr format="reference" name="numberProgressBarStyle"/></declare-styleable>
+    <declare-styleable name="UserView"><attr format="color" name="showName"/><attr format="dimension" name="avatarSize"/></declare-styleable>
+    <declare-styleable name="counterEditText"><attr format="integer" name="limitSize"/><attr format="color" name="limitWordColor"/><attr format="dimension" name="limitWordSize"/></declare-styleable>
+    <declare-styleable name="pageTitleBar"><attr format="color" name="titleTextColor"/><attr format="dimension" name="titleTextSize"/><attr format="integer" name="titleTextLimitSize"/><attr format="reference" name="leftButtonImg"/><attr format="reference" name="rightButtonImg"/><attr format="reference" name="leftButtonChangeImg"/><attr format="reference" name="rightButtonChangeImg"/><attr format="string" name="titleTextContent"/></declare-styleable>
+    <dimen name="app_avatar_list_size">48dp</dimen>
+    <dimen name="app_avatar_size">48dp</dimen>
+    <dimen name="app_border_height">1dp</dimen>
+    <dimen name="app_button_height">38dp</dimen>
+    <dimen name="app_button_height_44">44dp</dimen>
+    <dimen name="app_corner_large">5dp</dimen>
+    <dimen name="app_corner_largest">8dp</dimen>
+    <dimen name="app_corner_middle">3dp</dimen>
+    <dimen name="app_corner_small">1dp</dimen>
+    <dimen name="app_divider_height">1dp</dimen>
+    <dimen name="app_interval">10dp</dimen>
+    <dimen name="app_line_height">0.7dp</dimen>
+    <dimen name="app_title_btn_text_size">14sp</dimen>
+    <dimen name="app_title_text_size">16sp</dimen>
+    <dimen name="app_titlebar_height">48dp</dimen>
+    <dimen name="card_horizontal_margin">15dp</dimen>
+    <dimen name="card_tag_height">22dp</dimen>
+    <dimen name="chat_avatar_size">40dp</dimen>
+    <dimen name="chat_desc_size">@dimen/txt_16</dimen>
+    <dimen name="chat_express_size">30dp</dimen>
+    <dimen name="chat_name_size">@dimen/txt_18</dimen>
+    <dimen name="chat_padding_bottom">13dp</dimen>
+    <dimen name="chat_padding_left">10dp</dimen>
+    <dimen name="chat_padding_middle">10dp</dimen>
+    <dimen name="chat_padding_right">10dp</dimen>
+    <dimen name="chat_padding_top">13dp</dimen>
+    <dimen name="chat_title_size">@dimen/txt_20</dimen>
+    <dimen name="common_friend_width">35dp</dimen>
+    <dimen name="event_filter_padding">10dp</dimen>
+    <dimen name="event_scene_card_bottom_margin">110dp</dimen>
+    <dimen name="event_scene_card_top_margin">8dp</dimen>
+    <dimen name="event_scene_tab_bar_height">60dp</dimen>
+    <dimen name="event_scene_tab_bar_top_margin">80dp</dimen>
+    <dimen name="fresh_task_card_padding">25dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
+    <dimen name="item_touch_helper_swipe_escape_max_velocity">800dp</dimen>
+    <dimen name="item_touch_helper_swipe_escape_velocity">120dp</dimen>
+    <item name="letter_to_tile_ratio" type="dimen">67%</item>
+    <dimen name="post_express_size">20dp</dimen>
+    <dimen name="recording_width">180dp</dimen>
+    <dimen name="shrink_move_size">20dp</dimen>
+    <dimen name="tag_height">28dp</dimen>
+    <dimen name="title_height">48dp</dimen>
+    <dimen name="txt_10">10sp</dimen>
+    <dimen name="txt_12">12sp</dimen>
+    <dimen name="txt_14">14sp</dimen>
+    <dimen name="txt_16">16sp</dimen>
+    <dimen name="txt_18">18sp</dimen>
+    <dimen name="txt_20">20sp</dimen>
+    <dimen name="txt_22">22sp</dimen>
+    <item name="action_list" type="id"/>
+    <item name="arg1" type="id"/>
+    <item name="arg2" type="id"/>
+    <item name="arg3" type="id"/>
+    <item name="auto_complete" type="id"/>
+    <item name="base_tabpage_pulllist" type="id"/>
+    <item name="base_tabpage_section_pulllist" type="id"/>
+    <item name="btn_search" type="id"/>
+    <item name="btn_voice" type="id"/>
+    <item name="cb_item_tag" type="id"/>
+    <item name="chat_attach" type="id"/>
+    <item name="chat_bottom" type="id"/>
+    <item name="chat_data" type="id"/>
+    <item name="chat_data_listener" type="id"/>
+    <item name="chat_data_mes" type="id"/>
+    <item name="chat_edit" type="id"/>
+    <item name="chat_middle" type="id"/>
+    <item name="chat_reply" type="id"/>
+    <item name="chat_row_avator" type="id"/>
+    <item name="chat_row_container" type="id"/>
+    <item name="chat_row_content" type="id"/>
+    <item name="chat_row_error" type="id"/>
+    <item name="chat_row_name" type="id"/>
+    <item name="chat_row_pro_sending" type="id"/>
+    <item name="chat_top" type="id"/>
+    <item name="checknetrow_label" type="id"/>
+    <item name="custom_titile" type="id"/>
+    <item name="first_view" type="id"/>
+    <item name="frag_container" type="id"/>
+    <item name="frag_container_rl" type="id"/>
+    <item name="gallery" type="id"/>
+    <item name="galleryimage" type="id"/>
+    <item name="gridview" type="id"/>
+    <item name="group_list_view_type" type="id"/>
+    <item name="iconViewMain" type="id"/>
+    <item name="icon_view_icon" type="id"/>
+    <item name="imageFileNameInImageView" type="id"/>
+    <item name="imageFileNameInLoading" type="id"/>
+    <item name="imageSizeInImageView" type="id"/>
+    <item name="info_tab_0" type="id"/>
+    <item name="info_tab_1" type="id"/>
+    <item name="info_tab_2" type="id"/>
+    <item name="invalidResId" type="id"/>
+    <item name="item_touch_helper_previous_elevation" type="id"/>
+    <item name="iv_preview_error" type="id"/>
+    <item name="iv_preview_thumb" type="id"/>
+    <item name="messageArrow" type="id"/>
+    <item name="messageIcon" type="id"/>
+    <item name="np__decrement" type="id"/>
+    <item name="np__increment" type="id"/>
+    <item name="pc_express" type="id"/>
+    <item name="person_text" type="id"/>
+    <item name="prg_preview" type="id"/>
+    <item name="pullRefreshAbsListView" type="id"/>
+    <item name="pullview_foot_blow" type="id"/>
+    <item name="scroll_frag_float_header" type="id"/>
+    <item name="scroll_frag_normal_container" type="id"/>
+    <item name="scroll_frag_tab_footer" type="id"/>
+    <item name="scroll_frag_tab_header" type="id"/>
+    <item name="scroll_list_header" type="id"/>
+    <item name="scrollview" type="id"/>
+    <item name="searchbar" type="id"/>
+    <item name="second_view" type="id"/>
+    <item name="selectedUsersContainer" type="id"/>
+    <item name="sv_express" type="id"/>
+    <item name="tab0" type="id"/>
+    <item name="tab1" type="id"/>
+    <item name="tab2" type="id"/>
+    <item name="tab3" type="id"/>
+    <item name="tab4" type="id"/>
+    <item name="tab5" type="id"/>
+    <item name="tab6" type="id"/>
+    <item name="tab7" type="id"/>
+    <item name="tab8" type="id"/>
+    <item name="tab9" type="id"/>
+    <item name="tab_bar" type="id"/>
+    <item name="tab_container" type="id"/>
+    <item name="tabpage_mask" type="id"/>
+    <item name="three_view" type="id"/>
+    <item name="tileButton" type="id"/>
+    <item name="tileIcon" type="id"/>
+    <item name="tileText" type="id"/>
+    <item name="title_arrow" type="id"/>
+    <item name="title_drop_arrow" type="id"/>
+    <item name="title_text" type="id"/>
+    <item name="tv_selected_group" type="id"/>
+    <item name="viewpager" type="id"/>
+    <item name="webview" type="id"/>
+    <item name="fling_divider" type="integer">5</item>
+    <string name="AcceptButton">Authorize</string>
+    <string name="AcceptContactRequest">%s has just added you to his/her buddy list.</string>
+    <string name="AcceptContactRequestFrom">Authorize %s to contact you.</string>
+    <string name="AccountConfigureManualConfiguration">Manual Configuration</string>
+    <string name="AddCActTitle">Beem - Add a contact</string>
+    <string name="AddCAlias">Alias</string>
+    <string name="AddCBadForm">Jabber ID mal formado</string>
+    <string name="AddCContactAdded">Contact added</string>
+    <string name="AddCContactAddedError">Error Contact not added</string>
+    <string name="AddCContactAddedLoginError">Error Login</string>
+    <string name="AddCContactAlready">Contact already exist</string>
+    <string name="AddCGroup">Group</string>
+    <string name="AddCLogin">Username</string>
+    <string name="AddCOkButton">Add</string>
+    <string name="BeemApplicationConnect">Conectando...</string>
+    <string name="BeemBroadcastReceiverDisconnect">BEEM: You have been disconnected</string>
+    <string name="BeemServiceDescription">使用找人服务</string>
+    <string name="CDCall">Call</string>
+    <string name="CDChat">Chat</string>
+    <string name="CDInfos">Manage User</string>
+    <string name="CLP_hidden_contact">Hide buddies</string>
+    <string name="CLP_hidden_contact_sum">Check this option to hide unconnected buddies
+    </string>
+    <string name="CLP_hide_groups">Hide groups</string>
+    <string name="CLP_hide_groups_sum">Check this option to hide groups</string>
+    <string name="CLP_show_jid">Show JID</string>
+    <string name="CLP_show_jid_sum">Check this option to always show Contact\'s JID</string>
+    <string name="CancelButton">Cancel</string>
+    <string name="ChangeStatusActTitle">Beem - Change my status</string>
+    <string name="ChangeStatusMessage">My status message</string>
+    <string name="ChangeStatusOk">Updating status</string>
+    <string name="ChangeStatusType">My status</string>
+    <string name="ClearButton">Clear</string>
+    <string name="Continue">Continue</string>
+    <string name="JabberID">Jabber ID</string>
+    <string name="OkButton">OK</string>
+    <string name="OpenContactList">Open contact list</string>
+    <string name="Password">Password</string>
+    <string name="RefuseButton">Deny</string>
+    <string name="SettingsAdvanced">Advanced</string>
+    <string name="SettingsAdvancedAddOpt">Edit the server address</string>
+    <string name="SettingsAdvancedOptions">Specific server option</string>
+    <string name="SettingsAdvancedPortOpt">Edit the server port</string>
+    <string name="SettingsAdvancedRecoDelay">Modify reconnection delay</string>
+    <string name="SettingsAdvancedSpecOpt">Check this box if you want to use a specific server for your connection
+    </string>
+    <string name="SettingsPrioritySummary">Set the priority of your client</string>
+    <string name="SettingsPriorityTitle">Priority</string>
+    <string name="SettingsProxy">Proxy</string>
+    <string name="SettingsProxyPassword">Optional, allow to authenticate yourself on the proxy server</string>
+    <string name="SettingsProxyPort">Edit proxy server port</string>
+    <string name="SettingsProxyProxy">Use a proxy server</string>
+    <string name="SettingsProxyServer">Edit proxy server address</string>
+    <string name="SettingsProxySummary">Login through a proxy server</string>
+    <string name="SettingsProxyType">Protocol</string>
+    <string name="SettingsProxyTypeSummary">Choose the proxy server type</string>
+    <string name="SettingsProxyUser">Optional, allow to authenticate yourself on the proxy server</string>
+    <string name="SettingsResourceSummary">Set the XMPP resource of your client</string>
+    <string name="SettingsResourceTitle">Resource</string>
+    <string name="SubscriptAccept">Subscription accepted</string>
+    <string name="SubscriptError">Subscription error</string>
+    <string name="SubscriptRefused">Subscription refused</string>
+    <string name="SubscriptText">%s wants to add you to his/her buddy list. Do you want to authorize him/her?</string>
+    <string name="SubscriptTitle">Authorize buddy?</string>
+    <string name="UpdateButton">Update</string>
+    <string name="account_wizard_configure_account">I already have an account I want to use</string>
+    <string name="account_wizard_configure_text_1">Use an account store on the device</string>
+    <string name="account_wizard_configure_text_2">
+        <b>or</b>
+    </string>
+    <string name="account_wizard_configure_text_3">Fill in the data for your existing account</string>
+    <string name="account_wizard_connection_failed">
+        <b>Unable to authenticate your account. Please verify your credentials</b>
+    </string>
+    <string name="account_wizard_create_account">I want to register for a new account</string>
+    <string name="account_wizard_select_account_btn">Choose an account</string>
+    <string name="account_wizard_settings_warn"><b>Warning:</b>Your settings are set to use a server proxy or a specific
+        server hostname.
+    </string>
+    <string name="account_wizard_text1"><b>Welcome on BEEM.</b>\n\nYou have not configured an XMPP (Jabber) account
+        yet.\nChoose one of the following options :
+    </string>
+    <string name="all_event">全部活动</string>
+    <string name="app_name">正和岛开发</string>
+    <string name="app_service_phone">"400-100-9737"</string>
+    <string name="away_chk_sum">Change status to Away when the screen is turned off</string>
+    <string name="away_chk_title">Enable Auto-away</string>
+    <string name="away_message_hint">I\'m away, my cellphone screen is off</string>
+    <string name="away_message_sum">The away message that will be displayed</string>
+    <string name="away_message_title">Away message</string>
+    <string name="bad_request">bad-request</string>
+    <string name="cancel_reason_one">活动时间出现问题，该活动已被取消</string>
+    <string name="cancel_reason_two">活动地点出现问题，该活动已被取消</string>
+    <string name="chat_dialog_change_chat_title">Opened chats</string>
+    <string name="chat_error">Error</string>
+    <string name="chat_history_path">History path</string>
+    <string name="chat_history_path_sum">Chat conversations are saved in a folder on the SDCard</string>
+    <string name="chat_input_default_value">Type your message</string>
+    <string name="chat_layout_option">Chat layout</string>
+    <string name="chat_menu_change_chat">Switch chat</string>
+    <string name="chat_menu_close_chat">Close this chat</string>
+    <string name="chat_menu_contacts_list">Contacts list</string>
+    <string name="chat_menu_otr_submenu">OTR actions</string>
+    <string name="chat_menu_otr_verify_key">OTR verify key</string>
+    <string name="chat_menu_start_otr_session">Start OTR session</string>
+    <string name="chat_menu_stop_otr_session">Stop OTR session</string>
+    <string name="chat_name">Beem - Chat</string>
+    <string name="chat_no_more_chats">No more active chats</string>
+    <string formatted="false" name="chat_otr_verify_key">
+        Authenticating a buddy helps ensure that the person you are talking to is who they claim to be.\n\n
+        To verify the fingerprint, contact your buddy via some
+        <i>other</i>
+        authenticated channel, such as the telephone or GPG-signed email. Each of you should tell your fingerprint to
+        the other.\n\n
+        If everything matches up, you should indicate in the above dialog that you
+        <b>have</b>
+        verified the fingerprint.\n\n
+        Local fingerprint %s\n\nRemote fingerprint %s\n\nVerify fingerprint ?
+    </string>
+    <string name="chat_otrstate_authenticated">AUTHENTICATED</string>
+    <string name="chat_otrstate_encrypted">ENCRYPTED</string>
+    <string name="chat_otrstate_finished">FINISHED</string>
+    <string name="chat_otrstate_plaintext">PLAINTEXT</string>
+    <string name="chat_preferences">Chat</string>
+    <string name="chat_preferences_sum">History, Layout size ...</string>
+    <string name="chat_self">Me</string>
+    <string name="chat_send_message">Send</string>
+    <string name="chat_state_active">pays attention to the conversation</string>
+    <string name="chat_state_composing">is composing a message</string>
+    <string name="chat_state_gone">has left the conversation</string>
+    <string name="chat_state_inactive">is doing another thing</string>
+    <string name="comments_proxy_port">Default: 1080</string>
+    <string name="comments_xmpp_port">Default: 5222</string>
+    <string name="comments_xmpp_server">example.com</string>
+    <string name="conflict">conflict</string>
+    <string name="contact_list_all_contact">All contacts</string>
+    <string name="contact_list_menu_add_contact">Add a contact</string>
+    <string name="contact_list_menu_disconnect">Disconnect</string>
+    <string name="contact_list_menu_settings">Settings</string>
+    <string name="contact_list_menu_status">Change status</string>
+    <string name="contact_list_name">Beem - Contacts</string>
+    <string name="contact_list_no_group">No group</string>
+    <string name="contact_list_preferences">Buddy list</string>
+    <string name="contact_list_preferences_sum">A set of display options for your buddy list
+    </string>
+    <string name="contact_status_msg_available">Available</string>
+    <string name="contact_status_msg_available_chat">Available to chat</string>
+    <string name="contact_status_msg_away">Away</string>
+    <string name="contact_status_msg_dnd">Do not disturb</string>
+    <string name="contact_status_msg_offline">Disconnected</string>
+    <string name="contact_status_msg_xa">Unavailable</string>
+    <string name="create_account_confirm_password">Confirm password</string>
+    <string name="create_account_err_conflict">This account is already used. Please try another one</string>
+    <string name="create_account_err_connection">The selected server is not available. Please try another one</string>
+    <string name="create_account_err_passwords">Passwords do not match.</string>
+    <string name="create_account_err_username">Bad JabberID</string>
+    <string name="create_account_name">Beem - Create an account</string>
+    <string name="create_account_password">Password</string>
+    <string name="create_account_progress_message">Please wait</string>
+    <string name="create_account_progress_title">Account creation</string>
+    <string name="create_account_text">Enter the required informations to create your account</string>
+    <string name="create_account_username">Username</string>
+    <string name="delete_avatar">No avatar</string>
+    <string name="download_percent">正在下载更新，请稍等…%d</string>
+    <string name="download_sdcard_busy_dlg_title">"SD 卡不可用"</string>
+    <string name="download_waiting">等待更新中…</string>
+    <string name="edit_settings_name">Beem - Settings</string>
+    <string name="error_login_authentication">Error during authentication, bad login or password.</string>
+    <string name="feature_not_implemented">feature-not-implemented</string>
+    <string name="find_people">找人脉</string>
+    <string name="find_people_search_hint">请输入人脉关键词</string>
+    <string name="find_resource">找资源</string>
+    <string name="find_resource_search_hint">请输入资源或需求关键词</string>
+    <string name="forbidden">forbidden</string>
+    <string name="freeimage_back">关闭</string>
+    <string name="freeimage_save">保存</string>
+    <string name="general_preferences">General preferences</string>
+    <string name="gone">gone</string>
+    <string name="history">History</string>
+    <string name="history_preferences">History</string>
+    <string name="history_sum">Check this to save chats on the SDCard</string>
+    <string name="install_no_file_found">"未找到安装包"</string>
+    <string name="interna_server_error">Remote server error</string>
+    <string name="invite_friends">我的好友列表</string>
+    <string name="invite_link">生成链接(用于朋友圈粘贴)</string>
+    <string name="invite_moments">朋友圈</string>
+    <string name="invite_qr">生成二维码</string>
+    <string name="invite_tribe_members">其他部落成员</string>
+    <string name="invite_wechat_friends">微信好友</string>
+    <string name="item_not_found">item-not-found</string>
+    <string name="jid_malformed">jid-malformed</string>
+    <string name="letter_tile_letter_font_family">sans-serif-light</string>
+    <string name="loganim_authenticating">Authenticating ...</string>
+    <string name="loganim_connecting">Connecting ...</string>
+    <string name="loganim_login_failed">Login failed</string>
+    <string name="loganim_login_success">Login success</string>
+    <string name="login_about_button">Close</string>
+    <string name="login_about_msg">
+        Beem is an EPITECH Innovative Project. Visit us at
+        http://www.beem-project.com !
+    </string>
+    <string name="login_about_title">Beem %s - About</string>
+    <string name="login_login_progress">Connecting. Please wait...</string>
+    <string name="login_menu_about">About</string>
+    <string name="login_menu_login">Login</string>
+    <string name="login_menu_settings">Settings</string>
+    <string name="login_start_msg">Settings configuration in menu</string>
+    <string name="login_tag">Beem - Atividade de login</string>
+    <string name="magic_window_app_key">03MHZYKUF9MERPIECN147YV25Y01S56R</string>
+    <string name="magic_window_debug_key">4RLSNOBWUG25JJ8S71SKIQO6L3ME5SBK</string>
+    <string name="map_release">6184fcff887ad01962b4e6597257fd50</string>
+    <string name="mtm_accept_cert">Accept Unknown Certificate?</string>
+    <string name="mtm_decision_abort">Abort</string>
+    <string name="mtm_decision_always">Always</string>
+    <string name="mtm_decision_once">Once</string>
+    <string name="mtm_notification">Certificate Verification</string>
+    <string name="my_avatar">My avatar</string>
+    <string name="network_error">您的网络有问题，请检查网络</string>
+    <string name="network_preferences">Network options</string>
+    <string name="no_acceptable">no-acceptable</string>
+    <string name="not_allowed">not-allowed</string>
+    <string name="not_authorized">not-authorized</string>
+    <string name="notification_enable_vibrate_sum">Enable vibrate on incoming messages</string>
+    <string name="notification_enable_vibrate_title">Enable vibrate</string>
+    <string name="notification_preferences">Notification settings</string>
+    <string name="notification_snd_sum">Set your incoming message ringtone</string>
+    <string name="notification_snd_title">Message ringtone</string>
+    <string name="payment_required">payment-required</string>
+    <string name="photoPickerNotFoundText">Photo picker not found</string>
+    <string name="pick_photo">Select a picture</string>
+    <string name="privacy_list_create_dialog_create_button">Create</string>
+    <string name="privacy_list_create_dialog_list_name_label">Title</string>
+    <string name="privacy_list_create_dialog_title">Create a privacy list</string>
+    <string name="privacy_list_delete_dialog_msg">Do you really want to delete the privacy list entitled \'%s\'?
+    </string>
+    <string name="privacy_list_delete_dialog_no">No</string>
+    <string name="privacy_list_delete_dialog_yes">Yes</string>
+    <string name="privacy_list_menu_create">Create a privacy list</string>
+    <string name="privacy_list_name">Beem - Manage my privacy lists</string>
+    <string name="privacy_list_no_data">There aren\'t any privacy list registered.</string>
+    <string name="privacy_list_select_dialog_buddies">Buddies</string>
+    <string name="privacy_list_select_dialog_delete">Delete</string>
+    <string name="privacy_list_select_dialog_groups">Groups</string>
+    <string name="profile_select_item_selected">✔</string>
+    <string name="proxy_proxy_settings">Proxy settings</string>
+    <string name="proxy_user_settings">Proxy settings</string>
+    <string name="pull_to_refresh_from_bottom_pull_label">上拉加载更多</string>
+    <string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing_label</string>
+    <string name="pull_to_refresh_from_bottom_release_label">@string/pull_to_refresh_release_label</string>
+    <string name="pull_to_refresh_pull_label">下拉刷新…</string>
+    <string name="pull_to_refresh_refreshing_label">正在刷新…</string>
+    <string name="pull_to_refresh_release_label">松开立即刷新…</string>
+    <string name="push_app_id">SKD0wHTryd8zHOYuo98S9</string>
+    <string name="push_app_key">2IOODBeDd89oAWHEnDCeN9</string>
+    <string name="push_app_secret">ggb9a5e7PY7jvHxrW5CpY4</string>
+    <string name="recipient_unavailable">recipient-unavailable</string>
+    <string name="redirect">redirect</string>
+    <string name="registration_required">registration-required</string>
+    <string name="remote_server_error">Remote server error</string>
+    <string name="remote_server_not_found">Remote server not found</string>
+    <string name="remote_server_timeout">No server response</string>
+    <string name="request_timeout">request-timeout</string>
+    <string name="resource_constraint">resource-constraint</string>
+    <string name="select_avatar">Choose your avatar</string>
+    <string name="service_unavailable">service-unavailable</string>
+    <string name="settings_account_password">Password</string>
+    <string name="settings_account_port">Port</string>
+    <string name="settings_account_server">Server</string>
+    <string name="settings_account_username">Username (JID)</string>
+    <string name="settings_advanced_service_behaviour">Service behaviour</string>
+    <string name="settings_advanced_sum">A set of options for advanced users</string>
+    <string name="settings_chat_compact">Chat compact</string>
+    <string name="settings_chat_compact_sum">Set the chat windows compact</string>
+    <string name="settings_full_jid_login">Use my full JID as username</string>
+    <string name="settings_full_jid_login_sum">Need by some server such as Google Talk</string>
+    <string name="settings_menu_create_account">Create an account</string>
+    <string name="settings_menu_privacy_lists">Manage my privacy lists</string>
+    <string name="settings_proxy_password">Password</string>
+    <string name="settings_proxy_port">Port</string>
+    <string name="settings_proxy_server">Server</string>
+    <string name="settings_proxy_sum">Settings for proxy usage</string>
+    <string name="settings_proxy_type_prompt">Choose a type of proxy</string>
+    <string name="settings_proxy_use">Connect using a proxy</string>
+    <string name="settings_proxy_username">Username</string>
+    <string name="settings_reco_delay">Reconnection delay</string>
+    <string name="settings_saved_ok">The settings have been saved successfully.</string>
+    <string name="settings_smack_debug">Enable XMPP debug</string>
+    <string name="settings_tab_label_account">Account</string>
+    <string name="settings_tab_label_proxy">Proxy</string>
+    <string name="settings_tab_label_xmpp">XMPP</string>
+    <string name="settings_tab_tag_account">edit_settings_tab_account</string>
+    <string name="settings_tab_tag_proxy">edit_settings_tab_proxy</string>
+    <string name="settings_tab_tag_xmpp">edit_settings_tab_xmpp</string>
+    <string name="settings_xmpp_port">Port</string>
+    <string name="settings_xmpp_server">Address</string>
+    <string name="settings_xmpp_use_tls">Require SSL/TLS</string>
+    <string name="str_haike">海客？</string>
+    <string name="subscription_required">subscription-required</string>
+    <string name="take_photo">Take a photo</string>
+    <string name="tingyun_app_key">0390f84884e148e1b2db4774c35ccbb4</string>
+    <string name="towxstr">公众号已复制到粘贴板</string>
+    <string name="umeng_key">55027674fd98c51981000a68</string>
+    <string name="undefined_condition">undefined-condition</string>
+    <string name="unexpected_condition">unexpected-condition</string>
+    <string name="update_download_error">更新失败，请检查网络并重试…</string>
+    <string name="update_info_not_auto">"发现新版本%s是否现在更新？"</string>
+    <string name="user_info_name">Beem - User Info</string>
+    <string name="user_preferences">Account (required)</string>
+    <string name="user_preferences_advanced">User settings advanced (optional)</string>
+    <string name="userinfo_label_alias">Alias</string>
+    <string name="userinfo_label_block">Block</string>
+    <string name="userinfo_label_chg_group">Manage groups</string>
+    <string name="userinfo_label_delete">Delete</string>
+    <string name="userinfo_label_re_subscription">Resend invit</string>
+    <string name="userinfo_no">No</string>
+    <string name="userinfo_resend">Suscription resend</string>
+    <string name="userinfo_sure2delete">Are you sure you want to delete this contact?
+    </string>
+    <string name="userinfo_sureresend">Are you sure you want to resend invit?</string>
+    <string name="userinfo_yes">Yes</string>
+    <string name="wechat_debug">wxfb7b8b2d2d68db06</string>
+    <string name="wechat_release">wx4f4a1a399283a085</string>
+    <style name="ActionDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <style name="AppBaseTheme" parent="android:Theme.Light"/>
+    <style name="AppTheme" parent="AppBaseTheme"/>
+    <style name="BASIC_INFO_DEFAULT_TEXT">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/txt_14</item>
+        <item name="android:textColor">@color/color_f2</item>
+    </style>
+    <style name="BASIC_INFO_DIVIDER">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/app_line_height</item>
+        <item name="android:background">@color/color_div</item>
+    </style>
+    <style name="BASIC_INFO_EDIT_TEXT">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/txt_16</item>
+        <item name="android:textColor">@color/sel_color_f1_f2</item>
+        <item name="android:textColorHint">@color/color_f3</item>
+    </style>
+    <style name="BASIC_INFO_RELATIVE_LAYOUT">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">5dp</item>
+    </style>
+    <style name="BOTTOM_DIALOG" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/BottomDialogAnimation</item>
+    </style>
+    <style name="BottomDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/act_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/act_bottom_out</item>
+    </style>
+    <style name="CardDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/card_dlg_in</item>
+        <item name="android:windowExitAnimation">@anim/card_dlg_out</item>
+    </style>
+    <style name="ChattingItemSourceTextView">
+        <item name="android:textSize">11.0dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">3.0dip</item>
+    </style>
+    <style name="ChattingUIDesc">
+        <item name="android:textSize">@dimen/txt_18</item>
+        <item name="android:textColor">@color/txt_light_gray</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left|center_vertical</item>
+    </style>
+    <style name="ChattingUIText">
+        <item name="android:textSize">@dimen/txt_20</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">15.0dip</item>
+        <item name="android:lineSpacingExtra">2.0dip</item>
+    </style>
+    <style name="ChattingUITitle">
+        <item name="android:textSize">@dimen/txt_18</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left|center_vertical</item>
+    </style>
+    <style name="DIALOG_FRESH_TASK_MASK" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <style name="DialogAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/push_up_in</item>
+        <item name="android:windowExitAnimation">@anim/push_down_out</item>
+    </style>
+    <style name="DialogGuest" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.75</item>
+    </style>
+    <style name="DialogProfile" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:windowAnimationStyle">@style/ProfileDlgAnimation</item>
+    </style>
+    <style name="LOGIN_BOTTOM_TEXT">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">@dimen/txt_16</item>
+        <item name="android:textColor">@color/color_dc</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="LOGIN_BUTTON">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/app_button_height</item>
+        <item name="android:background">@drawable/sel_bg_btn_bgreen</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/txt_16</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="LOGIN_DESC">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/txt_16</item>
+        <item name="android:textColor">@color/color_desc</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="LOGIN_EDIT_TEXT">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/rect_bwhite_sdiv_clarge</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/txt_16</item>
+        <item name="android:textColor">@color/color_f1</item>
+        <item name="android:textColorHint">@color/color_f3</item>
+        <item name="android:textCursorDrawable">@drawable/img_highlight_dc</item>
+    </style>
+    <style name="LOGIN_ERROR_PROMPT">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/txt_14</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:gravity">center</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+    <style name="LOGIN_TITLE">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/txt_20</item>
+        <item name="android:textColor">@color/color_f1</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="NPWidget">
+        <item name="android:textAppearance">?android:attr/textAppearance</item>
+    </style>
+    <style name="NPWidget.Holo.Light.NumberPicker" parent="NPWidget.Holo.NumberPicker">
+        <!--<item name="virtualButtonPressedDrawable">@drawable/item_background_holo_light</item>-->
+    </style>
+    <style name="NPWidget.Holo.NumberPicker" parent="NPWidget.NumberPicker">
+        <!-- <item name="solidColor">@android:color/white</item> -->
+        <item name="selectionDivider">@drawable/line_data_pick_diviler_green</item><!-- np_numberpicker_selection_divider -->
+        <item name="selectionDividerHeight">1dip</item>
+        <item name="internalLayout">@layout/number_picker_with_selector_wheel</item>
+        <item name="internalMinWidth">64dip</item>
+        <item name="internalMaxHeight">180dip</item>
+        <!--<item name="virtualButtonPressedDrawable">@drawable/item_background_holo_dark</item>-->
+    </style>
+    <style name="NPWidget.NumberPicker">
+        <item name="android:orientation">vertical</item>
+        <item name="android:fadingEdge">vertical</item>
+        <item name="android:fadingEdgeLength">50dip</item>
+    </style>
+    <style name="PROFILE_BLOCK_IV_RIGHT" parent="android:Theme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@drawable/sel_btn_pencil</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:visibility">gone</item>
+    </style>
+    <style name="PROFILE_BLOCK_TITLE" parent="android:Theme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:textSize">@dimen/txt_14</item>
+        <item name="android:textColor">@color/color_f2</item>
+    </style>
+    <style name="PROFILE_BLOCK_TV_RIGHT" parent="android:Theme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/txt_14</item>
+        <item name="android:textColor">@color/color_dc</item>
+        <item name="android:visibility">gone</item>
+    </style>
+    <style name="PROGRESS_DIALOG" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+    <style name="ProfileDlgAnimation">
+        <item name="android:windowEnterAnimation">@anim/dlg_bottom_in</item>
+    </style>
+    <style name="REGISTER_EDIT">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:clickable">true</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/txt_16</item>
+        <item name="android:textColor">@color/color_f1</item>
+    </style>
+    <style name="REGISTER_EDIT_RIGHT_ICON">
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_width">14dp</item>
+        <item name="android:layout_height">14dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="REGISTER_M1_TEXT">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">@dimen/txt_14</item>
+        <item name="android:textColor">@color/sel_color_register</item>
+    </style>
+    <style name="REGISTER_RELATIVE">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    <style name="RootBg1" parent="android:Theme">
+        <item name="android:background">@color/color_bg1</item>
+    </style>
+    <style name="RootBg2" parent="android:Theme">
+        <item name="android:background">@color/color_bg2</item>
+    </style>
+    <style name="RootBg27B297" parent="android:Theme">
+        <item name="android:background">#27B297</item>
+    </style>
+    <style name="RootBgDD000000" parent="android:Theme">
+        <item name="android:background">#DD000000</item>
+    </style>
+    <style name="RootBgDefaultloc" parent="android:Theme">
+        <item name="android:background">@drawable/defaultloc</item>
+    </style>
+    <style name="RootBgImgCampaignBannerBg" parent="android:Theme">
+        <item name="android:background">@drawable/img_campaign_banner_bg</item>
+    </style>
+    <style name="RootBgImgContactCardBg" parent="android:Theme">
+        <item name="android:background">@drawable/img_contact_card_bg</item>
+    </style>
+    <style name="RootBgImgLabelUnselected" parent="android:Theme">
+        <item name="android:background">@drawable/img_label_unselected</item>
+    </style>
+    <style name="RootBgNull" parent="android:Theme">
+        <item name="android:background">@null</item>
+    </style>
+    <style name="RootBgRedDot2" parent="android:Theme">
+        <item name="android:background">@drawable/red_dot2</item>
+    </style>
+    <style name="RootBgTransparent" parent="android:Theme">
+        <item name="android:background">@color/transparent</item>
+    </style>
+    <style name="RootBgWhite" parent="android:Theme">
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="SampleTheme" parent="android:Theme">
+        <item name="numberPickerStyle">@style/NPWidget.Holo.NumberPicker</item>
+    </style>
+    <style name="SampleTheme.Light" parent="android:Theme.Light">
+        <item name="numberPickerStyle">@style/NPWidget.Holo.Light.NumberPicker</item>
+    </style>
+    <style name="SendCardAnimation">
+        <item name="android:windowEnterAnimation">@anim/send_card_dlg_show</item>
+    </style>
+    <style name="SwipeBackLayout">
+        <item name="edge_size">50dip</item>
+        <item name="shadow_left">@drawable/shadow_left</item>
+        <item name="shadow_right">@drawable/shadow_right</item>
+        <item name="shadow_bottom">@drawable/shadow_bottom</item>
+    </style>
+    <style name="SwipeFling">
+        <item name="rotation_degrees">15</item>
+        <item name="min_adapter_stack">6</item>
+        <item name="max_visible">4</item>
+    </style>
+    <style name="Theme" parent="android:Theme">
+        <item name="android:windowTitleSize">@dimen/app_titlebar_height</item>
+        <item name="android:windowTitleBackgroundStyle">@style/custom_title</item>
+        <item name="android:background">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="numberPickerStyle">@style/NPWidget.Holo.Light.NumberPicker</item>
+    </style>
+    <style name="UpdateDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+    <style name="WHITE_BG_BUTTON">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/app_button_height</item>
+        <item name="android:background">@drawable/sel_btn_white_bg</item>
+        <item name="android:textSize">@dimen/txt_16</item>
+        <item name="android:textColor">@color/sel_color_dc</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="avatar_size_list">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+    <style name="avatar_size_list_small">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+    </style>
+    <style name="bg_toolbar">
+        <item name="android:background">@color/chat_toolbar</item>
+        <item name="android:paddingTop">@dimen/app_line_height</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="chat_block">
+        <item name="android:background">@drawable/bg_chat_block</item>
+        <item name="android:paddingLeft">13dp</item>
+        <item name="android:paddingRight">13dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+    <style name="chat_bottom">
+        <item name="android:paddingLeft">@dimen/chat_padding_left</item>
+        <item name="android:paddingRight">@dimen/chat_padding_right</item>
+        <item name="android:paddingTop">@dimen/chat_padding_middle</item>
+        <item name="android:paddingBottom">@dimen/chat_padding_bottom</item>
+        <item name="android:background">@drawable/bg_chat_row_bottom_focus</item>
+        <item name="android:duplicateParentState">false</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="chat_common_img">
+        <item name="android:scaleType">fitXY</item>
+    </style>
+    <style name="chat_content">
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingRight">8dp</item>
+    </style>
+    <style name="chat_content_block">
+        <item name="android:background">@drawable/bg_chat_info</item>
+        <item name="android:paddingBottom">7dp</item>
+        <item name="android:paddingLeft">6dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingRight">6dp</item>
+    </style>
+    <style name="chat_content_left">
+        <item name="android:background">@drawable/sel_bg_chat_their</item>
+        <item name="android:paddingBottom">11dp</item>
+        <item name="android:paddingLeft">18dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingRight">11dp</item>
+    </style>
+    <style name="chat_content_right">
+        <item name="android:background">@drawable/sel_bg_chat_their</item>
+        <item name="android:paddingBottom">11dp</item>
+        <item name="android:paddingLeft">11dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingRight">18dp</item>
+    </style>
+    <style name="chat_desc">
+        <item name="android:textColor">@color/txt_light_gray</item>
+        <item name="android:textSize">@dimen/chat_desc_size</item>
+        <item name="android:maxLines">2</item>
+    </style>
+    <style name="chat_divider">
+        <item name="android:background">@color/line_gray</item>
+    </style>
+    <style name="chat_left_container">
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">40dp</item>
+        <item name="android:paddingTop">10dp</item>
+    </style>
+    <style name="chat_middle">
+        <item name="android:paddingLeft">@dimen/chat_padding_left</item>
+        <item name="android:paddingRight">@dimen/chat_padding_right</item>
+        <item name="android:paddingTop">@dimen/chat_padding_middle</item>
+        <item name="android:paddingBottom">@dimen/chat_padding_middle</item>
+        <item name="android:background">@drawable/bg_chat_row_focus</item>
+        <item name="android:duplicateParentState">false</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="chat_name">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/chat_name_size</item>
+        <item name="android:maxLines">2</item>
+    </style>
+    <style name="chat_title" parent="chat_top">
+        <item name="android:textSize">@dimen/chat_title_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@null</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="chat_top">
+        <item name="android:paddingLeft">@dimen/chat_padding_left</item>
+        <item name="android:paddingRight">@dimen/chat_padding_right</item>
+        <item name="android:paddingTop">@dimen/chat_padding_top</item>
+        <item name="android:paddingBottom">@dimen/chat_padding_middle</item>
+        <item name="android:background">@drawable/bg_chat_row_top_focus</item>
+    </style>
+    <style name="custom_title">
+        <item name="android:background">@null</item>
+    </style>
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <style mce_bogus="1" name="dialogWindowAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/alpha_in</item>
+        <item name="android:windowExitAnimation">@anim/alpha_out</item>
+    </style>
+    <style name="info_progress">
+        <item name="android:indeterminateDrawable">@drawable/progress_album</item>
+        <item name="android:minWidth">30dip</item>
+        <item name="android:maxWidth">30dip</item>
+        <item name="android:minHeight">30dip</item>
+        <item name="android:maxHeight">30dip</item>
+    </style>
+    <style name="middle_progress">
+        <item name="android:indeterminateDrawable">@drawable/progress_m</item>
+        <item name="android:minWidth">20dip</item>
+        <item name="android:maxWidth">20dip</item>
+        <item name="android:minHeight">20dip</item>
+        <item name="android:maxHeight">20dip</item>
+    </style>
+    <style name="popwin_anim_style">
+        <item name="android:windowEnterAnimation">@anim/online_notify_show</item>
+        <item name="android:windowExitAnimation">@anim/online_notify_hide</item>
+    </style>
+    <style name="title_bar">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/app_title_text_size</item>
+    </style>
+    <style name="title_common">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2.0</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="title_drop">
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

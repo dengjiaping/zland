@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="70dp"
+            android:layout_height="1dp"
+            android:background="@color/color_div" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:gravity="center"
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <View
+            android:layout_width="70dp"
+            android:layout_height="1dp"
+            android:background="@color/color_div" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/llBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
+
+
+        <ImageView
+            android:id="@+id/ivInfoImg"
+            android:layout_width="72dp"
+            android:layout_marginBottom="16dp"
+            android:layout_height="54dp"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/tvInfoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/ivInfoImg"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:lineSpacingMultiplier="1.1"
+            android:maxLines="3"
+            android:paddingRight="10dp"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_18" />
+
+        <LinearLayout
+            android:id="@+id/llReadAndComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvInfoTitle"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp"
+            android:paddingTop="12dp">
+
+            <TextView
+                android:id="@+id/tvRead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/img_info_views"
+                android:drawablePadding="5dp"
+                android:paddingRight="12dp"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_12" />
+
+            <TextView
+                android:id="@+id/tvComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/img_info_comment"
+                android:drawablePadding="5dp"
+                android:textColor="@color/color_dc"
+                android:textSize="@dimen/txt_12" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vBottomDiv"
+            android:layout_below="@id/llReadAndComment"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/app_line_height"
+            android:background="@color/color_div" />
+
+    </RelativeLayout>
+</LinearLayout>

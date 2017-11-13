@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/img_search_selectbox"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="9dp"
+    android:paddingBottom="3dp">
+
+    <TextView
+        android:id="@+id/tvTypeBoss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/find_people"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@color/txt_light_gray" />
+
+    <TextView
+        android:id="@+id/tvTypeResource"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/find_resource"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_14" />
+
+
+</LinearLayout>

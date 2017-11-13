@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    
+	style="@style/RootBgWhite"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rlGuideBody"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <ViewFlipper
+            android:id="@+id/vfGuide"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:flipInterval="1000"
+            android:inAnimation="@anim/push_left_in"
+            android:outAnimation="@anim/push_left_out"
+            android:persistentDrawingCache="animation" >
+
+            <!-- first page -->
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitCenter"
+                android:src="@drawable/guide1" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitCenter"
+                android:src="@drawable/guide2" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitCenter"
+                android:src="@drawable/guide3" />
+        </ViewFlipper>
+
+        <com.zhisland.lib.view.PageControl
+            android:id="@+id/pageControl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/sel_bg_btn_bwhite_sgreen"
+            android:text="注册"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_18" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/sel_bg_btn_bgreen"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_18" />
+    </LinearLayout>
+
+</LinearLayout>

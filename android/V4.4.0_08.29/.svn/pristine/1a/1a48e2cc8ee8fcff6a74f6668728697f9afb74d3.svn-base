@@ -1,0 +1,117 @@
+package com.beem.project.beem.service.pcklistener;
+
+import com.beem.project.beem.BeemService;
+import com.beem.project.beem.service.XmppConnectionAdapter;
+import com.zhisland.im.data.DBMgr;
+import com.zhisland.im.event.EventRelation;
+import com.zhisland.lib.async.http.task.GsonHelper;
+
+import org.jivesoftware.smack.PacketListener;
+import org.jivesoftware.smack.packet.Message;
+import org.jivesoftware.smack.packet.Packet;
+import org.jivesoftware.smack.packet.PacketExtension;
+import org.jivesoftware.smack.util.StringUtils;
+import org.jivesoftware.smackx.packet.DeliveryReceipt;
+
+import de.greenrobot.event.EventBus;
+
+public class FriendInviteMsgListener implements PacketListener {
+
+	private BeemService mService;
+	private XmppConnectionAdapter mConnection;
+
+	@Override
+	public void processPacket(Packet packet) {
+		Message msg = (Message) packet;
+
+		PacketExtension extension = msg.getExtension("request",
+				DeliveryReceipt.NAMESPACE);
+		if (extension != null) {
+			org.jivesoftware.smack.packet.Message response = new org.jivesoftware.smack.packet.Message(
+					msg.getFrom());
+			response.setFrom(msg.getTo());
+			response.setType(msg.getType());
+			DeliveryReceipt receipt = new DeliveryReceipt(msg.getPacketID());
+			response.addExtension(receipt);
+
+			mConnection.sendPacket(response);
+
+		}
+
+		DeliveryReceipt receipt = (DeliveryReceipt) msg.getExtension(
+				"received", DeliveryReceipt.NAMESPACE);
+		if (receipt != null) {
+			return;
+		}
+
+		if (tryHandleInvite(msg)) {
+
+		}
+	}
+
+	private boolean tryHandleInvite(Message msg) {
+		String fromJid = StringUtils.parseBareAddress(msg.getFrom());
+		String toJid = StringUtils.parseBareAddress(msg.getTo());
+		int action = -1;
+		try {
+			FriendRelationJson fit = GsonHelper.GetCommonGson().fromJson(
+					msg.getBody(), FriendRelationJson.class);
+			int id = msg.hashCode();
+			String title = null;
+			String text = "开始聊天吧";
+			switch (fit.ask) {
+			case FriendRelationJson.ASK_ACCEPTED: {
+				fit.fromJid = fromJid;
+				fit.toJid = toJid;
+				DBMgr.getHelper().getContactDao().saveInviteMsg(fit);
+
+				title = fit.name + " 接受了你的好友请求";
+				action = EventRelation.RECEIVE_ACCEPTED;
+				break;
+			}
+			case FriendRelationJson.ASK_REQUEST: {
+				fit.fromJid = fromJid;
+				fit.toJid = toJid;
+				DBMgr.getHelper().getContactDao().saveInviteMsg(fit);
+
+				title = fit.name + " 邀请你成为好友";
+				if (fit.message != null){
+					text = fit.message;
+					}
+				action = EventRelation.RECEIVE_INVITE;
+				break;
+			}
+			case FriendRelationJson.ASK_UPGRADE: {
+				// DBMgr.getHelper().getContactDao().promoteFriend(fromJid);
+				break;
+			}
+			case FriendRelationJson.ASK_DOWNGRADE: {
+				// DBMgr.getHelper().getContactDao().downgradeFriend(fromJid);
+				break;
+			}
+			case FriendRelationJson.ASK_DELETE: {
+				DBMgr.getHelper().getContactDao().beDeleteFromFriend(fromJid);
+				action = EventRelation.RECEIVE_DELETE;
+				break;
+			}
+			}
+
+			if(action != -1){
+				EventRelation event = new EventRelation(fromJid, fit.name, action,
+						fit.message);
+				EventBus.getDefault().post(event);
+			}
+
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	public void setService(BeemService service, XmppConnectionAdapter connection) {
+		mService = service;
+		mConnection = connection;
+	}
+
+}

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBgImgContactCardBg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical" >
+
+    <!-- 用户头图 -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="202dp" >
+
+        <com.zhisland.android.blog.common.view.RoundAngleImageView
+            xmlns:raiv="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ivUcFigure"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:scaleType="centerCrop"
+            raiv:leftDown="false"
+            raiv:rightDown="false"
+            raiv:roundHeights="@dimen/app_corner_largest"
+            raiv:roundWidths="@dimen/app_corner_largest" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="101dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="3dp"
+            android:background="@drawable/img_mask_bottom" />
+
+        <TextView
+            android:id="@+id/tvUcCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="12dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_14" />
+
+        <TextView
+            android:id="@+id/tvUcName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tvUcCompany"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="12dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_18" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/card_horizontal_margin" >
+
+        <!-- 用户简介 -->
+
+        <com.zhisland.android.blog.common.view.MultilineTextView
+            android:id="@+id/tvUcDes"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:lineSpacingMultiplier="1.2"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <!-- 徽章 -->
+
+            <LinearLayout
+                android:id="@+id/llBadgeImgs"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llCardBottomContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <!-- 用户标签 -->
+
+                <com.zhisland.android.blog.common.view.flowlayout.TagFlowLayout
+                    android:id="@+id/id_flowlayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/card_tag_height" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/app_divider_height"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/line_divider_all" />
+
+                <!-- 共同好友 -->
+
+                <FrameLayout
+                    android:id="@+id/flBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="暂无共同好友" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/tvCommonFriend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:text="共同好友25位" />
+
+                        <com.zhisland.android.blog.common.view.SignUpLayout
+                            xmlns:zhisland="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/imgsSignUp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            zhisland:imgCount="5"
+                            zhisland:isCircle="true" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

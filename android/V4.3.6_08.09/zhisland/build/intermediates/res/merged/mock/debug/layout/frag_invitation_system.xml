@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/intercept_invitation_img"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="正和岛邀请制"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_22"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:lineSpacingExtra="3dp"
+        android:text="正和岛拥有5000+符合登岛资格的高端企业家会员，每名会员有一定的邀请名额，可以邀请自己的好友使用线上服务。"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_16"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:lineSpacingExtra="3dp"
+        android:text="为了保障用户身份的真实性，必须通过现有会员的主动邀请，或通过通讯录向拥有邀请名额的好友请求批准。"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_16"/>
+
+    <TextView
+        android:id="@+id/tvFindInvite"
+        style="@style/LOGIN_BUTTON"
+        android:layout_marginTop="30dp"
+        android:text="找批准人"
+        />
+
+</LinearLayout>

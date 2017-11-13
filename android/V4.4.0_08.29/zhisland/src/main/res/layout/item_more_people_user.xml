@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBg1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/more_people_user_icon"
+        android:layout_width="@dimen/app_avatar_size"
+        android:layout_height="@dimen/app_avatar_size"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="16dip"
+        android:layout_marginTop="12dip" />
+
+    <LinearLayout
+        android:id="@+id/more_people_user_action_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="16dip"
+        android:layout_marginTop="12dip"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/more_people_user_action_add"
+            android:layout_width="62dip"
+            android:layout_height="30dip"
+            android:layout_weight="2"
+            android:background="@drawable/sel_bg_btn_bwhite"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="+关注"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_14" />
+
+        <ImageView
+            android:id="@+id/more_people_user_action_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/sel_btn_close_gray" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="10dip"
+        android:layout_marginTop="12dip"
+        android:layout_toLeftOf="@id/more_people_user_action_layout"
+        android:layout_toRightOf="@id/more_people_user_icon">
+
+        <TextView
+            android:id="@+id/more_people_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:singleLine="true"
+            android:text="名字"
+
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <ImageView
+            android:id="@+id/more_people_user_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dip"
+            android:layout_toRightOf="@id/more_people_user_name" />
+
+        <TextView
+            android:id="@+id/more_people_user_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/more_people_user_name"
+            android:layout_marginLeft="16dp"
+            android:singleLine="true"
+            android:text="公司"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_14" />
+
+        <TextView
+            android:id="@+id/more_people_user_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/more_people_user_company"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/more_people_user_company"
+            android:singleLine="true"
+            android:text="职称"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_14" />
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/more_people_user_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_div"></View>
+</RelativeLayout>

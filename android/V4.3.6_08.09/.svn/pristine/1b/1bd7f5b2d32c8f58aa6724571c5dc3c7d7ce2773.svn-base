@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBg1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/img_profile_assistant"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="35dp"
+            android:layout_marginTop="35dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingLeft="25dp"
+                android:paddingTop="15dp"
+                android:singleLine="true"
+                android:text="姓名"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_18" />
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/color_bg1"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/color_f1"
+                android:textColorHint="@color/color_f3"
+                android:textSize="@dimen/txt_18" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="25dp"
+                android:paddingTop="15dp"
+                android:text="*"
+                android:textColor="@color/color_dc"
+                android:textSize="@dimen/txt_18" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/color_div" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingLeft="25dp"
+                android:paddingTop="15dp"
+                android:singleLine="true"
+                android:text="联系电话"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_18" />
+
+            <com.zhisland.android.blog.common.view.InternationalPhoneView
+                android:id="@+id/internationalPhoneView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1" >
+            </com.zhisland.android.blog.common.view.InternationalPhoneView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="25dp"
+                android:paddingTop="15dp"
+                android:text="*"
+                android:textColor="@color/color_dc"
+                android:textSize="@dimen/txt_18" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/color_div" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingLeft="25dp"
+                android:paddingTop="15dp"
+                android:singleLine="true"
+                android:text="哪些人可以看到："
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_16" />
+
+            <TextView
+                android:id="@+id/tvWhoCanSee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="25dp"
+                android:paddingTop="15dp"
+                android:text="岛邻可见"
+                android:textColor="@color/color_dc"
+                android:textSize="@dimen/txt_18" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

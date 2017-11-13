@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rect_bbg2_sdiv_event"
+    android:minHeight="68dip">
+
+
+    <TextView
+        android:id="@+id/comment_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="1dip"
+        android:background="@color/color_div"
+        android:paddingBottom="16dip"
+        android:paddingLeft="16dip"
+        android:paddingTop="16dip"
+        android:text="comment_content"
+        android:textColor="@color/color_f1"
+        android:textSize="16sp"></TextView>
+
+
+    <ImageView
+        android:id="@+id/comment_sender_icon"
+        android:layout_width="32dip"
+        android:layout_height="32dip"
+        android:layout_below="@+id/comment_content"
+        android:layout_marginBottom="16dip"
+        android:layout_marginLeft="16dip"
+        android:layout_marginTop="12dip" />
+
+    <TextView
+        android:id="@+id/comment_sender_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/comment_sender_icon"
+        android:layout_below="@+id/comment_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="16dip"
+        android:layout_marginTop="8dip"
+        android:layout_toRightOf="@+id/comment_sender_icon"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingRight="20dp"
+        android:text="name"
+        android:textColor="@color/color_f1"
+        android:textSize="14sp"></TextView>
+
+    <ImageView
+        android:id="@+id/ivUserType"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="1dp"
+        android:layout_alignBottom="@id/comment_sender_name"
+        android:layout_alignRight="@id/comment_sender_name" />
+
+    <TextView
+        android:id="@+id/tvComAndPos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/comment_sender_name"
+        android:layout_below="@+id/comment_sender_name"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/color_f2"
+        android:textSize="11sp"></TextView>
+
+</RelativeLayout>

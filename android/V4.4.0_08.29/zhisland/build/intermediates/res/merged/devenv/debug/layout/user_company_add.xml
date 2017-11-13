@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cedit="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rlCompanyName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="28dp" >
+
+            <View
+                android:id="@+id/vMark"
+                android:layout_width="5dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:background="@color/color_dc" />
+
+            <TextView
+                android:id="@+id/tvCompanName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/vMark"
+                android:singleLine="true"
+                android:text="米未文化传媒有限公司"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_18" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/llCompanyCity"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp" >
+
+            <TextView
+                android:id="@+id/tvCompanyCityTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="center_vertical"
+                android:text="坐落城市"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_16" />
+
+            <TextView
+                android:id="@+id/tvCompanyCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请选择坐落城市"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
+                android:textColor="@color/color_f1"
+                android:textColorHint="@color/color_div"
+                android:textSize="@dimen/txt_16" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vDiv1"
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/color_div" />
+
+        <LinearLayout
+            android:id="@+id/llCompanyIndustry"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp" >
+
+            <TextView
+                android:id="@+id/tvCompanyIndustryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="center_vertical"
+                android:text="经营行业"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_16" />
+
+            <TextView
+                android:id="@+id/tvCompanyIndustry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请选择经营行业"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
+                android:textColor="@color/color_f1"
+                android:textColorHint="@color/color_div"
+                android:textSize="@dimen/txt_16" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vDiv2"
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/color_div" />
+        <com.zhisland.android.blog.common.view.FlowRadioGroup
+            android:id="@+id/rgCompanyType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal" >
+        </com.zhisland.android.blog.common.view.FlowRadioGroup>
+
+        <View
+            android:id="@+id/vDiv3"
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/color_div" />
+
+        <LinearLayout
+            android:id="@+id/rlCompanyShareCode"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp" >
+
+            <TextView
+                android:id="@+id/tvCompanyShareCode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="center_vertical"
+                android:text="股票代码"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_16" />
+
+            <EditText
+                android:id="@+id/etCompanyShareCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入公司股票代码"
+                android:maxLength="10"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
+                android:singleLine="true"
+                android:textColor="@color/color_f1"
+                android:textColorHint="@color/color_div"
+                android:textSize="@dimen/txt_16" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vDiv4"
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/color_div" />
+
+        <RelativeLayout
+            android:id="@+id/rlCompanyDesc"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="16dp" >
+
+            <TextView
+                android:id="@+id/tvCompanyDescTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:text="公司介绍"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_16" />
+            <!-- 以前CounterEditText用的是这个背景 -->
+            <!-- android:background="@drawable/rect_bwhite_sdiv_clargest" -->
+
+            <com.zhisland.android.blog.common.view.CountEditText
+                android:id="@+id/rlEtCompanyDesc"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@id/tvCompanyDescTitle"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="top" />
+            <!--
+            <com.zhisland.android.blog.common.view.InnerScrollView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@id/tvCompanyDescTitle"
+                android:layout_marginTop="12dp"
+                android:fillViewport="true" >
+
+                <com.zhisland.android.blog.common.view.CounterEditText
+                    android:id="@+id/etCompanyDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="介绍下公司吧"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/color_f1"
+                    android:textColorHint="@color/color_div"
+                    android:textSize="@dimen/txt_16"
+                    android:visibility="visible"
+                    cedit:limitSize="500"
+                    cedit:limitWordColor="@color/color_div"
+                    cedit:limitWordSize="16" />
+            </com.zhisland.android.blog.common.view.InnerScrollView>
+            -->
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/vDiv5"
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/color_div" />
+
+        <LinearLayout
+            android:id="@+id/rlCompanyUrl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp" >
+
+            <TextView
+                android:id="@+id/tvCompanyUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="center_vertical"
+                android:text="公司官网"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_16" />
+
+            <EditText
+                android:id="@+id/etCompanyUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入公司网址"
+                android:maxLength="40"
+                android:maxLines="2"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
+                android:textColor="@color/color_f1"
+                android:textColorHint="@color/color_div"
+                android:textSize="@dimen/txt_16" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vDiv6"
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/color_div" />
+
+        <ImageView
+            android:id="@+id/ivCompanyLogo"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/profile_img_logo_edit" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="点击上传公司LOGO"
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/txt_14" >
+        </TextView>
+    </LinearLayout>
+
+</ScrollView>

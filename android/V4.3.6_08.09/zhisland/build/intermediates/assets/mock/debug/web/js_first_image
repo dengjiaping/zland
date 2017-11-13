@@ -1,0 +1,21 @@
+javascript:(function() { 
+
+    var imgList = document.images;
+    var url = "";
+   
+    if(imgList.length > 0) {
+        url = imgList[0].src;
+        var imgHeight = imgList[0].getBoundingClientRect().height;
+        
+        var i = 0;
+        for(i=0; i<=imgList.length-1; i++) {
+            var img = imgList[i];
+            var r = img.getBoundingClientRect();
+            if(r.top > 100 && r.height >= imgHeight && img.src && img.src.length > 0) {
+                url = img.src;
+                break;
+            }
+        }
+    }
+    Android.setImageUrl(url);
+})()

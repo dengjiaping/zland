@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/login_img_hourglass"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="25dp"
+        android:text="等待好友确认批准"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_22"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="3dp"
+        android:text="分享朋友圈进行场外求助，更大范围寻找可以批准我的好友。"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_16"/>
+
+    <TextView
+        android:id="@+id/tvRequestHelp"
+        style="@style/LOGIN_BUTTON"
+        android:layout_marginTop="30dp"
+        android:text="场外求助"
+        />
+
+</LinearLayout>

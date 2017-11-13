@@ -1,0 +1,363 @@
+package com.zhisland.android.blog.event.controller;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.common.app.ZhislandApplication;
+import com.zhisland.android.blog.common.base.CommonFragActivity;
+import com.zhisland.android.blog.common.base.CommonFragActivity.CommonFragParams;
+import com.zhisland.android.blog.common.dto.Dict;
+import com.zhisland.android.blog.common.util.DialogUtil;
+import com.zhisland.android.blog.common.view.CommonDialog;
+import com.zhisland.android.blog.common.view.flowlayout.FlowLayout;
+import com.zhisland.android.blog.common.view.flowlayout.TagAdapter;
+import com.zhisland.android.blog.common.view.flowlayout.TagFlowLayout;
+import com.zhisland.android.blog.common.view.flowlayout.TagFlowLayout.OnTagClickListener;
+import com.zhisland.lib.component.frag.FragBase;
+import com.zhisland.lib.util.DensityUtil;
+import com.zhisland.lib.util.StringUtil;
+import com.zhisland.lib.util.ToastUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
+/**
+ * 活动标签选择页面
+ * */
+public class FragEditCategory extends FragBase {
+
+	public static final String PAGE_NAME = "EventSelectTag";
+
+	public static final String INTENT_KEY_CATS = "intent_key_cats";
+
+	public static void invoke(Activity context, int reqCode, String cats) {
+		CommonFragParams param = new CommonFragParams();
+		param.clsFrag = FragEditCategory.class;
+		param.enableBack = true;
+		param.title = "活动标签";
+		Intent intent = CommonFragActivity.createIntent(context, param);
+		intent.putExtra(INTENT_KEY_CATS, cats);
+		context.startActivityForResult(intent, reqCode);
+	}
+
+	@InjectView(R.id.tflSelect)
+	TagFlowLayout tflSelect;
+
+	@InjectView(R.id.tflAll)
+	TagFlowLayout tflAll;
+
+	private List<String> selectTags = new ArrayList<String>();
+
+	private List<String> allTags = new ArrayList<String>();
+
+	private CommonDialog addDialog;
+	private CommonDialog delDialog;
+
+	@Override
+	protected String getPageName() {
+		return PAGE_NAME;
+	}
+
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View root = inflater.inflate(R.layout.frag_edit_category, null);
+		ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(
+				ViewGroup.LayoutParams.MATCH_PARENT,
+				ViewGroup.LayoutParams.MATCH_PARENT);
+		root.setLayoutParams(lp);
+		ButterKnife.inject(this, root);
+		initView();
+		return root;
+	}
+
+	private void initView() {
+		initTags();
+	}
+
+	private void initTags() {
+		selectTags.add("自定义标签");
+		tflSelect.setOnTagClickListener(selectTagClickListener);
+		tflSelect.setAdapter(selectAdapter);
+
+		List<String> categories = Dict.getInstance().getEventTags();
+        if (categories == null){
+            getActivity().finish();
+            return;
+        }
+		//目前接口返回的所有categories中包含“其他”，去掉
+		for (int i = 0; i < categories.size(); i++) {
+			if (categories.get(i).equals("其他")) {
+				categories.remove(i);
+				break;
+			}
+		}
+		if (categories != null) {
+			allTags.addAll(categories);
+		}
+		tflAll.setToastContent("最多能添加3个标签");
+		tflAll.setOnTagClickListener(allTagClickListener);
+		tflAll.setAdapter(allAdapter);
+
+		String cats = getActivity().getIntent().getStringExtra(INTENT_KEY_CATS);
+		if (!StringUtil.isNullOrEmpty(cats)) {
+			String[] catArray = cats.split(",");
+			for (int i = catArray.length - 1; i >= 0; i--) {
+				addTagToSelect(catArray[i]);
+			}
+		}
+
+		selectAdapter.notifyDataChanged();
+		allAdapter.notifyDataChanged();
+	}
+
+	OnTagClickListener selectTagClickListener = new OnTagClickListener() {
+
+		@Override
+		public boolean onTagClick(View view, int position, FlowLayout parent) {
+			String tag = selectTags.get(position);
+			if (position == selectTags.size() - 1) {
+				if (selectTags.size() > 3) {
+					ToastUtil.showShort("最多能添加3个标签");
+				} else {
+					showAddDialog();
+				}
+			} else {
+				showDelDialog(tag);
+			}
+			return false;
+		}
+	};
+
+	TagAdapter selectAdapter = new TagAdapter<String>(selectTags) {
+		@Override
+		public View getView(
+				com.zhisland.android.blog.common.view.flowlayout.FlowLayout parent,
+				int position, String tag) {
+			int tagHeight = getResources().getDimensionPixelSize(
+					R.dimen.tag_height);
+			if (position == selectTags.size() - 1) {
+				LinearLayout llTagAdd = (LinearLayout) LayoutInflater.from(
+						getActivity()).inflate(R.layout.tag_add, null);
+				TextView tvAdd = (TextView) llTagAdd.findViewById(R.id.tvAdd);
+				tvAdd.setText(tag);
+				MarginLayoutParams params = new MarginLayoutParams(
+						MarginLayoutParams.WRAP_CONTENT, tagHeight);
+				params.rightMargin = DensityUtil.dip2px(10);
+				params.topMargin = DensityUtil.dip2px(10);
+				llTagAdd.setLayoutParams(params);
+				return llTagAdd;
+			} else {
+				TextView textView = (TextView) LayoutInflater.from(
+						getActivity()).inflate(R.layout.tag_text, null);
+				MarginLayoutParams params = new MarginLayoutParams(
+						MarginLayoutParams.WRAP_CONTENT, tagHeight);
+				textView.setTextColor(getResources()
+						.getColor(R.color.color_bg1));
+				textView.setBackgroundResource(R.drawable.img_label_selected);
+				params.rightMargin = DensityUtil.dip2px(10);
+				params.topMargin = DensityUtil.dip2px(10);
+				textView.setPadding(DensityUtil.dip2px(15), 0,
+						DensityUtil.dip2px(15), 0);
+				textView.setLayoutParams(params);
+				textView.setText(tag);
+				return textView;
+			}
+		}
+	};
+
+	OnTagClickListener allTagClickListener = new OnTagClickListener() {
+
+		@Override
+		public boolean onTagClick(View view, int position, FlowLayout parent) {
+			Set<Integer> selectPos = tflAll.getSelectedList();
+			//在onTagClick回调时，selectPos已经添加或者删除position了。（TagFlowLayout内部操作）
+			if (selectPos.contains(position)) {
+				//包含代表刚刚添加到allTags，所以要添加到selectTags
+				addTagToSelect(allTags.get(position));
+			} else {
+				//不包含，可能是点击的是之前选过的，或者已经选择的已经大于等于allTags的max Count。
+				delTagFromSelect(allTags.get(position));
+			}
+			return false;
+		}
+	};
+
+	TagAdapter allAdapter = new TagAdapter<String>(allTags) {
+		@Override
+		public View getView(
+				com.zhisland.android.blog.common.view.flowlayout.FlowLayout parent,
+				int position, String tag) {
+			TextView textView = (TextView) LayoutInflater.from(getActivity())
+					.inflate(R.layout.tag_text, null);
+			int tagHeight = getResources().getDimensionPixelSize(
+					R.dimen.tag_height);
+			MarginLayoutParams params = new MarginLayoutParams(
+					MarginLayoutParams.WRAP_CONTENT, tagHeight);
+			params.rightMargin = DensityUtil.dip2px(10);
+			params.topMargin = DensityUtil.dip2px(10);
+			textView.setTextColor(getResources().getColorStateList(
+					R.color.sel_font_color_green));
+			textView.setLayoutParams(params);
+			textView.setText(tag);
+			return textView;
+		}
+	};
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+	}
+
+	/**
+	 * 添加tag到已选择tag中。
+	 * */
+	private void addTagToSelect(String tagName) {
+		if (containsPosition(selectTags, tagName) >= 0) {
+			ToastUtil.showShort("不能重复添加相同的标签");
+			return;
+		}
+		selectTags.add(0, tagName);
+		selectAdapter.notifyDataChanged();
+		setTflAllCount();
+	}
+
+	/**
+	 * 从已选tag中移除tag
+	 * */
+	private void delTagFromSelect(String tag) {
+		selectTags.remove(tag);
+		selectAdapter.notifyDataChanged();
+		setTflAllCount();
+	}
+
+	/**
+	 * 设置tflAll的最大选择数量
+	 * */
+	private void setTflAllCount() {
+		setTflAllChecked();
+		tflAll.setMaxSelectCount(3 - (selectTags.size() - 1)
+				+ tflAll.getSelectedList().size());
+		allAdapter.notifyDataChanged();
+	}
+
+	/**
+	 * 将已经选择的tag设置到tflAll中
+	 * */
+	private void setTflAllChecked() {
+		allAdapter.getPreCheckedList().clear();
+		for (int i = 0; i < selectTags.size(); i++) {
+			for (int j = 0; j < allTags.size(); j++) {
+				if (selectTags.get(i).equals(allTags.get(j))) {
+					allAdapter.setSelectedList(j);
+				}
+			}
+		}
+	}
+
+	/**
+	 * 判断list中是否包含tag
+	 * */
+	private int containsPosition(List<String> tagList, String tag) {
+		for (int i = 0; i < tagList.size(); i++) {
+			if (tagList.get(i).equals(tag)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	private void showAddDialog() {
+		if (addDialog == null)
+			addDialog = new CommonDialog(getActivity(),
+					CommonDialog.SOFT_KEY_UP);
+		if (!addDialog.isShowing()) {
+			addDialog.show();
+			addDialog.setTitle("请输入标签名称");
+			addDialog.setEditHint("输入标签。。。");
+			addDialog.setMaxEditCount(24);
+			addDialog.clearEditText();
+			addDialog.tvDlgConfirm.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					String editTextContent = addDialog.getEditTextContent();
+					if (StringUtil.isNullOrEmpty(editTextContent)) {
+						ToastUtil.showShort("标签名字不能为空");
+						return;
+					}
+					for (int i = 0; i < editTextContent.length(); i++) {
+						if (!StringUtil.isNormalChar(editTextContent.substring(
+								i, i + 1))) {
+							ToastUtil.showShort("标签名字不能包括特殊字符");
+							return;
+						}
+					}
+					int len = StringUtil.getLength2(editTextContent);
+					if (len > 24) {
+						DialogUtil.singleToast(ZhislandApplication.APP_CONTEXT,
+								"setMaxEditCountInCommonDlg", "不能输入超过" + 24 / 2
+										+ "个中文或" + 24 + "个英文字符");
+					}
+
+					else {
+						addDialog.dismiss();
+						addTagToSelect(editTextContent);
+					}
+				}
+			});
+		}
+	}
+
+	private void showDelDialog(final String tag) {
+		if (delDialog == null) {
+			delDialog = new CommonDialog(getActivity());
+		}
+		if (!delDialog.isShowing()) {
+			delDialog.show();
+			delDialog.setTitle("是否要删除此标签？");
+			delDialog.tvDlgConfirm.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					delDialog.dismiss();
+					delTagFromSelect(tag);
+				}
+			});
+		}
+	}
+
+	@Override
+	public boolean onBackPressed() {
+		String cats = "";
+		for (int i = selectTags.size() - 2; i >= 0; i--) {
+			cats += selectTags.get(i);
+			if (i != 0) {
+				cats += ",";
+			}
+		}
+		Intent intent = new Intent();
+		intent.putExtra(INTENT_KEY_CATS, cats);
+		getActivity().setResult(getActivity().RESULT_OK, intent);
+		getActivity().finish();
+		return true;
+	}
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pull_list_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/app_background"
+    android:orientation="vertical" >
+
+    <com.zhisland.lib.view.pulltorefresh.sectionlist.PullToRefreshSectionListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@id/pullRefreshAbsListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="@color/transparent"
+        android:fastScrollEnabled="true"
+        ptr:is_collapsable="false"
+        ptr:ptrMode="both" />
+
+</RelativeLayout>

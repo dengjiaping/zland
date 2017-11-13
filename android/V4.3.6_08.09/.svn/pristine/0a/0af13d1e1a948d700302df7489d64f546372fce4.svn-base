@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBg2"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivSucIcon"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/img_finish_icon_green" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="举报信息提交成功！"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:gravity="center_horizontal"
+        android:lineSpacingMultiplier="1.2"
+        android:padding="10dp"
+        android:text="谢谢您的参与，我们会认真处理您的举报，\n维护正和岛绿色、健康的网络环境"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_12" />
+
+    <Button
+        android:id="@+id/btnContinue"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_button_height"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/sel_bg_btn_bgreen"
+        android:text="确定"
+        android:textColor="@color/color_bg1"
+        android:textSize="@dimen/txt_16" />
+</LinearLayout>

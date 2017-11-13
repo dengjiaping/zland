@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhisland.lib.view.ResizeView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	style="@style/RootBgWhite"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/rl_chat_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:background="#ffE2E4E5" />
+
+        <LinearLayout
+            android:id="@+id/rl_chat_tool"
+            style="@style/bg_toolbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+        </LinearLayout>
+
+		<View
+		    android:id="@+id/bottom_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:background="#ffE2E4E5" />
+        <View
+            android:id="@+id/fl_chat"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/rl_chat_bottom"
+        android:layout_below="@id/custom_titile" >
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            xmlns:ptr="http://schemas.android.com/apk/res-auto"
+            android:id="@id/pullRefreshAbsListView"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@color/transparent"
+            android:divider="@null"
+            android:listSelector="@android:color/transparent"
+            ptr:ptrMode="both" />
+
+        <RelativeLayout
+            android:id="@+id/rl_chat_audio"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:visibility="gone" >
+
+            <com.zhisland.android.blog.im.view.AudioCaptureView
+                android:id="@+id/av_chat_audio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </FrameLayout>
+
+</com.zhisland.lib.view.ResizeView>

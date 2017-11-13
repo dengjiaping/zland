@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBgWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/tvIntroductionDesc"
+        style="@style/LOGIN_DESC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="left"
+        android:text="简单描述一下自己吧" />
+
+    <com.zhisland.android.blog.common.view.CountEditText
+        android:id="@+id/etIntroduction"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_divider_height"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/line_divider_all" />
+
+</LinearLayout>

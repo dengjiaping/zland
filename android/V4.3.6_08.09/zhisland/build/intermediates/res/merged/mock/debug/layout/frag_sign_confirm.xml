@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBg1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollViewRoot"
+        style="@style/RootBg2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_bg1"
+                android:padding="15dp"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_18" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/color_bg1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_bg1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="15dp"
+                        android:singleLine="true"
+                        android:text="活动日期"
+                        android:textColor="@color/color_f2"
+                        android:textSize="@dimen/txt_18" />
+
+                    <TextView
+                        android:id="@+id/tvTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="15dp"
+                        android:text="9月12日 8:30-18:00"
+                        android:textColor="@color/color_f1"
+                        android:textSize="@dimen/txt_18" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/app_line_height"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@color/color_bg2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_bg1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:singleLine="true"
+                        android:text="活动价格"
+                        android:textColor="@color/color_f2"
+                        android:textSize="@dimen/txt_18" />
+
+                    <TextView
+                        android:id="@+id/tvPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="15dp"
+                        android:text="￥4880"
+                        android:textColor="@color/color_dc"
+                        android:textSize="@dimen/txt_18" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/app_line_height"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@color/color_bg2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_bg1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:singleLine="true"
+                        android:text="报名人"
+                        android:textColor="@color/color_f2"
+                        android:textSize="@dimen/txt_18" />
+
+                    <TextView
+                        android:id="@+id/tvSignName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="15dp"
+                        android:textColor="@color/color_f1"
+                        android:textSize="@dimen/txt_18" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/app_line_height"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@color/color_bg2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_bg1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:singleLine="true"
+                        android:text="联系方式"
+                        android:textColor="@color/color_f2"
+                        android:textSize="@dimen/txt_18" />
+
+                    <com.zhisland.android.blog.common.view.InternationalPhoneView
+                        android:id="@+id/internationalPhoneView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></com.zhisland.android.blog.common.view.InternationalPhoneView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llInvoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/app_line_height"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@color/color_bg2" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="15dp"
+                            android:singleLine="true"
+                            android:text="是否需要发票"
+                            android:textColor="@color/color_f2"
+                            android:textSize="@dimen/txt_18" />
+
+                        <ImageView
+                            android:id="@+id/ivSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/switch_on"
+                            android:padding="5dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llFinancePhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/app_line_height"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@color/color_bg2" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="15dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="15dp"
+                            android:singleLine="true"
+                            android:text="发票联系人电话："
+                            android:textColor="@color/color_f2"
+                            android:textSize="@dimen/txt_18" />
+
+                        <EditText
+                            android:id="@+id/etFinancePhone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/color_bg1"
+                            android:gravity="right"
+                            android:hint="输入财务人员联系方式"
+                            android:inputType="phone"
+                            android:paddingBottom="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="15dp"
+                            android:singleLine="true"
+                            android:textColor="@color/color_f1"
+                            android:textColorHint="@color/color_f3"
+                            android:textSize="@dimen/txt_18" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvVoteToTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="根据主办方要求请完成以下问卷"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_14" />
+
+            <LinearLayout
+                android:id="@+id/llVoteTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_bg1"
+                android:orientation="vertical"></LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:background="@color/color_div" />
+
+    <RelativeLayout
+        android:id="@+id/rlBottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_button_height"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/sel_bg_btn_bgreen">
+
+        <TextView
+            android:id="@+id/tvBottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="确认报名"
+            android:textColor="@color/color_bg1"
+            android:textSize="@dimen/txt_16" />
+
+        <LinearLayout
+            android:id="@+id/llProgressBottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <ProgressBar
+                style="@style/middle_progress"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:indeterminate="true"
+                android:indeterminateDuration="100"
+                android:indeterminateOnly="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:text="报名中..."
+                android:textColor="@color/color_bg1"
+                android:textSize="@dimen/txt_16" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

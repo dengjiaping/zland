@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SectionHeader">
+        <attr name="header_layout" format="reference" />
+        <attr name="is_collapsable" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="ImageText">
+        <attr name="itSrc" format="reference" />
+        <attr name="itText" format="reference|string" />
+        <attr name="textColor" format="reference|color" />
+        <attr name="textSize" format="reference|integer" />
+        <attr name="imageSize" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="TabBar">
+        <attr name="tbIndicator" format="reference" />
+        <attr name="tbMode">
+            <flag name="avg" value="0x0" />
+            <flag name="wrap" value="0x1" />
+            <flag name="wrap_fill" value="0x2" />
+        </attr>
+        <attr name="tbDivider" format="boolean" />
+    </declare-styleable>
+
+    <!-- Defines the custom XML attributes supported for a HorizontalListView -->
+    <declare-styleable name="HorizontalListView">
+        <attr name="dividerWidth" format="dimension" />
+        <attr name="android:divider" />
+        <attr name="android:requiresFadingEdge" />
+        <attr name="android:fadingEdgeLength" />
+    </declare-styleable>
+
+</resources>

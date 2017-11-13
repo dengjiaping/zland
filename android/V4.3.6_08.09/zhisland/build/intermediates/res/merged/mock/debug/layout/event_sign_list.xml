@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    style="@style/RootBg1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+
+    <com.zhisland.android.blog.common.view.AvatarView
+        android:id="@+id/ivAvatar"
+        android:layout_width="@dimen/app_avatar_size"
+        android:layout_height="@dimen/app_avatar_size"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="17dp"
+        android:layout_toRightOf="@id/ivAvatar"
+        android:ellipsize="end"
+        android:paddingRight="30dp"
+        android:singleLine="true"
+        android:text="刘星雨"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/tvComAndPos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvName"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/ivAvatar"
+        android:ellipsize="end"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:text="百度产品经理"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_12" />
+
+    <TextView
+        android:id="@+id/tvFriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tvName"
+        android:layout_alignRight="@id/tvName"
+        android:layout_alignTop="@id/tvName"
+        android:gravity="center_vertical"
+        android:text="好友"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_12"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/view_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_below="@id/ivAvatar"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/color_div" />
+</RelativeLayout>
+
+
+
+

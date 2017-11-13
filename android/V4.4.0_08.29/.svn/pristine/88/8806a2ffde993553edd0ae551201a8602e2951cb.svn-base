@@ -1,0 +1,216 @@
+package com.zhisland.android.blog.feed.view.impl;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.common.base.CommonFragActivity;
+import com.zhisland.android.blog.common.dto.User;
+import com.zhisland.android.blog.feed.bean.Feed;
+import com.zhisland.android.blog.feed.model.IFeedListModel;
+import com.zhisland.android.blog.feed.model.IFeedModel;
+import com.zhisland.android.blog.feed.model.ModelFactory;
+import com.zhisland.android.blog.feed.presenter.FeedImageAdapter;
+import com.zhisland.android.blog.feed.presenter.FeedListPresenter;
+import com.zhisland.android.blog.feed.presenter.FeedPresenter;
+import com.zhisland.android.blog.feed.presenter.MiniFeedListPresenter;
+import com.zhisland.android.blog.feed.view.IFeedView;
+import com.zhisland.android.blog.feed.view.IMiniFeedListView;
+import com.zhisland.android.blog.feed.view.impl.adapter.FeedAdapter;
+import com.zhisland.android.blog.feed.view.impl.holder.FeedHolder;
+import com.zhisland.android.blog.feed.view.impl.holder.FeedViewListener;
+import com.zhisland.android.blog.profile.controller.detail.ActProfileDetail;
+import com.zhisland.lib.image.viewer.FreeImageViewer;
+import com.zhisland.lib.mvp.presenter.BasePresenter;
+import com.zhisland.lib.mvp.view.FragPullListMvps;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 我的动态列表
+ * Created by arthur on 2016/8/31.
+ */
+public class FragMyPubFeedList<P extends MiniFeedListPresenter> extends FragPullListMvps<Feed> implements IMiniFeedListView, IFeedView, FeedViewListener {
+
+
+    protected P feedListPresenter; //新鲜事列表主导器
+    protected FeedPresenter feedPresenter;//单条新鲜事的主导器
+
+    public static void Invoke(Context context) {
+        CommonFragActivity.CommonFragParams param = new CommonFragActivity.CommonFragParams();
+        param.title = "我的动态";
+        param.enableBack = true;
+        param.clsFrag = FragMyPubFeedList.class;
+
+        CommonFragActivity.invoke(context, param);
+    }
+
+
+    //region feed item view implementation
+    @Override
+    public void gotoUserDetail(User user) {
+        ActProfileDetail.invoke(getActivity(), user.uid);
+    }
+
+    @Override
+    public void updateFeed(Feed feed) {
+        getPullProxy().getAdapter().notifyDataSetChanged();
+    }
+
+    @Override
+    public void gotoFeedDetail(Feed curFeed, boolean startComment) {
+        ActFeedDetail.invoke(getActivity(), curFeed, startComment);
+    }
+
+    @Override
+    public void browseImages(FeedImageAdapter feedImageAdapter, int index) {
+        FreeImageViewer.invoke(getActivity(), feedImageAdapter,
+                index, feedImageAdapter.count(),
+                -1, 0, FreeImageViewer.TYPE_SHOW_TITLE_BAR);
+    }
+    //endregion
+
+
+    //region Feed list View implementation
+
+    @Override
+    public void insertItem(Feed feed) {
+        getPullProxy().getAdapter().insert(feed);
+    }
+
+    @Override
+    public void updateItem(Feed feed) {
+        getPullProxy().getAdapter().notifyDataSetChanged();
+    }
+
+    @Override
+    public void deleteItem(Feed feed) {
+        getPullProxy().getAdapter().removeItem(feed);
+    }
+
+
+    //endregion
+
+
+    //region Feed item 点击事件
+
+    @Override
+    public void onUserClicked(FeedHolder feedHolder, User user) {
+        feedPresenter.onUserClicked(user);
+    }
+
+    @Override
+    public void onPraiseClicked(FeedHolder feedHolder, Feed curFeed) {
+        feedPresenter.onPraiseClicked(curFeed);
+    }
+
+    @Override
+    public void onCommentClicked(FeedHolder feedHolder, Feed curFeed) {
+        feedPresenter.onCommentClicked(curFeed);
+    }
+
+    @Override
+    public void onTransemitClicked(FeedHolder feedHolder, Feed curFeed) {
+        feedPresenter.onRetransmit(curFeed);
+    }
+
+    @Override
+    public void onAttachClicked(Feed feed, Object obj) {
+        feedPresenter.onAttachmentClicked(feed, obj);
+    }
+
+    @Override
+    public void onFeedCicked(Feed curFeed) {
+        feedPresenter.onFeedClicked(curFeed);
+    }
+
+    //endregion
+
+
+    //region 生命周期
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        FeedAdapter feedAdapter = new FeedAdapter(getActivity(), this);
+        feedAdapter.setShowUser(0);
+        getPullProxy().setAdapter(feedAdapter);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getPullProxy().getPullView().setBackgroundResource(R.color.white);
+    }
+
+    @Override
+    public void onOkClicked(String tag, Object arg) {
+        feedPresenter.onDlgOkClicked(tag, arg);
+    }
+
+    @Override
+    public void onNoClicked(String tag, Object arg) {
+        feedPresenter.onDlgNoClicked(tag, arg);
+    }
+
+    public void pageEnd() {
+        //TODO
+    }
+
+    public void pageStart() {
+        //TODO
+    }
+
+
+    //endregion
+
+
+    //region 重载方法
+
+    @Override
+    protected Map<String, BasePresenter> createPresenters() {
+        Map<String, BasePresenter> presenterMap = new HashMap<>(3);
+
+        feedListPresenter = this.createListPresenter();
+        presenterMap.put(FeedListPresenter.class.getSimpleName(), feedListPresenter);
+
+        feedPresenter = new FeedPresenter();
+        IFeedModel feedModel = ModelFactory.CreateFeedModel();
+        feedPresenter.setModel(feedModel);
+        presenterMap.put(FeedPresenter.class.getSimpleName(), feedPresenter);
+
+
+        return presenterMap;
+    }
+
+    //创建List相关的主导器
+    protected P createListPresenter() {
+        P p = (P) new MiniFeedListPresenter();
+        IFeedListModel feedListModel = ModelFactory.CreateFeedListModel();
+        p.setModel(feedListModel);
+        return p;
+    }
+
+
+    @Override
+    public void loadNormal() {
+        feedListPresenter.onPullDown();
+    }
+
+    @Override
+    public void loadMore(String nextId) {
+        feedListPresenter.onPullUp(nextId);
+    }
+
+    @Override
+    public String getPageName() {
+        return "FeedMyPubList";
+    }
+
+
+    //endregion
+
+
+}

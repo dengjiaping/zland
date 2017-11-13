@@ -1,0 +1,184 @@
+package com.zhisland.android.blog.profile.controller.detail;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.common.app.ZhislandApplication;
+import com.zhisland.android.blog.common.base.DefaultTitleBarClickListener;
+import com.zhisland.android.blog.common.base.TitleBarProxy;
+import com.zhisland.android.blog.common.base.TitleCreator;
+import com.zhisland.android.blog.common.dto.User;
+import com.zhisland.android.blog.freshtask.view.impl.FragInviteRequest;
+import com.zhisland.android.blog.profile.controller.contact.FragUserContactInfo;
+import com.zhisland.android.blog.profile.dto.Company;
+import com.zhisland.android.blog.profile.dto.SimpleBlock;
+import com.zhisland.android.blog.profile.dto.UserContactInfo;
+import com.zhisland.android.blog.profile.dto.UserDetail;
+import com.zhisland.android.blog.profile.view.block.ProfileBaseBlock;
+import com.zhisland.android.blog.profile.view.block.UserPositionBlock;
+import com.zhisland.android.blog.tracker.bean.TrackerAlias;
+import com.zhisland.lib.bitmap.ImageWorkFactory;
+import com.zhisland.lib.bitmap.ImageWorker;
+import com.zhisland.lib.component.act.TitleType;
+import com.zhisland.lib.component.frag.FragBase;
+import com.zhisland.lib.image.viewer.FreeImageViewer;
+import com.zhisland.lib.util.StringUtil;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
+/**
+ * 访客个人主页（自己） fragment
+ */
+public class FragProfileVisitorSelf extends FragBase implements IProfileView {
+
+
+    private static final int TAG_LEFT_BTN = 100;
+
+    @InjectView(R.id.ivAvatar)
+    ImageView ivAvatar;
+
+    @InjectView(R.id.tvName)
+    TextView tvName;
+
+    @InjectView(R.id.tvComAndPos)
+    TextView tvComAndPos;
+
+    @InjectView(R.id.llCoverContainer)
+    LinearLayout llCoverContainer;
+
+    @InjectView(R.id.tvPhone)
+    TextView tvPhone;
+
+    @InjectView(R.id.tvEmail)
+    TextView tvEmail;
+
+    private ProfileBaseBlock positionBlockView;
+
+    private TitleBarProxy titleBar;
+
+    UserDetail userDetail;
+
+    private boolean viewInitOver = false;
+
+    @Override
+    public String getPageName() {
+        return "FragProfileVisitorSelf";
+    }
+
+    @Override
+    public void onUpdate(UserDetail userDetail) {
+        this.userDetail = userDetail;
+        if (viewInitOver) {
+            onUpdate();
+        }
+    }
+
+    @Override
+    public void onLoadError(Throwable error) {
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.frag_profile_visitor_self, null);
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        rootView.setLayoutParams(lp);
+        ButterKnife.inject(this, rootView);
+
+        titleBar = new TitleBarProxy();
+        titleBar.configTitle(rootView, TitleType.TITLE_LAYOUT, new DefaultTitleBarClickListener(getActivity()) {
+            @Override
+            public void onTitleClicked(View view, int tagId) {
+                switch (tagId) {
+                    case TAG_LEFT_BTN:
+                        getActivity().finish();
+                        break;
+                }
+            }
+        });
+        ImageView leftBtn = TitleCreator.Instance().createImageButton(getActivity(), R.drawable.sel_btn_back_white);
+        titleBar.addLeftTitleButton(leftBtn, TAG_LEFT_BTN);
+        titleBar.hideBottomLine();
+
+        return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        viewInitOver = true;
+        onUpdate();
+    }
+
+    private void onUpdate() {
+        if (userDetail != null) {
+
+            if (userDetail.user != null) {
+                tvName.setText(userDetail.user.name);
+                tvComAndPos.setText(userDetail.user.combineCompanyAndPosition());
+                int resId = R.drawable.avatar_default_man;
+                if (userDetail.user.sex != null && userDetail.user.sex == User.VALUE_SEX_WOMAN) {
+                    resId = R.drawable.avatar_default_woman;
+                }
+                ImageWorkFactory.getCircleFetcher().loadImage(userDetail.user.userAvatar, ivAvatar, resId, ImageWorker.ImgSizeEnum.SMALL);
+            }
+
+            SimpleBlock<Company> positionBlock = userDetail.getPositionBlock();
+            if (positionBlock != null) {
+                llCoverContainer.setVisibility(View.VISIBLE);
+                if (positionBlockView == null) {
+                    positionBlockView = new UserPositionBlock(getActivity(), userDetail,
+                            positionBlock);
+                    llCoverContainer.addView(positionBlockView, 0);
+                }
+            } else {
+                llCoverContainer.setVisibility(View.GONE);
+            }
+
+            SimpleBlock<UserContactInfo> contactBlock = userDetail.getContactBlock();
+            if (contactBlock != null && contactBlock.data != null && contactBlock.data.size() > 0 && !StringUtil.isNullOrEmpty(contactBlock.data.get(0).mobile)) {
+                tvPhone.setText(contactBlock.data.get(0).mobile);
+                tvPhone.setTextColor(getResources().getColor(R.color.color_f2));
+            } else {
+                tvPhone.setText("添加");
+                tvPhone.setTextColor(getResources().getColor(R.color.color_dc));
+            }
+
+            if (contactBlock != null && contactBlock.data != null && contactBlock.data.size() > 0 && !StringUtil.isNullOrEmpty(contactBlock.data.get(0).email)) {
+                tvEmail.setText(contactBlock.data.get(0).email);
+                tvEmail.setTextColor(getResources().getColor(R.color.color_f2));
+            } else {
+                tvEmail.setText("添加");
+                tvEmail.setTextColor(getResources().getColor(R.color.color_dc));
+            }
+
+        }
+    }
+
+    @OnClick({R.id.tvEmail, R.id.tvPhone, R.id.llBaseInfo})
+    void onBaseInfoClick() {
+        if (userDetail != null) {
+            SimpleBlock<UserContactInfo> contactBlock = userDetail.getContactBlock();
+            if (contactBlock != null) {
+                FragUserContactInfo.invoke(getActivity(), contactBlock);
+            }
+        }
+    }
+
+    @OnClick(R.id.tvJoin)
+    void onJoinClick() {
+        ZhislandApplication.trackerClickEvent(getPageName(), TrackerAlias.CLICK_UPGRADE_HAIKE_FROM_PROFILE_DETAIL);
+        FragInviteRequest.invoke(getActivity(), false);
+    }
+}

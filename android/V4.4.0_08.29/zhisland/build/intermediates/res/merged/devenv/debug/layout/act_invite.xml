@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar_with_image"
+        android:id="@id/custom_titile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_titlebar_height" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="8dp"
+        android:background="#cecece"/>
+
+    <LinearLayout
+        android:layout_width="258dp"
+        android:layout_height="30dp"
+        android:background="@drawable/tab_bg_green"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:padding="1.5dp" >
+
+        <TextView
+            android:id="@+id/contacts"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tab_left_green"
+            android:gravity="center"
+            android:text="通讯录"
+            android:textColor="@color/color_bg1"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/others"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tab_right_white"
+            android:gravity="center"
+            android:text="其他方式"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_16" />
+    </LinearLayout>
+
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:background="#cecece"/>-->
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white" >
+    </RelativeLayout>
+</LinearLayout>

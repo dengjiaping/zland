@@ -1,0 +1,742 @@
+package com.zhisland.android.blog.common.dto;
+
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
+
+import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.aa.dto.LoginResponse;
+import com.zhisland.android.blog.common.app.PrefUtil;
+import com.zhisland.android.blog.contacts.dto.Organization;
+import com.zhisland.android.blog.event.dto.Event;
+import com.zhisland.android.blog.profile.dto.Company;
+import com.zhisland.android.blog.profile.dto.UserHeatReport;
+import com.zhisland.im.data.IMContact;
+import com.zhisland.lib.OrmDto;
+import com.zhisland.lib.async.http.task.GsonExclude;
+import com.zhisland.lib.async.http.task.GsonHelper;
+import com.zhisland.lib.util.DensityUtil;
+import com.zhisland.lib.util.StringUtil;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+@DatabaseTable(tableName = User.TB_NAME, daoClass = UserDao.class)
+public class User extends OrmDto {
+
+    private static final long serialVersionUID = 1L;
+
+    public static final int VALUE_RELATION_LEVEL_TRUST = IMContact.RELATION_TRUST;
+    public static final int VALUE_RELATION_LEVEL_NORMAL = IMContact.RELATION_NORMAL;
+
+    public static final int VALUE_VISIBLE = 0;
+    public static final int VALUE_INVISIBLE = 1;
+
+    public static final int VALUE_SEX_MAN = 0;
+    public static final int VALUE_SEX_WOMAN = 1;
+
+    public static final int VALUE_TYPE_VIP = 400; // 岛亲
+    public static final int VALUE_TYPE_HAIKE = 300; // 海客
+    public static final int VALUE_TYPE_DING = 100; // 岛丁
+    public static final int VALUE_TYPE_YUZHUCE = 50; // 预注册
+    public static final int VALUE_TYPE_FANGKE = 200; // 访客
+
+    public static final int VALUE_TYPE_VIP_BLUE = 1; // 蓝岛
+    public static final int VALUE_TYPE_VIP_GREEN = 2; // 绿岛
+    public static final int VALUE_TYPE_VIP_LIFE = 1; // 终身
+
+    public static final int VALUE_ACTIVITY_NORMAL = 1; // 正常用户
+    public static final int VALUE_ACTIVITY_DELETE = -1; // 删除用户
+    public static final int VALUE_ACTIVITY_BAD = -2; // 黑名单用户
+    public static final int VALUE_ACTIVITY_FREEZE = -3; // 冻结用户
+
+    public static final int VALUE_WHITE_LIST_YES = 1; // 是白名单
+
+    public static final int VALUE_GOLD_FEED_YES = 1; // 是金火种
+
+    public static final String TB_NAME = "user_new_dto";
+
+    public static final String COL_ID = "userId";
+    public static final String COL_JSON_BODY = "json_body";
+
+    public static final String COL_NAME = "userName";
+    public static final String COL_AVATAR = "userAvatar";
+    public static final String COL_COMPANY = "userCompany";
+    public static final String COL_POSITION = "userPosition";
+    public static final String COL_TYPE = "userType";
+    public static final String COL_VIP_TYPE = "zhislandType";// 蓝绿标识
+    public static final String COL_LIFE_VIP = "isLifelong";// 是否是终身岛邻
+    public static final String COL_MOBILE = "userMobile";
+
+    public static final String COL_PROFILE = "profile";
+
+    public static final String COL_INTRODUCE = "introduce";
+    public static final String COL_SEX = "sex";
+    public static final String COL_INDUSTRY = "industry";
+    public static final String COL_PROVINCE_ID = "provinceId";
+    public static final String COL_CITY_ID = "cityId";
+
+    public static final String COL_COMPANIES = "companies";
+    public static final String COL_INTERESTS = "interests";
+    public static final String COL_SPECIALTIES = "specialties";
+    public static final String COL_WANT_FRIENDS = "wantFriends";
+    public static final String COL_LAST_EVENT = "lastEvent";
+    public static final String COL_EMAIL = "email";
+    public static final String COL_IS_TRUST = "relationLevel";
+    public static final String COL_FIGURE = "figure";
+    public static final String COL_COMMON_FRIENDS = "commonFriends";
+    public static final String COL_INVISIBLE = "invisible";
+
+    public static final String COL_DISTANCE = "distance";
+    public static final String COL_TIME_DIFF = "timeDiff";
+    public static final String COL_VIP_AVATAR_SERVICE = "vipAvatarService";
+    public static final String COL_ASSISTANTMOBILE = "assistantMobile";
+    public static final String COL_COMPANY_ID = "companyId";
+
+    public static final String COL_ORGS = "col_orgs";
+
+    public static final String COL_BEGIN_TIME = "beginTime";
+    public static final String COL_END_TIME = "endTime";
+    public static final String COL_ACTIVITY = "activity";
+    public static final String COL_WHITE_LIST = "whiteList";
+    public static final String COL_NEXT_APPROVE_TIME = "nextApproveTime";
+    public static final String COL_EXPIRE_END_TIME = "expireEndTime";
+    public static final String COL_EXPIRE_NEXT_APPROVE_TIME = "expireNextApproveTime";
+
+    public static final String COL_ACCOUNT = "account";
+    public static final String COL_USER_ALIAS = "userAlias";
+
+    public static final String COL_INVITATION_CODE_REMAINING_COUNT = "invitationCodeRemainingCount";
+
+    public static final String COL_COUNTRY_CODE_SHOW = "countryCodeShow";// userMobile的国家码
+    // 已上传过通讯录
+    public static final int UPLOAD_CONTACT = 1;
+
+    @SerializedName(COL_ID)
+    @DatabaseField(columnName = COL_ID, id = true)
+    public long uid;
+
+    @DatabaseField(columnName = COL_JSON_BODY)
+    @GsonExclude
+    public String jsonBody;
+
+    @SerializedName(COL_NAME)
+    public String name;
+
+    @SerializedName(COL_AVATAR)
+    public String userAvatar;
+
+    @SerializedName(COL_COMPANY)
+    public String userCompany;
+
+    @SerializedName(COL_POSITION)
+    public String userPosition;
+
+    /**
+     * 用户类型（预注册用户：50；岛丁用户: 100；标准用户: 200；优质用户: 300；岛邻用户: 400；）
+     */
+    @SerializedName(COL_TYPE)
+    public Integer userType;
+
+    /**
+     * 蓝绿标识
+     */
+    @SerializedName(COL_VIP_TYPE)
+    public Integer zhislandType;
+
+    @SerializedName(COL_LIFE_VIP)
+    public Integer isLifelong;
+
+    /**
+     * userMobile的国家码
+     */
+    @SerializedName(COL_COUNTRY_CODE_SHOW)
+    public String countryCodeShow;
+
+    @SerializedName(COL_MOBILE)
+    public String userMobile;
+
+    /**
+     * 用户介绍。用于活动嘉宾的介绍。
+     */
+    @SerializedName(COL_PROFILE)
+    public String profile;
+
+    /**
+     * 用户描述
+     */
+    @SerializedName(COL_INTRODUCE)
+    public String introduce;
+
+    @SerializedName(COL_COMPANIES)
+    public ArrayList<Company> companies;
+
+    @SerializedName(COL_INTERESTS)
+    public String interests;
+
+    @SerializedName(COL_SPECIALTIES)
+    public String specialties;
+
+    @SerializedName(COL_WANT_FRIENDS)
+    public String wantFriends;
+
+    @SerializedName(COL_LAST_EVENT)
+    public Event lastEvent;
+
+    @SerializedName(COL_EMAIL)
+    public String email;
+
+    @SerializedName(COL_SEX)
+    public Integer sex;
+
+    @SerializedName(COL_INDUSTRY)
+    public ZHDicItem industry;
+
+    @SerializedName(COL_PROVINCE_ID)
+    public Integer provinceId;
+
+    @SerializedName(COL_CITY_ID)
+    public Integer cityId;
+
+    /**
+     * 信任好友(0-不是 1-是)
+     */
+    @SerializedName(COL_IS_TRUST)
+    public Integer relationLevel;
+
+    @SerializedName(COL_FIGURE)
+    public String figure;
+
+    @SerializedName(COL_COMMON_FRIENDS)
+    public ArrayList<User> commFriends;
+
+    @SerializedName(COL_INVISIBLE)
+    public Integer invisible;
+
+    /**
+     * 岛亲头像服务(0-不需要 1-需要)
+     */
+    @SerializedName(COL_VIP_AVATAR_SERVICE)
+    public Integer vipAvatarService;
+
+    /**
+     * 助理电话
+     */
+    @SerializedName(COL_ASSISTANTMOBILE)
+    public String assistantMobile;
+
+    /**
+     * 公司id
+     */
+    @SerializedName(COL_COMPANY_ID)
+    public Long companyId;
+
+    @SerializedName(COL_DISTANCE)
+    public Integer distance;
+
+    @SerializedName(COL_TIME_DIFF)
+    public Long timeDiff;
+
+    /**
+     * 是否是好友
+     */
+    @SerializedName("isFriend")
+    public Integer isFriend;
+
+    // 是否向你加过好友
+    @GsonExclude
+    public Boolean isAddFriend;
+
+    // 现场模式是否已约过
+    @GsonExclude
+    public Boolean isAlreadYue;
+
+    // 签到（0 未签到 1 已经签到）
+    @SerializedName("signIn")
+    public Integer signIn;
+
+    // 现场模式签到时间
+    @SerializedName("signInTime")
+    public Long signTime;
+
+    /**
+     * 同步好友时用到的版本号
+     */
+    @SerializedName("version")
+    public String version;
+
+    /**
+     * 是否是被推荐User
+     */
+    @SerializedName("isRecommend")
+    public Boolean isRecommend;
+
+    /**
+     * 组织机构列表
+     */
+    @SerializedName("badges")
+    public ArrayList<Organization> orgs;
+
+    /**
+     * 成为会员时间
+     */
+    @SerializedName(COL_BEGIN_TIME)
+    public Long beginTime;
+
+    /**
+     * 会员到期时间（终身会员 2999-01-01）
+     */
+    @SerializedName(COL_END_TIME)
+    public Long endTime;
+
+    /**
+     * 用户状态( 1:正常用户; -1:删除用户; -2:黑名单用户;-3：冻结)
+     */
+    @SerializedName(COL_ACTIVITY)
+    public Integer activity;
+
+    /**
+     * 白名单(1：是；其它非)
+     */
+    @SerializedName(COL_WHITE_LIST)
+    public Integer whiteList;
+
+    /**
+     * 下次审核时间
+     */
+    @SerializedName(COL_NEXT_APPROVE_TIME)
+    public Long nextApproveTime;
+
+    /**
+     * 会员结束时间（加上系统设置间隔时间）
+     */
+    @SerializedName(COL_EXPIRE_END_TIME)
+    public Long expireEndTime;
+
+    /**
+     * 下次审核时间（加上系统设置间隔时间）
+     */
+    @SerializedName(COL_EXPIRE_NEXT_APPROVE_TIME)
+    public Long expireNextApproveTime;
+
+    /**
+     * 账户（注册手机号）
+     */
+    @SerializedName(COL_ACCOUNT)
+    public String account;
+
+    /**
+     * 用户别名
+     */
+    @SerializedName(COL_USER_ALIAS)
+    public String userAlias;
+
+    /**
+     * 邀请可用数量
+     */
+    @SerializedName(COL_INVITATION_CODE_REMAINING_COUNT)
+    public Integer invitationCodeRemainingCount;
+
+    /**
+     * 用户关系报告
+     */
+    @SerializedName("relationReport")
+    public UserHeatReport relationReport;
+
+    /**
+     * 金火种
+     */
+    @SerializedName("goldFeed")
+    public Integer goldFeed;
+
+    /**
+     * 用户权益文案
+     */
+    @SerializedName("memberRight")
+    public String memberRight;
+
+    /**
+     * 用户历史身份
+     */
+    @SerializedName("baseRank")
+    private Integer baseRank;
+
+    /**
+     * 是否己经向对方发送过'加为好友'请求
+     */
+    @SerializedName("sendApplyFriendRequest")
+    public Boolean sendApplyFriendRequest;
+
+    @SerializedName("constantUploadStatus")
+    private int constantUploadStatus;
+
+    /**
+     * 活动报名人,报名时间
+     */
+    @SerializedName("custom")
+    public String customTime;
+
+
+    /**
+     * 获取兴趣爱好标签
+     */
+    public List<String> getInterestTags() {
+        List<String> tags = new ArrayList<String>();
+        if (!StringUtil.isNullOrEmpty(interests)) {
+            String[] split = interests.split(",");
+            Collections.addAll(tags, split);
+        }
+        return tags;
+    }
+
+    /**
+     * 获取擅长领域标签
+     */
+    public List<String> getSpecialtiesTags() {
+        List<String> tags = new ArrayList<String>();
+        if (!StringUtil.isNullOrEmpty(specialties)) {
+            String[] split = specialties.split(",");
+            Collections.addAll(tags, split);
+        }
+        return tags;
+    }
+
+    /**
+     * 获取愿意结识标签
+     */
+    public List<String> getWantFriendsTags() {
+        List<String> tags = new ArrayList<String>();
+        if (!StringUtil.isNullOrEmpty(wantFriends)) {
+            String[] split = wantFriends.split(",");
+            Collections.addAll(tags, split);
+        }
+        return tags;
+    }
+
+    /**
+     * 是否是信任好友
+     */
+    public boolean isTrustFriend() {
+        if (relationLevel != null
+                && relationLevel == VALUE_RELATION_LEVEL_TRUST) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 获取vip icon ID
+     *
+     * @return 身份图标资源id。如果没有对应身份，则返回-1.
+     */
+    public int getVipIconId() {
+        if (userType != null && userType == VALUE_TYPE_VIP) {
+            if (isLifelong != null && isLifelong == VALUE_TYPE_VIP_LIFE) {
+                return R.drawable.icon_goldlion;
+            } else {
+                if (zhislandType != null
+                        && zhislandType == VALUE_TYPE_VIP_GREEN) {
+                    return R.drawable.icon_greenlion;
+                } else if (zhislandType != null
+                        && zhislandType == VALUE_TYPE_VIP_BLUE) {
+                    return R.drawable.icon_eagle;
+                }
+            }
+        } else if (userType != null && userType == VALUE_TYPE_DING) {
+            return R.drawable.icon_bee;
+        } else if (userType != null && userType == VALUE_TYPE_HAIKE) {
+            return R.drawable.icon_dolphin;
+        }
+        return R.drawable.rank_transparent;
+    }
+
+    /**
+     * 获取vip icon ID
+     *
+     * @return 身份图标资源id。如果没有对应身份，则返回-1.
+     */
+    public int getVipIconWithTxtId() {
+        if (userType != null && userType == VALUE_TYPE_VIP) {
+            if (isLifelong != null && isLifelong == VALUE_TYPE_VIP_LIFE) {
+                return R.drawable.icon_goldlion_with_txt;
+            } else {
+                if (zhislandType != null
+                        && zhislandType == VALUE_TYPE_VIP_GREEN) {
+                    return R.drawable.icon_greenlion_with_txt;
+                } else if (zhislandType != null
+                        && zhislandType == VALUE_TYPE_VIP_BLUE) {
+                    return R.drawable.icon_eagle_with_txt;
+                }
+            }
+        } else if (userType != null && userType == VALUE_TYPE_DING) {
+            return R.drawable.icon_bee_with_txt;
+        } else if (userType != null && userType == VALUE_TYPE_HAIKE) {
+            return R.drawable.icon_dolphin_with_txt;
+        }
+        return R.drawable.rank_transparent;
+    }
+
+    public boolean isGoldVip(){
+        if(userType != null && userType == VALUE_TYPE_VIP){
+            if(isLifelong != null && isLifelong == VALUE_TYPE_VIP_LIFE){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isBlueVip() {
+        if (userType != null && userType == VALUE_TYPE_VIP) {
+            if (isLifelong != null && isLifelong == VALUE_TYPE_VIP_LIFE) {
+                return false;
+            } else {
+                if (zhislandType != null
+                        && zhislandType == VALUE_TYPE_VIP_BLUE) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 获取用户级别描述
+     */
+    public String getUserTypeDesc() {
+        if (userType != null && userType == VALUE_TYPE_VIP) {
+            if (isLifelong != null && isLifelong == VALUE_TYPE_VIP_LIFE) {
+                return "终身岛邻";
+            } else {
+                if (zhislandType != null
+                        && zhislandType == VALUE_TYPE_VIP_GREEN) {
+                    return "绿色岛邻";
+                } else if (zhislandType != null
+                        && zhislandType == VALUE_TYPE_VIP_BLUE) {
+                    return "蓝色岛邻";
+                }
+            }
+        } else if (userType != null && userType == VALUE_TYPE_DING) {
+            return "岛丁";
+        } else if (userType != null && userType == VALUE_TYPE_HAIKE) {
+            return "海客";
+        } else if (userType != null && (userType == VALUE_TYPE_YUZHUCE || userType == VALUE_TYPE_FANGKE)) {
+            return "访客";
+        }
+        return "";
+    }
+
+    /**
+     * 是否为岛亲
+     */
+    public boolean isVip() {
+        if (userType != null && userType == VALUE_TYPE_VIP) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 服务是否到期
+     */
+    public boolean isExpired() {
+        long timeNow = System.currentTimeMillis() / 1000l;
+        if (expireNextApproveTime != null && timeNow < expireNextApproveTime) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 是否成为过岛亲
+     */
+    public boolean isVipBefore() {
+        if (baseRank != null && baseRank == VALUE_TYPE_VIP) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 是否为海客
+     */
+    public boolean isHaiKe() {
+        if (userType != null && userType == VALUE_TYPE_HAIKE) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 是否为预注册用户
+     */
+    public boolean isYuZhuCe() {
+        if (userType != null && (userType == VALUE_TYPE_YUZHUCE || userType == VALUE_TYPE_FANGKE)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 是否为岛丁
+     */
+    public boolean isDaoDing() {
+        if (userType != null && userType == VALUE_TYPE_DING) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 是否是金火种用户
+     */
+    public boolean isGoldFire() {
+        if (goldFeed != null && goldFeed == User.VALUE_GOLD_FEED_YES) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 保存当前登录用户基本信息
+     */
+    public static void saveSelfInformation(LoginResponse content) {
+        PrefUtil.Instance().setToken(content.token);
+        User user = content.user;
+        saveSelfUserToPrefUtil(user);
+        DBMgr.getMgr().getUserDao().creatOrUpdateUserNotNull(user);
+    }
+
+    /**
+     * 保存当前User关键字段到PrefUtil
+     */
+    public static void saveSelfUserToPrefUtil(User user) {
+        if (user == null) {
+            return;
+        }
+        PrefUtil.Instance().setUserID(user.uid);
+        PrefUtil.Instance().setUserName(user.name);
+        PrefUtil.Instance().setUserAvatar(user.userAvatar);
+        PrefUtil.Instance().setUserType(user.userType);
+        PrefUtil.Instance().setUserCompany(user.userCompany);
+        PrefUtil.Instance().setUserPosition(user.userPosition);
+        PrefUtil.Instance().setUserMobile(user.userMobile);
+    }
+
+    /**
+     * 将PrefUtil 中存储的user字段拼接成User对象
+     */
+    public static User combinationUser() {
+        User user = new User();
+        user.uid = PrefUtil.Instance().getUserId();
+        user.name = PrefUtil.Instance().getUserName();
+        user.userAvatar = PrefUtil.Instance().getUserAvatar();
+        int userType = PrefUtil.Instance().getUserType();
+        if (userType < 0) {
+            user.userType = userType;
+        }
+        user.userCompany = PrefUtil.Instance().getUserCompany();
+        user.userPosition = PrefUtil.Instance().getUserPosition();
+        user.userPosition = PrefUtil.Instance().getUserMobile();
+        return user;
+    }
+
+    /**
+     * 通过json构造User，给各个变量赋值。所有数据库操作查询到User后应该首先执行该方法。
+     */
+    public static User makeEntityByJson(String jsonBody) {
+        User result = null;
+        if (!StringUtil.isNullOrEmpty(jsonBody)) {
+            try {
+                result = GsonHelper.GetCommonGson().fromJson(jsonBody, User.class);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 通过user实体生成该user的json串，所有数据库创建或更新User前应该执行该方法。
+     */
+    public static String makeJsonByEntity(User user) {
+        if (user != null) {
+            return GsonHelper.GetCommonGson().toJson(user);
+        }
+        return null;
+    }
+
+    /**
+     * 获取用户名字的SpannableString。根据用户type加上图标，根据是否为金火种，加上金火种图标。
+     */
+    public SpannableString getNameWithTypeGoldFire(Context context, boolean typeIconWithTxt) {
+        int margin = DensityUtil.dip2px(5);
+        String nameStr = name == null ? "" : name;
+        ImageSpan goldFireSpan = null;
+        ImageSpan typeSpan = null;
+        int drawableId = typeIconWithTxt ? getVipIconWithTxtId() : getVipIconId();
+        if (drawableId != -1) {
+            nameStr += "占";
+            Drawable typeDrawable = context.getResources().getDrawable(
+                    drawableId);
+            typeDrawable.setBounds(margin, 0, typeDrawable.getIntrinsicWidth()
+                    + margin, typeDrawable.getIntrinsicHeight());
+            typeSpan = new ImageSpan(typeDrawable, ImageSpan.ALIGN_BOTTOM);
+        }
+        if (isGoldFire()) {
+            nameStr += "占";
+            Drawable goldFireDrawable = context.getResources().getDrawable(
+                    R.drawable.icon_gold_fire);
+            goldFireDrawable.setBounds(margin, 0,
+                    goldFireDrawable.getIntrinsicWidth() + margin,
+                    goldFireDrawable.getIntrinsicHeight());
+            goldFireSpan = new ImageSpan(goldFireDrawable,
+                    ImageSpan.ALIGN_BOTTOM);
+        }
+        SpannableString ss = new SpannableString(nameStr);
+        if (goldFireSpan != null) {
+            ss.setSpan(goldFireSpan, ss.length() - 1, ss.length(),
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (typeSpan != null) {
+                ss.setSpan(typeSpan, ss.length() - 2, ss.length() - 1,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        } else {
+            if (typeSpan != null) {
+                ss.setSpan(typeSpan, ss.length() - 1, ss.length(),
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+        return ss;
+    }
+
+    /**
+     * 将用户的公司和职位拼接成一个字符串，格式： userCompany + " " + userPosition
+     */
+    public String combineCompanyAndPosition() {
+        String result = "";
+        if (!StringUtil.isNullOrEmpty(userCompany) && !StringUtil.isNullOrEmpty(userPosition)) {
+            result = userCompany + " " + userPosition;
+        } else {
+            if (!StringUtil.isNullOrEmpty(userCompany)) {
+                result = userCompany;
+            }
+            if (!StringUtil.isNullOrEmpty(userPosition)) {
+                result = userPosition;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 是否上传过通讯录
+     */
+    public boolean isUploadContacts() {
+        return constantUploadStatus == UPLOAD_CONTACT;
+    }
+}

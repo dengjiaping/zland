@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- common define start -->
+    <dimen name="app_line_height">0.7dp</dimen>
+    <dimen name="app_border_height">1dp</dimen>
+    <dimen name="app_divider_height">1dp</dimen>
+    <dimen name="app_corner_small">1dp</dimen>
+    <dimen name="app_corner_middle">3dp</dimen>
+    <dimen name="app_corner_large">5dp</dimen>
+    <dimen name="app_corner_largest">8dp</dimen>
+    <dimen name="app_interval">10dp</dimen>
+    
+    <dimen name="app_titlebar_height">48dp</dimen>
+    <dimen name="app_button_height">38dp</dimen>
+    <dimen name="app_button_height_44">44dp</dimen>
+    <dimen name="app_avatar_size">48dp</dimen>
+    <dimen name="app_avatar_list_size">48dp</dimen>
+    <!-- 标题 size -->
+    <dimen name="app_title_text_size">16sp</dimen>
+    <!-- 标题 左右按钮 size -->
+    <dimen name="app_title_btn_text_size">14sp</dimen>
+    <!-- common define end -->
+
+
+    <!-- all text size define -->
+    <dimen name="txt_10">10sp</dimen>
+    <dimen name="txt_12">12sp</dimen>
+    <dimen name="txt_14">14sp</dimen>
+    <dimen name="txt_16">16sp</dimen>
+    <dimen name="txt_18">18sp</dimen>
+    <dimen name="txt_20">20sp</dimen>
+    <dimen name="txt_22">22sp</dimen>
+    <!-- all text size define -->
+
+
+    <!-- <dimen name="chat_express_size">30dp</dimen> -->
+
+
+    <!-- Dimensions for contact letter tiles -->
+    
+    
+    
+    <!-- <item name="letter_to_tile_ratio" format="fraction" type="dimen">67%</item> -->
+    <item name="letter_to_tile_ratio" type="dimen">67%</item>
+
+    <dimen name="recording_width">180dp</dimen>
+    
+    <dimen name="tag_height">28dp</dimen>
+    <dimen name="card_tag_height">22dp</dimen>
+    
+    <!-- 活动现场模式 -->
+    <dimen name="event_scene_tab_bar_height">60dp</dimen>
+    <dimen name="event_scene_tab_bar_top_margin">80dp</dimen>
+    <dimen name="event_scene_card_top_margin">8dp</dimen>
+    <dimen name="event_scene_card_bottom_margin">110dp</dimen>
+    <!-- 活动现场模式 -->
+
+	<dimen name="card_horizontal_margin">15dp</dimen>
+	<dimen name="common_friend_width">35dp</dimen>
+
+    <dimen name="fresh_task_card_padding">25dp</dimen>
+    <dimen name="event_filter_padding">10dp</dimen>
+</resources>

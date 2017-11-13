@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg2"
+    android:clipChildren="false">
+
+    <TextView
+        android:id="@+id/tvApprovedReqNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="16dp"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_14"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvViewAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="21dp"
+        android:text="查看全部"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_10"
+        android:visibility="gone" />
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/tvViewAll"
+        android:layout_marginBottom="26dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:clipChildren="false"
+        android:visibility="gone"></android.support.v4.view.ViewPager>
+
+    <RelativeLayout
+        android:id="@+id/rlApproveable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewPager"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvApproveable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:text="等待成为海客的好友"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_14" />
+
+
+        <LinearLayout
+            android:id="@+id/laySearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/search_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="搜索"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_12"
+
+                />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

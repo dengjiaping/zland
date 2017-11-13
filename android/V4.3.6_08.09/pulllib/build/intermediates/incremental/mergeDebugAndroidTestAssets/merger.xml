@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="debug"><source path="/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/assets"/></dataSet><dataSet config="main"><source path="/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/src/androidTest/assets"/><source path="/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/generated/assets/shaders/androidTest/debug"/></dataSet></merger>

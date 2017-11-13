@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:background="@drawable/sel_bg_btn_white"
+        android:id="@+id/popup_text"
+        android:layout_width="fill_parent"
+        android:layout_height="45.0dip"
+        android:gravity="center"
+        android:textColor="@color/txt_blue"
+        android:textSize="@dimen/txt_18" />
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rect_bwhite_clargest"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:gravity="center"
+        android:text="邀请须知"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_18" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:background="@color/color_div" >
+    </View>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:layout_marginTop="27dp"
+        android:src="@drawable/contact_invitation_information_img" />
+
+    <TextView
+        android:id="@+id/tvInviteContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.2"
+        android:maxLines="4"
+        android:scrollbars = "vertical"
+        android:text="我们本着坚持传递信任的初心，邀请身边可靠的、并且符合岛上用户标准的好友，合理使用正和岛邀请权。"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_18" />
+
+    <TextView
+        android:id="@+id/tvImKnow"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/sel_bg_btn_bgreen"
+        android:gravity="center"
+        android:text="我知道了"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_18" />
+
+</LinearLayout>

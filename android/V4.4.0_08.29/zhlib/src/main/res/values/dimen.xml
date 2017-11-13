@@ -1,0 +1,8 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <dimen name="title_height">48dp</dimen>
+    <dimen name="shrink_move_size">20dp</dimen>
+    
+    <item name="fling_divider" type="integer">5</item>
+
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#B2000000"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.5"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:text="批准须知"
+            android:textColor="@color/color_dc_p"
+            android:textSize="@dimen/txt_22" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:lineSpacingMultiplier="1.1"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="40dp"
+            android:text="千金买宅，万金买邻。正和岛是一个信任传递的平台，邀请您身边真诚靠谱、学习奋进的企业家、创业者朋友，彼此链接加持。有限邀请名额，选择最对的朋友。"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_18" />
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:padding="15dp"
+            android:src="@drawable/sel_btn_close_white" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

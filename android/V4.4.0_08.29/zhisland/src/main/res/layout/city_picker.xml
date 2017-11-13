@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	style="@style/RootBgWhite"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvCityPickerNote"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/btnCityOk"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_16" />
+
+    <View
+        android:id="@+id/diviler"
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/tvCityPickerNote"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/color_div" />
+
+    <com.zhisland.android.blog.common.view.CityPicker
+        android:id="@+id/startCityPicker"
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:layout_below="@id/diviler"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:layout_alignBaseline="@id/startCityPicker"
+        android:layout_below="@id/diviler"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_pick_cover" />
+
+</RelativeLayout>

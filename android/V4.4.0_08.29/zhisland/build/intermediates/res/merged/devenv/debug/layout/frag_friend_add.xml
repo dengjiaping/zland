@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="他们是你已认识的好友吗"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_22"/>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="你的通讯录有0位联系人已经登岛"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/lvData"
+            android:divider="@drawable/line_divider_all"
+            android:dividerHeight="@dimen/app_divider_height"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:visibility="gone"
+            />
+
+        <ImageView
+            android:id="@+id/ivMask"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/task_img_mask"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/llEmptyView"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/register_myfirends_img_finding"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="抱歉，没有找到你可能认识的人"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- 代码中计算高度，高度为屏幕的 1/3 -->
+    <LinearLayout
+        android:id="@+id/llBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvBottomBtn"
+            style="@style/LOGIN_BUTTON"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:text="全部加为好友"/>
+
+        <TextView
+            android:id="@+id/tvJump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="15dp"
+            android:padding="5dp"
+            android:text="跳过"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_16"/>
+    </LinearLayout>
+</LinearLayout>

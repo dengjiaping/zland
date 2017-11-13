@@ -1,0 +1,260 @@
+package com.zhisland.android.blog.im.eb;
+
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Handler;
+
+import com.beem.project.beem.service.Contact;
+import com.beem.project.beem.service.pcklistener.FriendRelationJson;
+import com.zhisland.android.blog.aa.controller.ActGuide;
+import com.zhisland.android.blog.aa.controller.SplashActivity;
+import com.zhisland.android.blog.aa.controller.ActRegisterAndLogin;
+import com.zhisland.android.blog.common.app.HomeUtil;
+import com.zhisland.android.blog.common.app.PrefUtil;
+import com.zhisland.android.blog.common.app.TabHome;
+import com.zhisland.android.blog.common.app.ZhislandApplication;
+import com.zhisland.android.blog.common.dto.User;
+import com.zhisland.android.blog.common.eb.EBXGPush;
+import com.zhisland.android.blog.common.push.NotifyTypeConstants;
+import com.zhisland.android.blog.common.util.ZHNotifyManager;
+import com.zhisland.android.blog.contacts.api.TaskFetchInviteListByUid;
+import com.zhisland.android.blog.contacts.api.TaskGetFriendListByUid;
+import com.zhisland.android.blog.contacts.eb.EBHasNewInvite;
+import com.zhisland.android.blog.tabhome.eb.EBTabHome;
+import com.zhisland.im.data.DBMgr;
+import com.zhisland.im.data.IMContact;
+import com.zhisland.im.event.EventConnection;
+import com.zhisland.im.event.EventMsg;
+import com.zhisland.im.event.EventRelation;
+import com.zhisland.lib.async.http.task.TaskCallback;
+import com.zhisland.lib.bitmap.ImageWorkFactory;
+import com.zhisland.lib.util.ToastUtil;
+
+import java.util.HashMap;
+import java.util.List;
+
+import de.greenrobot.event.EventBus;
+
+/**
+ * 负责监听XMPP的各种eventbus事件,通常在Application中管理它
+ *
+ * @author arthur
+ *
+ */
+public class IMEventHandler {
+
+	private Context context;
+
+	private HashMap<Long, InviteNotify> inviteUids = new HashMap<Long, InviteNotify>();
+
+	Handler handle;
+
+	public IMEventHandler(Context context) {
+		this.context = context;
+		handle = new Handler();
+	}
+
+	/**
+	 * 监听xmpp长链接的状态通知
+	 *
+	 * @param event
+	 */
+	public void onEventMainThread(EventConnection event) {
+		switch (event.action) {
+		case EventConnection.ACTION_CONFLICT: {
+			// 账号在另外一个同resource设备登录了
+			// 登出设备
+			Activity latestActivity = ZhislandApplication.getCurrentActivity();
+
+			if (latestActivity == null) {
+				PrefUtil.Instance().setUserID(0);
+				return;
+			}
+
+			if ((latestActivity instanceof SplashActivity)
+                    || (latestActivity instanceof ActGuide)
+					|| (latestActivity instanceof ActRegisterAndLogin))
+				break;
+
+			ToastUtil.showShort("账号已在别处登录，请注意账号安全");
+			HomeUtil.logout();
+			break;
+		}
+		case EventConnection.ACTION_CONNECTED: {
+			// TODO
+		}
+		}
+	}
+
+	/**
+	 * 监听IM的关系通知事件
+	 *
+	 * @param event
+	 */
+	public void onEventMainThread(final EventRelation event) {
+
+		switch (event.action) {
+		case EventRelation.RECEIVE_ACCEPTED:
+			notifyIMNewFriend(getRelationTitle(event.name, event.action),
+					event.msg, event.jid);
+			handle.removeCallbacks(syncFriendListRunnable);
+			handle.postDelayed(syncFriendListRunnable, 1000);
+			break;
+		case EventRelation.RECEIVE_DELETE:
+			handle.removeCallbacks(syncFriendListRunnable);
+			handle.postDelayed(syncFriendListRunnable, 1000);
+			break;
+		case EventRelation.RECEIVE_INVITE:
+			handle.removeCallbacks(fetchInviteListRunnable);
+			handle.postDelayed(fetchInviteListRunnable, 500);
+			inviteUids.put(IMContact.parseUid(event.jid), new InviteNotify(
+					getRelationTitle(event.name, event.action), event.msg));
+			break;
+		}
+	}
+
+	/**
+	 * 信鸽Im相关
+	 *
+	 * @param event
+	 */
+	public void onEventMainThread(final EBXGPush eb) {
+		if (eb.type == NotifyTypeConstants.IMRelation) {
+			receiveIMRelation(eb);
+		} else if (eb.type == NotifyTypeConstants.IMMessage) {
+			String contactJid = IMContact.buildJid(eb.uid);
+			Contact c = DBMgr.getHelper().getContactDao()
+					.fetchContact(contactJid);
+			if (c == null) {
+				return;
+			}
+			String contactName = c.getName();
+			Bitmap avatar = ImageWorkFactory.getCircleFetcher().getBitmap(
+					c.getAvatarId());
+			PendingIntent notifIntent = ZHNotifyManager.getInstance()
+					.createChatIntent(context, c.getJID());
+			ZHNotifyManager.getInstance().notify(contactName, eb.msg, avatar,
+					1, notifIntent, ZHNotifyManager.NOTIFY_ID_IM_MSG);
+		}
+	}
+
+	private void receiveIMRelation(final EBXGPush eb) {
+		if (eb.ask == FriendRelationJson.ASK_ACCEPTED) {
+			notifyIMNewFriend(eb.title, eb.msg, IMContact.buildJid(eb.uid));
+		} else if (eb.ask == FriendRelationJson.ASK_REQUEST) {
+			handle.removeCallbacks(fetchInviteListRunnable);
+			handle.postDelayed(fetchInviteListRunnable, 500);
+			inviteUids.put(eb.uid, new InviteNotify(eb.title, eb.msg));
+		}
+	}
+
+	private Runnable fetchInviteListRunnable = new Runnable() {
+
+		@Override
+		public void run() {
+			TaskFetchInviteListByUid task = new TaskFetchInviteListByUid(
+					context, new TaskCallback<List<User>>() {
+
+						@Override
+						public void onSuccess(List<User> content) {
+							if (content == null) {
+								return;
+							}
+							for (User user : content) {
+								InviteNotify inviteNotify = inviteUids
+										.get(user.uid);
+								inviteUids.remove(user.uid);
+								if (inviteNotify != null) {
+									notifyIMInvite(inviteNotify.title,
+											inviteNotify.msg);
+									EventBus.getDefault().post(
+											new EBHasNewInvite());
+                                    EventBus.getDefault().post(
+                                            new EBTabHome(EBTabHome.TYPE_TAB_RED_DOT, TabHome.TAB_ID_Find));
+									break;
+								}
+							}
+						}
+
+						@Override
+						public void onFailure(Throwable error) {
+
+						}
+					});
+			task.execute();
+		}
+	};
+
+	private Runnable syncFriendListRunnable = new Runnable() {
+
+		@Override
+		public void run() {
+			TaskGetFriendListByUid task1 = new TaskGetFriendListByUid(
+					ZhislandApplication.APP_CONTEXT, null);
+			task1.execute();
+		}
+	};
+
+	private void notifyIMInvite(String title, String msg) {
+		PendingIntent notifIntent = ZHNotifyManager.getInstance()
+				.createAddFriendIntent();
+		ZHNotifyManager.getInstance().notify(title, msg, notifIntent,
+				ZHNotifyManager.NOTIFY_ID_IM_RELATION);
+	}
+
+	private void notifyIMNewFriend(String title, String msg, String jid) {
+		PendingIntent notifIntent = ZHNotifyManager.getInstance()
+				.createChatIntent(context, jid);
+		ZHNotifyManager.getInstance().notify(title, msg, notifIntent,
+				ZHNotifyManager.NOTIFY_ID_IM_MSG);
+	}
+
+	private String getRelationTitle(String name, int ask) {
+		String title = null;
+		switch (ask) {
+		case FriendRelationJson.ASK_ACCEPTED: {
+			title = name + " 接受了你的好友请求";
+			break;
+		}
+		case FriendRelationJson.ASK_REQUEST: {
+			title = name + " 邀请你成为好友";
+			break;
+		}
+		}
+		return title;
+	}
+
+	/**
+	 * 监听处理IM的新消息，在收到这个消息的时候，消息本身已经存储到本地数据库
+	 *
+	 * @param event
+	 */
+	public void onEventMainThread(EventMsg event) {
+		String contactJid = event.getContact().getJID();
+		Contact c = DBMgr.getHelper().getContactDao().fetchContact(contactJid);
+		if (c == null) {
+			return;
+		}
+		String contactName = c.getName();
+		Bitmap avatar = ImageWorkFactory.getCircleFetcher().getBitmap(
+				c.getAvatarId());
+		PendingIntent notifIntent = ZHNotifyManager.getInstance()
+				.createChatIntent(context, c.getJID());
+		ZHNotifyManager.getInstance().notify(contactName, event.getMsgBody(),
+				avatar, event.getUnreadCount(), notifIntent,
+				ZHNotifyManager.NOTIFY_ID_IM_MSG);
+	}
+
+	private class InviteNotify {
+		String title;
+		String msg;
+
+		public InviteNotify(String title, String msg) {
+			this.title = title;
+			this.msg = msg;
+		}
+
+	}
+}

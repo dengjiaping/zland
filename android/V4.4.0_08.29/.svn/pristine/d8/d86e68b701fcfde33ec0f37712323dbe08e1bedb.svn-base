@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/RootBg1" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/color_bg2" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:background="@color/color_div" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp" >
+
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:paddingRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/ivLogo"
+                android:layout_toRightOf="@id/ivLogo"
+                android:gravity="center_vertical"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_20" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvPosition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="15dp"
+                android:minHeight="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tvName"
+                android:layout_toRightOf="@id/ivLogo"
+                android:gravity="center_vertical"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_18" >
+            </TextView>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:background="@color/color_div" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/color_bg2" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:background="@color/color_div" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp" >
+
+            <TextView
+                android:id="@+id/tvCityTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:text="所在城市"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_18" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/tvCityTag"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_18" >
+            </TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_line_height"
+                android:layout_below="@id/tvCity"
+                android:background="@color/color_div" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp" >
+
+            <TextView
+                android:id="@+id/tvIndustryTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:text="所属行业"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_18" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvIndustry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/tvIndustryTag"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_18" >
+            </TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_line_height"
+                android:layout_below="@id/tvIndustry"
+                android:background="@color/color_div" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp" >
+
+            <TextView
+                android:id="@+id/tvWebsiteTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:text="公司官网"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_18" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvWebsite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/tvWebsiteTag"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:text="www.baidu.com"
+                android:textColor="@color/color_dc"
+                android:textSize="@dimen/txt_18" >
+            </TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_line_height"
+                android:layout_below="@id/tvWebsite"
+                android:background="@color/color_div" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp" >
+
+            <TextView
+                android:id="@+id/tvStockTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:text="股票代码"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_18" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvStock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/tvStockTag"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_18" >
+            </TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_line_height"
+                android:layout_below="@id/tvStock"
+                android:background="@color/color_div" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="20dp"
+            android:paddingTop="15dp"
+            android:text="公司简介"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_18" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:lineSpacingMultiplier="1.1"
+            android:paddingBottom="20dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_18" >
+        </TextView>
+    </LinearLayout>
+
+</ScrollView>

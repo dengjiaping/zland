@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zhisland.android.blog.debug"
+    android:versionCode="34"
+    android:versionName="4.3.7" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="22" />
+
+    <!-- xmpp权限声明 -->
+    <permission
+        android:name="com.zhisland.im.BEEM_SERVICE"
+        android:description="@string/BeemServiceDescription"
+        android:label="BeemService"
+        android:permissionGroup="android.permission-group.NETWORK"
+        android:protectionLevel="signature" />
+
+    <uses-permission
+        android:name="android.permission.ACCESS_WIFI_STATE"
+        android:required="true" />
+    <uses-permission
+        android:name="android.permission.CHANGE_WIFI_STATE"
+        android:required="true" />
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        android:required="true" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
+    <!-- 启用xmpp权限 -->
+    <uses-permission android:name="com.zhisland.im.BEEM_SERVICE" />
+
+    <!-- 个推SDK所需权限 开始 -->
+    <!-- ibeancon 需要蓝牙权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 浮动通知权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 自定义权限 -->
+    <uses-permission android:name="getui.permission.GetuiService.com.zhisland.android.blog" />
+
+    <permission
+        android:name="getui.permission.GetuiService.com.zhisland.android.blog"
+        android:protectionLevel="normal" >
+    </permission>
+
+    <!-- 个推SDK所需权限 结束 -->
+    <application
+        android:name="com.zhisland.android.blog.common.app.ZhislandApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/Theme" >
+
+        <!-- 定位配置开始 -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="@string/map_release" />
+        <!-- 定位配置结束 -->
+
+
+        <!-- 友盟配置开始 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="@string/umeng_key" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="zhfinder" >
+        </meta-data>
+
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <!-- 友盟配置结束 -->
+
+
+        <!-- share sdk开始 -->
+        <activity
+            android:name="cn.sharesdk.framework.ShareSDKUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+            <intent-filter>
+                <data android:scheme="tencent100371282" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 微信分享回调 -->
+        <activity
+            android:name="com.zhisland.android.blog.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="@string/wechat_release" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.wxapi.WXPayEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="@string/wechat_release" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="com.zhisland.android.blog.wxapi.AppRegister" >
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+
+        <!-- share sdk结束 -->
+
+
+        <!-- ======================= -->
+        <!-- xmpp服务,以及activity -->
+        <service
+            android:name="com.beem.project.beem.BeemService"
+            android:enabled="true"
+            android:label="Beem Service"
+            android:permission="com.zhisland.people.BEEM_SERVICE" >
+            <intent-filter>
+                <action android:name="com.zhisland.people.BeemService" >
+                </action>
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.zhisland.android.blog.im.controller.ActChat"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.zhisland.android.blog.common.base.CommonFragActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.profile.controller.detail.ActProfileDetail"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.aa.controller.SplashActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.common.app.TabHome"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.zhisland.lib.image.viewer.FreeImageViewer"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zhisland.lib.image.MultiImgPickerActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- download -->
+        <activity
+            android:name="com.zhisland.android.blog.common.upapp.ActUpdateDialog"
+            android:configChanges="orientation"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <!-- event activity start -->
+        <activity
+            android:name="com.zhisland.android.blog.event.controller.ActEventDetail"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.event.controller.ActSignUpEvents"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.event.controller.ActEventCreate"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/SampleTheme.Light"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.event.controller.ActEventCancelReasion"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.profile.controller.ActProfileIntroduction"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.profile.controller.ActSelTags"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.contacts.controller.ActCard"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.setting.controller.ActModifyPwd"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.info.view.impl.ActInfoDetail"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.info.view.impl.ActReportType"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.profile.controller.position.ActUserCompany"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.profile.controller.comment.ActUserCommentList"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.profile.controller.comment.ActWriteUserComment"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.profile.controller.position.ActCompanyDetail"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.profile.controller.drip.ActUserDripList"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.aa.controller.ActRegisterAndLogin"
+            android:configChanges="orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.aa.controller.ActGuide"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.contacts.controller.ActInviteFriend"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zhisland.android.blog.contacts.controller.ActGotoInvite"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <!-- event activity end -->
+
+
+        <!-- find activity start -->
+        <activity
+            android:name="com.zhisland.android.blog.find.controller.ActSearch"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.find.controller.ActContactFriend"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.find.controller.ActAllBoss"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.find.controller.ActAllRes"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.zhisland.android.blog.common.push.PushDispatchActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <!-- find activity end -->
+
+
+        <!-- ======================================== -->
+        <!-- ============uri manager start=========== -->
+        <activity
+            android:name="com.zhisland.android.blog.common.uri.UriBrowseActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" >
+                </action>
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="com.zhisland"
+                    android:scheme="zhisland" >
+                </data>
+            </intent-filter>
+        </activity>
+        <!-- ============uri manager end=========== -->
+        <!-- ======================================== -->
+
+
+        <!-- ============================================================= -->
+        <!-- webview activity start -->
+        <activity
+            android:name="com.zhisland.android.blog.common.webview.FragWebViewActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- ========================= -->
+
+
+        <!-- ================================================= -->
+        <!-- 通用选择器 -->
+        <activity
+            android:name="com.zhisland.android.blog.common.view.select.FragSelectActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+
+        <!-- ========================= -->
+
+
+        <!-- 下载服务 -->
+        <service android:name="com.zhisland.lib.load.LoadService" />
+
+        <!-- =============================================================================================================== -->
+        <!-- ======================================以下是第三方配置============================================================ -->
+
+
+        <!-- #####################个推开始#################### -->
+        <!-- 配置的第三方参数属性 -->
+        <meta-data
+            android:name="PUSH_APPID"
+            android:value="@string/push_app_id" />
+        <meta-data
+            android:name="PUSH_APPKEY"
+            android:value="@string/push_app_key" />
+        <meta-data
+            android:name="PUSH_APPSECRET"
+            android:value="@string/push_app_secret" />
+        <!-- 配置第三方Receiver -->
+        <receiver
+            android:name="com.zhisland.android.blog.common.push.MessageReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.SKD0wHTryd8zHOYuo98S9" />
+            </intent-filter>
+        </receiver>
+        <!-- 配置SDK核心服务 -->
+        <service
+            android:name="com.igexin.sdk.PushService"
+            android:exported="true"
+            android:label="NotificationCenter"
+            android:process=":pushservice" />
+        <service
+            android:name="com.igexin.sdk.PushServiceUser"
+            android:exported="true"
+            android:label="NotificationCenterUser" />
+
+        <receiver android:name="com.igexin.sdk.PushReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="com.igexin.sdk.action.refreshls" />
+                <!-- 以下三项为可选的action声明，可大大提高service存活率和消息到达速度 -->
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.igexin.sdk.PushManagerReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.pushmanager" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.igexin.download.DownloadService"
+            android:process=":pushservice" />
+
+        <receiver
+            android:name="com.igexin.getuiext.service.PayloadReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4" />
+                <action android:name="com.igexin.sdk.action.SKD0wHTryd8zHOYuo98S9" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.igexin.getuiext.service.GetuiExtService"
+            android:process=":pushservice" />
+        <!-- #####################个推结束#################### -->
+
+    </application>
+
+</manifest>

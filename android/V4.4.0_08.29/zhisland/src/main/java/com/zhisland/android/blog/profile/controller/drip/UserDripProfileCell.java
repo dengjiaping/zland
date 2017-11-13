@@ -1,0 +1,123 @@
+package com.zhisland.android.blog.profile.controller.drip;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.common.view.flowlayout.TagAdapter;
+import com.zhisland.android.blog.common.view.flowlayout.TagFlowLayout;
+import com.zhisland.android.blog.find.controller.ActAllBoss;
+import com.zhisland.android.blog.profile.dto.CustomDict;
+import com.zhisland.lib.util.DensityUtil;
+import com.zhisland.lib.util.StringUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
+/**
+ * 个人页点滴 cell
+ */
+public class UserDripProfileCell {
+
+    int[] bgResId = new int[]{R.drawable.bg_drip_item_one, R.drawable.bg_drip_item_two, R.drawable.bg_drip_item_three, R.drawable.bg_drip_item_four, R.drawable.bg_drip_item_five};
+
+    private Context context;
+
+    private int index = 0;
+
+    @InjectView(R.id.tvName)
+    TextView tvName;
+
+    @InjectView(R.id.tvEmpty)
+    TextView tvEmpty;
+
+    @InjectView(R.id.tflDrip)
+    TagFlowLayout tflDrip;
+
+    CallBack callBack;
+
+    private List<String> tags = new ArrayList<String>();
+
+    public UserDripProfileCell(View view, Context context, CallBack callBack) {
+        this.context = context;
+        this.callBack = callBack;
+        ButterKnife.inject(this, view);
+        tflDrip.setAdapter(selectAdapter);
+    }
+
+    public void fill(CustomDict dict, int index) {
+        this.index = index;
+        if (dict != null) {
+            if (!StringUtil.isNullOrEmpty(dict.name)) {
+                tvName.setText(dict.name);
+            } else {
+                tvName.setVisibility(View.GONE);
+            }
+            tags.clear();
+            if (!StringUtil.isNullOrEmpty(dict.value)) {
+                tflDrip.setVisibility(View.VISIBLE);
+                tvEmpty.setVisibility(View.GONE);
+                String[] values = dict.value.split(",");
+                if (values != null && values.length > 0) {
+                    for (int i = 0; i < values.length; i++) {
+                        tags.add(values[i]);
+                    }
+                }
+            } else {
+                tflDrip.setVisibility(View.GONE);
+                tvEmpty.setVisibility(View.VISIBLE);
+                tvEmpty.setText("请输入您的" + dict.name);
+            }
+            selectAdapter.notifyDataChanged();
+        }
+    }
+
+    TagAdapter selectAdapter = new TagAdapter<String>(tags) {
+        @Override
+        public View getView(
+                com.zhisland.android.blog.common.view.flowlayout.FlowLayout parent,
+                int position, final String tag) {
+            TextView textView = (TextView) LayoutInflater.from(context)
+                    .inflate(R.layout.tag_text, null);
+            ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(
+                    ViewGroup.MarginLayoutParams.WRAP_CONTENT,
+                    ViewGroup.MarginLayoutParams.WRAP_CONTENT);
+            textView.setTextColor(context.getResources().getColor(
+                    R.color.white));
+            DensityUtil.setTextSize(textView, R.dimen.txt_14);
+            textView.setBackgroundResource(bgResId[index % bgResId.length]);
+            int dpi10 = DensityUtil.dip2px(8);
+            int dpi5 = DensityUtil.dip2px(2);
+            params.rightMargin = dpi10;
+            params.topMargin = dpi10;
+            textView.setPadding(dpi10, dpi5, dpi10, dpi5);
+            textView.setLayoutParams(params);
+            textView.setText(tag);
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ActAllBoss.invoke(context, null, tag);
+                }
+            });
+            return textView;
+        }
+    };
+
+    @OnClick(R.id.tvEmpty)
+    void onEmptyClick() {
+        if (callBack != null) {
+            callBack.onEmptyClick();
+        }
+    }
+
+    public interface CallBack {
+        public void onEmptyClick();
+    }
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	style="@style/RootBgWhite" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <TextView
+            style="@style/LOGIN_TITLE"
+            android:layout_marginTop="20dp"
+            android:text="您将收到短信验证码" />
+
+        <TextView
+            android:id="@+id/tvVerfiyDesc"
+            style="@style/LOGIN_DESC"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:text="请填写短信发送的4位数字验证码" />
+
+        <TextView
+            android:id="@+id/tvErrorPrompt"
+            style="@style/LOGIN_ERROR_PROMPT"
+            android:layout_marginBottom="10dp"
+            android:text="验证码输入错误" />
+
+        <EditText
+            android:id="@+id/customEditText"
+            style="@style/LOGIN_EDIT_TEXT"
+            android:hint="请输入验证码"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btnVerfiyCodeNext"
+            style="@style/LOGIN_BUTTON"
+            android:layout_marginTop="30dp"
+            android:text="下一步" />
+
+        <TextView
+            android:id="@+id/tvSendVerfiyCode"
+            style="@style/LOGIN_BOTTOM_TEXT"
+            android:layout_marginTop="15dp"
+            android:text="重新发送 >" />
+    </LinearLayout>
+
+</ScrollView>

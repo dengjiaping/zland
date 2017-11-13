@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rect_bbg2_clarge"
+        android:paddingLeft="19dp">
+
+        <ImageView
+            android:id="@+id/ivPositionType"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="14dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/profile_img_business_list" />
+
+        <ImageView
+            android:id="@+id/ivPositionEdit"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/sel_btn_pencil"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ivPositionIdentified"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="4dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/img_renzheng_haike"></ImageView>
+
+        <TextView
+            android:id="@+id/tvPositionName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="14dp"
+            android:layout_toLeftOf="@id/ivPositionIdentified"
+            android:layout_toRightOf="@id/ivPositionType"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/tvPositionPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPositionName"
+            android:layout_toLeftOf="@id/ivPositionIdentified"
+            android:layout_toRightOf="@id/ivPositionType"
+            android:ellipsize="end"
+            android:paddingBottom="10dp"
+            android:paddingRight="64dp"
+            android:paddingTop="2dp"
+            android:singleLine="true"
+            android:text="创始人CEO"
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/txt_14" />
+
+        <TextView
+            android:id="@+id/tvPositionDefault"
+            android:layout_width="60dp"
+            android:layout_height="18dp"
+            android:layout_alignRight="@id/tvPositionPosition"
+            android:layout_below="@id/tvPositionName"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/rect_sdc_clarge"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="默认身份"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_12" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

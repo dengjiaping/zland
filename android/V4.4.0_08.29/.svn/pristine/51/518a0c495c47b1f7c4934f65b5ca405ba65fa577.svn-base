@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/RootBgWhite"  >
+
+    <!-- 缓存现场模式的大图，不做view展示 -->
+
+    <ImageView
+        android:id="@+id/ivSceneBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:id="@+id/scene_tab_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/event_scene_tab_bar_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/event_scene_tab_bar_top_margin"
+        android:background="@color/transparent"
+        android:orientation="horizontal" >
+
+        <!-- 现场约 -->
+
+        <RelativeLayout
+            android:id="@+id/rlSceneYue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <ImageView
+                android:id="@+id/ivSceneYue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/sel_bg_online_match" />
+
+            <TextView
+                android:id="@+id/tvSceneYue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivSceneYue"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="   现场约   "
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_12" />
+        </RelativeLayout>
+
+        <!-- 正在约您见面 -->
+
+        <RelativeLayout
+            android:id="@+id/rlMeetYou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/rlSceneYue"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <ImageView
+                android:id="@+id/ivMeetYou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/sel_bg_online_say_hi" />
+
+            <TextView
+                android:id="@+id/tvMeetYou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivMeetYou"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:singleLine="true"
+                android:text="正在约"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_12"
+                android:visibility="invisible" />
+
+            <include
+                android:id="@+id/tvSceneCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                layout="@layout/tv_red_bg_num"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <!-- 活动公告 -->
+
+        <RelativeLayout
+            android:id="@+id/rlSceneNotify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/rlMeetYou"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <ImageView
+                android:id="@+id/ivSceneNotify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/sel_bg_online_notification" />
+
+            <TextView
+                android:id="@+id/tvSceneNotify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivSceneNotify"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="  活动公告  "
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_12"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/ivNewNotify"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginLeft="38dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/red_dot"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/flContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/scene_tab_bar"
+        android:layout_marginTop="@dimen/event_scene_card_top_margin" >
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/ivSceneclose"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="16dp"
+        android:src="@drawable/sel_btn_close_gray" />
+
+</RelativeLayout>

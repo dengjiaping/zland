@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llRoot"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rect_bwhite_clargest"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="恭喜你获得批准海客的特权"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_20" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:lineSpacingMultiplier="1.1"
+        android:padding="6dp"
+        android:text="经你批准且符合正和岛海客要求的好友，将会被授予海客标识，并享有相应权益"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/profile_img_diamond" />
+
+    <TextView
+        android:id="@+id/tvOk"
+        style="@style/LOGIN_BUTTON"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="32dp"
+        android:text="我知道了" />
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><resources>
+
+    <!-- IM chat color -->
+    <color name="chat_row_focus">#f0dbe3e5</color>
+    <color name="chat_toolbar">#ff3e4345</color>
+    <color name="chat_toolbar_select">#ff35393b</color>
+    
+    
+    
+    
+    
+    <color name="chat_row_right_divider">#ffc8c7cc</color>
+    
+    
+
+</resources>

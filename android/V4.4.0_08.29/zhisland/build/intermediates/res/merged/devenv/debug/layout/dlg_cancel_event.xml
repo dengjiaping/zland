@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rect_bwhite_clargest"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="14dp"
+        android:paddingTop="15dp"
+        android:text="确认取消报名？"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_18" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_divider_height"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/color_div" />
+
+    <TextView
+        android:id="@+id/tvCETime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginTop="14dp"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14" />
+
+    <TextView
+        android:id="@+id/tvCETitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginTop="13dp"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/tvCEPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:textColor="@color/color_f1"
+        android:textSize="28sp" />
+
+    <View
+        android:id="@+id/ceViewLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_divider_height"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/color_div" />
+
+    <TextView
+        android:id="@+id/tvCEPriceDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginTop="14dp"
+        android:text="如果您已支付，我们将尽快退回至您的付款账户"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_12" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_marginTop="15dp"
+        android:background="@color/color_div" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvDlgCancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="不取消"
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/txt_18" />
+
+        <View
+            android:layout_width="@dimen/app_line_height"
+            android:layout_height="match_parent"
+            android:background="@color/color_div" />
+
+        <TextView
+            android:id="@+id/tvDlgConfirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="取消报名"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_18" />
+    </LinearLayout>
+
+</LinearLayout>

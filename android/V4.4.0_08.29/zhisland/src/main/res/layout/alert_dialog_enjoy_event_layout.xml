@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="340dp"
+    android:layout_marginRight="35dp"
+    android:layout_marginLeft="35dp"
+    android:background="@drawable/rect_bwhite_clargest"
+    >
+
+      <ImageView
+          android:id="@+id/iv_enjoy_event_icon"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="48dp"
+          android:src="@drawable/enjoy_event_finish_icon"
+          android:scaleType="center"
+          android:layout_centerHorizontal="true"
+          />
+
+       <TextView
+           android:id="@+id/tv_thanks_tip"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="感谢您的支持!"
+           android:textColor="@color/color_f1"
+           android:textSize="16sp"
+           android:layout_below="@id/iv_enjoy_event_icon"
+           android:layout_marginTop="15dp"
+           android:layout_centerHorizontal="true"
+           />
+
+    <TextView
+        android:id="@+id/tv_content_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我们将记录您的喜好，并及时把最新相关活动推荐给您"
+        android:textColor="@color/color_f3"
+        android:textSize="16sp"
+        android:layout_below="@id/tv_thanks_tip"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="知道了"
+        android:textColor="@color/letter_tile_font_color"
+        android:textSize="16sp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="25dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="@drawable/sel_bg_btn_bgreen"
+        />
+
+
+</RelativeLayout>

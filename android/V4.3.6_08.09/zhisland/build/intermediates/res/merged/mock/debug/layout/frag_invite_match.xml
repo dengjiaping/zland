@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/RootBgWhite"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTotalCount"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/color_bg2"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_14"
+        android:visibility="gone"/>
+
+    <FrameLayout
+        android:id="@+id/flContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvComplete"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:background="@drawable/rect_bwhite_sdc_clarge"
+            android:layout_height="@dimen/app_button_height"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:gravity="center"
+            android:text="完成"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_16"
+            />
+    </LinearLayout>
+
+</LinearLayout>

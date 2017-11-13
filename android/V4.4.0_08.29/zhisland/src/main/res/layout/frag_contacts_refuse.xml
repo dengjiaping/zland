@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="35dp"
+    android:paddingRight="35dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/icon_contacts_refuse"/>
+
+    <TextView
+        android:id="@+id/tvCRTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_22"/>
+
+    <TextView
+        android:id="@+id/tvCRDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_18"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvOpenContactsPermission"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_button_height"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rect_bwhite_sdc_cmiddle"
+        android:gravity="center"
+        android:text="去设置打开授权"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_16"/>
+
+    <TextView
+        android:id="@+id/tvInputPhone"
+        style="@style/LOGIN_BUTTON"
+        android:layout_marginTop="15dp"
+        android:text="手动输入号码邀请"
+        android:visibility="gone"
+        />
+
+</LinearLayout>

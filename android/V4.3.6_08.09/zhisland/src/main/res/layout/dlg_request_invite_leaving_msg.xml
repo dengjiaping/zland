@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/rect_bwhite_clargest"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:paddingBottom="24dp"
+              android:paddingLeft="16dp"
+              android:paddingRight="16dp"
+              android:paddingTop="24dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.zhisland.android.blog.common.view.AvatarView
+            android:id="@+id/ivUserAvatar"
+            android:layout_width="@dimen/app_avatar_size"
+            android:layout_height="@dimen/app_avatar_size"/>
+
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@id/ivUserAvatar"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_18"/>
+
+        <TextView
+            android:id="@+id/tvUserCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tvUserName"
+            android:layout_below="@id/tvUserName"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/color_f2"/>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/etLeavingMsg"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rect_bwhite_sdiv_clarge"
+        android:gravity="top"
+        android:hint="亲，你是我最信任的朋友，升级这事就全靠你啦"
+        android:maxLength="50"
+        android:padding="10dp"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_14"/>
+
+    <Button
+        android:id="@+id/btnConfirm"
+        style="@style/LOGIN_BUTTON"
+        android:layout_marginTop="8dp"
+        android:text="确定"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="16dp"
+        android:text="* 对方同意帮你升级后，你的姓名及公司信息将不可修改"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_10"/>
+</LinearLayout>

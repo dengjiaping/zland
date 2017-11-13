@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_bg1"
+    android:orientation="vertical"
+    android:paddingBottom="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="5dp">
+
+        <com.zhisland.android.blog.common.view.AvatarView
+            android:id="@+id/ivAvatar"
+            android:layout_width="@dimen/app_avatar_size"
+            android:layout_height="@dimen/app_avatar_size"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:ellipsize="end"
+            android:maxWidth="120dp"
+            android:singleLine="true"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_18" />
+
+        <ImageView
+            android:id="@+id/ivUserType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/ivPencil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:paddingBottom="25dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="16dp"
+            android:paddingTop="15dp"
+            android:src="@drawable/sel_btn_pencil" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rect_bbg2_clarge"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="我的电话"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:padding="15dp"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_14" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llMail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rect_bbg2_clarge"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="我的邮箱"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/tvMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:padding="15dp"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_14" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llAssistant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rect_bbg2_clarge"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="我的助理"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/tvAssistant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/profile_btn_phone"
+            android:gravity="right"
+            android:padding="15dp"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_14" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llDing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rect_bbg2_clarge"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="服务岛丁"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/tvDing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/profile_btn_phone"
+            android:gravity="right"
+            android:padding="15dp"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_14" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llReferee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rect_bbg2_clarge"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="认证人"
+            android:textColor="#30AACB"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/tvReferee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/img_arrow_right"
+            android:gravity="right"
+            android:padding="15dp"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_14" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBgWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/tvImproveIntroTitle"
+        style="@style/LOGIN_TITLE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="自我介绍" />
+
+    <com.zhisland.android.blog.common.view.CountEditText
+        android:id="@+id/etImproveIntro"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_divider_height"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/line_divider_all" />
+
+    <Button
+        android:id="@+id/btnImproveIntroNext"
+        style="@style/LOGIN_BUTTON"
+        android:layout_marginTop="30dp"
+        android:enabled="false"
+        android:text="下一步" />
+
+</LinearLayout>

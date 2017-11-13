@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/register_myfirends_img_finding"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="未找到可批准您的好友"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_22"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:lineSpacingExtra="3dp"
+        android:text="分享朋友圈进行场外求助，更大范围寻找可以批准我的好友。"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_16"/>
+
+    <TextView
+        android:id="@+id/tvRequestHelp"
+        style="@style/LOGIN_BUTTON"
+        android:layout_marginTop="30dp"
+        android:text="场外求助"
+        />
+
+    <TextView
+        android:id="@+id/tvGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:text="绿色通道 >"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_16"/>
+
+</LinearLayout>

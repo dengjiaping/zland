@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlInfoContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_article_div" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lineSpacingMultiplier="1.1"
+            android:maxLines="2"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_22" />
+
+        <TextView
+            android:id="@+id/tvSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTitle"
+            android:ellipsize="end"
+            android:lineSpacingMultiplier="1.2"
+            android:maxLines="3"
+            android:padding="15dp"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_info_comment_title" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlCommentMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp">
+
+        <ImageView
+            android:id="@+id/ivFirstAvatar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="12dp" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/txt_10" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/tvTime"
+            android:layout_toRightOf="@id/ivFirstAvatar"
+            android:singleLine="true"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/tvPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvName"
+            android:layout_toRightOf="@id/ivFirstAvatar"
+            android:singleLine="true"
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/txt_12" />
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPosition"
+            android:layout_toRightOf="@id/ivFirstAvatar"
+            android:paddingBottom="8dp"
+            android:paddingTop="20dp"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <LinearLayout
+            android:id="@+id/llDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tvContent"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/sel_btn_info_like"
+                android:drawablePadding="5dp"
+                android:paddingBottom="6dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_12" />
+
+            <View
+                android:layout_width="@dimen/app_line_height"
+                android:layout_height="12dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="8dp"
+                android:background="@color/color_div" />
+
+            <TextView
+                android:id="@+id/tvComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="6dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:text="回复"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_12" />
+
+            <View
+                android:id="@+id/vLineDelete"
+                android:layout_width="@dimen/app_line_height"
+                android:layout_height="12dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="15dp"
+                android:background="@color/color_div" />
+
+            <TextView
+                android:id="@+id/tvDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="6dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:text="删除"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_12" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vCommentLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/llDelete"
+            android:layout_marginBottom="15dp"
+            android:layout_toRightOf="@id/ivFirstAvatar"
+            android:background="@drawable/bg_point_line" />
+    </RelativeLayout>
+
+</LinearLayout>

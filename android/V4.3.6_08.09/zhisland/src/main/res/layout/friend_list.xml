@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/RootBg1"
+    android:orientation="vertical" >
+
+    <com.zhisland.lib.view.search.ZHSearchBar
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp" >
+    </com.zhisland.lib.view.search.ZHSearchBar>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:background="@color/color_div" />
+
+    <RelativeLayout
+        android:id="@+id/rlList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <com.zhisland.android.blog.common.view.LettersSelectionBar
+            android:id="@+id/selection_bar_letter"
+            android:layout_width="35dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+</LinearLayout>

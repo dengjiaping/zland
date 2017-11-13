@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="朋友眼中的你"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_22"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:text="至少拥有5个朋友神评，完成此动作"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp">
+
+        <TextView
+            android:id="@+id/tvFinishCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/color_dc"
+            android:textSize="68sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textColor="@color/color_f2"
+            android:textSize="30sp"/>
+
+        <TextView
+            android:id="@+id/tvTotalCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textColor="@color/color_f2"
+            android:textSize="30sp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvInviteFriend"
+        style="@style/LOGIN_BUTTON"
+        android:layout_width="250dp"
+        android:layout_marginTop="80dp"
+        android:text="邀请朋友为我写神评"
+        />
+
+    <TextView
+        android:id="@+id/tvGoToCommentList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:text="查看已得到的评论 >"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_16"
+        android:visibility="gone"/>
+
+</LinearLayout>

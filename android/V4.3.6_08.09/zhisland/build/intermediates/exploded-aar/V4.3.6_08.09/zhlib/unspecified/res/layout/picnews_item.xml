@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal|center_vertical" >
+
+        <com.zhisland.lib.view.ImageViewEx
+            android:id="@+id/galleryimage"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <com.zhisland.lib.view.ImageViewEx
+            android:id="@+id/gallerysimage"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/galleryprogress"
+        style="@style/info_progress"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

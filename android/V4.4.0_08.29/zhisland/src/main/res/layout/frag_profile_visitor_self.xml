@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBg1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/custom_titile"
+        layout="@layout/titlebar_with_image"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_height" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/custom_titile"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/llBaseInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivAvatar"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/avatar_default_man" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:paddingTop="22dp"
+                    android:singleLine="true"
+                    android:textColor="@color/color_f1"
+                    android:textSize="@dimen/txt_22" />
+
+                <TextView
+                    android:id="@+id/tvComAndPos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="3"
+                    android:paddingBottom="24dp"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:paddingTop="5dp"
+                    android:textColor="@color/color_f1"
+                    android:textSize="@dimen/txt_14" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/color_bg2" />
+
+            <LinearLayout
+                android:id="@+id/llCoverContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/color_bg2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rect_bbg2_clarge">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="我的电话"
+                    android:textColor="@color/color_f1"
+                    android:textSize="@dimen/txt_14" />
+
+                <TextView
+                    android:id="@+id/tvPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:padding="15dp"
+                    android:textColor="@color/color_f2"
+                    android:textSize="@dimen/txt_14" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/rect_bbg2_clarge">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="我的邮箱"
+                    android:textColor="@color/color_f1"
+                    android:textSize="@dimen/txt_14" />
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:padding="15dp"
+                    android:textColor="@color/color_f2"
+                    android:textSize="@dimen/txt_14" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        style="@style/RootBg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvJoin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_button_height_44"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/sel_bg_btn_bgreen"
+            android:gravity="center"
+            android:text="升级为海客"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_16" />
+
+    </LinearLayout>
+
+</RelativeLayout>

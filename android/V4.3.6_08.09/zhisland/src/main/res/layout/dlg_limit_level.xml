@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBgWhite"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:background="@color/color_div" />
+
+    <TextView
+        android:id="@+id/tvAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="全部用户"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_18" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:background="@color/color_div" />
+
+    <TextView
+        android:id="@+id/tvVipAndInvite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="岛邻及海客"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_18" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:background="@color/color_div" />
+
+    <TextView
+        android:id="@+id/tvVip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="仅限岛邻"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_18" />
+
+</LinearLayout>

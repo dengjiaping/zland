@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+
+    compile "com.android.support:support-v4:$rootProject.supportV4"
+
+    compile project(':pulllib')
+
+    compile rootProject.httpmime
+    compile rootProject.eventbus
+    compile rootProject.gson
+    compile rootProject.ormliteAndroid
+    compile rootProject.ormliteCore
+    compile rootProject.pinyin4j
+    compile rootProject.umeng
+    compile rootProject.swipebacklayout
+
+    //=========新架构引用===========
+    compile rootProject.retrofit
+    compile rootProject.converterGson
+    compile rootProject.rxjava
+    compile rootProject.rxlifecycle
+
+    //========测试引用========
+    testCompile rootProject.junit
+    testCompile rootProject.mockito
+    testCompile rootProject.robolectric
+    testCompile rootProject.hamcrest
+
+    //=========编译========
+    compile 'com.android.support:multidex:1.0.0'
+}
+
+android {
+
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    lintOptions {
+        abortOnError false
+    }
+
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}

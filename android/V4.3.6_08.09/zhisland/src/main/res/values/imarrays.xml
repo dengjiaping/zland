@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="express_name">
+
+        <!-- 第一屏 23 -->
+        <item>[微笑]</item>
+        <item>[呲牙]</item>
+        <item>[得意]</item>
+        <item>[委屈]</item>
+        <item>[调皮]</item>
+        <item>[鼓掌]</item>
+        <item>[可爱]</item>
+        <item>[闭嘴]</item>
+        <item>[睡]</item>
+        <item>[大哭]</item>
+        <item>[尴尬]</item>
+        <item>[发怒]</item>
+        <item>[病了]</item>
+        <item>[亲亲]</item>
+        <item>[惊讶]</item>
+        <item>[难过]</item>
+        <item>[酷]</item>
+        <item>[冷汗]</item>
+        <item>[抓狂]</item>
+        <item>[惊恐]</item>
+        <item>[偷笑]</item>
+        <item>[流汗]</item>
+        <item>[再见]</item>
+        <!-- 第二屏 23-->
+        <item>[色]</item>
+        <item>[饥饿]</item>
+        <item>[害羞]</item>
+        <item>[发呆]</item>
+        <item>[可怜]</item>
+        <item>[阴险]</item>
+        <item>[左哼哼]</item>
+        <item>[右哼哼]</item>
+        <item>[糗大了]</item>
+        <item>[晕]</item>
+        <item>[开心]</item>
+        <item>[撇嘴]</item>
+        <item>[疑问]</item>
+        <item>[坏笑]</item>
+        <item>[苦笑]</item>
+        <item>[奋斗]</item>
+        <item>[抱拳]</item>
+        <item>[握手]</item>
+        <item>[来]</item>
+        <item>[赞]</item>
+        <item>[耶]</item>
+        <item>[ok]</item>
+        <item>[haha]</item>
+        <!-- 第三屏 23 -->
+        <item>[流泪]</item>
+        <item>[擦汗]</item>
+        <item>[吓]</item>
+        <item>[嘘]</item>
+        <item>[衰]</item>
+        <item>[哈欠]</item>
+        <item>[点头]</item>
+        <item>[鄙视]</item>
+        <item>[快哭了]</item>
+        <item>[抠鼻]</item>
+        <item>[good]</item>
+        <item>[不要]</item>
+        <item>[玫瑰]</item>
+        <item>[爱心]</item>
+        <item>[心碎]</item>
+        <item>[吻]</item>
+        <item>[正能量]</item>
+        <item>[浮云]</item>
+        <item>[聚会]</item>
+        <item>[啤酒]</item>
+        <item>[太阳]</item>
+        <item>[月亮]</item>
+        <item>[猪头]</item>
+        <!-- 第四屏 23-->
+        <item>[太阳花]</item>
+        <item>[星星]</item>
+        <item>[小鱼]</item>
+        <item>[小岛]</item>
+        <item>[胖豚]</item>
+        <item>[海豚]</item>
+        <item>[海星]</item>
+        <item>[橙子]</item>
+        <item>[仙人掌]</item>
+        <item>[粉玫瑰]</item>
+        <item>[救生圈]</item>
+        <item>[小粉花]</item>
+        <item>[船长]</item>
+        <item>[酋长]</item>
+        <item>[船]</item>
+        <item>[贝壳]</item>
+        <item>[鲸鱼]</item>
+        <item>[气球]</item>
+        <item>[给力]</item>
+        <item>[椰子树]</item>
+        <item>[礼盒]</item>
+        <item>[博士帽]</item>
+        <item>[海螺]</item>
+        <!-- 第五屏 14-->
+        <item>[珍珠]</item>
+        <item>[脚印]</item>
+        <item>[高尔夫]</item>
+        <item>[打鼾]</item>
+        <item>[闪电]</item>
+        <item>[水滴]</item>
+        <item>[音乐]</item>
+        <item>[凋谢]</item>
+        <item>[粽子]</item>
+        <item>[鞭炮]</item>
+	    <item>[福]</item>
+	    <item>[灯笼]</item>
+        <item>[恭喜发财]</item>
+        <item>[马到成功]</item>
+    </string-array>
+    <string-array name="express_drawable_name">
+
+        <!-- 第一屏  23-->
+        <item>wei_xiao</item>
+        <item>ci_ya</item>
+        <item>de_yi</item>
+        <item>wei_qu</item>
+        <item>tiao_pi</item>
+
+        <item>gu_zhang</item>
+        <item>ke_ai</item>
+        <item>bi_zui</item>
+        <item>shui</item>
+        <item>da_ku</item>
+
+        <item>gan_ga</item>
+        <item>fa_nu</item>
+        <item>bing_le</item>
+        <item>qin_qin</item>
+        <item>jing_ya</item>
+
+        <item>nan_guo</item>
+        <item>ku</item>
+        <item>leng_han</item>
+        <item>zhua_kuang</item>
+        <item>jing_kong</item>
+
+        <item>tou_xiao</item>
+        <item>liu_han</item>
+        <item>zai_jian</item>
+        <!-- 第二屏 23-->
+        <item>se</item>
+        <item>ji_e</item>
+        <item>hai_xiu</item>
+        <item>fa_dai</item>
+        <item>ke_lian</item>
+
+        <item>yin_xian</item>
+        <item>zuo_heng_heng</item>
+        <item>you_heng_heng</item>
+        <item>qiu_da_le</item>
+        <item>yun</item>
+
+        <item>kai_xin</item>
+        <item>pie_zui</item>
+        <item>yi_wen</item>
+        <item>huai_xiao</item>
+        <item>ku_xiao</item>
+
+        <item>fen_dou</item>
+        <item>bao_quan</item>
+        <item>wo_shou</item>
+        <item>lai</item>
+        <item>zan</item>
+
+        <item>ye</item>
+        <item>ok</item>
+        <item>ha_ha</item>
+        <!-- 第三屏 23-->
+        <item>liu_lei</item>
+        <item>ca_han</item>
+        <item>xia</item>
+        <item>xu</item>
+        <item>shuai</item>
+
+        <item>ha_qian</item>
+        <item>dian_tou</item>
+        <item>bi_shi</item>
+        <item>kuai_ku_le</item>
+        <item>kou_bi</item>
+
+        <item>good</item>
+        <item>bu_yao</item>
+        <item>mei_gui</item>
+        <item>ai_xin</item>
+        <item>xin_sui</item>
+
+        <item>wen</item>
+        <item>zheng_neng_liang</item>
+        <item>fu_yun</item>
+        <item>ju_hui</item>
+        <item>pi_jiu</item>
+
+        <item>tai_yang</item>
+        <item>yue_liang</item>
+        <item>zhu_tou</item>
+        <!-- 第四屏  23 -->
+        <item>tai_yang_hua</item>
+        <item>xing_xing</item>
+        <item>xiao_yu</item>
+        <item>xiao_dao</item>
+        <item>pang_tun</item>
+
+        <item>hai_tun</item>
+        <item>hai_xing</item>
+        <item>cheng_zi</item>
+        <item>xian_ren_zhang</item>
+        <item>fen_mei_gui</item>
+
+        <item>jiu_sheng_quan</item>
+        <item>xiao_fen_hua</item>
+        <item>chuan_zhang</item>
+        <item>qiu_zhang</item>
+        <item>chuan</item>
+
+        <item>bei_ke</item>
+        <item>jing_yu</item>
+        <item>qi_qiu</item>
+        <item>gei_li</item>
+        <item>ye_zi_shu</item>
+
+        <item>li_he</item>
+        <item>bo_shi_mao</item>
+        <item>hai_luo</item>
+        <!-- 第五屏  9-->
+        <item>zhen_zhu</item>
+        <item>jiao_yin</item>
+        <item>gao_er_fu</item>
+        <item>da_han</item>
+        <item>shan_dian</item>
+
+        <item>shui_di</item>
+        <item>yin_yue</item>
+        <item>diao_xie</item>
+        <item>zong_zi</item>
+		<item>pian_pao</item>
+
+	    <item>fu</item>
+	    <item>deng_long</item>
+        <item>gong_xi_fa_cai</item>
+        <item>ma_dao_cheng_gong</item>
+    </string-array>
+    <string-array name="big_emotion_img_name">
+        <item>bigemotion0</item>
+        <item>bigemotion1</item>
+        <item>bigemotion2</item>
+        <item>bigemotion3</item>
+        <item>bigemotion4</item>
+        <item>bigemotion5</item>
+        <item>bigemotion6</item>
+        <item>bigemotion7</item>
+        <item>bigemotion8</item>
+        <item>bigemotion9</item>
+        <item>bigemotion10</item>
+        <item>bigemotion11</item>
+        <item>bigemotion12</item>
+        <item>bigemotion13</item>
+        <item>bigemotion14</item>
+        <item>bigemotion15</item>
+    </string-array>
+
+</resources>

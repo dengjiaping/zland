@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/drawable-hdpi/profile_img_weizhan_female.png",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/drawable-hdpi/profile_img_weizhan_female.png"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/drawable-hdpi/profile_img_weizhan_male.png",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/drawable-hdpi/profile_img_weizhan_male.png"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/drawable-hdpi/information_placeholder.png",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/drawable-hdpi/information_placeholder.png"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/drawable-hdpi/profile_img_weizhan_part2.9.png",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/drawable-hdpi/profile_img_weizhan_part2.9.png"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/drawable-hdpi/search_icon.png",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/drawable-hdpi/search_icon.png"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/drawable-hdpi/trans_dot.png",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/drawable-hdpi/trans_dot.png"
+    }
+]

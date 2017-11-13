@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	style="@style/RootBgWhite" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/LOGIN_TITLE"
+            android:layout_marginTop="20dp"
+            android:text="形象照片" />
+
+        <FrameLayout
+            android:layout_width="300dp"
+            android:layout_height="260dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="7dp" >
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="196dp"
+                android:layout_height="158dp"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="2dp"
+                android:src="@drawable/img_register_profile_default" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_register_profile_card_bg_fixed" />
+
+            <TextView
+                android:id="@+id/tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="130dp"
+                android:background="@drawable/bg_profile_tag"
+                android:padding="2dp"
+                android:text="修改形象照片"
+                android:textSize="@dimen/txt_12"
+                android:visibility="invisible" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/vip"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/sel_bg_btn_bgreen"
+            android:text="岛亲专享美图服务"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/upload"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/sel_bg_btn_bwhite_sgreen"
+            android:text="上传您的形象照片"
+            android:textColor="@color/color_dc" />
+
+        <TextView
+            android:id="@+id/term"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="如您有任何疑问，请与我们联系 400-100-9737"
+            android:textSize="@dimen/txt_12" />
+
+        <Button
+            android:id="@+id/next"
+            style="@style/LOGIN_BUTTON"
+            android:layout_marginTop="30dp"
+            android:enabled="false"
+            android:text="下一步" />
+    </LinearLayout>
+
+</ScrollView>

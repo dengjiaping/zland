@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	style="@style/RootBgWhite" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/tvInputPwdTitle"
+            style="@style/LOGIN_TITLE"
+            android:layout_marginTop="20dp"
+            android:text="输入密码" />
+
+        <TextView
+            android:id="@+id/tvInputPwdDesc"
+            style="@style/LOGIN_DESC"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:text="密码最少为6位字符" />
+
+        <TextView
+            android:id="@+id/tvErrorPrompt"
+            style="@style/LOGIN_ERROR_PROMPT"
+            android:layout_marginBottom="10dp"
+            android:text="密码格式不正确" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rect_bwhite_sdiv_clarge" >
+
+            <ImageView
+                android:id="@+id/ivRtPwdEye"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:src="@drawable/bg_eye" />
+
+            <EditText
+                android:id="@+id/etPwd"
+                style="@style/LOGIN_EDIT_TEXT"
+                android:layout_toLeftOf="@id/ivRtPwdEye"
+                android:background="@null"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="填写密码"
+                android:inputType="textPassword" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/LOGIN_BUTTON"
+            android:layout_marginTop="30dp"
+            android:enabled="false"
+            android:text="登录" />
+
+        <TextView
+            android:id="@+id/tvForgetPwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:text="忘记密码"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_14" />
+    </LinearLayout>
+
+</ScrollView>

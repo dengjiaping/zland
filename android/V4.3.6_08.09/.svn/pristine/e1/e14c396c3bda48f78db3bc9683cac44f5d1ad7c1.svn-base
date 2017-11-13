@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- common colos -->
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="red">#ffff0000</color>
+    <!-- common colos -->
+
+
+    <!-- text, hint color -->
+    <color name="txt_lighter_gray">#ffcccccc</color>
+    <color name="txt_light_gray">#ff959595</color>
+    <color name="txt_dark_gray">#ff666666</color>
+    <color name="txt_black">#ff333333</color>
+    <color name="txt_blue">#ff0080cb</color>
+
+    <!-- background color -->
+
+
+    <!-- line, border, divider color -->
+    <color name="line_gray">#ffb3b3b3</color>
+
+    <!-- no common colors -->
+    <color name="btn_green">#cf0cb268</color>
+
+    <!-- app color -->
+    <color name="color_dc">#ff3aa978</color>
+    <color name="color_dc_p">#ff308e64</color>
+    <color name="color_sc">#ffdbb786</color>
+    <color name="color_sc_p">#ffC3A275</color>
+    <color name="color_ac">#ffff6161</color>
+    <color name="color_ac_p">#ffC32820</color>
+    <color name="color_bc">#ff30AACB</color>
+    <color name="color_bc_p">#ff52869D</color>
+    <color name="color_f1">#ff1e1e1e</color>
+    <color name="color_f2">#ff6b6b6b</color>
+    <color name="color_f3">#ffB7B7B7</color>
+    <color name="color_div">#ffe6e6e6</color>
+    <color name="color_bg1">#ffffffff</color>
+    <color name="color_bg1_p">#E5E5E5</color>
+    <color name="color_bg2">#fff7f7f7</color>
+    <color name="color_bg3">#ff000000</color>
+    <color name="color_desc">#ff9fa9af</color>
+    <color name="color_dc_grey">#dcdcdc</color>
+    <color name="color_disable">#e7e7e7</color>
+    <!-- app_color -->
+
+    <array name="letter_tile_colors">
+        <item>@color/color_sc</item>
+        <item>@color/color_sc_p</item>
+        <item>@color/color_ac</item>
+    </array>
+
+    <color name="letter_tile_default_color">#cccccc</color>
+    <color name="letter_tile_font_color">#ffffff</color>
+    <color name="btn_add_sel_color">#ff353535</color>
+    <color name="tabbar_text_unsel_color">#ffC0C4C6</color>
+    <color name="color_user_comment_new">#FFC3A275</color>
+    <color name="bg_profile_empty">#FFD8D8D8</color>
+
+    <!-- 透明度颜色值 -->
+    <color name="translate_60">#96000000</color>
+    <color name="color_dc_90">#E53aa978</color>
+    <color name="color_white_15">#D8ffffff</color>
+    <color name="color_white_20">#33ffffff</color>
+    <color name="color_white_25">#3fffffff</color>
+    <color name="color_white_50">#7fffffff</color>
+    <color name="color_white_70">#B2ffffff</color>
+    <color name="color_white_80">#CCffffff</color>
+    <color name="color_white_85">#d8ffffff</color>
+    <color name="color_white_90">#e5ffffff</color>
+    <color name="color_black_80">#CC000000</color>
+    <color name="color_div_60">#96e6e6e6</color>
+    <!-- 透明度颜色值 -->
+
+    // 活动标签背景色
+    <color name="bg_event_tag">#F6FFFFFF</color>
+    <color name="color_f4f4f4">#f4f4f4</color>
+</resources>

@@ -1,0 +1,566 @@
+package com.zhisland.im.data;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.Callable;
+
+import android.util.Log;
+
+import com.beem.project.beem.service.Contact;
+import com.beem.project.beem.service.pcklistener.FriendRelationJson;
+import com.j256.ormlite.misc.TransactionManager;
+import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.UpdateBuilder;
+import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.DatabaseTableConfig;
+import com.zhisland.im.event.EventFriend;
+import com.zhisland.im.util.Constants;
+import com.zhisland.lib.util.MLog;
+import com.zhisland.lib.util.Pinyin4jUtil;
+
+import de.greenrobot.event.EventBus;
+
+public class IMContactDao extends IMBaseDao<IMContact, Long> {
+
+	private static final String TAG = "contact_dao";
+
+	public IMContactDao(ConnectionSource connectionSource,
+			DatabaseTableConfig<IMContact> tableConfig) throws SQLException {
+		super(connectionSource, tableConfig);
+	}
+
+	public IMContactDao(ConnectionSource connectionSource,
+			Class<IMContact> dataClass) throws SQLException {
+		super(connectionSource, dataClass);
+	}
+
+	public IMContactDao(Class<IMContact> dataClass) throws SQLException {
+		super(dataClass);
+	}
+
+	// =====================
+	// =====好友请求开始======
+
+	/**
+	 * 保存对方发起的好友关系请求（只用于对方发送给自己的时候）
+	 * 
+	 * @param invite
+	 */
+	public void saveInviteMsg(FriendRelationJson invite) {
+
+		if (invite == null)
+			return;
+		EventFriend event = null;
+		IMContact contact = new IMContact();
+
+		contact.name = invite.name;
+		contact.c = Pinyin4jUtil.getStringHeadChar(contact.name.trim());
+		contact.avatar = invite.avatar;
+		contact.time = System.currentTimeMillis();
+		contact.isUnread = IMContact.READ_NO;
+		if (invite.ask == FriendRelationJson.ASK_REQUEST) {
+			contact.status = IMContact.STATUS_WAIT;
+			contact.jid = invite.fromJid;
+		} else if (invite.ask == FriendRelationJson.ASK_ACCEPTED) {
+			contact.jid = invite.fromJid;
+			contact.status = IMContact.STATUS_BE_ACCEPTED;
+			contact.isFriend = IMContact.FRIEND_YES;
+
+			event = new EventFriend(EventFriend.ACTION_ADD, contact);
+		}
+		try {
+			IMContact ic = getByJid(contact.jid);
+			if (ic == null) {
+				create(contact);
+				notifyAdd(contact);
+			} else {
+				update(contact);
+				notifyUpdate(contact);
+			}
+			if (event != null) {
+				EventBus.getDefault().post(event);
+			}
+		} catch (Exception e) {
+			MLog.e(TAG, e.getLocalizedMessage(), e);
+		}
+		
+		if (invite.ask == FriendRelationJson.ASK_ACCEPTED){
+			insertInitChatAndMsg(contact.jid, contact.name);
+		}
+	}
+
+	/**
+	 * 接受好友请求
+	 * 
+	 * @param jid
+	 */
+	public void acceptInvite(String jid) {
+		IMContact ic = getByJid(jid);
+		if (ic == null)
+			return;
+
+		ic.status = IMContact.STATUS_ACCEPTED;
+		ic.isFriend = IMContact.FRIEND_YES;
+		ic.time = System.currentTimeMillis();
+		try {
+			this.update(ic);
+			notifyUpdate(ic);
+			insertInitChatAndMsg(jid, ic.name);
+			EventFriend event = new EventFriend(EventFriend.ACTION_ADD, ic);
+			EventBus.getDefault().post(event);
+		} catch (Exception e) {
+			MLog.e(TAG, e.getLocalizedMessage(), e);
+		}
+	}
+
+	/**
+	 * 成为好友后插入新的消息
+	 * 
+	 * @param jid
+	 * @param name
+	 */
+	public void insertInitChatAndMsg(String jid, String name) {
+
+		String msgContet = name + "与你已经是好友了，开始聊天吧";
+		long chatId = DBMgr
+				.getHelper()
+				.getChatDao()
+				.feedChat(jid, Constants.CHAT_TYPE_NORMAL, msgContet,
+						new Date(), 0);
+		DBMgr.getHelper().getMsgDao().logSectionMessage(chatId, msgContet);
+
+	}
+
+	/**
+	 * 忽略好友请求
+	 *
+	 * @param jid
+	 */
+	public void ignoreInvite(String jid) {
+		IMContact ic = getByJid(jid);
+		if (ic == null)
+			return;
+
+		ic.status = IMContact.STATUS_IGNORE;
+		ic.isFriend = IMContact.FRIEND_NO;
+		ic.time = System.currentTimeMillis();
+		try {
+			this.update(ic);
+			notifyUpdate(ic);
+			EventFriend event = new EventFriend(EventFriend.ACTION_DELETE, ic);
+			EventBus.getDefault().post(event);
+		} catch (Exception e) {
+			MLog.e(TAG, e.getLocalizedMessage(), e);
+		}
+
+	}
+
+	/**
+	 * 获取好友申请,同时将申请的唯独状态设置为已读
+	 * 
+	 * @return
+	 */
+	public List<IMContact> getFriendRequests() {
+
+		QueryBuilder<IMContact, Long> qb = queryBuilder();
+		try {
+			qb.where().eq(IMContact.COL_INVITE_STATUS, IMContact.STATUS_WAIT);
+			qb.orderBy(IMContact.COL_TIME, false);
+			List<IMContact> contacts = qb.query();
+			return contacts;
+		} catch (Exception e) {
+			MLog.e(TAG, e.getMessage(), e);
+			return null;
+		}
+	}
+
+	/**
+	 * 获取好友请求
+	 * 
+	 * @return
+	 */
+	public List<IMContact> getRequestContact() {
+		QueryBuilder<IMContact, Long> qb = queryBuilder();
+		try {
+			qb.where().eq(IMContact.COL_INVITE_STATUS, IMContact.STATUS_WAIT);
+			return qb.query();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * 将申请的未读状态设置为已读
+	 */
+	public void readAllFriendRequest() {
+		UpdateBuilder<IMContact, Long> ub = this.updateBuilder();
+		try {
+			ub.updateColumnValue(IMContact.COL_UNREAD, IMContact.READ_YES);
+			ub.update();
+		} catch (Exception e) {
+			MLog.e(TAG, e.getMessage(), e);
+		}
+	}
+
+	// =====好友请求结束======
+	// =====================
+
+	// ===========================
+	// =====好友列表、item开始======
+	/**
+	 * 获取所有的好友列表
+	 * 
+	 * @return
+	 */
+	public List<IMContact> fetchFriends() {
+		QueryBuilder<IMContact, Long> qb = queryBuilder();
+		try {
+			qb.where().ne(IMContact.COL_FRIEND, IMContact.FRIEND_NO);
+			qb.orderBy(IMContact.COL_CHAR, true);
+			List<IMContact> contacts = qb.query();
+			return contacts;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * 按照首字母分组获取所有的联系人
+	 * 
+	 * @return
+	 */
+	public ArrayList<ContactGroup> fetchContactGroups() {
+		ArrayList<ContactGroup> groups = new ArrayList<ContactGroup>();
+
+		List<IMContact> contacts = fetchFriends();
+		if (contacts != null && contacts.size() > 0) {
+			String curChar;
+			String lastChar = null;
+			ContactGroup group = null;
+			for (IMContact c : contacts) {
+				curChar = (c.c == null ? "" : c.c);
+				if (!curChar.equals(lastChar)) {
+					group = new ContactGroup();
+					group.letter = curChar;
+					groups.add(group);
+				}
+				group.addChild(c);
+				lastChar = curChar;
+			}
+		}
+
+		return groups;
+	}
+
+	/**
+	 * 获取最新结识的好友列表
+	 * 
+	 * @param time
+	 * @return
+	 */
+	public List<IMContact> getNewFriends(Long time,int count) {
+		QueryBuilder<IMContact, Long> qb = queryBuilder();
+		try {
+			qb.where().ne(IMContact.COL_FRIEND, IMContact.FRIEND_NO);
+			if (time != null) {
+				qb.where().lt(IMContact.COL_TIME, time);
+			}
+			qb.limit(count);
+			qb.orderBy(IMContact.COL_TIME, false);
+			List<IMContact> contacts = qb.query();
+			return contacts;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * 获取好友数量
+	 * 
+	 * @return
+	 */
+	public long getCountOfFriend() {
+		QueryBuilder<IMContact, Long> qb = queryBuilder();
+		try {
+			qb.where().eq(IMContact.COL_FRIEND, IMContact.FRIEND_YES);
+			return qb.countOf();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	/**
+	 * 根据用户ID查询通讯录信息
+	 * 
+	 * @param uid
+	 * @return
+	 */
+	public IMContact getIMContactByUid(long uid) {
+		String jid = IMContact.buildJid(uid);
+		return getByJid(jid);
+	}
+
+	/**
+	 * 根据jid查询通讯录信息
+	 * 
+	 * @param jid
+	 * @return
+	 */
+	public IMContact getByJid(String jid) {
+		QueryBuilder<IMContact, Long> qb = queryBuilder();
+		try {
+			qb.where().eq(IMContact.COL_JID, jid);
+			return qb.queryForFirst();
+		} catch (Exception e) {
+			Log.d("db", e.getMessage(), e);
+			return null;
+		}
+	}
+
+	/**
+	 * 获取BEEM指定的contact对象
+	 * 
+	 * @param jid
+	 * @return
+	 */
+	@Deprecated
+	public Contact fetchContact(String jid) {
+		Contact c = null;
+		QueryBuilder<IMContact, Long> qb = queryBuilder();
+		try {
+			qb.where().eq(IMContact.COL_JID, jid);
+			IMContact imContact = qb.queryForFirst();
+			if (imContact != null) {
+				c = new Contact(imContact.jid);
+				c.setName(imContact.name);
+				c.setChar(imContact.c);
+				c.setAvatarId(imContact.avatar);
+				c.setStatus(imContact.status);
+				c.setRelation(imContact.relation);
+				c.setTimestamp(new Date(imContact.time));
+				c.setPhone(imContact.phone);
+			}
+		} catch (Exception e) {
+			Log.d("db", e.getMessage(), e);
+		}
+		return c;
+	}
+
+	/**
+	 * 判断是否为好友
+	 * 
+	 * @param uid
+	 * @return
+	 */
+	public boolean isFriend(long uid) {
+		if (uid > 0) {
+			IMContact contact = getIMContactByUid(uid);
+			if (contact != null && contact.isFriend == IMContact.FRIEND_YES) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * 批量存储好友列表
+	 * 
+	 * @param data
+	 */
+	public void saveFriendContacts(final List<IMContact> data) {
+		if (data == null || data.size() < 1)
+			return;
+
+		try {
+			TransactionManager.callInTransaction(getConnectionSource(),
+					new Callable<Void>() {
+
+						@Override
+						public Void call() throws Exception {
+							QueryBuilder<IMContact, Long> qb = queryBuilder();
+							IMContact ic = null;
+							for (IMContact user : data) {
+								qb.where().eq(IMContact.COL_JID, user.jid);
+								ic = qb.queryForFirst();
+								if (ic == null) {
+									user.c = Pinyin4jUtil.getStringHeadChar(user.name);
+									create(user);
+									if (user.isFriend == IMContact.FRIEND_YES) {
+										EventFriend event = new EventFriend(
+												EventFriend.ACTION_ADD, ic);
+										EventBus.getDefault().post(event);
+									}
+								} else {
+									int isFriend = ic.isFriend;
+									ic.name = user.name;
+									ic.c = Pinyin4jUtil.getStringHeadChar(user.name);
+									ic.avatar = user.avatar;
+									ic.relation = user.relation;
+									ic.isFriend = user.isFriend;
+									ic.version = user.version;
+									ic.desc = user.desc;
+									ic.time = user.time;
+									update(ic);
+									if (ic.isFriend != isFriend) {
+										if (ic.isFriend == IMContact.FRIEND_YES) {
+											EventFriend event = new EventFriend(
+													EventFriend.ACTION_ADD, ic);
+											EventBus.getDefault().post(event);
+										} else {
+											EventFriend event = new EventFriend(
+													EventFriend.ACTION_DELETE,
+													ic);
+											EventBus.getDefault().post(event);
+										}
+									}
+								}
+							}
+							notifyAdd(ic);
+							return null;
+						}
+					});
+		} catch (Exception e) {
+			Log.d("db", e.getMessage(), e);
+		}
+	}
+	
+	/**
+	 * 批量存储好友请求
+	 * 
+	 * @param data
+	 */
+	public void saveInviteContacts(final List<IMContact> data) {
+		if (data == null || data.size() < 1)
+			return;
+
+		try {
+			TransactionManager.callInTransaction(getConnectionSource(),
+					new Callable<Void>() {
+
+						@Override
+						public Void call() throws Exception {
+							QueryBuilder<IMContact, Long> qb = queryBuilder();
+							IMContact ic = null;
+							for (IMContact user : data) {
+								qb.where().eq(IMContact.COL_JID, user.jid);
+								ic = qb.queryForFirst();
+								if (ic == null) {
+									user.c = Pinyin4jUtil.getStringHeadChar(user.name);
+									create(user);
+								} else {
+									ic.name = user.name;
+									ic.c = Pinyin4jUtil.getStringHeadChar(user.name);
+									ic.status = user.status;
+									ic.relation = user.relation;
+									ic.isFriend = user.isFriend;
+									ic.version = user.version;
+									ic.desc = user.desc;
+									ic.time = user.time;
+									update(ic);
+								}
+							}
+							return null;
+						}
+					});
+		} catch (Exception e) {
+			Log.d("db", e.getMessage(), e);
+		}
+	}
+
+	// =====好友列表、item结束======
+	// ===========================
+
+	// =====================
+	// =====好友操作开始======
+
+	/**
+	 * 更改好友的好友等级
+	 * 
+	 * @param jid
+	 * @param relation
+	 */
+	private void changeRelation(String jid, int relation) {
+		IMContact ic = getByJid(jid);
+		if (ic == null)
+			return;
+
+		ic.relation = relation;
+		ic.time = System.currentTimeMillis();
+		try {
+			this.update(ic);
+			notifyUpdate(ic);
+		} catch (Exception e) {
+			MLog.e(TAG, e.getLocalizedMessage(), e);
+		}
+	}
+
+	/**
+	 * 将好友标记为信任好友
+	 * 
+	 * @param jid
+	 */
+	public void promoteFriend(String jid) {
+		changeRelation(jid, IMContact.RELATION_TRUST);
+	}
+
+	/**
+	 * 将好友标记为普通好友
+	 * 
+	 * @param jid
+	 */
+	public void downgradeFriend(String jid) {
+		changeRelation(jid, IMContact.RELATION_NORMAL);
+	}
+
+	/**
+	 * 删除好友
+	 * 
+	 * @param jid
+	 */
+	public void deleteFriend(String jid) {
+		IMContact ic = getByJid(jid);
+		if (ic == null)
+			return;
+
+		try {
+			this.delete(ic);
+			EventFriend event = new EventFriend(EventFriend.ACTION_DELETE, ic);
+			DBMgr.getHelper().getChatDao().deleteChat(jid);
+			EventBus.getDefault().post(event);
+			notifyDelete(ic);
+		} catch (Exception e) {
+			MLog.e(TAG, e.getLocalizedMessage(), e);
+		}
+	}
+
+	/**
+	 * 被对方从好友删除
+	 * 
+	 * @param jid
+	 */
+	public void beDeleteFromFriend(String jid) {
+		IMContact ic = getByJid(jid);
+		if (ic == null)
+			return;
+
+		ic.relation = IMContact.RELATION_NON;
+		ic.isFriend = IMContact.FRIEND_DELETED;
+		ic.time = System.currentTimeMillis();
+		try {
+			this.update(ic);
+			EventFriend event = new EventFriend(EventFriend.ACTION_DELETE, ic);
+			EventBus.getDefault().post(event);
+		} catch (Exception e) {
+			MLog.e(TAG, e.getLocalizedMessage(), e);
+		}
+	}
+
+	// =====好友操作结束======
+	// =====================
+}

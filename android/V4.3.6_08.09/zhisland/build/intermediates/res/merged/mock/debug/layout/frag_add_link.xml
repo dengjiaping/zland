@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llRoot"
+    style="@style/RootBg2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvPrompt"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/color_sc"
+        android:gravity="center"
+        android:text="目前我们仅支持推荐来自微信公众号的文章链接"
+        android:textColor="@color/color_bg1"
+        android:textSize="@dimen/txt_12" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/color_bg1"
+        android:orientation="horizontal"
+        android:paddingRight="5dp">
+
+        <EditText
+            android:id="@+id/etLink"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color_bg1"
+            android:hint="请在此粘贴链接"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:singleLine="true"
+            android:textColor="@color/color_f1"
+            android:textColorHint="@color/color_f3"
+            android:textSize="@dimen/txt_16" />
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:scaleType="center"
+            android:src="@drawable/btn_search_clear_pressed"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <LinearLayout
+            android:id="@+id/llProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@style/middle_progress"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:indeterminate="true"
+                android:indeterminateDuration="100"
+                android:indeterminateOnly="true" />
+
+            <TextView
+                android:paddingLeft="10dp"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/txt_12"
+                android:textColor="@color/color_f2"
+                android:layout_height="wrap_content"
+                android:text="正在提交。。。" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="抱歉，目前只能推荐微信文章链接"
+            android:textColor="@color/color_ac"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tvCommit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_button_height"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/sel_bg_btn_bgreen"
+        android:enabled="false"
+        android:gravity="center"
+        android:text="推荐链接"
+        android:textColor="@color/color_bg1"
+        android:textSize="@dimen/txt_14" />
+
+</LinearLayout>

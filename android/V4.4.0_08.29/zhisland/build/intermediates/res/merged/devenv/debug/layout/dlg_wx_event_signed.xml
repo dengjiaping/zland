@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llRooView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rect_bwhite_clargest"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="15dp" >
+
+    <ImageView
+        android:id="@+id/ivUserAvatar"
+        android:layout_marginTop="5dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/avatar_default" />
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="name"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_18" />
+
+    <TextView
+        android:id="@+id/tvUserPostion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="desc"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_16" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_divider_height"
+        android:layout_marginTop="15dp"
+        android:background="@color/color_div" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:paddingTop="15dp"
+        android:gravity="center"
+        android:text="此用户来自于微信报名"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_18" />
+
+</LinearLayout>

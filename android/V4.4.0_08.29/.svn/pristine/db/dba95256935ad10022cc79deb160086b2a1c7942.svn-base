@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBgWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/tvMobileTitle"
+            style="@style/LOGIN_TITLE"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:text="使用手机号码" />
+
+        <TextView
+            android:id="@+id/tvErrorPrompt"
+            style="@style/LOGIN_ERROR_PROMPT"
+            android:layout_marginBottom="10dp"
+            android:text="手机号码格式错误" />
+
+        <com.zhisland.android.blog.common.view.InternationalPhoneView
+            android:id="@+id/internationalPhoneView"
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rect_bwhite_sdiv_clarge" >
+        </com.zhisland.android.blog.common.view.InternationalPhoneView>
+
+        <Button
+            android:id="@+id/btnLoginNext"
+            style="@style/LOGIN_BUTTON"
+            android:layout_marginTop="30dp"
+            android:enabled="false"
+            android:text="下一步" />
+
+        <TextView
+            android:id="@+id/tvDeclare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/txt_14"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</ScrollView>

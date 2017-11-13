@@ -1,0 +1,492 @@
+package com.zhisland.android.blog.event.controller;
+
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.common.app.PrefUtil;
+import com.zhisland.android.blog.common.app.TabHome;
+import com.zhisland.android.blog.common.app.ZhislandApplication;
+import com.zhisland.android.blog.common.base.ZHApis;
+import com.zhisland.android.blog.common.eb.EBNotify;
+import com.zhisland.android.blog.common.push.NotifyTypeConstants;
+import com.zhisland.android.blog.common.view.AProgressDialog;
+import com.zhisland.android.blog.common.view.EmptyView;
+import com.zhisland.android.blog.event.dto.Event;
+import com.zhisland.android.blog.event.dto.PayData;
+import com.zhisland.android.blog.event.eb.EBEvent;
+import com.zhisland.android.blog.tabhome.eb.EBTabHome;
+import com.zhisland.android.blog.tracker.bean.TrackerAlias;
+import com.zhisland.lib.async.http.task.TaskCallback;
+import com.zhisland.lib.component.adapter.BaseListAdapter;
+import com.zhisland.lib.component.adapter.ZHPageData;
+import com.zhisland.lib.component.frag.FragPullList;
+import com.zhisland.lib.util.DensityUtil;
+import com.zhisland.lib.util.ToastUtil;
+
+import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+import de.greenrobot.event.EventBus;
+
+/**
+ * 报名的活动页面
+ */
+public class FragSignUpEvents extends FragPullList<Event> {
+
+    private static final String PAGE_NAME = "EventMySignList";
+
+    @Override
+    protected String getPageName() {
+        return "FragSignUpEvents";
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        getPullProxy().setAdapter(new EventAdapter());
+        getPullProxy().setRefreshKey(
+                PAGE_NAME + PrefUtil.Instance().getUserId());
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        EventBus.getDefault().register(this);
+        getPullProxy().getPullView().setBackgroundColor(
+                getResources().getColor(R.color.color_bg2));
+        internalView.setFastScrollEnabled(false);
+        ColorDrawable drawable = new ColorDrawable(getResources().getColor(
+                R.color.color_bg2));
+        internalView.setDivider(drawable);
+        internalView.setDividerHeight(DensityUtil.dip2px(10));
+        internalView.setSelector(new ColorDrawable(Color.TRANSPARENT));
+        internalView.setBackgroundColor(getResources().getColor(
+                R.color.color_bg2));
+
+        EmptyView ev = new EmptyView(getActivity());
+        ev.setImgRes(R.drawable.img_campaign_empty);
+        ev.setPrompt("您还没有报名任何活动哦");
+        ev.setBtnText("查看活动");
+        ev.setBtnVisibility(View.VISIBLE);
+        ev.setBtnClickListener(onClickListener);
+        getPullProxy().getPullView().setEmptyView(ev);
+
+        //我报名的活动列表被查看，个人页tab的红点消失
+        PrefUtil.Instance().setKeyValue(NotifyTypeConstants.PREF_SIGN_EVENT, 0);
+        EBNotify notify = new EBNotify();
+        notify.notifyType = NotifyTypeConstants.EventBusEventSignList;
+        EventBus.getDefault().post(notify);
+    }
+
+    @Override
+    public void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
+    }
+
+    @Override
+    public void loadNormal() {
+        getDataFromInternet(null);
+    }
+
+    public void onEventMainThread(EBEvent eb) {
+        //报名一个活动、支付状态发生变化、审核状态发生变化，刷新数据
+        if (eb.getType() == EBEvent.TYPE_EVENT_PAY_STATUS_CHANGED
+                || eb.getType() == EBEvent.TYPE_EVENT_STATUS_CHANGED
+                || eb.getType() == EBEvent.TYPE_EVENT_SIGN_UP) {
+            getPullProxy().pullDownToRefresh(true);
+        }
+    }
+
+    private void getDataFromInternet(String maxId) {
+        ZHApis.getEventApi().getSignUpEvents(getActivity(), maxId,
+                new TaskCallback<ZHPageData<Event>>() {
+
+                    @Override
+                    public void onSuccess(ZHPageData<Event> content) {
+                        getPullProxy().onLoadSucessfully(content);
+                    }
+
+                    @Override
+                    public void onFailure(Throwable error) {
+                        getPullProxy().onLoadFailed(error);
+                    }
+                });
+    }
+
+    OnClickListener onClickListener = new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            EventBus.getDefault().post
+                    (new EBTabHome(EBTabHome.TYPE_SEL_TAB_CATEGORY, TabHome.TAB_ID_EVENT));
+            getActivity().finish();
+        }
+    };
+
+    @Override
+    public void loadMore(String nextId) {
+        super.loadMore(nextId);
+        getDataFromInternet(nextId);
+    }
+
+    class EventAdapter extends BaseListAdapter<Event> {
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            EventHolder holder;
+            if (convertView == null) {
+                convertView = LayoutInflater.from(parent.getContext()).inflate(
+                        R.layout.item_sign_up_event, null);
+                holder = new EventHolder(convertView, getActivity());
+                convertView.setTag(holder);
+            } else {
+                holder = (EventHolder) convertView.getTag();
+            }
+            holder.fill(getItem(position), position);
+            return convertView;
+        }
+
+        @Override
+        protected void recycleView(View view) {
+
+        }
+    }
+
+    class EventHolder {
+
+        Event event;
+
+        Context context;
+
+        int position;
+
+        @InjectView(R.id.tvTitle)
+        TextView tvTitle;
+
+        @InjectView(R.id.tvCancel)
+        TextView tvCancel;
+
+        @InjectView(R.id.tvStatus)
+        TextView tvStatus;
+
+        @InjectView(R.id.ivSignStatus)
+        ImageView ivSignStatus;
+
+        @InjectView(R.id.linePayStatus)
+        View linePayStatus;
+
+        @InjectView(R.id.llPayStatus)
+        LinearLayout llPayStatus;
+
+        @InjectView(R.id.ivPayStatus)
+        ImageView ivPayStatus;
+
+        @InjectView(R.id.tvPayStatus)
+        TextView tvPayStatus;
+
+        @InjectView(R.id.tvToPay)
+        TextView tvToPay;
+
+        @InjectView(R.id.llSignAudit)
+        LinearLayout llSignAudit;
+
+        @InjectView(R.id.tvSignAudit)
+        TextView tvSignAudit;
+
+        public EventHolder(View v, final Context context) {
+            this.context = context;
+            ButterKnife.inject(this, v);
+        }
+
+        public void fill(Event event, int position) {
+            this.event = event;
+            this.position = position;
+            tvTitle.setText(event.eventTitle);
+            setStatusTxt();
+            setCancelBtn();
+            setStatusIcon();
+            setPayView();
+        }
+
+        /**
+         * 设置活动和报名状态的文本。
+         */
+        private void setStatusTxt() {
+            if (event.eventStatus == Event.STATUS_PROGRESSING) {
+                tvStatus.setVisibility(View.VISIBLE);
+                tvStatus.setText("活动进行中");
+            } else if (event.eventStatus == Event.STATUS_END) {
+                tvStatus.setVisibility(View.VISIBLE);
+                tvStatus.setText("活动已结束");
+            } else if (event.eventStatus == Event.STATUS_CANCEL) {
+                tvStatus.setVisibility(View.VISIBLE);
+                tvStatus.setText("活动已取消");
+            } else {
+                //活动报名中和报名截止状态（就是活动未开始）
+                tvStatus.setVisibility(View.GONE);
+            }
+        }
+
+        /**
+         * 设置取消按钮的显示和隐藏。
+         */
+        private void setCancelBtn() {
+            tvCancel.setVisibility(View.GONE);
+            llSignAudit.setVisibility(View.GONE);
+            //报名状态如果不是已报名，则显示已取消报名
+            if (event.signStatus == Event.SIGN_STATUS_YES) {
+                //已报名，审核未通过，显示报名未成功
+                if (event.auditStatus == Event.STATUS_AUDIT_REFUSE) {
+                    llSignAudit.setVisibility(View.VISIBLE);
+                    tvSignAudit.setText("报名未成功");
+                } else {
+                    //已报名，审核通过，活动未开始，显示取消报名按钮。
+                    if (event.eventStatus == Event.STATUS_SIGNING || event.eventStatus == Event.STATUS_SIGN_OVER) {
+                        tvCancel.setVisibility(View.VISIBLE);
+                        tvCancel.setText("取消报名");
+                    }
+                }
+            } else {
+                if (event.auditStatus == Event.STATUS_AUDIT_REFUSE) {
+                    llSignAudit.setVisibility(View.VISIBLE);
+                    tvSignAudit.setText("报名未成功");
+                } else {
+                    llSignAudit.setVisibility(View.VISIBLE);
+                    tvSignAudit.setText("已取消报名");
+                }
+            }
+        }
+
+        /**
+         * 设置报名成功icon的显示。
+         */
+        private void setStatusIcon() {
+            ivSignStatus.setVisibility(View.GONE);
+            if (event.auditStatus == Event.STATUS_AUDIT_ACCEPT && event.signStatus == Event.SIGN_STATUS_YES) {
+                ivSignStatus.setVisibility(View.VISIBLE);
+                if (event.eventStatus == Event.STATUS_END) {
+                    ivSignStatus.setBackgroundResource(R.drawable.img_icon_status_success_grey);
+                } else if (event.eventStatus == Event.STATUS_CANCEL) {
+                    ivSignStatus.setVisibility(View.GONE);
+                } else if (event.eventStatus == Event.STATUS_PROGRESSING) {
+                    ivSignStatus.setBackgroundResource(R.drawable.img_icon_status_success);
+                } else if (event.eventStatus == Event.STATUS_SIGN_OVER) {
+                    ivSignStatus.setBackgroundResource(R.drawable.img_icon_status_success);
+                } else if (event.eventStatus == Event.STATUS_SIGNING) {
+                    ivSignStatus.setBackgroundResource(R.drawable.img_icon_status_success);
+                }
+            }
+        }
+
+        /**
+         * 设置付款View
+         */
+        private void setPayView() {
+            hidePayView();
+            tvToPay.setVisibility(View.GONE);
+            if (event.payData != null && event.payData.amounts != null && event.payData.amounts > 0) {
+                switch (event.payData.payStatus) {
+                    case PayData.PAY_STATUS_UNDONE:
+                        if (canPayWithThreeStatus()) {
+                            ivPayStatus.setImageResource(R.drawable.img_campaign_pay_wait);
+                            tvPayStatus.setText("待支付￥" + event.payData.getAmountsFormat());
+                            showPayView();
+                            tvToPay.setVisibility(View.VISIBLE);
+                        }
+                        break;
+                    case PayData.PAY_STATUS_OK:
+                        ivPayStatus.setImageResource(R.drawable.img_campaign_pay_successed);
+                        tvPayStatus.setText("付款成功￥" + event.payData.getPayAmountsFormat());
+                        showPayView();
+                        break;
+                    case PayData.PAY_STATUS_WAIT_REFUND:
+                    case PayData.PAY_STATUS_REFUNDING:
+                        ivPayStatus.setImageResource(R.drawable.img_campaign_pay_wait);
+                        tvPayStatus.setText("退款中");
+                        showPayView();
+                        break;
+                    case PayData.PAY_STATUS_REFUND_COMPLETE:
+                        ivPayStatus.setImageResource(R.drawable.img_campaign_pay_successed);
+                        if (event.payData.refundAmounts != null && event.payData.refundAmounts > 0) {
+                            tvPayStatus.setText("退款成功￥" + event.payData.getRefundAmountsFormat());
+                        } else {
+                            tvPayStatus.setText("退款成功");
+                        }
+                        showPayView();
+                        break;
+                }
+            }
+        }
+
+        private void showPayView() {
+            linePayStatus.setVisibility(View.VISIBLE);
+            llPayStatus.setVisibility(View.VISIBLE);
+        }
+
+        private void hidePayView() {
+            linePayStatus.setVisibility(View.GONE);
+            llPayStatus.setVisibility(View.GONE);
+        }
+
+        /**
+         * 判断活动状态，报名状态，审核状态是否可支付。（没有包括支付状态）
+         */
+        private boolean canPayWithThreeStatus() {
+            // 活动状态为:1.可报名 2.截止报名 3.活动进行中
+            if (event.eventStatus == Event.STATUS_SIGNING || event.eventStatus == Event.STATUS_SIGN_OVER || event.eventStatus == Event.STATUS_PROGRESSING) {
+                //报名状态为报名中
+                if (event.signStatus == Event.SIGN_STATUS_YES) {
+                    //审核状态为 2.审核中 3.审核通过
+                    if (event.auditStatus == Event.STATUS_AUDIT_ACCEPT || event.auditStatus == Event.STATUS_AUDIT_WAIT) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        @OnClick(R.id.tvToPay)
+        void toPayClick() {
+            ZhislandApplication.trackerClickEvent(getPageName(), TrackerAlias.CLICK_EVENT_MY_SIGN_PAYMENT);
+            if (event.payData.isOnLine == PayData.TYPE_IS_ON_LINE) {
+                FragEventOnlinePayment.invoke(getActivity(), event, FragSignUpEvents.class.getName());
+            } else {
+                FragEventOfflinePayment.invoke(getActivity(), event, FragSignUpEvents.class.getName());
+            }
+        }
+
+        @OnClick(R.id.tvCancel)
+        void cancelClick() {
+            final Dialog dialog = new Dialog(context, R.style.DialogGuest);
+            dialog.setContentView(R.layout.dlg_cancel_event);
+            dialog.setCancelable(true);
+
+            TextView tvTime = (TextView) dialog.findViewById(R.id.tvCETime);
+            TextView tvTitle = (TextView) dialog.findViewById(R.id.tvCETitle);
+            TextView tvPrice = (TextView) dialog.findViewById(R.id.tvCEPrice);
+            View viewLine = dialog.findViewById(R.id.ceViewLine);
+            TextView tvCEPriceDesc = (TextView) dialog.findViewById(R.id.tvCEPriceDesc);
+            tvTime.setText(event.period);
+            tvTitle.setText(event.eventTitle);
+
+            if (event.payData != null && event.payData.amounts != null && event.payData.amounts > 0) {
+                switch (event.payData.payStatus) {
+                    case PayData.PAY_STATUS_OK:
+                        tvPrice.setText("￥ " + event.payData.getPayAmountsFormat());
+                        break;
+                    case PayData.PAY_STATUS_UNDONE:
+                        tvPrice.setText("￥ " + event.payData.getAmountsFormat());
+                        break;
+                    case PayData.PAY_STATUS_REFUND_COMPLETE:
+                        tvPrice.setText("￥ " + event.payData.getRefundAmountsFormat());
+                        break;
+                    case PayData.PAY_STATUS_REFUNDING:
+                        tvPrice.setText("￥ " + event.payData.getRefundAmountsFormat());
+                        break;
+                }
+            } else {
+                tvPrice.setVisibility(View.GONE);
+                viewLine.setVisibility(View.GONE);
+                tvCEPriceDesc.setVisibility(View.GONE);
+            }
+
+            TextView tvDlgCancel = (TextView) dialog.findViewById(R.id.tvDlgCancel);
+            TextView tvDlgConfirm = (TextView) dialog.findViewById(R.id.tvDlgConfirm);
+            tvDlgCancel.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            tvDlgConfirm.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    cancelSign();
+                }
+            });
+
+            Window dialogWindow = dialog.getWindow();
+            WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+            lp.width = DensityUtil.getWidth() - DensityUtil.dip2px(70); // 宽度
+            dialogWindow.setGravity(Gravity.CENTER);
+            dialogWindow.setAttributes(lp);
+
+            dialog.show();
+        }
+
+        /**
+         * 取消报名
+         */
+        private void cancelSign() {
+            final AProgressDialog dialog = new AProgressDialog(getActivity());
+            dialog.setText("提交中...");
+            final Event eventCancel = event;
+            dialog.show();
+            ZHApis.getEventApi().signCancel(getActivity(), eventCancel.eventId,
+                    new TaskCallback<PayData>() {
+
+                        @Override
+                        public void onFinish() {
+                            if (dialog != null) {
+                                dialog.dismiss();
+                            }
+                            super.onFinish();
+                        }
+
+                        @Override
+                        public void onSuccess(PayData content) {
+                            boolean find = false;
+                            List<Event> data = getPullProxy().getAdapter().getData();
+                            for (Event event : data) {
+                                if (event == eventCancel) {
+                                    find = true;
+                                    event.payData = content;
+                                    event.signStatus = Event.SIGN_STATUS_CANCEL;
+                                }
+                            }
+                            if (find) {
+                                getPullProxy().getAdapter().notifyDataSetChanged();
+                            } else {
+                                getPullProxy().pullDownToRefresh(true);
+                            }
+                            ToastUtil.showShort("报名取消成功。");
+                        }
+
+                        @Override
+                        public void onFailure(Throwable error) {
+                        }
+                    });
+        }
+
+        @OnClick(R.id.tvTitle)
+        void titleClick() {
+            ActEventDetail.invoke(getActivity(), event.eventId, false);
+        }
+
+    }
+}

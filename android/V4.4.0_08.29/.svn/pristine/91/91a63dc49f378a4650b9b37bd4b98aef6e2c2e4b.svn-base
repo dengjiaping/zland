@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBgWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/LOGIN_TITLE"
+        android:layout_marginTop="20dp"
+        android:text="形象照片" />
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/img_vip_photo" />
+
+    <TextView
+        android:id="@+id/term"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="26dp"
+        android:text="感谢您使用美图服务，我们将在三个工作日之内与您注册时填写的手机号码联系。 如您有任何疑问，请与我们联系"
+        android:textColor="#2E3337"
+        android:textSize="14sp" />
+
+    <com.zhisland.android.blog.common.view.InternationalPhoneView
+        android:id="@+id/internationalPhoneView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="30dp" >
+    </com.zhisland.android.blog.common.view.InternationalPhoneView>
+
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/color_div" />
+
+    <Button
+        android:id="@+id/next"
+        style="@style/LOGIN_BUTTON"
+        android:layout_marginTop="112dp"
+        android:text="下一步" />
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/flUserCardRoot"
+    style="@style/RootBg2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/custom_titile"
+        layout="@layout/titlebar_with_image"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_height" />
+
+    <com.zhisland.android.blog.find.view.FindSearchLayout
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/frag_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

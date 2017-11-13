@@ -1,0 +1,153 @@
+package com.zhisland.android.blog.profile.api;
+
+import java.lang.reflect.Type;
+import java.sql.SQLException;
+
+import org.apache.http.HttpResponse;
+
+import com.google.gson.reflect.TypeToken;
+import com.zhisland.android.blog.common.app.Config;
+import com.zhisland.android.blog.common.app.PrefUtil;
+import com.zhisland.android.blog.common.base.TaskBase;
+import com.zhisland.android.blog.common.dto.CacheDto;
+import com.zhisland.android.blog.profile.dto.Company;
+import com.zhisland.android.blog.common.dto.DBMgr;
+import com.zhisland.android.blog.common.dto.User;
+import com.zhisland.android.blog.profile.dto.SimpleBlock;
+import com.zhisland.android.blog.profile.dto.UserDetail;
+import com.zhisland.android.blog.common.eb.EBUser;
+import com.zhisland.im.data.IMChat;
+import com.zhisland.im.data.IMUser;
+import com.zhisland.lib.async.http.RequestParams;
+import com.zhisland.lib.async.http.task.GsonHelper;
+import com.zhisland.lib.async.http.task.TaskCallback;
+import com.zhisland.lib.util.MLog;
+import com.zhisland.lib.util.Pinyin4jUtil;
+
+import de.greenrobot.event.EventBus;
+
+/**
+ * 获取用户信息
+ * */
+public class TaskGetUserDetail extends TaskBase<UserDetail, Object> {
+
+	private long userId;
+
+	public TaskGetUserDetail(Object context, long userId,
+			TaskCallback<UserDetail> responseCallback) {
+		super(context, responseCallback);
+		this.userId = userId;
+		this.isPureRest = true;
+	}
+
+	@Override
+	public void execute() {
+		RequestParams params = null;
+		this.get(params, null);
+	}
+
+	@Override
+	protected String getPartureUrl() {
+		return "/center/" + userId;
+	}
+
+	@Override
+	protected Type getDeserializeType() {
+		return new TypeToken<UserDetail>() {
+		}.getType();
+	}
+
+    @Override
+    protected String getApiVersion() {
+        return "1.2";
+    }
+
+    @Override
+	protected String getBaseUrl() {
+		return Config.getHttpsHostUrl();
+	}
+
+
+	@Override
+	protected Throwable handleFailureMessageInBackGround(Throwable error, String responseBody) {
+		return super.handleFailureMessageInBackGround(error, responseBody);
+	}
+
+	@Override
+	protected UserDetail handleStringProxy(HttpResponse response)
+			throws Exception {
+		
+		handleHeaderInfo(response);
+		String responseBody = convertToString(response);
+		Type listType = this.getDeserializeType();
+		UserDetail result = null;
+		MLog.e("zhapp", "deserialize start");
+		MLog.d("zhapp", "responseBody ： " + responseBody);
+		result = UserDetail.getUserGson().fromJson(responseBody, listType);
+		
+
+		User user = result.user;
+
+		DBMgr.getMgr().getCacheDao().set(UserDetail.CACH_USER_DETAIL + user.uid, result);
+		com.zhisland.im.data.DBMgr.getHelper().getChatDao().updateAvatar(result.user.uid, user.userAvatar);
+
+		IMUser contact = null;
+		try {
+			contact = com.zhisland.im.data.DBMgr.getHelper().getUserDao()
+					.getByJid(IMUser.buildJid(user.uid));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// 保存当前用户信息
+		if (user.uid == PrefUtil.Instance().getUserId()) {
+			PrefUtil.Instance().setNeedRefrshSelf(false);
+			User.saveSelfUserToPrefUtil(user);
+			try {
+				String body = GsonHelper.GetCommonGson().toJson(user);
+				PrefUtil.Instance().setUserJsonString(body);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		// 插入数据库
+		DBMgr.getMgr().getUserDao().creatOrUpdateUserNotNull(user);
+		if (contact != null) {
+			contact.name = user.name;
+			contact.avatar = user.userAvatar;
+			contact.c = Pinyin4jUtil.getStringHeadChar((user.name == null ? ""
+					: user.name).trim());
+			com.zhisland.im.data.DBMgr.getHelper().getUserDao()
+					.update(contact);
+		}
+
+		IMChat chat = null;
+		try {
+			chat = com.zhisland.im.data.DBMgr.getHelper().getChatDao()
+					.getChatByJid(IMUser.buildJid(user.uid));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (chat != null) {
+			chat.name = user.name;
+			chat.avatar = user.userAvatar;
+			com.zhisland.im.data.DBMgr.getHelper().getChatDao().update(chat);
+		}
+		// 保存公司信息
+		SimpleBlock<Company> position = result.getPositionBlock();
+		if(position != null && position.data != null){
+			for (int i = 0; i < position.data.size(); i++) {
+				CacheDto companyCache = new CacheDto();
+				companyCache.key = position.data.get(i).companyId + Company.POSTFIX;
+				companyCache.value = position.data.get(i);
+				try {
+					DBMgr.getMgr().getCacheDao().createOrUpdate(companyCache);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		EventBus.getDefault().post(
+				new EBUser(EBUser.TYPE_GET_USER_DETAIL, user));
+		return result;
+	}
+}

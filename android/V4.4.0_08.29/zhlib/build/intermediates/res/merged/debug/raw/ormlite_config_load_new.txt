@@ -1,0 +1,203 @@
+#
+# generated on 2015/09/28 03:42:27
+#
+# --table-start--
+dataClass=com.zhisland.lib.load.BaseLoadInfo
+tableName=baseloadinfo
+# --table-fields-start--
+# --field-start--
+fieldName=token
+columnName=ftoken
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=ownerId
+columnName=owner_id
+# --field-end--
+# --field-start--
+fieldName=priority
+columnName=priority
+# --field-end--
+# --field-start--
+fieldName=status
+columnName=status
+# --field-end--
+# --field-start--
+fieldName=statusDesc
+columnName=status_desc
+# --field-end--
+# --field-start--
+fieldName=filePath
+columnName=filpath
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.zhisland.lib.load.HttpDownloadInfo
+tableName=download_info
+# --table-fields-start--
+# --field-start--
+fieldName=downUrl
+columnName=remote_id
+# --field-end--
+# --field-start--
+fieldName=totalSize
+columnName=total_size
+# --field-end--
+# --field-start--
+fieldName=endIndex
+columnName=end_index
+# --field-end--
+# --field-start--
+fieldName=token
+columnName=ftoken
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=ownerId
+columnName=owner_id
+# --field-end--
+# --field-start--
+fieldName=priority
+columnName=priority
+# --field-end--
+# --field-start--
+fieldName=status
+columnName=status
+# --field-end--
+# --field-start--
+fieldName=statusDesc
+columnName=status_desc
+# --field-end--
+# --field-start--
+fieldName=filePath
+columnName=filpath
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.zhisland.lib.load.HttpUploadInfo
+tableName=http_upload_info
+# --table-fields-start--
+# --field-start--
+fieldName=picId
+columnName=pic_id
+# --field-end--
+# --field-start--
+fieldName=picUrl
+columnName=pic_url
+# --field-end--
+# --field-start--
+fieldName=hashcode
+columnName=fhashcde
+# --field-end--
+# --field-start--
+fieldName=type
+columnName=filetype
+# --field-end--
+# --field-start--
+fieldName=curBlock
+columnName=current_block
+# --field-end--
+# --field-start--
+fieldName=totalBlocks
+columnName=total_block
+# --field-end--
+# --field-start--
+fieldName=ext
+columnName=file_extension
+# --field-end--
+# --field-start--
+fieldName=time
+columnName=file_duration
+# --field-end--
+# --field-start--
+fieldName=size
+columnName=file_size
+# --field-end--
+# --field-start--
+fieldName=blockSize
+columnName=file_block_size
+# --field-end--
+# --field-start--
+fieldName=token
+columnName=ftoken
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=ownerId
+columnName=owner_id
+# --field-end--
+# --field-start--
+fieldName=priority
+columnName=priority
+# --field-end--
+# --field-start--
+fieldName=status
+columnName=status
+# --field-end--
+# --field-start--
+fieldName=statusDesc
+columnName=status_desc
+# --field-end--
+# --field-start--
+fieldName=filePath
+columnName=filpath
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.zhisland.lib.load.UploadMultiInfo
+tableName=upload_multi_info
+# --table-fields-start--
+# --field-start--
+fieldName=imgAllPaths
+columnName=upload_multi_all_image_path
+# --field-end--
+# --field-start--
+fieldName=imgPaths
+columnName=upload_multi_image_path
+# --field-end--
+# --field-start--
+fieldName=imgIds
+columnName=upload_multi_image_id
+# --field-end--
+# --field-start--
+fieldName=createTime
+columnName=upload_multi_create_itme
+# --field-end--
+# --field-start--
+fieldName=uploadToken
+columnName=upload_multi_upload_token
+# --field-end--
+# --field-start--
+fieldName=token
+columnName=ftoken
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=ownerId
+columnName=owner_id
+# --field-end--
+# --field-start--
+fieldName=priority
+columnName=priority
+# --field-end--
+# --field-start--
+fieldName=status
+columnName=status
+# --field-end--
+# --field-start--
+fieldName=statusDesc
+columnName=status_desc
+# --field-end--
+# --field-start--
+fieldName=filePath
+columnName=filpath
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

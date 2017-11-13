@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/chat_content_block"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_chat_info"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_chat_vcard_row_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="名片"
+        android:textColor="@color/txt_light_gray"
+        android:textSize="@dimen/txt_14" />
+
+    <View
+        android:id="@+id/iv_chat_vcard_row_divider"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_marginTop="6dp" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" >
+
+        <ImageView
+            android:id="@+id/iv_chat_vcard_row_avatar"
+            android:layout_width="@dimen/chat_avatar_size"
+            android:layout_height="@dimen/chat_avatar_size"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon" />
+
+        <TextView
+            android:id="@+id/iv_chat_vcard_row_name"
+            style="@style/ChattingUITitle"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/iv_chat_vcard_row_avatar"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/iv_chat_vcard_row_desc"
+            style="@style/ChattingUIDesc"
+            android:layout_below="@id/iv_chat_vcard_row_name"
+            android:layout_toRightOf="@id/iv_chat_vcard_row_avatar"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:textSize="@dimen/txt_18" />
+    </RelativeLayout>
+
+</LinearLayout>

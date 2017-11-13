@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/IvheadImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/tribe_head_image" />
+
+    <ImageView
+        android:id="@+id/IvTribeIcon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/IvheadImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-40dp"
+        android:src="@drawable/sel_btn_add" />
+
+    <TextView
+        android:id="@+id/tvHeadName"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/app_titlebar_height"
+        android:layout_below="@id/IvTribeIcon"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="乡村音乐"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_18" />
+
+    <TextView
+        android:id="@+id/tvHeadInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvHeadName"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="公开部落·1532个成员"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14" />
+
+    <View
+        android:id="@+id/vLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_below="@id/tvHeadInfo"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/color_div" />
+
+    <TextView
+        android:id="@+id/tvMember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/vLine"
+        android:layout_marginLeft="15dp"
+        android:drawableLeft="@drawable/btn_tribe_album"
+        android:drawablePadding="5dp"
+        android:padding="10dp"
+        android:text="成员"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/tvEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vLine"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/btn_tribe_album"
+        android:drawablePadding="5dp"
+        android:padding="10dp"
+        android:text="活动日历"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/tvAlbum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/vLine"
+        android:layout_marginRight="15dp"
+        android:drawableLeft="@drawable/btn_tribe_album"
+        android:drawablePadding="5dp"
+        android:padding="10dp"
+        android:text="相册"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_16" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_below="@id/tvEvent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/color_div" />
+
+</RelativeLayout>

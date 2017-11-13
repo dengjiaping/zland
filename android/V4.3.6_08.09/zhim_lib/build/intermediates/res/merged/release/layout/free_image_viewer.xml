@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal|center_vertical" >
+
+    <com.zhisland.lib.image.NewsGallery
+        android:id="@+id/gallery"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:spacing="1dip" />
+
+    <RelativeLayout
+        android:id="@+id/navigation"
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="#ff313439" >
+
+        <TextView
+            android:id="@+id/gallery_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="4dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="10dp"
+            android:paddingTop="4dp"
+            android:text="@string/freeimage_back"
+            android:textSize="20sp" 
+            android:textColor="@color/white"/>
+        
+        <TextView
+            android:id="@+id/gallery_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="4dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="4dp"
+            android:text="@string/freeimage_save"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/titledes"
+            style="@style/title_drop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" 
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+</RelativeLayout>

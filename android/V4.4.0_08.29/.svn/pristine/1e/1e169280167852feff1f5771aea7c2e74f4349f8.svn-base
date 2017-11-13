@@ -1,0 +1,335 @@
+package com.zhisland.im.data;
+
+import android.util.Log;
+
+import com.beem.project.beem.service.Message;
+import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.UpdateBuilder;
+import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.DatabaseTableConfig;
+import com.zhisland.im.util.Constants;
+import com.zhisland.lib.util.MLog;
+
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
+
+public class IMChatDao extends IMBaseDao<IMChat, Long> {
+    private static final String TAG = "chat_dao";
+
+    public IMChatDao(ConnectionSource connectionSource,
+                     DatabaseTableConfig<IMChat> tableConfig) throws SQLException {
+        super(connectionSource, tableConfig);
+    }
+
+    public IMChatDao(ConnectionSource connectionSource, Class<IMChat> dataClass)
+            throws SQLException {
+        super(connectionSource, dataClass);
+    }
+
+    public IMChatDao(Class<IMChat> dataClass) throws SQLException {
+        super(dataClass);
+    }
+
+    /**
+     * @param contact
+     * @return
+     */
+    public long getChatId(String contact) {
+
+        QueryBuilder<IMChat, Long> qb = this.queryBuilder();
+        try {
+            qb.where().eq(IMChat.COL_CONTACT, contact);
+            IMChat ic = qb.queryForFirst();
+            if (ic != null)
+                return ic.id;
+        } catch (Exception e) {
+            Log.d("db", e.getMessage(), e);
+        }
+
+        return -1;
+    }
+
+    public IMChat getChatByJid(String jid) {
+
+        QueryBuilder<IMChat, Long> qb = this.queryBuilder();
+        try {
+            qb.where().eq(IMChat.COL_CONTACT, jid);
+            IMChat ic = qb.queryForFirst();
+            return ic;
+        } catch (Exception e) {
+            Log.d("db", e.getMessage(), e);
+        }
+        return null;
+    }
+
+    /**
+     * 删除chat会话
+     *
+     * @param id
+     */
+    public void deleteChat(long id) {
+        try {
+            IMChat chat = queryForId(id);
+            if (chat != null) {
+                delete(chat);
+                notifyDelete(chat);
+            }
+        } catch (Exception e) {
+            MLog.e(TAG, "delete chat " + e.getMessage(), e);
+        }
+
+    }
+
+    /**
+     * 删除chat会话
+     *
+     * @param id
+     */
+    public void deleteChat(String contact) {
+        try {
+            long id = getChatId(contact);
+            IMChat chat = queryForId(id);
+            if (chat != null) {
+                delete(chat);
+                notifyDelete(chat);
+                DBMgr.getHelper().getMsgDao().deleteAllMsgWithSomeOne(id);
+            }
+        } catch (Exception e) {
+            MLog.e(TAG, "delete chat " + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * 创建或者更新chat的content 和未读数
+     *
+     * @param contact
+     * @param type
+     * @param message
+     * @param unread
+     * @return
+     */
+    public long feedChat(String contact, int type, Message message, int unread) {
+        return this.feedChat(contact, type, composeMessage(message),
+                message.getTimestamp(), unread);
+    }
+
+    /**
+     * 创建或者更新chat的content 和未读数
+     *
+     * @param contact
+     * @param type
+     * @param msg
+     * @param msgDate
+     * @param unread
+     * @return
+     */
+    public long feedChat(String contact, int type, String msg, Date msgDate,
+                         int unread) {
+
+        QueryBuilder<IMChat, Long> qb = this.queryBuilder();
+        long uid = Long.parseLong(contact.split("@")[0]);
+        try {
+            qb.where().eq(IMChat.COL_CONTACT, contact);
+            IMChat chat = qb.queryForFirst();
+            if (chat == null) {
+                chat = new IMChat();
+                IMContact ic = DBMgr.getHelper().getContactDao()
+                        .getIMContactByUid(uid);
+                if (ic != null) {
+                    chat.name = ic.name;
+                    chat.avatar = ic.avatar;
+                }
+                chat.contact = contact;
+                chat.type = type;
+                chat.message = msg;
+                chat.time = msgDate;
+                chat.unread = unread;
+                create(chat);
+                notifyAdd(chat);
+            } else {
+                chat.message = msg;
+                chat.time = msgDate;
+                chat.unread = unread;
+                update(chat);
+                notifyUpdate(chat);
+            }
+
+            // DBMgr.getHelper().getContactDao()
+            // .updateMessage(contact, chat.message);
+            if (chat != null)
+                return chat.id;
+        } catch (Exception e) {
+            Log.d("db", e.getMessage(), e);
+        }
+
+        return -1;
+    }
+
+    /**
+     * 当id为chatId的chat中的一条msg被删除，重新取该chat的最后一条massage，赋值到该chat上。
+     */
+    public void updateChatMessage(long chatId, IMMessage msg) {
+        try {
+            QueryBuilder<IMChat, Long> qb = this.queryBuilder();
+            qb.where().eq(IMChat.COL_ID, chatId);
+            IMChat chat = qb.queryForFirst();
+            if (chat != null) {
+                chat.message = IMChatDao.composeMessage(msg);
+                if (msg != null) {
+                    chat.time = new Date(msg.time);
+                }
+                update(chat);
+                notifyUpdate(chat);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String composeMessage(Message message) {
+        String display = "";
+        switch (message.getSubType()) {
+            case Constants.MSG_TYPE_TEXT:
+                display = message.getBody();
+                break;
+            case Constants.MSG_TYPE_IMAGE:
+                display = "图片";
+                break;
+            case Constants.MSG_TYPE_AUDIO:
+                display = "音频";
+                break;
+            case Constants.MSG_TYPE_VIDEO:
+                display = "视频";
+                break;
+            case Constants.MSG_TYPE_INFO:
+                display = "通知";
+                break;
+            case Constants.MSG_TYPE_LOC:
+                display = "位置";
+                break;
+            case Constants.MSG_TYPE_VCARD:
+                display = "名片";
+                break;
+
+            default:
+                display = message.getBody();
+                break;
+        }
+        return display;
+    }
+
+    public static String composeMessage(IMMessage message) {
+        String display = "";
+        if (message == null || message.type == null) {
+            return display;
+        }
+        switch (message.type) {
+            case Constants.MSG_TYPE_TEXT:
+                display = message.body;
+                break;
+            case Constants.MSG_TYPE_IMAGE:
+                display = "图片";
+                break;
+            case Constants.MSG_TYPE_AUDIO:
+                display = "音频";
+                break;
+            case Constants.MSG_TYPE_VIDEO:
+                display = "视频";
+                break;
+            case Constants.MSG_TYPE_INFO:
+                display = "通知";
+                break;
+            case Constants.MSG_TYPE_LOC:
+                display = "位置";
+                break;
+            case Constants.MSG_TYPE_VCARD:
+                display = "名片";
+                break;
+
+            default:
+                display = message.body;
+                break;
+        }
+        return display;
+    }
+
+    public int getUnreadCount(String contact) {
+        QueryBuilder<IMChat, Long> qb = this.queryBuilder();
+        try {
+            qb.where().eq(IMChat.COL_CONTACT, contact);
+            IMChat ic = qb.queryForFirst();
+            if (ic != null)
+                return ic.unread;
+        } catch (Exception e) {
+            Log.d("db", e.getMessage(), e);
+        }
+
+        return 0;
+    }
+
+    public void clearUnreadCount(String contact) {
+        QueryBuilder<IMChat, Long> qb = this.queryBuilder();
+        try {
+            qb.where().eq(IMChat.COL_CONTACT, contact);
+            IMChat ic = qb.queryForFirst();
+            if (ic != null) {
+                if (ic.unread > 0) {
+                    ic.unread = 0;
+                    update(ic);
+                    notifyUpdate(ic);
+                }
+            }
+        } catch (Exception e) {
+            Log.d("db", e.getMessage(), e);
+        }
+    }
+
+    public boolean hasUnRead() {
+        boolean hasUnRead = false;
+
+        QueryBuilder<IMChat, Long> qb = this.queryBuilder();
+        try {
+            qb.where().gt(IMChat.COL_UNREAD, 0);
+            IMChat ic = qb.queryForFirst();
+            if (ic != null) {
+                hasUnRead = true;
+            }
+        } catch (Exception e) {
+            Log.d("db", e.getMessage(), e);
+        }
+
+        return hasUnRead;
+    }
+
+    public List<IMChat> getChats() {
+
+        QueryBuilder<IMChat, Long> qb = this.queryBuilder();
+        qb.orderBy(IMChat.COL_TIME, false);
+        try {
+            return qb.query();
+        } catch (Exception e) {
+            MLog.e(TAG, e.getMessage(), e);
+            return null;
+        }
+
+    }
+
+    /**
+     * 更新头像信息
+     *
+     * @param uid
+     * @param avatar
+     */
+    public void updateAvatar(long uid, String avatar) {
+        UpdateBuilder<IMChat, Long> ub = this.updateBuilder();
+        try {
+            String jid = IMContact.buildJid(uid);
+            ub.where().eq(IMChat.COL_ID, jid);
+            ub.updateColumnValue(IMChat.COL_AVATAR, avatar);
+        } catch (Exception e) {
+            MLog.e(TAG, "update avatar " + e.getMessage(), e);
+        }
+
+    }
+}

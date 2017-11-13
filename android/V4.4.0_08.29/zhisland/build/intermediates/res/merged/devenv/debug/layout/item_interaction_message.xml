@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBg1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/interaction_user_icon"
+        android:layout_width="@dimen/app_avatar_size"
+        android:layout_height="@dimen/app_avatar_size"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16dip"
+        android:layout_marginTop="16dip" />
+
+    <LinearLayout
+        android:id="@+id/interaction_comment_feed_layout"
+        android:layout_width="56dip"
+        android:layout_height="56dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dip">
+
+        <ImageView
+            android:id="@+id/interaction_comment_feed_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/interaction_comment_feed_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="left"
+            android:lines="3"
+            android:ellipsize="end"
+            android:text="发布了一个活动"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_14" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/interaction_comment_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dip"
+        android:layout_marginTop="12dip"
+        android:layout_toLeftOf="@id/interaction_comment_feed_layout"
+        android:layout_toRightOf="@id/interaction_user_icon"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/interaction_comment_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="名字"
+                android:textColor="#111111"
+                android:textSize="@dimen/txt_16" />
+
+            <ImageView
+                android:id="@+id/interaction_comment_user_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/interaction_comment_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:gravity="left"
+            android:lines="1"
+            android:ellipsize="end"
+            android:text="feed content"
+            android:textColor="#6b6b6b"
+            android:textSize="@dimen/txt_14" />
+
+        <TextView
+            android:id="@+id/interaction_comment_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dip"
+            android:layout_marginTop="5dip"
+            android:text="feed time"
+            android:textColor="#818181"
+            android:textSize="@dimen/txt_12" />
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/more_people_user_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_div"></View>
+</RelativeLayout>

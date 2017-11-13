@@ -1,0 +1,114 @@
+[
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/send_card_dlg_show.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/send_card_dlg_show.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/push_right_out.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/push_right_out.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/alpha_out.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/alpha_out.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/slide_out_to_bottom.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/exploded-aar/V4.4.0_08.29/pulllib/unspecified/res/anim/slide_out_to_bottom.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/card_dlg_out.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/card_dlg_out.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/slide_out_to_top.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/exploded-aar/V4.4.0_08.29/pulllib/unspecified/res/anim/slide_out_to_top.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/act_pop_out.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/act_pop_out.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/slide_in_from_top.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/exploded-aar/V4.4.0_08.29/pulllib/unspecified/res/anim/slide_in_from_top.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/act_left_out.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/act_left_out.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/act_bottom_out.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/act_bottom_out.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/act_hold.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/act_hold.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/online_notify_show.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/online_notify_show.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/push_down_out.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/push_down_out.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/act_bottom_in.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/act_bottom_in.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/act_fade_out.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/act_fade_out.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/act_right_in.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/act_right_in.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/dlg_bottom_in.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/dlg_bottom_in.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/push_up_in.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/push_up_in.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/push_left_in.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/push_left_in.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/online_notify_hide.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/online_notify_hide.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/card_dlg_in.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/card_dlg_in.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/alpha_in.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/alpha_in.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/push_left_out.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/push_left_out.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/act_top_out.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/act_top_out.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/push_right_in.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/push_right_in.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/slide_in_from_bottom.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/exploded-aar/V4.4.0_08.29/pulllib/unspecified/res/anim/slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/act_left_in.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/act_left_in.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/anim/act_right_out.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/anim/act_right_out.xml"
+    }
+]

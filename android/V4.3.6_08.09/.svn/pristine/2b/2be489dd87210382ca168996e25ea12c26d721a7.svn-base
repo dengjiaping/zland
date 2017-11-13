@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/llRoot"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/rect_bwhite_clargest"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:paddingTop="32dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="找好友帮我升级为海客"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_20"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center_horizontal"
+        android:text="获得更多功能权限"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_20"
+        />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/profile_img_findfriends"
+        />
+
+    <TextView
+        android:id="@+id/tvOk"
+        style="@style/LOGIN_BUTTON"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="32dp"
+        android:text="我知道了"
+        />
+</LinearLayout>

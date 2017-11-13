@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/card_horizontal_margin" >
+
+    <include
+        android:id="@+id/userCard"
+        layout="@layout/user_card" />
+
+    <LinearLayout
+        android:id="@+id/item_swipe_left_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="@drawable/rect_bwhite15_clargest"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_ignore_namecard_status" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="忽略"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_18" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_swipe_right_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="@drawable/rect_bwhite15_clargest"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_exchange_namecard_status" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="加好友"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_18" />
+    </LinearLayout>
+
+</FrameLayout>

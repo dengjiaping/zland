@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><resources>
+
+   <color name="transparent">#00000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="app_background">#ffffffff</color>
+    <color name="dark">#ff222222</color>
+    
+    <color name="tab_highlight">#ff018e4e</color>
+    <color name="title_drop">#ff303337</color>
+    <color name="drop_text_focus">#81c2fc</color>
+	
+    
+    
+</resources>

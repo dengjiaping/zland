@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="35dp"
+    android:paddingRight="35dp">
+
+    <TextView
+        android:id="@+id/tvCRTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="你尚未授权通讯录\n无法找到可为你认证的好友"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_18"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/icon_contacts_refuse"/>
+
+    <TextView
+        android:id="@+id/tvOpenContactsPermission"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_button_height"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/rect_bwhite_sdc_cmiddle"
+        android:gravity="center"
+        android:text="开启通讯录访问权限"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_16"/>
+
+</LinearLayout>

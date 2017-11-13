@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rect_bwhite_clargest"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:paddingLeft="@dimen/fresh_task_card_padding"
+        android:paddingRight="@dimen/fresh_task_card_padding"
+        >
+
+        <com.zhisland.android.blog.common.view.RoundAngleImageView
+            xmlns:raiv="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ivStepFigure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            raiv:roundHeights="@dimen/app_corner_largest"
+            raiv:roundWidths="@dimen/app_corner_largest"/>
+
+        <TextView
+            android:id="@+id/tvStepTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/color_f1"
+            android:textSize="20sp"/>
+
+        <LinearLayout
+            android:id="@+id/llBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvStepDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_16"/>
+
+            <TextView
+                android:id="@+id/tvCompleteStep"
+                style="@style/LOGIN_BUTTON"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_16"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llStepIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/llBottom"
+            android:layout_below="@id/tvStepTitle"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:id="@+id/ivStepIcon"
+                android:layout_width="145dp"
+                android:layout_height="145dp"
+                android:src="@drawable/task_img_logo_contact_large"
+                android:visibility="visible"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/ivAlreadyComplete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/task_img_finish2"
+        />
+</RelativeLayout>

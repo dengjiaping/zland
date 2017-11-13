@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBg1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.1"
+        android:padding="15dp"
+        android:text="您想让哪些人看到这个活动，我们会根据您的表述匹配发送给更多人"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_18" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/rect_bwhite_sdiv_clarge"
+        android:padding="8dp" >
+
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/txt_16" />
+
+        <EditText
+            android:id="@+id/etSpread"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/tvCount"
+            android:layout_alignParentTop="true"
+            android:background="@color/transparent"
+            android:gravity="left|top"
+            android:hint="例如：希望关注大健康领域的广东岛亲来参加"
+            android:textColor="@color/color_f1"
+            android:textColorHint="@color/color_f3"
+            android:textSize="@dimen/txt_18" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvGiveUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:drawablePadding="6dp"
+        android:drawableRight="@drawable/img_arrow_right"
+        android:padding="15dp"
+        android:text="放弃推广"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_16" />
+
+</LinearLayout>

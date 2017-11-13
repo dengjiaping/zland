@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp" >
+
+    <ImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/avatar_default" />
+
+    <ImageView
+        android:id="@+id/ivAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="center"
+        android:src="@drawable/btn_chat_selector" />
+
+    <TextView
+        android:id="@+id/tvAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rect_bred_clargest"
+        android:paddingBottom="6dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="6dp"
+        android:text="解除"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_toLeftOf="@id/ivAction"
+        android:layout_toRightOf="@id/ivAvatar"
+        android:singleLine="true"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_18" />
+
+    <TextView
+        android:id="@+id/tvComAndPos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvName"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@id/ivAction"
+        android:layout_toRightOf="@id/ivAvatar"
+        android:gravity="top"
+        android:singleLine="true"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_14" />
+
+</RelativeLayout>

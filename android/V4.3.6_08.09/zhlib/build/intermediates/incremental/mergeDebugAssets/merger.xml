@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/lipengju/zhisland/android/V4.3.6_08.09/zhlib/src/main/assets"/><source path="/Users/lipengju/zhisland/android/V4.3.6_08.09/zhlib/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/lipengju/zhisland/android/V4.3.6_08.09/zhlib/src/debug/assets"/></dataSet></merger>

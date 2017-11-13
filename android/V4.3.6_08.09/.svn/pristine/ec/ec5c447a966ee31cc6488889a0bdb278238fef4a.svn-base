@@ -1,0 +1,32 @@
+javascript:(function() { 
+	document.onclick = function (event) {
+	    var clickedEle = event.srcElement;
+	    if (clickedEle.tagName == "IMG") {
+	    	var eleParent = clickedEle.parentElement;
+	    	while(eleParent != null) {
+	    		var tagName = eleParent.tagName.toLowerCase();
+	    		if(tagName == 'a' || tagName == 'input') {
+	    			return;
+	    		}
+	    		eleParent = eleParent.parentElement;
+	    	}
+	        var json = '{"images":[';
+	        var select;
+	        var images = document.getElementsByTagName("img");
+	        var imgLen = images.length;
+	        for (var i = 0; i < imgLen; i++) {
+	            
+	            if (event.srcElement == images[i]) { select = i; }
+	            var r = images[i].getBoundingClientRect();
+	            if (i > 0) { json += ','; }
+	            json += '{"src":"' + images[i].src + '","left":';
+	            json += parseInt(r.left) + ',"top":' + r.top + ',"width":';
+	            json += r.width + ',"height":' + r.height + '}';
+	        }
+	        json += '],"select":' + select + '}';
+
+	        Android.showToast(json);	        
+	    }
+	} 
+
+})()

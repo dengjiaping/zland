@@ -1,0 +1,7 @@
+resource_supply_1	场地
+resource_supply_2	专业服务
+resource_supply_3	渠道
+resource_supply_4	媒体
+resource_supply_5	资金
+resource_supply_6	行业经验
+resource_supply_7	其他

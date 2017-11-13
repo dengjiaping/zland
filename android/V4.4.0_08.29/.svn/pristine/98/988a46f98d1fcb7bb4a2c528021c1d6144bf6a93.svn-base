@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item name="frag_container_rl" type="id"/>
+
+    <!-- express -->
+    <item name="sv_express" type="id"/>
+    <item name="pc_express" type="id"/>
+
+    <item name="action_list" type="id"/>
+
+    <item name="cb_item_tag" type="id"/>
+
+    <item name="info_tab_0" type="id"/>
+    <item name="info_tab_1" type="id"/>
+    <item name="info_tab_2" type="id"/>
+</resources>

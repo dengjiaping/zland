@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llRoot"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:background="@drawable/rect_bwhite_clargest"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="20dp"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    android:paddingTop="20dp" >
+
+    <com.zhisland.android.blog.common.view.AvatarView
+        android:id="@+id/ivGuestAvatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:gravity="center_horizontal"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_18" />
+
+    <TextView
+        android:id="@+id/tvCompAndPosi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:paddingBottom="15dp"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:background="@color/color_div" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tvDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingBottom="10dp"
+                android:paddingTop="15dp"
+                android:scrollbars="none"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_16" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvLookTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
+        android:drawableRight="@drawable/img_arrow_rignt_green"
+        android:paddingBottom="12dp"
+        android:paddingTop="12dp"
+        android:text="查看ta的主页"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_14" />
+
+</LinearLayout>

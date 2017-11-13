@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBgWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/ivBg"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:padding="35dp">
+
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="5dp"
+                android:layout_marginBottom="24dp"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_18" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/vLine"
+                    android:layout_width="34dp"
+                    android:layout_height="1dp"
+                    android:visibility="gone"
+                    android:layout_marginRight="8dp"
+                    android:background="#979797" />
+
+                <TextView
+                    android:id="@+id/tvAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_f1"
+                    android:textSize="@dimen/txt_16" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvJumpOver"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="17dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/sel_bg_btn_skip"
+            android:gravity="center"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_10" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/img_splash_zhisland" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="中国商界第一高端人脉与网络社交平台"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_10" />
+
+    </LinearLayout>
+
+</LinearLayout>

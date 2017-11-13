@@ -1,0 +1,156 @@
+package com.zhisland.im.data;
+
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import com.zhisland.im.BeemApplication;
+import com.zhisland.lib.util.StringUtil;
+
+@DatabaseTable(tableName = IMContact.TABLE_NAME, daoClass = IMContactDao.class)
+public class IMContact extends IMBase {
+
+    private static final long serialVersionUID = -9198998357381984198L;
+
+    public static final String TABLE_NAME = "imcontact";
+
+    public static final int STATUS_WAIT = 10;// 等待处理别人的好友请求
+    public static final int STATUS_SEND = 20;// 等待别人处理自己发送的好友请求
+    public static final int STATUS_ACCEPTED = 30;// 接受了别人的好友请求
+    public static final int STATUS_BE_ACCEPTED = 40;// 别人接受了自己的好友请求
+    public static final int STATUS_IGNORE = 50;// 忽略了别人的好友请求
+
+    public static final int FRIEND_YES = 1;// 是好友关系
+    public static final int FRIEND_NO = -1;// 非好友关系
+    public static final int FRIEND_DELETED = -100;// 被好友删除
+
+    public static final int RELATION_NORMAL = 0;// 普通好友关系
+    public static final int RELATION_TRUST = 1;// 信任好友关系
+    public static final int RELATION_NON = -1;// 被对方从好友列表删除
+
+    public static final int READ_NO = 1;// 标识请求未被读取
+    public static final int READ_YES = 0;// 标识请求已被读取
+
+    public static final String COL_JID = "jid";
+    public static final String COL_NAME = "name";
+    public static final String COL_CHAR = "char";
+    public static final String COL_AVATAR = "avatar";
+    public static final String COL_INVITE_STATUS = "invite_status";
+    public static final String COL_FRIEND = "friend";
+    public static final String COL_TIME = "time";
+    public static final String COL_MSG = "message";
+    public static final String COL_PHONE = "phone";
+    public static final String COL_UNREAD = "unread";
+    public static final String COL_RELATION = "relation";
+    public static final String COL_VERSION = "version";
+    public static final String COL_DESC = "desc";
+
+    @DatabaseField(columnName = IMContact.COL_JID, id = true)
+    public String jid;// 用户的xmpp jid
+
+    @DatabaseField(columnName = IMContact.COL_NAME)
+    public String name;// 用户名称
+
+    @DatabaseField(columnName = IMContact.COL_CHAR)
+    public String c;// 用户首字母
+
+    @DatabaseField(columnName = IMContact.COL_AVATAR)
+    public String avatar;// 用户头像
+
+    /**
+     * 好友请求关系 {@code IMContact#STATUS_ASK}
+     */
+    @DatabaseField(columnName = IMContact.COL_INVITE_STATUS)
+    public int status;
+
+    @DatabaseField(columnName = IMContact.COL_UNREAD)
+    public int isUnread;// 好友请求是否已经处理
+
+    @DatabaseField(columnName = IMContact.COL_TIME)
+    public long time;
+
+    @DatabaseField(columnName = IMContact.COL_MSG)
+    public String msg;
+
+    @DatabaseField(columnName = IMContact.COL_PHONE)
+    public String phone;
+
+    @DatabaseField(columnName = IMContact.COL_FRIEND)
+    public int isFriend = IMContact.FRIEND_NO;// 是否为好友
+
+    /**
+     * 好友登记0:普通好友，1-信任好友，-1-非好友
+     */
+    @DatabaseField(columnName = IMContact.COL_RELATION)
+    public int relation;
+
+    @DatabaseField(columnName = IMContact.COL_VERSION)
+    public String version;// 好友版本号
+
+    @DatabaseField(columnName = IMContact.COL_DESC)
+    public String desc;// 好友描述
+
+    /**
+     * 是否是好友
+     *
+     * @return
+     */
+    public boolean isFriend() {
+        return this.isFriend == IMContact.FRIEND_YES;
+    }
+
+    /**
+     * 获取用户ID
+     *
+     * @return
+     */
+    public long getUserId() {
+        return parseUid(jid);
+    }
+
+    /**
+     * 根据jid解析uid
+     *
+     * @param jid
+     * @return
+     */
+    public static long parseUid(String jid) {
+        long result = -1;
+        try {
+            String uid = jid.split("@")[0];
+            result = Long.parseLong(uid);
+        } catch (Exception e) {
+
+        }
+        return result;
+    }
+
+    /**
+     * 根据用户ID构造jid
+     *
+     * @param uid
+     * @return
+     */
+    public static String buildJid(long uid) {
+        return uid + "@"
+                + BeemApplication.getInstance().getXmppConfig().getDomain();
+    }
+
+    /**
+     * 将jid中的resource去掉
+     *
+     * @param jid
+     * @return
+     */
+    public static String ParseJid(String jid) {
+        if (StringUtil.isNullOrEmpty(jid))
+            return jid;
+
+        int index = jid.indexOf("/");
+        if (index < 0)
+            return jid;
+
+        String zhJid = jid.substring(0, index);
+        return zhJid;
+
+    }
+
+}

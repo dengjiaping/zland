@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/androidTest/debug/anim/act_hold.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/bundles/debug/res/anim/act_hold.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/androidTest/debug/anim/slide_out_to_top.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/exploded-aar/V4.4.0_08.29/pulllib/unspecified/res/anim/slide_out_to_top.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/androidTest/debug/anim/slide_out_to_bottom.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/exploded-aar/V4.4.0_08.29/pulllib/unspecified/res/anim/slide_out_to_bottom.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/androidTest/debug/anim/act_bottom_in.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/bundles/debug/res/anim/act_bottom_in.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/androidTest/debug/anim/slide_in_from_bottom.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/exploded-aar/V4.4.0_08.29/pulllib/unspecified/res/anim/slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/androidTest/debug/anim/slide_in_from_top.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/exploded-aar/V4.4.0_08.29/pulllib/unspecified/res/anim/slide_in_from_top.xml"
+    }
+]

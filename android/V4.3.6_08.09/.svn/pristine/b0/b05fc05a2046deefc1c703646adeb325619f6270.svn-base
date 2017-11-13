@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBg2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rect_bwhite_clarge"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="7dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="7dp"
+                android:text="找人脉、找资源或需求"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_14" />
+
+            <View
+                android:layout_width="@dimen/app_line_height"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/color_div" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/sel_btn_search" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:background="@color/color_div" />
+
+        <LinearLayout
+            android:id="@+id/llRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_bg1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/img_invitation"
+                android:drawablePadding="15dp"
+                android:padding="15dp"
+                android:text="好友请求"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_16" />
+
+            <com.zhisland.android.blog.common.view.RedDotView
+                android:id="@+id/tvRequestNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/red_dot2"
+                android:gravity="center"
+                android:text="22"
+                android:textColor="@color/color_bg1"
+                android:textSize="@dimen/txt_12"></com.zhisland.android.blog.common.view.RedDotView>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/img_arrow_right" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:background="@color/color_div" />
+
+        <LinearLayout
+            android:id="@+id/llContactF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_bg1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/img_say_hi"
+                android:drawablePadding="15dp"
+                android:padding="15dp"
+                android:text="可能认识的人"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_16" />
+
+            <TextView
+                android:id="@+id/tvContactFCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="2dp"
+                android:text="245"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_16" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/img_arrow_right" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:background="@color/color_div" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:layout_marginTop="15dp"
+            android:background="@color/color_div" />
+
+        <LinearLayout
+            android:id="@+id/llThreeItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_bg1"
+            android:orientation="horizontal" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:background="@color/color_div" />
+    </LinearLayout>
+
+</ScrollView>

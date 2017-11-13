@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_corner_middle">3dp</dimen>
+    <dimen name="app_corner_small">1dp</dimen>
+    <dimen name="app_divider_height">1dp</dimen>
+    <dimen name="app_interval">10dp</dimen>
+    <dimen name="app_line_height">0.7dp</dimen>
+    <dimen name="post_express_size">30dp</dimen>
+    <dimen name="shrink_move_size">30dp</dimen>
+    <dimen name="txt_10">10sp</dimen>
+    <dimen name="txt_12">12sp</dimen>
+    <dimen name="txt_14">14sp</dimen>
+    <dimen name="txt_16">16sp</dimen>
+    <dimen name="txt_18">18sp</dimen>
+    <dimen name="txt_20">20sp</dimen>
+    <dimen name="txt_22">22sp</dimen>
+    <item name="fling_divider" type="integer">10</item>
+</resources>

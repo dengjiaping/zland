@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/RootBg1" >
+
+    <View
+        android:id="@+id/vTopLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:background="@color/color_div" />
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="15dp" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/ivLogo"
+        android:layout_marginRight="45dp"
+        android:layout_toRightOf="@id/ivLogo"
+        android:singleLine="true"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/tvIndustry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/ivLogo"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="45dp"
+        android:layout_toRightOf="@id/ivLogo"
+        android:singleLine="true"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_16" />
+
+    <View
+        android:id="@+id/vBottomLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_below="@id/ivLogo"
+        android:background="@color/color_div" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/img_arrow_right" />
+
+    <ImageView
+        android:id="@+id/ivApprove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/img_authentication_campany" />
+
+</RelativeLayout>

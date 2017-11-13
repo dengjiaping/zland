@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@color/color_dc">
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="50dp"
+        android:paddingRight="50dp"
+        android:src="@drawable/nav_btn_back_white" />
+
+    <ImageView
+        android:id="@+id/ivSearchHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="50dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="50dp"
+        android:paddingRight="10dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/btn_approve_search" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="帮好友升级海客"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_20" />
+
+
+    <TextView
+        android:id="@+id/tvApproveableRemainNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="96sp" />
+
+    <TextView
+        android:id="@+id/tvApproveableNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tvApproveableRemainNum"
+        android:layout_toRightOf="@id/tvApproveableRemainNum"
+        android:gravity="center"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_16" />
+
+
+    <RelativeLayout
+        android:id="@+id/layApproved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        >
+
+        <TextView
+            android:id="@+id/tvViewApproved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="查看历史记录"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_14" />
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="12dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@id/tvViewApproved"
+            android:src="@drawable/img_arrow_profile" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

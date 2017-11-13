@@ -1,0 +1,574 @@
+package com.zhisland.android.blog.feed.view.impl;
+
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.aa.dto.Country;
+import com.zhisland.android.blog.common.comment.bean.Comment;
+import com.zhisland.android.blog.common.comment.bean.Reply;
+import com.zhisland.android.blog.common.comment.view.CommentAdapter;
+import com.zhisland.android.blog.common.comment.view.SendCommentView;
+import com.zhisland.android.blog.common.dto.ActionItem;
+import com.zhisland.android.blog.common.dto.User;
+import com.zhisland.android.blog.common.util.DialogUtil;
+import com.zhisland.android.blog.common.util.PermissionsMgr;
+import com.zhisland.android.blog.common.view.CommonDialog;
+import com.zhisland.android.blog.common.view.EmptyView;
+import com.zhisland.android.blog.common.view.NetErrorView;
+import com.zhisland.android.blog.common.webview.ActionDialog;
+import com.zhisland.android.blog.feed.bean.Feed;
+import com.zhisland.android.blog.feed.model.ModelFactory;
+import com.zhisland.android.blog.feed.presenter.FeedDetailCommentPresenter;
+import com.zhisland.android.blog.feed.presenter.FeedDetailPresenter;
+import com.zhisland.android.blog.feed.presenter.FeedImageAdapter;
+import com.zhisland.android.blog.feed.view.IFeedDetailCommentView;
+import com.zhisland.android.blog.feed.view.IFeedDetailView;
+import com.zhisland.android.blog.feed.view.impl.holder.AttachCreator;
+import com.zhisland.android.blog.feed.view.impl.holder.AttachHolder;
+import com.zhisland.android.blog.feed.view.impl.holder.FeedHolder;
+import com.zhisland.android.blog.feed.view.impl.holder.FeedViewListener;
+import com.zhisland.android.blog.profile.controller.detail.ActProfileDetail;
+import com.zhisland.android.blog.profile.controller.detail.ReportReasonAdapter;
+import com.zhisland.lib.component.adapter.ZHPageData;
+import com.zhisland.lib.image.viewer.FreeImageViewer;
+import com.zhisland.lib.mvp.presenter.BasePresenter;
+import com.zhisland.lib.mvp.view.FragPullListMvps;
+import com.zhisland.lib.util.DensityUtil;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
+/**
+ * 发新鲜事
+ */
+public class FragFeedDetail extends FragPullListMvps<Comment> implements IFeedDetailCommentView, IFeedDetailView, FeedViewListener {
+
+    private CommentAdapter commentAdapter;
+    private FeedHolder feedHolder;
+    private SendCommentView sendCommentView;
+    private CommonDialog deleteCommentDialog;
+    private Dialog actionDialog;
+    private Dialog reportDlg;
+
+    FeedDetailCommentPresenter commentPresenter;
+    private FeedDetailPresenter feedDetailPresenter;
+    private TextView tvCommentTag;
+    private View headerView;
+    private View pregressView;
+
+    @InjectView(R.id.llBottomComment)
+    LinearLayout llBottomComment;
+
+    //region 生命周期
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        getPullProxy().needRefreshOnResume = false;
+        getActivity().getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+
+        commentAdapter = new CommentAdapter(getActivity());
+        commentAdapter.setEmptyView(getProgressView());
+        getPullProxy().setAdapter(commentAdapter);
+
+    }
+
+    @Override
+    public void onOkClicked(String tag, Object arg) {
+        feedDetailPresenter.onDlgOkClicked(tag, arg);
+    }
+
+    @Override
+    public void onNoClicked(String tag, Object arg) {
+        feedDetailPresenter.onDlgNoClicked(tag, arg);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View superView = super.onCreateView(inflater, container, savedInstanceState);
+        LinearLayout rootView = (LinearLayout) inflater.inflate(R.layout.frag_feed_detail, container, false);
+        LinearLayout.LayoutParams listLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        listLp.weight = 1;
+        rootView.addView(superView, 0, listLp);
+
+        ViewGroup.LayoutParams rootLp = new ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        rootView.setLayoutParams(rootLp);
+        ButterKnife.inject(this, rootView);
+        initView();
+        return rootView;
+    }
+
+    @Override
+    protected Map<String, BasePresenter> createPresenters() {
+
+        Map<String, BasePresenter> presenterMap = new HashMap<>(2);
+
+        //创建feed评论主导器
+        commentPresenter = new FeedDetailCommentPresenter();
+        commentAdapter.setOnCommentListener(commentPresenter);
+        commentPresenter.setModel(ModelFactory.CreateFeedDetailCommentModel());
+        presenterMap.put(FeedDetailCommentPresenter.class.getSimpleName(), commentPresenter);
+
+        //创建feed详情主导器
+        feedDetailPresenter = new FeedDetailPresenter();
+        feedDetailPresenter.setModel(ModelFactory.CreateFeedDetailModel());
+        presenterMap.put(FeedDetailPresenter.class.getSimpleName(), feedDetailPresenter);
+
+        //为feed详情主导器传入参数
+        Object obj = getActivity().getIntent().getSerializableExtra(ActFeedDetail.INTENT_KEY_FEED);
+        String feedId = getActivity().getIntent().getStringExtra(ActFeedDetail.INTENT_KEY_FEED_ID);
+        boolean showSendCommentFirst = getActivity().getIntent().getBooleanExtra(ActFeedDetail.INTENT_KEY_SHOW_SEND_COMMENT, false);
+        if (obj != null && obj instanceof Feed) {
+            feedDetailPresenter.setFeed((Feed) obj, showSendCommentFirst);
+            commentPresenter.setFeedId(((Feed) obj).feedId);
+        } else if (feedId != null) {
+            feedDetailPresenter.setFeedId(feedId);
+            commentPresenter.setFeedId(feedId);
+        } else {
+            getActivity().finish();
+        }
+
+        return presenterMap;
+    }
+
+
+    private void initView() {
+        sendCommentView = new SendCommentView(getActivity(), callback);
+        pullView.setMode(PullToRefreshBase.Mode.DISABLED);
+        internalView.setFastScrollEnabled(false);
+        pullView.getRefreshableView().setDividerHeight(0);
+        pullView.getRefreshableView().setSelector(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+
+    //endregion
+
+    //region comment 相关
+    @Override
+    public void loadMore(String nextId) {
+        super.loadMore(nextId);
+        commentPresenter.loadComment(nextId);
+    }
+
+    @Override
+    public void onLoadSucessfully(ZHPageData<Comment> data) {
+        commentAdapter.setEmptyView(null);
+        super.onLoadSucessfully(data);
+        if (data.pageIsLast) {
+            pullView.setMode(PullToRefreshBase.Mode.DISABLED);
+        } else {
+            pullView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
+        }
+    }
+
+    @Override
+    public void onLoadFailed(Throwable error) {
+        super.onLoadFailed(error);
+        NetErrorView netErrorView = new NetErrorView(getActivity());
+        netErrorView.setPadding(0, DensityUtil.dip2px(20), 0, DensityUtil.dip2px(20));
+        netErrorView.getTvPrompt().setText("获取数据失败");
+        netErrorView.getTvReload().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                commentAdapter.setEmptyView(getProgressView());
+                commentPresenter.loadComment(null);
+            }
+        });
+        commentAdapter.setEmptyView(netErrorView);
+        pullView.setMode(PullToRefreshBase.Mode.DISABLED);
+    }
+
+    @Override
+    public void showCommentTag() {
+        tvCommentTag.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public Comment getCommentItem(long commentId) {
+        List<Comment> data = commentAdapter.getData();
+        if (data != null) {
+            for (Comment comment : data) {
+                if (comment.commentId == commentId) {
+                    return comment;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void addCommentItemAtFirst(Comment comment) {
+        commentAdapter.insert(comment);
+        commentAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void removeCommentItem(Comment comment) {
+        commentAdapter.removeItem(comment);
+        commentAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void gotoCommentDetail(Feed feed, Comment comment) {
+        FragCommentDetail.invoke(getActivity(), feed, comment);
+    }
+
+    @Override
+    public void showSendCommentView(SendCommentView.ToType toType, String toName, String feedId, Long commentId, Long replyId) {
+        if (toType == SendCommentView.ToType.subject) {
+            if (!PermissionsMgr.getInstance().canInfoComment()) {
+                DialogUtil.showPermissionsDialog(getActivity(), "");
+                return;
+            }
+        } else {
+            if (!PermissionsMgr.getInstance().canInfoCommentReply()) {
+                DialogUtil.showPermissionsDialog(getActivity(), "");
+                return;
+            }
+        }
+        sendCommentView.show(toType, toName, feedId, commentId, replyId);
+    }
+
+    @Override
+    public void refreshCommentList() {
+        commentAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void hideSendCommentView() {
+        sendCommentView.hide();
+    }
+
+    @Override
+    public void toastCommentSuccess() {
+        Toast toast = new Toast(getActivity());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.layout_info_dlg, null);
+        toast.setView(view);
+        toast.show();
+    }
+
+    SendCommentView.Callback callback = new SendCommentView.Callback() {
+
+        @Override
+        public void comment(String subJectId, String content) {
+            commentPresenter.comment(subJectId, content);
+        }
+
+        @Override
+        public void commentReply(long commentId, String content) {
+            commentPresenter.commentReply(commentId, null, content);
+        }
+
+        @Override
+        public void commentReply(long commentId, long replyId, String content) {
+            commentPresenter.commentReply(commentId, replyId, content);
+        }
+    };
+
+    @OnClick(R.id.llBottomComment)
+    public void onBottomCommentClick() {
+        commentPresenter.wantSendComment(SendCommentView.ToType.subject, null, null, null);
+    }
+
+    private View getProgressView() {
+        if (pregressView == null) {
+            pregressView = LayoutInflater.from(getActivity()).inflate(R.layout.progress_dialog, null);
+            pregressView.setBackgroundColor(getResources().getColor(R.color.color_bg2));
+            TextView tvRight = (TextView) pregressView.findViewById(R.id.tv_progress_dlg);
+            tvRight.setTextColor(getResources().getColor(R.color.color_f2));
+            tvRight.setText("加载中...");
+        }
+        return pregressView;
+    }
+    //endregion
+
+    //region feed view implementation
+
+    @Override
+    public void gotoUserDetail(User user) {
+        ActProfileDetail.invoke(getActivity(), user.uid);
+    }
+
+    @Override
+    public void updateFeed(Feed feed) {
+        if (feedHolder == null) {
+            headerView = LayoutInflater.from(getActivity()).inflate(R.layout.layout_feed_detail_head, null);
+            tvCommentTag = (TextView) headerView.findViewById(R.id.tvCommentTag);
+            headerView.findViewById(R.id.vFeedDetail).setBackgroundColor(getResources().getColor(R.color.color_bg1));
+            int viewType = AttachCreator.Instance().getViewType(feed);
+            AttachHolder attachHolder = AttachCreator.Instance().getAttachHolder(getActivity(), viewType, false);
+            feedHolder = new FeedHolder(getActivity(), headerView);
+            feedHolder.setDetail(true);
+            feedHolder.setBottomDividerVisibility(View.GONE);
+            feedHolder.addAttachView(attachHolder);
+            pullView.getRefreshableView().addHeaderView(headerView);
+        }
+        feedHolder.fill(feed, this);
+        if (feed != null && feed.comment != null) {
+            setCommentTagCount(feed.comment.quantity);
+        }
+    }
+
+    @Override
+    public void gotoFeedDetail(Feed curFeed, boolean startComment) {
+        //跳转到feed详情 详情中不需要实现此方法
+    }
+
+    @Override
+    public void browseImages(FeedImageAdapter feedImageAdapter, int index) {
+        FreeImageViewer.invoke(getActivity(), feedImageAdapter,
+                index, feedImageAdapter.count(),
+                -1, 0, FreeImageViewer.TYPE_SHOW_NUMBER);
+    }
+
+    @Override
+    public void showDeletedView() {
+        EmptyView ev = new EmptyView(getActivity());
+        ev.setImgRes(R.drawable.img_circle_feed_delete);
+        ev.setBtnVisibility(View.INVISIBLE);
+        ev.setPrompt("该内容已被发布者删除");
+        ev.setPromptTextColor(R.color.color_f3);
+        AbsListView.LayoutParams lp = new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, DensityUtil.getHeight() - DensityUtil.dip2px(150));
+        ev.setLayoutParams(lp);
+        if (headerView != null && headerView.getParent() != null) {
+            pullView.getRefreshableView().removeHeaderView(headerView);
+        }
+        llBottomComment.setVisibility(View.GONE);
+        commentAdapter.setEmptyView(ev);
+    }
+
+    @Override
+    public void finishSelf() {
+        getActivity().finish();
+    }
+
+    @Override
+    public void onLoadFeedOk(Feed data) {
+        commentPresenter.setFeed(data);
+    }
+
+    @Override
+    public void showSendCommentView(String feedId) {
+        showSendCommentView(SendCommentView.ToType.subject, null, feedId, null, null);
+    }
+
+    @Override
+    public void setCommentTagCount(Integer count) {
+        if (count != null && count > 0) {
+            tvCommentTag.setText("评论 " + count);
+        } else {
+            tvCommentTag.setText("评论");
+        }
+    }
+
+    @Override
+    public void showDeleteDialog(final Comment comment, final Reply reply) {
+        if (deleteCommentDialog == null) {
+            deleteCommentDialog = new CommonDialog(getActivity());
+        }
+        if (!deleteCommentDialog.isShowing()) {
+            deleteCommentDialog.show();
+            if (reply == null) {
+                deleteCommentDialog.setTitle("确定删除该条观点？");
+            } else {
+                deleteCommentDialog.setTitle("确定删除该条回复？");
+            }
+            deleteCommentDialog.setLeftBtnContent("取消");
+            deleteCommentDialog.setRightBtnContent("确定删除");
+            deleteCommentDialog.setRightBtnColor(getResources()
+                    .getColor(R.color.color_ac));
+            deleteCommentDialog.tvDlgConfirm.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    deleteCommentDialog.dismiss();
+                    if (reply == null) {
+                        commentPresenter.deleteComment(comment);
+                    } else {
+                        commentPresenter.deleteReply(comment, reply);
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    public void showDeteleFeedAction() {
+        if (actionDialog != null && actionDialog.isShowing()) {
+            return;
+        }
+        ArrayList<ActionItem> actions = new ArrayList<ActionItem>();
+        actions.add(new ActionItem(1, R.color.color_ac, "删除动态"));
+        actionDialog = DialogUtil.createActionSheet(getActivity(), "", "取消",
+                actions, new ActionDialog.OnActionClick() {
+
+                    @Override
+                    public void onClick(DialogInterface df, int id,
+                                        ActionItem item) {
+                        if (actionDialog != null && actionDialog.isShowing()) {
+                            actionDialog.dismiss();
+                        }
+                        switch (id) {
+                            case 1:
+                                feedDetailPresenter.onDeleteFeedClick();
+                                break;
+                        }
+                    }
+                });
+
+        actionDialog.show();
+    }
+
+    @Override
+    public void showReportFeedAction() {
+        if (actionDialog != null && actionDialog.isShowing()) {
+            return;
+        }
+        ArrayList<ActionItem> actions = new ArrayList<ActionItem>();
+        actions.add(new ActionItem(1, R.color.color_dc, "我要举报"));
+        actionDialog = DialogUtil.createActionSheet(getActivity(), "", "取消",
+                actions, new ActionDialog.OnActionClick() {
+
+                    @Override
+                    public void onClick(DialogInterface df, int id,
+                                        ActionItem item) {
+                        if (actionDialog != null && actionDialog.isShowing()) {
+                            actionDialog.dismiss();
+                        }
+                        switch (id) {
+                            case 1:
+                                feedDetailPresenter.onReportFeedClick();
+                                break;
+                        }
+                    }
+                });
+
+        actionDialog.show();
+    }
+
+    @Override
+    public void showDeleteFeedDlg() {
+        final CommonDialog deleteDlg = new CommonDialog(getActivity());
+        deleteDlg.show();
+        deleteDlg.setTitle("确定要删除动态吗？");
+        deleteDlg.setLeftBtnContent("取消");
+        deleteDlg.setRightBtnContent("确定");
+        deleteDlg.setRightBtnColor(getResources()
+                .getColor(R.color.color_ac));
+        deleteDlg.tvDlgConfirm.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                deleteDlg.dismiss();
+                feedDetailPresenter.onDeleteClicked();
+            }
+        });
+    }
+
+    @Override
+    public void showReportFeedDlg(User user, final ArrayList<Country> datas) {
+        if (user == null || datas == null) {
+            return;
+        }
+        if (reportDlg == null) {
+            reportDlg = new Dialog(getActivity(), R.style.DialogGuest);
+            reportDlg.setContentView(R.layout.profile_report_user);
+            reportDlg.setCancelable(true);
+
+            ListView listView = (ListView) reportDlg
+                    .findViewById(R.id.lvReportReason);
+            listView.setAdapter(new ReportReasonAdapter(getActivity(),
+                    datas));
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view,
+                                        int position, long id) {
+                    reportDlg.dismiss();
+                    feedDetailPresenter.report(datas.get(position).code);
+                }
+            });
+
+            TextView tvReportTitle = (TextView) reportDlg
+                    .findViewById(R.id.tvReportTitle);
+            tvReportTitle.setText("我要举报");
+
+            Window dialogWindow = reportDlg.getWindow();
+            WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+            lp.width = DensityUtil.getWidth() - DensityUtil.dip2px(70); // 宽度
+            dialogWindow.setGravity(Gravity.CENTER);
+            dialogWindow.setAttributes(lp);
+        }
+        if (!reportDlg.isShowing()) {
+            reportDlg.show();
+        }
+    }
+
+    public void onMoreActionClick() {
+        feedDetailPresenter.onMoreActionClick();
+    }
+
+    //endregion
+
+    //region item UI事件
+
+    @Override
+    public void onUserClicked(FeedHolder feedHolder, User user) {
+        feedDetailPresenter.onUserClicked(user);
+    }
+
+    @Override
+    public void onPraiseClicked(FeedHolder feedHolder, Feed curFeed) {
+        feedDetailPresenter.onPraiseClicked(curFeed);
+    }
+
+    @Override
+    public void onCommentClicked(FeedHolder feedHolder, Feed curFeed) {
+        feedDetailPresenter.onCommentClicked(curFeed);
+    }
+
+    @Override
+    public void onTransemitClicked(FeedHolder feedHolder, Feed curFeed) {
+        feedDetailPresenter.onRetransmit(curFeed);
+    }
+
+    @Override
+    public void onAttachClicked(Feed feed, Object obj) {
+        feedDetailPresenter.onAttachmentClicked(feed, obj);
+    }
+
+    @Override
+    public void onFeedCicked(Feed curFeed) {
+        feedDetailPresenter.onFeedClicked(curFeed);
+    }
+
+    //endregion
+
+}

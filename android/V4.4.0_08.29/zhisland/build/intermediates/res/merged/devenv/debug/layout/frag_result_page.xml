@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/RootBg2"
+              android:layout_width="fill_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivSucIcon"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="70dp"
+        />
+
+    <TextView
+        android:id="@+id/tvSucTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="报名确认中"
+        android:textColor="@color/color_f1"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/tvSucDesc"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:lineSpacingMultiplier="1.2"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_16"/>
+
+    <TextView
+        android:id="@+id/tvPayInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:drawableLeft="@drawable/img_campaign_pay_wait"
+        android:drawablePadding="6dp"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_20"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnSucBottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_titlebar_height"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/sel_bg_btn_bgreen"
+            android:text="邀请好友来参加"
+            android:textColor="@color/color_bg1"
+            android:textSize="@dimen/txt_18"/>
+
+        <TextView
+            android:id="@+id/tvSucBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:drawableRight="@drawable/sel_btn_arrow"
+            android:padding="20dp"
+            android:text="返回活动列表"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_16"/>
+
+    </LinearLayout>
+</LinearLayout>

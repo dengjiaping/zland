@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/tvItemInviteCodeTitle"
+        android:layout_width="35dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/rect_bsc_c10_left"
+        android:gravity="center"
+        android:text="邀\n请\n码"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_14" />
+
+    <RelativeLayout
+        android:id="@+id/rlItemInviteCodeContentUnsend"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/tvItemInviteCodeTitle"
+        android:background="@drawable/rect_bbg2_sebebeb_c10_right" >
+
+        <TextView
+            android:id="@+id/tvInviteCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/color_sc"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/tvInvite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="12dp"
+            android:drawableRight="@drawable/btn_arrow_rignt_glod"
+            android:text="发送给好友 "
+            android:textColor="@color/color_sc"
+            android:textSize="@dimen/txt_14" />
+    </RelativeLayout>
+
+</RelativeLayout>

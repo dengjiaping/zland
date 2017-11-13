@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#B2000000"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.5"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:text="批准须知"
+            android:textColor="@color/color_dc_p"
+            android:textSize="@dimen/txt_22" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:lineSpacingMultiplier="1.3"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="40dp"
+            android:text=" 海客身份要求：\n－积极正向价值观，真诚靠谱\n－创新创业型企业的董事长/总裁、\n    副总裁及以上的企业高管\n\n邀请最对的朋友，为Ta的信用加持"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_18" />
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:padding="15dp"
+            android:src="@drawable/sel_btn_close_white" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

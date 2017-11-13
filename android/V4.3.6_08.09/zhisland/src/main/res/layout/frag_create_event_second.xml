@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollViewRoot"
+    style="@style/RootBg2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_bg1"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:singleLine="true"
+                android:text="谁可以参加"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_18" />
+
+            <TextView
+                android:id="@+id/tvWho"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/img_arrow_down_list_grey"
+                android:paddingBottom="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="15dp"
+                android:text="全部用户"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_18" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_bg1"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_bg1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="115dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="15dp"
+                    android:singleLine="true"
+                    android:text="参加人数"
+                    android:textColor="@color/color_f2"
+                    android:textSize="@dimen/txt_18" />
+
+                <EditText
+                    android:id="@+id/etNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="输入参加人数（默认不限）"
+                    android:inputType="number"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="15dp"
+                    android:textColor="@color/color_f1"
+                    android:textColorHint="@color/color_f3"
+                    android:textSize="@dimen/txt_18" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_line_height"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/color_bg2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_bg1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="115dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="15dp"
+                    android:singleLine="true"
+                    android:text="活动费用"
+                    android:textColor="@color/color_f2"
+                    android:textSize="@dimen/txt_18" />
+
+                <EditText
+                    android:id="@+id/etCost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="输入活动费用（默认免费）"
+                    android:inputType="number"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="15dp"
+                    android:singleLine="true"
+                    android:textColor="@color/color_f1"
+                    android:textColorHint="@color/color_f3"
+                    android:textSize="@dimen/txt_18" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:background="@color/color_bg1"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:singleLine="true"
+                android:text="联系方式"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_18" />
+
+            <com.zhisland.android.blog.common.view.InternationalPhoneView
+                android:id="@+id/internationalPhoneView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </com.zhisland.android.blog.common.view.InternationalPhoneView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPublic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_bg1"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:text="活动公开显示"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_18" />
+
+            <ImageView
+                android:id="@+id/ivPublic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/sel_switch" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

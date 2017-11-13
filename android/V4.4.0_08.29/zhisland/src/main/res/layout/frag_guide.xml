@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llRooView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background_register"
+    android:orientation="vertical"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    >
+
+    <TextView
+        android:id="@+id/tvModifyEnv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="10dp"
+        android:text="修改环境"
+        android:textColor="@color/color_sc"
+        android:textSize="@dimen/txt_18"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/register_icon_zhisland"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="正和岛"
+        android:textColor="@color/white"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:text="中国商界第一高端人脉与网络社交平台"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_14"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnRegister"
+            style="@style/WHITE_BG_BUTTON"
+            android:text="注册"
+            android:textSize="@dimen/txt_18"/>
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/WHITE_BG_BUTTON"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rect_btransparent_swhite_clarge"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_18"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="16dp"
+            android:text="岛邻或已经有账号直接登录"
+            android:textColor="@color/color_white_70"
+            android:textSize="@dimen/txt_14"/>
+    </LinearLayout>
+
+</LinearLayout>

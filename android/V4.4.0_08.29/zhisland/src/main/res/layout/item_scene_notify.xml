@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"    
+    style="@style/RootBgTransparent"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="15dp" >
+
+        <View
+            android:layout_centerHorizontal="true"
+            android:id="@+id/scene_notify_vec_line"
+            android:layout_width="3dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="11dp"
+            android:background="@color/color_div" />
+
+        <View
+            android:layout_centerHorizontal="true"
+            android:id="@+id/scene_1st_line_cover"
+            android:layout_width="3dp"
+            android:layout_height="12.5dp"
+            android:background="@color/white"
+            android:visibility="gone" />
+
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/scene_notify_head_circle"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"
+            android:background="#88ffffff"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_scene_notify_dot" />
+
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/scene_notify_head_circle_new"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="#88ffffff"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_scene_notify_newdot"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/scene_notify_head_circle_new_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/scene_notify_head_circle_new"
+            android:text="NEW!"
+            android:textColor="@color/color_sc"
+            android:textSize="@dimen/txt_14"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/scene_notify_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:text="11:30"
+            android:textColor="@color/color_sc"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/scene_notify_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="6dp"
+            android:lineSpacingMultiplier="1.1"
+            android:text="中共中央纪律检查委员会反腐三科科员获得诺贝尔医药或生理学奖"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_14" />
+
+        <ImageView
+            android:id="@+id/scene_notify_pic"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_campaign_default" />
+
+        <TextView
+            android:id="@+id/scene_notify_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="中共中央纪律检查委员会反腐三科科员梁辉，因发现死猪肉不能吃，而获得诺贝尔医药或生理学奖，由英国著名理论天文学家霍金为其颁奖，因为霍金身体的原因，颁奖持续了1小时，梁辉实在忍不住，突然暴起将霍金斩杀，现已被FBI逮捕，梁辉表示很后悔"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_14"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

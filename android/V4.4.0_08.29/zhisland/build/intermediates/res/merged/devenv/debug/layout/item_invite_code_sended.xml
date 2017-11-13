@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/tvItemInviteCodeTitle"
+        android:layout_width="35dp"
+        android:text="邀\n请\n码"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_14"
+        android:layout_height="match_parent"
+        android:background="@drawable/rect_bf3_c10_left" />
+
+    <RelativeLayout
+        android:id="@+id/rlItemInviteCodeContentSended"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/tvItemInviteCodeTitle"
+        android:background="@drawable/rect_bbg2_sebebeb_c10_right" >
+
+        <com.zhisland.android.blog.common.view.AvatarView
+            android:id="@+id/ivItemInviteCodeAvatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="18dp"
+            android:src="@drawable/contact_img_defaultface" />
+
+        <RelativeLayout
+            android:layout_marginLeft="14dp"
+            android:id="@+id/rlItemInviteCodeUserInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/ivItemInviteCodeAvatar" >
+
+            <TextView
+                android:id="@+id/tvItemInviteCodeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_18" />
+
+            <TextView
+                android:id="@+id/tvItemInviteCodePosition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvItemInviteCodeName"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_16" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/ivItemInviteCodeUsedLogo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="-12dp"
+            android:layout_marginTop="-16dp"
+            android:src="@drawable/contact_img_beenused" />
+    </RelativeLayout>
+
+</RelativeLayout>

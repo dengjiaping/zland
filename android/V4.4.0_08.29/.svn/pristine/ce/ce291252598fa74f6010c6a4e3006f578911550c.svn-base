@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rect_bbg2_clarge"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:paddingTop="1dp"
+            android:paddingRight="8dp"
+            android:src="@drawable/img_profile_cup" />
+
+        <TextView
+            android:id="@+id/tvHonorTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <ImageView
+            android:id="@+id/ivHonorEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:paddingLeft="5dp"
+            android:paddingTop="18dp"
+            android:src="@drawable/sel_btn_pencil"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="@color/color_bg2"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="正和岛是信任链接的平台，留下您的真实姓名吧"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_12"/>
+
+    <ScrollView
+        android:id="@+id/slRootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:id="@+id/rlUserAvatar"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:id="@+id/ivUserAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/avatar_default"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/sel_register_btn_camera"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- 姓名 -->
+                    <RelativeLayout
+                        style="@style/BASIC_INFO_RELATIVE_LAYOUT"
+                        >
+
+                        <TextView
+                            android:id="@+id/tvUserName"
+                            style="@style/BASIC_INFO_DEFAULT_TEXT"
+                            android:text="您的姓名"
+                            />
+
+                        <EditText
+                            android:id="@+id/etUserName"
+                            style="@style/BASIC_INFO_EDIT_TEXT"
+                            android:layout_alignBottom="@id/tvUserName"
+                            android:layout_toRightOf="@id/tvUserName"
+                            android:hint="请输入您的姓名"
+                            />
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/lineName"
+                        style="@style/BASIC_INFO_DIVIDER"
+                        />
+
+                    <!-- 性别 -->
+                    <RelativeLayout
+                        style="@style/BASIC_INFO_RELATIVE_LAYOUT"
+                        >
+
+                        <TextView
+                            android:id="@+id/tvUserSex"
+                            style="@style/BASIC_INFO_DEFAULT_TEXT"
+                            android:text="如何称呼"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/rbSexMan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBaseline="@id/tvUserSex"
+                            android:layout_toRightOf="@id/tvUserSex"
+                            android:button="@drawable/sel_radio_box"
+                            android:checked="false"
+                            android:paddingLeft="5dp"
+                            android:text="先生"
+                            android:textColor="@color/color_f1"
+                            android:textSize="@dimen/txt_16"/>
+
+                        <RadioButton
+                            android:id="@+id/rbSexWoman"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBaseline="@id/tvUserSex"
+                            android:layout_marginLeft="50dp"
+                            android:layout_toRightOf="@id/rbSexMan"
+                            android:button="@drawable/sel_radio_box"
+                            android:checked="false"
+                            android:paddingLeft="5dp"
+                            android:text="女士"
+                            android:textColor="@color/color_f1"
+                            android:textSize="@dimen/txt_16"/>
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/lineSex"
+                        style="@style/BASIC_INFO_DIVIDER"
+                        />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <!-- 公司 -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            style="@style/BASIC_INFO_RELATIVE_LAYOUT"
+                            >
+
+                            <TextView
+                                android:id="@+id/tvUserCompany"
+                                style="@style/BASIC_INFO_DEFAULT_TEXT"
+                                android:text="公司名称"
+                                />
+
+                            <EditText
+                                android:id="@+id/etUserCompany"
+                                style="@style/BASIC_INFO_EDIT_TEXT"
+                                android:layout_alignBottom="@id/tvUserCompany"
+                                android:layout_toRightOf="@id/tvUserCompany"
+                                android:hint="公司名称"
+                                android:maxLength="40"
+                                />
+                        </RelativeLayout>
+
+                        <View
+                            android:id="@+id/lineCompany"
+                            style="@style/BASIC_INFO_DIVIDER"
+                            />
+
+                        <!-- 职位 -->
+                        <RelativeLayout
+                            style="@style/BASIC_INFO_RELATIVE_LAYOUT">
+
+                            <TextView
+                                android:id="@+id/tvUserPosition"
+                                style="@style/BASIC_INFO_DEFAULT_TEXT"
+                                android:text="当前任职"
+                                />
+
+                            <EditText
+                                android:id="@+id/etUserPosition"
+                                style="@style/BASIC_INFO_EDIT_TEXT"
+                                android:layout_alignBottom="@id/tvUserPosition"
+                                android:layout_toRightOf="@id/tvUserPosition"
+                                android:hint="请输入您的任职"
+                                android:maxLength="20"
+                                />
+                        </RelativeLayout>
+
+                        <View
+                            android:id="@+id/linePosition"
+                            style="@style/BASIC_INFO_DIVIDER"
+                            />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/ivAuth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/authentication_red"
+                        />
+                </RelativeLayout>
+
+                <!-- 行业 -->
+                <RelativeLayout
+                    style="@style/BASIC_INFO_RELATIVE_LAYOUT">
+
+                    <TextView
+                        android:id="@+id/tvUserIndustry"
+                        style="@style/BASIC_INFO_DEFAULT_TEXT"
+                        android:text="所在行业"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvUserIndustryContent"
+                        style="@style/BASIC_INFO_EDIT_TEXT"
+                        android:layout_alignBottom="@id/tvUserIndustry"
+                        android:layout_toRightOf="@id/tvUserIndustry"
+                        android:hint="请选择您的行业"
+                        />
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/lineIndustry"
+                    style="@style/BASIC_INFO_DIVIDER"
+                    />
+
+                <!-- 城市 -->
+                <RelativeLayout
+                    style="@style/BASIC_INFO_RELATIVE_LAYOUT"
+                    >
+
+                    <TextView
+                        android:id="@+id/tvUserCity"
+                        style="@style/BASIC_INFO_DEFAULT_TEXT"
+                        android:text="常驻城市"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvCityContent"
+                        style="@style/BASIC_INFO_EDIT_TEXT"
+                        android:layout_alignBottom="@id/tvUserCity"
+                        android:layout_toRightOf="@id/tvUserCity"
+                        android:hint="请选择您的常驻城市"
+                        />
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/lineCity"
+                    style="@style/BASIC_INFO_DIVIDER"
+                    />
+
+                <TextView
+                    android:id="@+id/tvNext"
+                    style="@style/LOGIN_BUTTON"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="24dp"
+                    android:enabled="true"
+                    android:gravity="center"
+                    android:text="确定"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

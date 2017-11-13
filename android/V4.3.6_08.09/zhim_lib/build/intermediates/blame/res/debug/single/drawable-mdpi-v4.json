@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhim_lib/build/intermediates/res/merged/debug/drawable-mdpi-v4/indicator_arrow.png",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhim_lib/build/intermediates/exploded-aar/V4.3.6_08.09/pulllib/unspecified/res/drawable-mdpi-v4/indicator_arrow.png"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhim_lib/build/intermediates/res/merged/debug/drawable-mdpi-v4/default_ptr_flip.png",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhim_lib/build/intermediates/exploded-aar/V4.3.6_08.09/pulllib/unspecified/res/drawable-mdpi-v4/default_ptr_flip.png"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhim_lib/build/intermediates/res/merged/debug/drawable-mdpi-v4/default_ptr_rotate.png",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhim_lib/build/intermediates/exploded-aar/V4.3.6_08.09/pulllib/unspecified/res/drawable-mdpi-v4/default_ptr_rotate.png"
+    }
+]

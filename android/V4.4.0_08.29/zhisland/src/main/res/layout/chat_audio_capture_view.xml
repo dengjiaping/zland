@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_all"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_chat_audio_capture" >
+
+    <!-- 录音 -->
+
+    <RelativeLayout
+        android:id="@+id/view_audio_capture_recording"
+        android:layout_width="@dimen/recording_width"
+        android:layout_height="@dimen/recording_width"
+        android:gravity="center" >
+
+        <RelativeLayout
+            android:id="@+id/llRecordingTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" >
+
+            <ImageView
+                android:id="@+id/ivVoice"
+                android:layout_width="39dp"
+                android:layout_height="70dp"
+                android:src="@drawable/img_voice" />
+
+            <ImageView
+                android:id="@+id/ivPower"
+                android:layout_width="18dp"
+                android:layout_height="60dp"
+                android:layout_alignBottom="@id/ivVoice"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/ivVoice"
+                android:src="@drawable/img_volume_a" />
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/pb_audio_capture"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="160dp"
+            android:layout_height="8dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:max="100"
+            android:progressDrawable="@drawable/bg_audio_capture_pro_bar"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_audio_capture_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/llRecordingTop"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="手指上滑，取消发送"
+            android:textColor="@color/color_bg1"
+            android:textSize="@dimen/txt_16" />
+    </RelativeLayout>
+
+    <!-- 取消录音 -->
+
+    <LinearLayout
+        android:id="@+id/view_audio_capture_cancel"
+        android:layout_width="@dimen/recording_width"
+        android:layout_height="@dimen/recording_width"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="68dp"
+            android:background="@drawable/img_again" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/bg_aduio_cancel"
+            android:padding="5dp"
+            android:text="松开手指，取消发送"
+            android:textColor="@color/color_bg1"
+            android:textSize="@dimen/txt_16" />
+    </LinearLayout>
+
+    <!-- 倒计时 -->
+
+    <LinearLayout
+        android:id="@+id/view_audio_countdown"
+        android:layout_width="@dimen/recording_width"
+        android:layout_height="@dimen/recording_width"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/tvCountDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_bg1"
+            android:textSize="90sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="手指上滑，取消发送"
+            android:textColor="@color/color_bg1"
+            android:textSize="@dimen/txt_16" />
+    </LinearLayout>
+
+    <!-- 录音时间过短 -->
+
+    <LinearLayout
+        android:id="@+id/view_audio_short"
+        android:layout_width="@dimen/recording_width"
+        android:layout_height="@dimen/recording_width"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ImageView
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:background="@drawable/img_warning" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="录音时间太短啦"
+            android:textColor="@color/color_bg1"
+            android:textSize="@dimen/txt_16" />
+    </LinearLayout>
+
+</FrameLayout>

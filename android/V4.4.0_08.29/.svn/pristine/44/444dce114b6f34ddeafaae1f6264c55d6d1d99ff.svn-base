@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_basic_info"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_white_list"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="25dp"
+            android:text="正和岛是实名制的社交平台，客服确认您的身份信息后将会通知您。"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_22"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvGoToModifyBasicInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:padding="10dp"
+        android:text="身份信息填写有误，需要修改 >"
+        android:textColor="@color/color_white_90"
+        android:textSize="@dimen/txt_16"/>
+
+    <TextView
+        android:id="@+id/tvJumpRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:padding="10dp"
+        android:text="跳过"
+        android:textColor="@color/white"
+        android:textSize="@dimen/app_title_btn_text_size"/>
+
+</RelativeLayout>

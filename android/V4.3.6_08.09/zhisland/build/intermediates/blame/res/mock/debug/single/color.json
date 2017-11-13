@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/build/intermediates/res/merged/mock/debug/color/sel_color_f1_f2.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/src/main/res/color/sel_color_f1_f2.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/build/intermediates/res/merged/mock/debug/color/sel_color_white_white80.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/src/main/res/color/sel_color_white_white80.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/build/intermediates/res/merged/mock/debug/color/sel_color_flow_sc.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/src/main/res/color/sel_color_flow_sc.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/build/intermediates/res/merged/mock/debug/color/sel_color.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/src/main/res/color/sel_color.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/build/intermediates/res/merged/mock/debug/color/sel_color_find_filter.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/src/main/res/color/sel_color_find_filter.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/build/intermediates/res/merged/mock/debug/color/sel_color_register.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/src/main/res/color/sel_color_register.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/build/intermediates/res/merged/mock/debug/color/sel_color_login.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/src/main/res/color/sel_color_login.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/build/intermediates/res/merged/mock/debug/color/sel_font_color_green.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/src/main/res/color/sel_font_color_green.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/build/intermediates/res/merged/mock/debug/color/sel_color_dc.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/src/main/res/color/sel_color_dc.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/build/intermediates/res/merged/mock/debug/color/sel_color_dark_white.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.3.6_08.09/zhisland/build/intermediates/exploded-aar/V4.3.6_08.09/zhlib/unspecified/res/color/sel_color_dark_white.xml"
+    }
+]

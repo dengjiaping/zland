@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/debug/drawable/line_category.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/src/main/res/drawable/line_category.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/debug/drawable/sel_btn_back.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/src/main/res/drawable/sel_btn_back.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/debug/drawable/bg_progress.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/src/main/res/drawable/bg_progress.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/debug/drawable/progress_m.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/src/main/res/drawable/progress_m.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/debug/drawable/sel_bg_popitem.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/src/main/res/drawable/sel_bg_popitem.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/debug/drawable/bg_toast.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/src/main/res/drawable/bg_toast.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/debug/drawable/progress_album.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/src/main/res/drawable/progress_album.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/debug/drawable/indicator_bg_top.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/exploded-aar/V4.4.0_08.29/pulllib/unspecified/res/drawable/indicator_bg_top.xml"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/res/merged/debug/drawable/indicator_bg_bottom.xml",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhlib/build/intermediates/exploded-aar/V4.4.0_08.29/pulllib/unspecified/res/drawable/indicator_bg_bottom.xml"
+    }
+]

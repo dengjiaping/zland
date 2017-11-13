@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/img_info_link_pop"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvFirst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textColor="@color/color_bg1"
+        android:textSize="@dimen/txt_12" />
+
+    <TextView
+        android:id="@+id/tvSecond"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textColor="@color/color_bg1"
+        android:textSize="@dimen/txt_12" />
+
+</LinearLayout>

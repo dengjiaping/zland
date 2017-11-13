@@ -1,0 +1,133 @@
+#
+# generated on 2015/06/09 03:27:22
+#
+# --table-start--
+dataClass=com.zhisland.people.dto.CacheDto
+tableName=cache_dto
+# --table-fields-start--
+# --field-start--
+fieldName=key
+columnName=key
+id=true
+# --field-end--
+# --field-start--
+fieldName=value
+columnName=value
+dataPersister=SERIALIZABLE
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.zhisland.people.dto.KV
+tableName=kv_cache
+# --table-fields-start--
+# --field-start--
+fieldName=key
+columnName=key
+id=true
+# --field-end--
+# --field-start--
+fieldName=value
+columnName=value
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.zhisland.people.dto.User
+tableName=tb_user
+# --table-fields-start--
+# --field-start--
+fieldName=uid
+columnName=user_id
+id=true
+# --field-end--
+# --field-start--
+fieldName=name
+columnName=user_name
+# --field-end--
+# --field-start--
+fieldName=avatarUrl
+columnName=avatar_url
+# --field-end--
+# --field-start--
+fieldName=approveTitle
+columnName=approve_title
+# --field-end--
+# --field-start--
+fieldName=phoneNum
+columnName=phone_number
+# --field-end--
+# --field-start--
+fieldName=userType
+columnName=user_type
+# --field-end--
+# --field-start--
+fieldName=locJson
+columnName=loc_json
+# --field-end--
+# --field-start--
+fieldName=relationStatus
+columnName=relation_status
+# --field-end--
+# --field-start--
+fieldName=gardenId
+columnName=user_garden_id
+# --field-end--
+# --field-start--
+fieldName=gardenName
+columnName=user_garden_name
+# --field-end--
+# --field-start--
+fieldName=gardenPhone
+columnName=user_garden_phone
+# --field-end--
+# --field-start--
+fieldName=friendJson
+columnName=friend_json
+# --field-end--
+# --field-start--
+fieldName=approveCompanyName
+columnName=com_name
+# --field-end--
+# --field-start--
+fieldName=approveCompanyDesc
+columnName=com_desc
+# --field-end--
+# --field-start--
+fieldName=approveDesc
+columnName=appr_desc
+# --field-end--
+# --field-start--
+fieldName=recommendDesc
+columnName=recommend_desc
+# --field-end--
+# --field-start--
+fieldName=unamePinyin
+columnName=name_pinyin
+# --field-end--
+# --field-start--
+fieldName=userStatus
+columnName=user_status
+# --field-end--
+# --field-start--
+fieldName=isFriend
+columnName=isFriend
+# --field-end--
+# --field-start--
+fieldName=tagJson
+columnName=tag_json
+# --field-end--
+# --field-start--
+fieldName=peopleDemand
+columnName=lastDemand
+dataPersister=SERIALIZABLE
+# --field-end--
+# --field-start--
+fieldName=dragonBallNum
+columnName=dragonBallNum
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

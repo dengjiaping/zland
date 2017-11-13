@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="asmack-android-16-beem">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/zhim_lib/libs/asmack-android-16-beem.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="MagicWindowSDK-">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/zhisland/build/intermediates/exploded-aar/MagicWindowSDK/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/zhisland/build/intermediates/exploded-aar/MagicWindowSDK/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

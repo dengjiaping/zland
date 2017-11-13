@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlProfileHead"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivProfileHead"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/img_campaign_default"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/tvProfileAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:drawablePadding="10dp"
+        android:drawableTop="@drawable/sel_btn_add_profile_pic"
+        android:text="点击添加形象照"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_18"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/img_mask_bottom" />
+
+    <LinearLayout
+        android:id="@+id/llRelation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/tvAttentionNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:text="0关注"
+            android:textColor="#B2f2f2f2"
+            android:textSize="@dimen/txt_12" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="12dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#B2f2f2f2" />
+
+        <TextView
+            android:id="@+id/tvFansNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:text="0粉丝"
+            android:textColor="#B2f2f2f2"
+            android:textSize="@dimen/txt_12" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="12dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#B2f2f2f2" />
+
+        <TextView
+            android:id="@+id/tvHotNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:text="0热度"
+            android:textColor="#B2f2f2f2"
+            android:textSize="@dimen/txt_12" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvProfileComAndPos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/llRelation"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:paddingTop="2dp"
+        android:textColor="@color/color_bg1"
+        android:textSize="@dimen/txt_14" />
+
+    <TextView
+        android:id="@+id/tvProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tvProfileComAndPos"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/color_bg1"
+        android:textSize="@dimen/txt_18" />
+
+</RelativeLayout>

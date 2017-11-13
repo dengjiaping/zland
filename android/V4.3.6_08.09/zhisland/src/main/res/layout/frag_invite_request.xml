@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="升级为海客，获得更多功能权限"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_22"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="6dp"
+        android:text="你的通讯录中有以下好友可帮你升级"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <FrameLayout
+            android:id="@+id/flContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/ivMask"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/task_img_mask"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <!-- 代码中计算高度，高度为屏幕的 1/3 -->
+    <LinearLayout
+        android:id="@+id/llBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvBottomBtn"
+            style="@style/LOGIN_BUTTON"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:text="完成"/>
+    </LinearLayout>
+</LinearLayout>

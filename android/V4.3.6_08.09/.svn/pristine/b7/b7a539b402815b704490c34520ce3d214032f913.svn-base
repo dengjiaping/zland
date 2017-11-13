@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llProfilePrompt"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/ivError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:scaleType="center"
+        android:src="@drawable/wifi_wrong" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="您的手机网络不太顺畅"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_18" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请检查您的手机是否联网"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14" />
+
+    <Button
+        android:id="@+id/btnProfileReload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rect_bwhite_sdc_clarge"
+        android:paddingBottom="8dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="8dp"
+        android:text="重新加载"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_16" />
+
+</LinearLayout>

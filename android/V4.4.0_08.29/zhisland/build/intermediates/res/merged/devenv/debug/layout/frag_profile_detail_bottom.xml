@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 底部bottom -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llBottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:background="@color/color_div" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_titlebar_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/llAttention"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvAttention"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/img_profile_btn_guanzhu"
+                android:drawablePadding="5dp"
+                android:text="互相关注"
+                android:textColor="@color/color_btn"
+                android:textSize="@dimen/txt_14" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:background="@color/bg_profile_empty" />
+
+        <LinearLayout
+            android:id="@+id/llIM"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvIM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/feed_btn_comment"
+                android:drawablePadding="5dp"
+                android:text="对话"
+                android:textColor="@color/color_btn"
+                android:textSize="@dimen/txt_14" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:background="@color/bg_profile_empty" />
+
+        <LinearLayout
+            android:id="@+id/llLike"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/feed_btn_praise"
+                android:drawablePadding="5dp"
+                android:text="赞"
+                android:textColor="@color/color_btn"
+                android:textSize="@dimen/txt_14" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

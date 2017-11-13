@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rect_bwhite_sdiv_clarge"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvDlgTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="30dp"
+        android:text="这是标题。。。"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_18"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvDlgContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="30dp"
+        android:text="这是对话框内容区。。。"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14"
+        android:visibility="gone" />
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/etDlg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="10dp"
+        android:textCursorDrawable="@drawable/img_highlight_dc"
+        android:background="@drawable/rect_bwhite_sdiv_clarge"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_16"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_marginTop="30dp"
+        android:background="@color/color_div" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tvDlgCancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/txt_18"/>
+
+        <View
+            android:id="@+id/vline"
+            android:layout_width="@dimen/app_line_height"
+            android:layout_height="match_parent"
+            android:background="@color/color_div" />
+
+        <TextView
+            android:id="@+id/tvDlgConfirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_18"/>
+    </LinearLayout>
+
+</LinearLayout>

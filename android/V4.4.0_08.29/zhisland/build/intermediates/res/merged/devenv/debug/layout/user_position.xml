@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    style="@style/RootBgWhite"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <com.zhisland.android.blog.common.view.UserCommonHead
+        android:id="@+id/vHead"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@id/pullRefreshAbsListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/vHead"
+        android:background="@color/white"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@null"
+        android:listSelector="@android:color/transparent"
+        ptr:ptrMode="both" />
+
+</RelativeLayout>

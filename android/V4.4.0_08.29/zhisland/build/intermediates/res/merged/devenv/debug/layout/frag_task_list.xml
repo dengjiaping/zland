@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_basic_info"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+
+        <ImageView
+            android:id="@+id/ivTaskListClose"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/sel_btn_close_white_small" />
+
+        <TextView
+            android:id="@+id/tvTaskListTitle"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_22" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tvTaskListDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_16"
+        android:visibility="gone" />
+
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@id/pullRefreshAbsListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="30dp"
+        android:cacheColorHint="@color/transparent"
+        android:dividerHeight="2dp"
+        android:fastScrollEnabled="true" />
+
+</LinearLayout>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_profilie_hot_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/app_titlebar_height"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:scaleType="center"
+            android:src="@drawable/sel_btn_back_white_two" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="50dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="12dp" />
+
+            <TextView
+                android:id="@+id/tvHot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_toRightOf="@id/ivAvatar"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_16" />
+
+            <TextView
+                android:id="@+id/tvRank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvHot"
+                android:layout_toRightOf="@id/ivAvatar"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_16" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rect_bwhite_clarge"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="主页被浏览"
+                    android:textColor="@color/color_f2"
+                    android:textSize="@dimen/txt_16" />
+
+                <TextView
+                    android:id="@+id/tvSeeTimes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:textColor="@color/color_f1"
+                    android:textSize="@dimen/txt_16" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_line_height"
+                android:background="@color/color_div" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="我的粉丝"
+                    android:textColor="@color/color_f2"
+                    android:textSize="@dimen/txt_16" />
+
+                <TextView
+                    android:id="@+id/tvFansNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:textColor="@color/color_f1"
+                    android:textSize="@dimen/txt_16" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_line_height"
+                android:background="@color/color_div" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="收到的神评论"
+                    android:textColor="@color/color_f2"
+                    android:textSize="@dimen/txt_16" />
+
+                <TextView
+                    android:id="@+id/tvCommentTimes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:textColor="@color/color_f1"
+                    android:textSize="@dimen/txt_16" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_line_height"
+                android:background="@color/color_div" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="收到的赞"
+                    android:textColor="@color/color_f2"
+                    android:textSize="@dimen/txt_16" />
+
+                <TextView
+                    android:id="@+id/tvLikeTimes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:textColor="@color/color_f1"
+                    android:textSize="@dimen/txt_16" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="35dp"
+            android:paddingRight="20dp"
+            android:paddingTop="50dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:src="@drawable/bg_dot_white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="个人热度由您的人气及个人主页访问数等综合计算得出"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="35dp"
+            android:paddingRight="20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:src="@drawable/bg_dot_white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="热度分值非实时分值，系统每天自动更新一次"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_12" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

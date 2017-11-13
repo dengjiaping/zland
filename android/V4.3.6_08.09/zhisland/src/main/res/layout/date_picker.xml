@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/startTimePickerAnchor"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	style="@style/RootBgWhite"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvDataPickerNote"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_16"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/btnOk"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_alignParentRight="true"
+        android:textSize="@dimen/txt_16"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/color_dc" />
+
+    <View
+        android:id="@+id/diviler"
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/tvDataPickerNote"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/color_div" />
+
+    <com.zhisland.lib.view.ADateTimePicker
+        android:id="@+id/startTimePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="156dp"
+        android:layout_below="@id/diviler"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white" >
+    </com.zhisland.lib.view.ADateTimePicker>
+	<View
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:layout_alignBaseline="@id/startCityPicker"
+        android:layout_below="@id/diviler"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_pick_cover" />
+</RelativeLayout>

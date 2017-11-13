@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal|center_vertical" >
+
+    <com.zhisland.lib.image.NewsGallery
+        android:id="@+id/gallery"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#ff313439" />
+
+    <RelativeLayout
+        android:id="@+id/navigation"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_height"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/gallery_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:text="返回"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/ivImgCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/chb_select" />
+
+        <TextView
+            android:id="@+id/titledes"
+            style="@style/title_drop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="1"
+            android:textColor="@android:color/black" />
+    </RelativeLayout>
+
+</RelativeLayout>

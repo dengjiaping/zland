@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg1"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="25dp"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_18" />
+
+    <TextView
+        android:id="@+id/tvContentTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="25dp"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_16" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/etContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_bg1"
+            android:maxLines="6"
+            android:padding="25dp"
+            android:textColor="@color/color_f1"
+            android:textColorHint="@color/color_f3"
+            android:textSize="@dimen/txt_18" />
+
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/etContent"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="5dp"
+            android:paddingRight="25dp"
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/txt_12" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:layout_below="@id/etContent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@color/color_div" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llIndustry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="行业标签"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/tvIndustry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="添加"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_16" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@color/color_div" />
+
+    <LinearLayout
+        android:id="@+id/llCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="类别标签"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="添加"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_16" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@color/color_div" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/llDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:background="@color/color_div" />
+
+        <TextView
+            android:id="@+id/tvDelete"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_button_height"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rect_bwhite_sac_clarge"
+            android:gravity="center"
+            android:text="删除该荣誉"
+            android:textColor="@color/color_ac"
+            android:textSize="@dimen/txt_18" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 定位 -->
+    <string name="map_release">6184fcff887ad01962b4e6597257fd50</string>
+    <string name="map_debug">620faa81a9e402fa560bc3afb226d8ba</string>
+    <!-- 定位 -->
+
+    <!--友盟-->
+    <string name="umeng_key">5653cab1e0f55a91200039ee</string>
+    <!--友盟-->
+
+    <!--微信分享-->
+    <string name="wechat_release">wx4f4a1a399283a085</string>
+    <string name="wechat_debug">wxfb7b8b2d2d68db06</string>
+    <!--微信分享-->
+
+    <!--推送-->
+    <string name="push_app_id">SKD0wHTryd8zHOYuo98S9</string>
+    <string name="push_app_key">2IOODBeDd89oAWHEnDCeN9</string>
+    <string name="push_app_secret">ggb9a5e7PY7jvHxrW5CpY4</string>
+    <!--推送-->
+
+</resources>

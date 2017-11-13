@@ -1,0 +1,223 @@
+package com.zhisland.android.blog.profile.controller.position;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.common.app.PrefUtil;
+import com.zhisland.android.blog.common.dto.User;
+import com.zhisland.android.blog.profile.dto.Company;
+import com.zhisland.android.blog.profile.dto.CompanyType;
+import com.zhisland.lib.util.DensityUtil;
+
+/**
+ * 任职cell
+ *
+ * @author zhangxiang
+ */
+public class UserCompanyCell implements OnClickListener {
+
+    private static final int POSITION_MAX_LEN = 13;
+    @InjectView(R.id.ivPositionType)
+    ImageView ivPositionType;
+
+    @InjectView(R.id.tvPositionName)
+    TextView tvPositionName;
+
+    @InjectView(R.id.tvPositionPosition)
+    TextView tvPositionPosition;
+
+    @InjectView(R.id.tvPositionDefault)
+    TextView tvPositionDefault;
+
+    @InjectView(R.id.ivPositionEdit)
+    ImageView ivPositionEdit;
+
+    @InjectView(R.id.ivPositionIdentified)
+    ImageView ivPositionIdentified;
+
+    private Company company;
+
+    private Context context;
+
+    private View rootView;
+
+    private User user;
+
+    private boolean isFromMain;
+
+    private ArrayList<CompanyType> types;
+
+    private boolean isSelf;
+
+    public UserCompanyCell(Context context, View rootView) {
+        this.context = context;
+        this.rootView = rootView;
+        ButterKnife.inject(this, rootView);
+        rootView.setOnClickListener(this);
+    }
+
+    public void fill(Company company, User user, boolean isFromMain,
+                     ArrayList<CompanyType> types) {
+        if (company == null) {
+            return;
+        }
+        this.isFromMain = isFromMain;
+        this.user = user;
+        this.company = company;
+        this.types = types;
+        tvPositionName.setText(company.name);
+        tvPositionPosition.setText(company.position);
+        fillLogo();
+        setIndentify(company);
+        // cell在任职列表里面的效果
+        if (!isFromMain) {
+            rootView.setPadding(DensityUtil.dip2px(15), 0,
+                    DensityUtil.dip2px(10), 0);
+            // 如果公司类型为空的话，任职不能编辑
+            if (company.type == null) {
+                ivPositionEdit.setVisibility(View.GONE);
+            } else {
+                ivPositionEdit.setVisibility(View.VISIBLE);
+            }
+        }
+        // cell在block里面的效果
+        else {
+            tvPositionDefault.setVisibility(View.GONE);
+            ivPositionEdit.setVisibility(View.GONE);
+        }
+        // 如果是看自己设置默认身份
+        if (user != null && user.uid == PrefUtil.Instance().getUserId()) {
+            isSelf = true;
+            setDefault(company.isDefault);
+        } else {
+            isSelf = false;
+        }
+
+        // 只有商业公司才能查看详情
+        if (company.type != null
+                && company.type.equals(CompanyType.KEY_COMMERCE) && isFromMain) {
+            Drawable drawable = context.getResources().getDrawable(
+                    R.drawable.arrow);
+            drawable.setBounds(0, 0, DensityUtil.dip2px(16),
+                    DensityUtil.dip2px(16));
+            tvPositionName.setCompoundDrawables(null, null, drawable, null);
+        } else {
+            tvPositionName.setCompoundDrawables(null, null, null, null);
+        }
+    }
+
+    /**
+     * 根据公司的type(商业，非商业，社会组织)来获取对应的logo
+     *
+     * @param type
+     * @return
+     */
+    private int getRes(String type) {
+        if (types == null || type == null) {
+            return R.drawable.profile_img_other_list;
+        }
+        if (type.equals(CompanyType.KEY_COMMERCE)) {
+            return R.drawable.profile_img_business_list;
+        } else if (type.equals(CompanyType.KEY_UN_COMMERCE)) {
+            return R.drawable.profile_img_nonbusiness_list;
+        } else if (type.equals(CompanyType.KEY_SOCIETY)) {
+            return R.drawable.profile_img_community_list;
+        } else if (type.equals(CompanyType.KEY_ZHISLAND_ORG)) {
+            return R.drawable.profile_img_zhisland_list;
+        } else {
+            return R.drawable.profile_img_other_list;
+        }
+    }
+
+    /**
+     * 设置<b>默认任职</b>标签
+     *
+     * @param defaulted
+     */
+    private void setDefault(Integer defaulted) {
+        RelativeLayout.LayoutParams rll = ((RelativeLayout.LayoutParams) tvPositionPosition.getLayoutParams());
+        if (defaulted != null && defaulted == 1) {
+
+            rll.rightMargin = DensityUtil.dip2px(64);
+            tvPositionPosition.setLayoutParams(rll);
+            tvPositionDefault.setVisibility(View.VISIBLE);
+            return;
+        }
+        rll.rightMargin = DensityUtil.dip2px(0);
+        tvPositionPosition.setLayoutParams(rll);
+        tvPositionDefault.setVisibility(View.GONE);
+    }
+
+    /**
+     * 设置<b>认证公司</b> 背景
+     */
+    private void setIndentify(Company company) {
+        if (company.isAuthentication != null && company.isAuthentication > 0) {
+            if (user != null) {
+                if (user.isGoldVip()) {
+                    ivPositionIdentified.setImageResource(R.drawable.img_renzheng_daolin_y);
+                } else if (user.isBlueVip()) {
+                    ivPositionIdentified.setImageResource(R.drawable.img_renzheng_daolin_b);
+                } else {
+                    ivPositionIdentified.setImageResource(R.drawable.img_renzheng_daolin_g);
+                }
+            } else {
+                ivPositionIdentified.setImageResource(R.drawable.img_renzheng_daolin_g);
+            }
+            ivPositionIdentified.setVisibility(View.VISIBLE);
+        } else if (company.isClientAuth != null && company.isClientAuth > 0) {
+            ivPositionIdentified.setVisibility(View.VISIBLE);
+            ivPositionIdentified.setImageResource(R.drawable.img_renzheng_haike);
+        } else {
+            ivPositionIdentified.setVisibility(View.GONE);
+        }
+    }
+
+    @OnClick(R.id.ivPositionEdit)
+    public void onPositionEdit() {
+        if (company.type != null
+                && company.type.equals(CompanyType.KEY_ZHISLAND_ORG)) {
+            FragOrgDetail.invoke(context, company);
+        } else {
+            FragUserCompanySimpleEdit.invoke(context, company);
+        }
+    }
+
+    /**
+     * 从公司scheme里取出公司id,然后在user里面把对应的公司拿来进行跳转
+     */
+    @Override
+    public void onClick(View v) {
+        // 只有商业公司才能查看详情
+        if (company.type != null
+                && company.type.equals(CompanyType.KEY_COMMERCE) && isFromMain)
+            ActCompanyDetail.launch(context, company.companyId, isSelf);
+    }
+
+    /**
+     * 设置任职的logo, 这个logo是公司信息中的logo
+     */
+    private void fillLogo() {
+        int res = -1;
+        if (company != null) {
+            res = getRes(company.type);
+            ivPositionType.setImageResource(res);
+        } else {
+            ivPositionType
+                    .setImageResource(res == -1 ? R.drawable.profile_img_logo_show
+                            : res);
+        }
+    }
+}

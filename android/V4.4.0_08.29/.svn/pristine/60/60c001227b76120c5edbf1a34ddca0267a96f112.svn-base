@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llRType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvRType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="25dp"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_14" />
+
+            <com.zhisland.android.blog.find.view.FilterView
+                android:id="@+id/tflRType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_line_height"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/color_div" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llUType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvUType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="25dp"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_14" />
+
+            <com.zhisland.android.blog.find.view.FilterView
+                android:id="@+id/tflUType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_line_height"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/color_div" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="25dp"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_14" />
+
+            <com.zhisland.android.blog.find.view.FilterView
+                android:id="@+id/tflArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

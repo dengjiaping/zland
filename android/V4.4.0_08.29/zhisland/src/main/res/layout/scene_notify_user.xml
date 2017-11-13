@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/scene_notify_user_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:clickable="false" >
+
+        <ImageView
+            android:id="@+id/scene_notify_user_icon"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/audio_play_their3" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/scene_notify_user_icon" >
+
+            <TextView
+                android:id="@+id/scene_notify_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="王石"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_16" />
+
+            <TextView
+                android:id="@+id/scene_notify_user_exp_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/scene_notify_user_name"
+                android:text="发来约见"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_16" />
+
+            <TextView
+                android:id="@+id/scene_notify_user_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/scene_notify_user_name"
+                android:layout_marginRight="20dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="蓝翔高级职业技工学校党支部书记办公室倒水的"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_14" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlCommentFirst"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp">
+
+    <TextView
+        android:id="@+id/tvRegisterGuideTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="6dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_22" />
+
+    <TextView
+        android:id="@+id/tvRegisterGuideDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="right"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/tvRegisterGuideAction"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/rect_btransparent_swhite_clargest"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_16" />
+
+</LinearLayout>

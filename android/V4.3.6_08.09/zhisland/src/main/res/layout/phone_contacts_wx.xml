@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	style="@style/RootBgWhite"
+    android:paddingBottom="15dp" >
+
+    <View
+        android:id="@+id/div"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="15dp"
+        android:background="@color/color_div" />
+
+    <ImageView
+        android:layout_marginLeft="15dp"
+        android:layout_below="@id/div"
+        android:id="@+id/phone_contacts_wx_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/img_wechat" />
+
+    <RelativeLayout
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/div"
+        android:id="@+id/phone_contacts_wx_word_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/phone_contacts_wx_icon" >
+
+        <RelativeLayout
+            android:id="@+id/phone_contacts_word_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/phone_contacts_wx_tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="微信关注"
+                android:textColor="@color/color_f3" />
+
+            <TextView
+                android:id="@+id/tvJumpToWX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/phone_contacts_wx_tv1"
+                android:text="正和岛微服务"
+                android:textColor="@color/color_dc"
+                android:textSize="@dimen/txt_18" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/phone_contacts_wx_tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phone_contacts_word_up"
+            android:layout_marginTop="4dp"
+            android:singleLine="true"
+            android:text="第一时刻获取会员动态及优惠登岛活动"
+            android:textColor="@color/color_f3" />
+    </RelativeLayout>
+
+</RelativeLayout>

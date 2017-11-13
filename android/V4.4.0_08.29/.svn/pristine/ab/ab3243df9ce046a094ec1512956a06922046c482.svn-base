@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	style="@style/RootBgWhite"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp" >
+
+    <Button
+        android:id="@+id/btnNext"
+        style="@style/LOGIN_BUTTON"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/sel_bg_btn_bgreen"
+        android:text="下一步" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btnNext"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/LOGIN_TITLE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="兴趣爱好" />
+
+        <TextView
+            android:id="@+id/tvDesc"
+            style="@style/LOGIN_DESC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:text="完善标签有助于更好地帮助您推荐与建立人脉" />
+
+        <TextView
+            android:id="@+id/tvErrorPrompt"
+            style="@style/LOGIN_ERROR_PROMPT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:text="最多只能选择三个标签哦" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbarSize="3dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbarThumbVertical="@color/color_div" >
+
+            <com.zhisland.android.blog.common.view.flowlayout.TagFlowLayout
+                android:id="@+id/id_flowlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

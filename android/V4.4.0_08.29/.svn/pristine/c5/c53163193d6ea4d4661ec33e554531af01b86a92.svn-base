@@ -1,0 +1,46 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/flUserCardRoot"
+    style="@style/RootBg2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.zhisland.android.blog.common.view.EmptyView
+        android:id="@+id/emptyView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/llCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <com.zhisland.android.blog.common.view.flingswipe.SwipeFlingAdapterView
+            android:id="@+id/frame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvExchangeCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:text="请求加您为好友"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_14" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/line_divider_all" />
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_titlebar_height"
+            layout="@layout/buttons" />
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlUcRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sel_bg_user_comment"
+    android:paddingLeft="18dp" >
+
+    <TextView
+        android:id="@+id/tvUcContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="30dp"
+        android:paddingTop="18dp"
+        android:text="评论标题"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/tvUcInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUcContent"
+        android:layout_marginTop="7dp"
+        android:paddingBottom="45dp"
+        android:paddingRight="25dp"
+        android:text="- 评论描述"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14" />
+
+    <TextView
+        android:id="@+id/tvUcCreateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="上午18：30"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_12" />
+
+    <TextView
+        android:id="@+id/tvUcSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="优先显示"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_12"
+        android:visibility="gone" />
+
+</RelativeLayout>

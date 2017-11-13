@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_bg2"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rect_bwhite_clarge"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <com.zhisland.android.blog.common.view.AvatarView
+                android:id="@+id/ivAvatar"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:id="@+id/tvBlockTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_alignTop="@id/ivAvatar"
+                android:layout_toRightOf="@id/ivAvatar"
+                android:gravity="center_vertical"
+                android:text="联系方式"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_14" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_alignBottom="@id/ivAvatar"
+                android:layout_marginRight="100dp"
+                android:layout_toRightOf="@id/ivAvatar"
+                android:singleLine="true"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_16" />
+
+            <ImageView
+                android:id="@+id/ivPencil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="20dp"
+                android:src="@drawable/sel_btn_pencil" />
+
+            <TextView
+                android:id="@+id/tvWhoCanSeeSelf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:paddingBottom="10dp"
+                android:paddingRight="20dp"
+                android:text="仅好友可见"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_12" />
+
+            <TextView
+                android:id="@+id/tvWhoCanSeeOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:paddingRight="20dp"
+                android:paddingTop="20dp"
+                android:text="仅好友可见"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_12"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_line_height"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/color_div" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/profile_btn_phone"
+            android:drawablePadding="15dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="21dp"
+            android:paddingRight="21dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/color_bc_p"
+            android:textSize="@dimen/txt_14" />
+
+        <TextView
+            android:id="@+id/tvMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/profile_btn_email"
+            android:drawablePadding="15dp"
+            android:paddingBottom="25dp"
+            android:paddingLeft="21dp"
+            android:paddingRight="21dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/color_bc_p"
+            android:textSize="@dimen/txt_14" />
+    </LinearLayout>
+
+</LinearLayout>

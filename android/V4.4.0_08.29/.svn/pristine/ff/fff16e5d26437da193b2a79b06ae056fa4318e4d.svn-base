@@ -1,0 +1,805 @@
+package com.zhisland.android.blog.contacts.controller;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.app.Fragment;
+import android.text.Editable;
+import android.text.Html;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.widget.AbsListView;
+import android.widget.BaseAdapter;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.handmark.pulltorefresh.library.PullToRefreshAdapterViewBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.common.base.CommonFragActivity;
+import com.zhisland.android.blog.common.base.CommonFragActivity.CommonFragParams;
+import com.zhisland.android.blog.common.base.CommonFragActivity.TitleBtn;
+import com.zhisland.android.blog.common.base.CommonFragActivity.TitleRunnable;
+import com.zhisland.android.blog.common.dto.User;
+import com.zhisland.android.blog.common.view.AvatarView;
+import com.zhisland.android.blog.common.view.EmptyView;
+import com.zhisland.android.blog.common.view.LettersSelectionBar;
+import com.zhisland.android.blog.common.view.LettersSelectionBar.OnLetterSelectedListener;
+import com.zhisland.android.blog.contacts.api.TaskGetFriendListByUid;
+import com.zhisland.android.blog.find.controller.ActAllBoss;
+import com.zhisland.android.blog.find.controller.ActSearch;
+import com.zhisland.android.blog.im.controller.ActChat;
+import com.zhisland.android.blog.profile.controller.detail.ActProfileDetail;
+import com.zhisland.im.data.ContactGroup;
+import com.zhisland.im.data.DBMgr;
+import com.zhisland.im.data.IMBase;
+import com.zhisland.im.data.IMContact;
+import com.zhisland.im.event.EventFriend;
+import com.zhisland.lib.component.adapter.BaseSectionListAdapter;
+import com.zhisland.lib.component.frag.FragPullSectionList;
+import com.zhisland.lib.util.DensityUtil;
+import com.zhisland.lib.util.StringUtil;
+import com.zhisland.lib.view.search.ZHSearchBar;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Locale;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+import de.greenrobot.event.EventBus;
+
+/**
+ * 我的好友和选择好友页面
+ * */
+public class FragContactList extends
+		FragPullSectionList<ContactGroup, IMContact> {
+
+	private static final String TAG = "contactlist";
+
+	public static final String INTENT_KEY_TYPE = "intent_key_type";
+
+	public static final int INTENT_VALUE_TYPE_FRIEND = 0;
+	public static final int INTENT_VALUE_TYPE_SEARCH = 1;
+
+	private static final int TAG_ID_RIGHT = 101;
+
+	@InjectView(R.id.selection_bar_letter)
+	LettersSelectionBar selection_bar_letter;
+
+	ContactAdapter contactAdapter;
+
+	String LETTER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	ArrayList<ContactGroup> contactGroups;
+
+	@InjectView(R.id.searchBar)
+	ZHSearchBar searchBar;
+
+	ListView searchResultView;
+
+	SearchAdapter searchAdapter;
+
+	EmptyView searchEmptyView;
+
+	RelativeLayout rlList;
+
+	ArrayList<IMContact> searchResultData = new ArrayList<IMContact>();
+
+	HashMap<String, User> jidUserMap;
+
+	private int type = INTENT_VALUE_TYPE_FRIEND;
+
+	String keyword;
+
+	static TitleRunnable titleRunnable = new TitleRunnable() {
+
+		@Override
+		protected void execute(Context context, Fragment fragment) {
+			if (tagId == TAG_ID_RIGHT) {
+				ActSearch.invoke(fragment.getActivity(),ActSearch.TYPE_BOSS);
+			}
+		}
+	};
+
+	public static void invoke(Context context, int type) {
+		CommonFragParams param = new CommonFragParams();
+		param.clsFrag = FragContactList.class;
+		param.enableBack = true;
+		param.swipeBackEnable = true;
+		param.title = type == INTENT_VALUE_TYPE_FRIEND ? "我的好友" : "选择好友";
+		if (type == INTENT_VALUE_TYPE_FRIEND) {
+			param.titleBtns = new ArrayList<TitleBtn>();
+			TitleBtn tb = new TitleBtn(TAG_ID_RIGHT, TitleBtn.TYPE_IMG);
+			tb.isLeft = false;
+			tb.imgResId = R.drawable.sel_btn_add_friend;
+			param.titleBtns.add(tb);
+			param.runnable = titleRunnable;
+		}
+		Intent intent = CommonFragActivity.createIntent(context, param);
+		intent.putExtra(INTENT_KEY_TYPE, type);
+		context.startActivity(intent);
+	}
+
+	// ===================================
+	// ===========eventbus start==========
+	/**
+	 * 监听好友变化
+	 *
+	 * @param event
+	 */
+	public void onEventMainThread(EventFriend event) {
+
+		switch (event.action) {
+		case EventFriend.ACTION_ADD: {
+			// TODO 做只能插入
+			boolean isContanLett = false;
+			if (contactGroups != null) {
+				for (ContactGroup cg : contactGroups) {
+					if (cg.letter != null && cg.letter.equals(event.contact.c)) {
+						isContanLett = true;
+						break;
+					}
+				}
+			}
+			if (!isContanLett) {
+				ContactGroup desGroup = new ContactGroup();
+				desGroup.letter = event.contact.c;
+				contactGroups.add(desGroup);
+				Collections.sort(contactGroups, new Comparator<ContactGroup>() {
+
+					@Override
+					public int compare(ContactGroup arg0, ContactGroup arg1) {
+						return arg0.letter.compareTo(arg1.letter);
+					}
+				});
+				loadLetters();
+			}
+			for (ContactGroup cg : contactGroups) {
+				if (cg.letter != null && cg.letter.equals(event.contact.c)) {
+					ArrayList<IMContact> contacts = contactGroups
+							.get(contactGroups.indexOf(cg)).contacts;
+					int size = (contacts == null ? 0 : contacts.size());
+					boolean needInsert = true;
+					for (int i = 0; i < size; i++) {
+						if (contacts.get(i).jid.equals(event.contact.jid)) {
+							needInsert = false;
+							break;
+						}
+					}
+					if (needInsert) {
+						contactGroups.get(contactGroups.indexOf(cg)).addChild(
+								event.contact);
+						com.zhisland.android.blog.common.dto.DBMgr.getMgr()
+								.getUserDao()
+								.addIconIdMap(jidUserMap, event.contact);
+					}
+					break;
+				}
+			}
+			this.contactAdapter.clear();
+			this.contactAdapter.add(contactGroups);
+			break;
+		}
+		case EventFriend.ACTION_DELETE:
+			// 联系人在其他地方被删除
+			if (contactGroups != null) {
+				ContactGroup desGroup = null;
+				for (ContactGroup cg : contactGroups) {
+					if (cg.letter.equals(event.contact.c)) {
+						desGroup = cg;
+						break;
+					}
+				}
+				if (desGroup != null) {
+					ArrayList<IMContact> contacts = desGroup.contacts;
+					if (contacts != null) {
+						IMContact desContact = null;
+						for (IMContact ic : contacts) {
+							if (ic.jid.equals(event.contact.jid)) {
+								desContact = ic;
+								break;
+							}
+						}
+						contacts.remove(desContact);
+						if (desGroup.contacts.size() == 0) {
+							contactGroups.remove(desGroup);
+							loadLetters();
+						}
+						this.contactAdapter.setGroup(contactGroups);
+						this.contactAdapter.notifyDataSetChanged();
+					}
+				}
+			}
+			break;
+		}
+	}
+
+	public void onEventMainThread(IMContact contact) {
+		if(contact.action == IMBase.UPDATE){
+			if (contactGroups != null) {
+				ContactGroup desGroup = null;
+				for (ContactGroup cg : contactGroups) {
+					if (cg.letter.equals(contact.c)) {
+						desGroup = cg;
+						break;
+					}
+				}
+				if (desGroup != null) {
+					ArrayList<IMContact> contacts = desGroup.contacts;
+					if (contacts != null) {
+						IMContact desContact = null;
+						int index = 0;
+						for (int i = 0 ; i < contacts.size(); i++) {
+							if (contacts.get(i).jid.equals(contact.jid)) {
+								desContact = contacts.get(i);
+								index = i;
+								break;
+							}
+						}
+						if(desContact != null){
+							contacts.remove(desContact);
+							contacts.add(index, contact);
+							this.contactAdapter.setGroup(contactGroups);
+							this.contactAdapter.notifyDataSetChanged();
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// ===========eventbus end==========
+	// ===================================
+
+	/**
+	 * Constructor.
+	 */
+	public FragContactList() {
+	}
+
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		TaskGetFriendListByUid task = new TaskGetFriendListByUid(getActivity(),
+				null);
+		task.execute();
+		type = getActivity().getIntent().getIntExtra(INTENT_KEY_TYPE,
+				INTENT_VALUE_TYPE_FRIEND);
+		contactAdapter = new ContactAdapter(getActivity(), showRightImage());
+		getPullProxy().setAdapter(contactAdapter);
+		getActivity().getWindow().setSoftInputMode(
+				WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+	}
+
+	private boolean showRightImage() {
+		return type == INTENT_VALUE_TYPE_FRIEND;
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		LinearLayout root = (LinearLayout) inflater.inflate(
+				R.layout.friend_list, null);
+		rlList = (RelativeLayout) root.findViewById(R.id.rlList);
+		rlList.addView(
+				super.onCreateView(inflater, container, savedInstanceState), 0);
+		ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(
+				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		root.setLayoutParams(lp);
+		ButterKnife.inject(this, root);
+		selection_bar_letter
+				.setOnLetterSelectedListener(onLetterSelectedListener);
+		searchBar.getTextView().addTextChangedListener(textWatcher);
+		return root;
+	}
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+
+		EventBus.getDefault().register(this);
+
+		configPullView();
+		loadContact();
+		configEmptyView();
+	}
+
+	/**
+	 * 配置下拉刷新view
+	 */
+	private void configPullView() {
+		pullView.setMode(Mode.DISABLED);
+		internalView.setBackgroundColor(getResources().getColor(
+				R.color.color_bg2));
+		internalView.setOnGroupClickListener(onGroupClickListener);
+		internalView.setSelector(new ColorDrawable(Color.TRANSPARENT));
+		internalView.setDivider(null);
+		internalView.setChildDivider(null);
+	}
+
+	/**
+	 * 设置下拉刷新页面的空数据试图
+	 */
+	private void configEmptyView() {
+		EmptyView ev = new EmptyView(getActivity());
+		ev.setImgRes(R.drawable.img_friends_empty);
+		ev.setPrompt("您暂时没有好友");
+		ev.setBtnVisibility(View.INVISIBLE);
+		ev.setBtnVisibility(View.INVISIBLE);
+		((PullToRefreshAdapterViewBase) getPullProxy().getPullView())
+				.setEmptyView(ev);
+	}
+
+	/**
+	 * 将联系人从数据库中加载出来
+	 */
+	private void loadContact() {
+		contactGroups = getDataFromDB();
+		jidUserMap = com.zhisland.android.blog.common.dto.DBMgr.getMgr().getUserDao()
+				.getIconIdMap(contactGroups);
+		getPullProxy().onLoadSucessfully(contactGroups);
+		loadLetters();
+		getPullProxy().getAdapter().expandAll();
+        if (contactGroups != null && contactGroups.size() > 0){
+            searchBar.setVisibility(View.VISIBLE);
+        }else {
+            searchBar.setVisibility(View.GONE);
+        }
+	}
+
+	private ArrayList<ContactGroup> getDataFromDB() {
+		return DBMgr.getHelper().getContactDao().fetchContactGroups();
+	}
+
+	private void loadLetters() {
+		char[] chars = new char[contactGroups.size()];
+		for (int i = 0; i < contactGroups.size(); i++) {
+			String title = contactGroups.get(i).getTitle();
+			if (!StringUtil.isNullOrEmpty(title)) {
+				chars[i] = title.charAt(0);
+			} else {
+				chars[i] = "-".charAt(0);
+			}
+		}
+		selection_bar_letter.setLetters(chars);
+	}
+
+	OnLetterSelectedListener onLetterSelectedListener = new OnLetterSelectedListener() {
+
+		@Override
+		public void onLetterSelected(char paramChar) {
+			ArrayList<ContactGroup> sections = contactAdapter.getGroups();
+			if (sections == null) {
+				return;
+			}
+
+			int sectionIndex = -1;
+			int i = 0;
+			String paramCharStr = Character.toString(paramChar);
+			for (ContactGroup section : sections) {
+				if (section.getTitle().toLowerCase(Locale.getDefault())
+						.equals(paramCharStr.toLowerCase(Locale.getDefault()))) {
+					sectionIndex = i;
+					break;
+				}
+				i++;
+			}
+
+			if (sectionIndex >= 0) {
+				internalView.setSelectedGroup(sectionIndex);
+			}
+		}
+	};
+
+	OnGroupClickListener onGroupClickListener = new OnGroupClickListener() {
+
+		@Override
+		public boolean onGroupClick(ExpandableListView parent, View v,
+				int groupPosition, long id) {
+			return true;
+		}
+	};
+
+	@Override
+	public void onDestroy() {
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
+	}
+
+	@Override
+	public void loadNormal() {
+
+	}
+
+	@Override
+	public String getPageName() {
+        if (type == INTENT_VALUE_TYPE_FRIEND){
+            return "ChatFriendList";
+        }else {
+            return "ChatSelectFriend";
+        }
+	}
+
+	private void makeListView() {
+		searchResultView = new ListView(getActivity());
+		searchResultView.setFastScrollEnabled(false);
+		searchResultView.setDividerHeight(0);
+		searchResultView.setBackgroundResource(R.color.color_bg1);
+		searchResultView.setSelector(new ColorDrawable(Color.TRANSPARENT));
+		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		searchResultView.setLayoutParams(lp);
+		searchAdapter = new SearchAdapter();
+		searchResultView.setAdapter(searchAdapter);
+
+		searchEmptyView = new EmptyView(getActivity());
+		searchEmptyView.setImgRes(R.drawable.img_friends_empty);
+		searchEmptyView.setPrompt("没有找到匹配的人员");
+		searchEmptyView.setBtnVisibility(View.INVISIBLE);
+		AbsListView.LayoutParams lpEmptyView = new AbsListView.LayoutParams(
+				LayoutParams.MATCH_PARENT, DensityUtil.getHeight() - DensityUtil.dip2px(150));
+		searchEmptyView.setLayoutParams(lpEmptyView);
+	}
+
+	class SearchAdapter extends BaseAdapter {
+
+		@Override
+		public int getCount() {
+			return searchResultData == null ? 0 : searchResultData.size();
+		}
+
+		@Override
+		public IMContact getItem(int position) {
+			return searchResultData.get(position);
+		}
+
+		@Override
+		public long getItemId(int position) {
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			if (convertView == null) {
+				convertView = LayoutInflater.from(getActivity()).inflate(
+						R.layout.item_search_user, null);
+				SearchHolder holder = new SearchHolder(getActivity(),
+						convertView);
+				convertView.setTag(holder);
+			}
+			SearchHolder holder = (SearchHolder) convertView.getTag();
+			boolean showLine = (getCount() - 1) > position;
+			holder.fill(getItem(position), showLine);
+			return convertView;
+		}
+
+		@Override
+		public void notifyDataSetChanged() {
+			if (getCount() > 0) {
+				searchResultView.removeFooterView(searchEmptyView);
+			} else {
+				if (searchEmptyView.getParent() == null) {
+					searchResultView.addFooterView(searchEmptyView);
+				}
+			}
+			super.notifyDataSetChanged();
+		}
+	}
+
+	class SearchHolder {
+
+		@InjectView(R.id.ivAvatar)
+		AvatarView avatarView;
+
+		@InjectView(R.id.ivRight)
+		ImageView ivRight;
+
+		@InjectView(R.id.tvName)
+		TextView tvName;
+
+		@InjectView(R.id.tvComAndPos)
+		TextView tvComAndPos;
+
+		@InjectView(R.id.vline)
+		View vline;
+
+		Context context;
+
+		IMContact curItem;
+
+		public SearchHolder(final Context context, final View convertView) {
+			this.context = context;
+			ButterKnife.inject(this, convertView);
+			convertView.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					if (showRightImage()) {
+						ActProfileDetail.invoke(context, curItem.getUserId());
+					} else {
+						ActChat.invoke(context, curItem.jid);
+					}
+				}
+			});
+		}
+
+		public void fill(IMContact contact, boolean showLine) {
+			this.curItem = contact;
+
+			User user = jidUserMap.get(contact.jid);
+			if (user != null) {
+				avatarView.fill(user, true);
+			} else {
+                avatarView.fill(curItem.avatar, false);
+			}
+
+			String name = curItem.name == null ? "" : curItem.name;
+			String desc = curItem.desc == null ? "" : curItem.desc;
+			if (!StringUtil.isNullOrEmpty(keyword)) {
+				name = name.replace(keyword, "<font color=\"#27ae61\">"
+						+ keyword + "</font>");
+				desc = desc.replace(keyword, "<font color=\"#27ae61\">"
+						+ keyword + "</font>");
+			}
+
+			tvName.setText(Html.fromHtml(name));
+
+			if (showRightImage()) {
+				ivRight.setVisibility(View.VISIBLE);
+				if (contact.relation == IMContact.RELATION_TRUST) {
+					ivRight.setImageResource(R.drawable.btn_chat_gold_selector);
+				} else {
+					ivRight.setImageResource(R.drawable.btn_chat_selector);
+				}
+			} else {
+				ivRight.setVisibility(View.GONE);
+			}
+
+			if (showLine) {
+				vline.setVisibility(View.VISIBLE);
+			} else {
+				vline.setVisibility(View.INVISIBLE);
+			}
+		}
+
+		@OnClick(R.id.ivRight)
+		void rightImageClick() {
+			ActChat.invoke(context, curItem.jid);
+		}
+
+		OnClickListener itemClickListener = new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				ActProfileDetail.invoke(context, curItem.getUserId());
+			}
+		};
+
+		public void recycle() {
+			this.curItem = null;
+			context = null;
+		}
+
+	}
+
+	private void search() {
+		keyword = searchBar.getTextView().getText().toString();
+		if (StringUtil.isNullOrEmpty(keyword)) {
+			rlList.removeView(searchResultView);
+		} else {
+			if (searchResultView == null) {
+				makeListView();
+			}
+			searchResultData = getSearchResult(keyword);
+			searchAdapter.notifyDataSetChanged();
+			if (searchResultView.getParent() == null) {
+				rlList.addView(searchResultView);
+			}
+		}
+	}
+
+	private ArrayList<IMContact> getSearchResult(String keyword) {
+		ArrayList<IMContact> nameList = new ArrayList<IMContact>();
+		ArrayList<IMContact> descList = new ArrayList<IMContact>();
+		ArrayList<IMContact> result = new ArrayList<IMContact>();
+
+		for (ContactGroup contactGroup : contactGroups) {
+			for (IMContact contact : contactGroup.contacts) {
+				if (!StringUtil.isNullOrEmpty(contact.name)
+						&& contact.name.contains(keyword)) {
+					nameList.add(contact);
+					continue;
+				}
+				if (!StringUtil.isNullOrEmpty(contact.desc)
+						&& contact.desc.contains(keyword)) {
+					descList.add(contact);
+				}
+			}
+		}
+
+		result.addAll(nameList);
+		result.addAll(descList);
+		return result;
+	}
+
+	TextWatcher textWatcher = new TextWatcher() {
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+
+		}
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+
+		}
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			search();
+		}
+	};
+
+	class ContactAdapter extends
+			BaseSectionListAdapter<ContactGroup, IMContact> {
+
+		private Context context;
+
+		private boolean showRightImage = false;
+
+		public ContactAdapter(Context context, boolean showRightImage) {
+			super();
+			this.context = context;
+			this.showRightImage = showRightImage;
+		}
+
+		class ContactHolder {
+
+			@InjectView(R.id.ivAvatar)
+			AvatarView avatarView;
+
+			@InjectView(R.id.ivRight)
+			ImageView ivRight;
+
+			@InjectView(R.id.tvName)
+			TextView tvName;
+
+			@InjectView(R.id.tvComAndPos)
+			TextView tvComAndPos;
+
+			@InjectView(R.id.vline)
+			View vline;
+
+			Context context;
+
+			IMContact curItem;
+
+			public ContactHolder(final Context context, final View convertView) {
+				this.context = context;
+				ButterKnife.inject(this, convertView);
+				convertView.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						if (showRightImage) {
+							ActProfileDetail.invoke(context,
+									curItem.getUserId());
+						} else {
+							ActChat.invoke(context, curItem.jid);
+						}
+					}
+				});
+			}
+
+			public void fill(IMContact contact, boolean showLine) {
+				this.curItem = contact;
+
+				User user = jidUserMap.get(contact.jid);
+				if (user != null) {
+					avatarView.fill(user, true);
+				} else {
+                    avatarView.fill(curItem.avatar, false);
+				}
+
+				tvName.setText(curItem.name);
+				tvComAndPos.setText(curItem.desc);
+
+				if (showRightImage) {
+					ivRight.setVisibility(View.VISIBLE);
+					if (contact.relation == IMContact.RELATION_TRUST) {
+						ivRight.setImageResource(R.drawable.btn_chat_gold_selector);
+					} else {
+						ivRight.setImageResource(R.drawable.btn_chat_selector);
+					}
+				} else {
+					ivRight.setVisibility(View.GONE);
+				}
+
+				if (showLine) {
+					vline.setVisibility(View.VISIBLE);
+				} else {
+					vline.setVisibility(View.INVISIBLE);
+				}
+			}
+
+			@OnClick(R.id.ivRight)
+			void rightImageClick() {
+				ActChat.invoke(context, curItem.jid);
+			}
+
+			OnClickListener itemClickListener = new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					ActProfileDetail.invoke(context, curItem.getUserId());
+				}
+			};
+
+			public void recycle() {
+				this.curItem = null;
+				context = null;
+			}
+
+		}
+
+		@Override
+		public View getGroupView(int groupPosition, boolean isExpanded,
+				View convertView, ViewGroup parent) {
+			if (convertView == null) {
+				TextView textView = new TextView(context);
+				textView.setBackgroundColor(context.getResources().getColor(
+						R.color.color_bg2));
+				textView.setTextColor(context.getResources().getColor(
+						R.color.color_f2));
+				textView.setTextSize(15);
+				textView.setPadding(DensityUtil.dip2px(15),
+						DensityUtil.dip2px(7), DensityUtil.dip2px(15),
+						DensityUtil.dip2px(7));
+				convertView = textView;
+			}
+			((TextView) convertView).setText(getGroup(groupPosition).getTitle()
+					.toUpperCase(Locale.getDefault()));
+			return convertView;
+		}
+
+		@Override
+		public View getRealChildView(int groupPosition, int childPosition,
+				boolean isLastChild, View convertView, ViewGroup parent) {
+			if (convertView == null) {
+				convertView = inflater
+						.inflate(R.layout.item_contact_user, null);
+				ContactHolder holder = new ContactHolder(context, convertView);
+				convertView.setTag(holder);
+			}
+			ContactHolder holder = (ContactHolder) convertView.getTag();
+			IMContact item = getChild(groupPosition, childPosition);
+
+			boolean showLine = (getGroup(groupPosition).getChildren().size() - 1) > childPosition;
+			holder.fill(item, showLine);
+			return convertView;
+		}
+
+		@Override
+		public void recycleView(View view) {
+
+		}
+	}
+}

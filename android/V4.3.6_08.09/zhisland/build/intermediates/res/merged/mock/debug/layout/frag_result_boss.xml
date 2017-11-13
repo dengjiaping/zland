@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBg1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llFilter"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:id="@+id/llType"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="会员类型"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_14" />
+
+            <ImageView
+                android:id="@+id/ivType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/img_arrow_gray_down" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/app_line_height"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/color_div" />
+
+        <LinearLayout
+            android:id="@+id/llArea"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="所在地区"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_14" />
+
+            <ImageView
+                android:id="@+id/ivArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/img_arrow_gray_down" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:background="@color/color_div" />
+
+    <RelativeLayout
+        android:id="@+id/rlResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.zhisland.android.blog.find.view.SearchFilterView
+            android:id="@+id/filterView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f4ffffff"
+            android:clickable="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</LinearLayout>

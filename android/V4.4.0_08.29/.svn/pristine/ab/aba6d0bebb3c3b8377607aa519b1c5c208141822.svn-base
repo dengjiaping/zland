@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item name="imageFileNameInImageView" type="id"/>
+    <item name="imageSizeInImageView" type="id"/>
+    <item name="imageFileNameInLoading" type="id"/>
+    <item name="invalidResId" type="id"/>
+    <item name="pullRefreshAbsListView" type="id"/>
+    <item name="tabpage_mask" type="id"/>
+    <item name="messageIcon" type="id"/>
+    <item name="messageArrow" type="id"/>
+    <item name="checknetrow_label" type="id"/>
+    <item name="selectedUsersContainer" type="id"/>
+    <item name="tileButton" type="id"/>
+    <item name="tileText" type="id"/>
+    <item name="tileIcon" type="id"/>
+    <item name="iconViewMain" type="id"/>
+    <item name="tab_bar" type="id"/>
+    <item name="tab_container" type="id"/>
+    <item name="person_text" type="id"/>
+    <item name="base_tabpage_pulllist" type="id"/>
+    <item name="base_tabpage_section_pulllist" type="id"/>
+    <item name="chat_edit" type="id"/>
+    <item name="group_list_view_type" type="id"/>
+    <item name="icon_view_icon" type="id"/>
+    <item name="tv_selected_group" type="id"/>
+
+    <!-- preview ids -->
+    <item name="prg_preview" type="id"/>
+    <item name="iv_preview_thumb" type="id"/>
+    <item name="iv_preview_error" type="id"/>
+
+    <!-- title ids -->
+    <item name="title_text" type="id"/>
+    <item name="title_arrow" type="id"/>
+    <item name="custom_titile" type="id"/>
+    <item name="title_drop_arrow" type="id"/>
+
+    <!-- fragment ids -->
+    <item name="frag_container" type="id"/>
+    <item name="frag_container_rl" type="id"/>
+
+    <!-- image ids -->
+    <item name="galleryimage" type="id"/>
+
+    <!-- search bar -->
+    <item name="searchbar" type="id"/>
+    <item name="auto_complete" type="id"/>
+    <item name="btn_voice" type="id"/>
+    <item name="btn_search" type="id"/>
+
+    <!-- scroll tab -->
+    <item name="scroll_frag_float_header" type="id"/>
+    <item name="scroll_list_header" type="id"/>
+    <item name="scroll_frag_tab_header" type="id"/>
+    <item name="scroll_frag_tab_footer" type="id"/>
+    <item name="scroll_frag_normal_container" type="id"/>
+
+    <!-- two views  ids -->
+    <item name="first_view" type="id"/>
+    <item name="second_view" type="id"/>
+    <item name="three_view" type="id"/>
+
+    <!-- common arguments ids -->
+    <item name="arg1" type="id"/>
+    <item name="arg2" type="id"/>
+    <item name="arg3" type="id"/>
+
+    <!-- Just adding these so I wont have to remove a lot of code from NumberPicker.java. -->
+    <item name="np__increment" type="id"/>
+    <item name="np__decrement" type="id"/>
+
+    <!-- the table pages' tab ids DONOT use it custom -->
+    <item name="tab1" type="id"/>
+    <item name="tab2" type="id"/>
+    <item name="tab3" type="id"/>
+    <item name="tab4" type="id"/>
+    <item name="tab5" type="id"/>
+    <item name="tab6" type="id"/>
+    <item name="tab7" type="id"/>
+    <item name="tab8" type="id"/>
+    <item name="tab9" type="id"/>
+    <item name="tab0" type="id"/>
+    <item name="viewpager" type="id"/>
+    <item name="gallery" type="id"/>
+
+    <!--  -->
+    <item name="pullview_foot_blow" type="id"/>
+</resources>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr format="reference" name="SwipeBackLayoutStyle"/>
+    <attr format="reference" name="numberPickerStyle"/>
+    <color name="app_background">#ffffffff</color>
+    <color name="dark">#ff222222</color>
+    <color name="drop_text_focus">#81c2fc</color>
+    <color name="tab_highlight">#ff018e4e</color>
+    <color name="title_drop">#ff303337</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffffff</color>
+    <declare-styleable name="DragSortListView"><attr format="dimension" name="collapsed_height"/><attr format="float" name="drag_scroll_start"/><attr format="float" name="max_drag_scroll_speed"/><attr format="color" name="float_background_color"/><attr name="remove_mode">
+      <enum name="clickRemove" value="0"/>
+      <enum name="flingRemove" value="1"/>
+    </attr><attr format="boolean" name="track_drag_sort"/><attr format="float" name="float_alpha"/><attr format="float" name="slide_shuffle_speed"/><attr format="integer" name="remove_animation_duration"/><attr format="integer" name="drop_animation_duration"/><attr format="boolean" name="drag_enabled"/><attr format="boolean" name="sort_enabled"/><attr format="boolean" name="remove_enabled"/><attr name="drag_start_mode">
+      <enum name="onDown" value="0"/>
+      <enum name="onMove" value="1"/>
+      <enum name="onLongPress" value="2"/>
+    </attr><attr format="integer" name="drag_handle_id"/><attr format="integer" name="fling_handle_id"/><attr format="integer" name="click_remove_id"/><attr format="boolean" name="use_default_controller"/></declare-styleable>
+    <declare-styleable name="HorizontalListView"><attr format="dimension" name="dividerWidth"/><attr name="android:divider"/><attr name="android:requiresFadingEdge"/><attr name="android:fadingEdgeLength"/></declare-styleable>
+    <declare-styleable name="ImageText"><attr format="reference" name="itSrc"/><attr format="reference|string" name="itText"/><attr format="reference|color" name="textColor"/><attr format="reference|integer" name="textSize"/><attr format="integer" name="imageSize"/></declare-styleable>
+    <declare-styleable name="NumberPicker"><attr format="color|reference" name="solidColor"/><attr format="reference" name="selectionDivider"/><attr format="dimension" name="selectionDividerHeight"/><attr format="dimension" name="selectionDividersDistance"/><attr format="dimension" name="internalMinHeight"/><attr format="dimension" name="internalMaxHeight"/><attr format="dimension" name="internalMinWidth"/><attr format="dimension" name="internalMaxWidth"/><attr format="reference" name="internalLayout"/><attr format="reference" name="virtualButtonPressedDrawable"/></declare-styleable>
+    <declare-styleable name="PullToRefresh"><attr format="reference|color" name="ptrRefreshableViewBackground"/><attr format="reference|color" name="ptrHeaderBackground"/><attr format="reference|color" name="ptrHeaderTextColor"/><attr format="reference|color" name="ptrHeaderSubTextColor"/><attr name="ptrMode">
+            <flag name="disabled" value="0x0"/>
+            <flag name="pullFromStart" value="0x1"/>
+            <flag name="pullFromEnd" value="0x2"/>
+            <flag name="both" value="0x3"/>
+            <flag name="manualOnly" value="0x4"/>
+
+            
+            <flag name="pullDownFromTop" value="0x1"/>
+            <flag name="pullUpFromBottom" value="0x2"/>
+        </attr><attr format="reference|boolean" name="ptrShowIndicator"/><attr format="reference" name="ptrDrawable"/><attr format="reference" name="ptrDrawableStart"/><attr format="reference" name="ptrDrawableEnd"/><attr format="reference|boolean" name="ptrOverScroll"/><attr format="reference" name="ptrHeaderTextAppearance"/><attr format="reference" name="ptrSubHeaderTextAppearance"/><attr name="ptrAnimationStyle">
+            <flag name="rotate" value="0x0"/>
+            <flag name="flip" value="0x1"/>
+        </attr><attr format="reference|boolean" name="ptrScrollingWhileRefreshingEnabled"/><attr format="reference|boolean" name="ptrListViewExtrasEnabled"/><attr format="reference|boolean" name="ptrRotateDrawableWhilePulling"/><attr format="reference|color" name="ptrAdapterViewBackground"/><attr format="reference" name="ptrDrawableTop"/><attr format="reference" name="ptrDrawableBottom"/></declare-styleable>
+    <declare-styleable name="SectionHeader"><attr format="reference" name="header_layout"/><attr format="boolean" name="is_collapsable"/></declare-styleable>
+    <declare-styleable name="SwipeBackLayout"><attr format="dimension" name="edge_size"/><attr name="edge_flag"><enum name="left" value="0"/><enum name="right" value="1"/><enum name="bottom" value="2"/><enum name="all" value="3"/></attr><attr format="reference" name="shadow_left"/><attr format="reference" name="shadow_right"/><attr format="reference" name="shadow_bottom"/></declare-styleable>
+    <declare-styleable name="TabBar"><attr format="reference" name="tbIndicator"/><attr name="tbMode">
+            <flag name="avg" value="0x0"/>
+            <flag name="wrap" value="0x1"/>
+            <flag name="wrap_fill" value="0x2"/>
+        </attr><attr format="boolean" name="tbDivider"/></declare-styleable>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="shrink_move_size">20dp</dimen>
+    <dimen name="title_height">48dp</dimen>
+    <item name="arg1" type="id"/>
+    <item name="arg2" type="id"/>
+    <item name="arg3" type="id"/>
+    <item name="auto_complete" type="id"/>
+    <item name="base_tabpage_pulllist" type="id"/>
+    <item name="base_tabpage_section_pulllist" type="id"/>
+    <item name="btn_search" type="id"/>
+    <item name="btn_voice" type="id"/>
+    <item name="chat_edit" type="id"/>
+    <item name="checknetrow_label" type="id"/>
+    <item name="custom_titile" type="id"/>
+    <item name="first_view" type="id"/>
+    <item name="frag_container" type="id"/>
+    <item name="frag_container_rl" type="id"/>
+    <item name="gallery" type="id"/>
+    <item name="galleryimage" type="id"/>
+    <item name="gridview" type="id"/>
+    <item name="group_list_view_type" type="id"/>
+    <item name="iconViewMain" type="id"/>
+    <item name="icon_view_icon" type="id"/>
+    <item name="imageFileNameInImageView" type="id"/>
+    <item name="imageFileNameInLoading" type="id"/>
+    <item name="imageSizeInImageView" type="id"/>
+    <item name="invalidResId" type="id"/>
+    <item name="iv_preview_error" type="id"/>
+    <item name="iv_preview_thumb" type="id"/>
+    <item name="messageArrow" type="id"/>
+    <item name="messageIcon" type="id"/>
+    <item name="np__decrement" type="id"/>
+    <item name="np__increment" type="id"/>
+    <item name="person_text" type="id"/>
+    <item name="prg_preview" type="id"/>
+    <item name="pullRefreshAbsListView" type="id"/>
+    <item name="pullview_foot_blow" type="id"/>
+    <item name="scroll_frag_float_header" type="id"/>
+    <item name="scroll_frag_normal_container" type="id"/>
+    <item name="scroll_frag_tab_footer" type="id"/>
+    <item name="scroll_frag_tab_header" type="id"/>
+    <item name="scroll_list_header" type="id"/>
+    <item name="scrollview" type="id"/>
+    <item name="searchbar" type="id"/>
+    <item name="second_view" type="id"/>
+    <item name="selectedUsersContainer" type="id"/>
+    <item name="tab0" type="id"/>
+    <item name="tab1" type="id"/>
+    <item name="tab2" type="id"/>
+    <item name="tab3" type="id"/>
+    <item name="tab4" type="id"/>
+    <item name="tab5" type="id"/>
+    <item name="tab6" type="id"/>
+    <item name="tab7" type="id"/>
+    <item name="tab8" type="id"/>
+    <item name="tab9" type="id"/>
+    <item name="tab_bar" type="id"/>
+    <item name="tab_container" type="id"/>
+    <item name="tabpage_mask" type="id"/>
+    <item name="three_view" type="id"/>
+    <item name="tileButton" type="id"/>
+    <item name="tileIcon" type="id"/>
+    <item name="tileText" type="id"/>
+    <item name="title_arrow" type="id"/>
+    <item name="title_drop_arrow" type="id"/>
+    <item name="title_text" type="id"/>
+    <item name="tv_selected_group" type="id"/>
+    <item name="viewpager" type="id"/>
+    <item name="webview" type="id"/>
+    <item name="fling_divider" type="integer">5</item>
+    <string name="freeimage_back">关闭</string>
+    <string name="freeimage_save">保存</string>
+    <string name="network_error">您的网络有问题，请检查网络</string>
+    <string name="pull_to_refresh_from_bottom_pull_label">上拉加载更多</string>
+    <string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing_label</string>
+    <string name="pull_to_refresh_from_bottom_release_label">@string/pull_to_refresh_release_label</string>
+    <string name="pull_to_refresh_pull_label">下拉刷新…</string>
+    <string name="pull_to_refresh_refreshing_label">正在刷新…</string>
+    <string name="pull_to_refresh_release_label">松开立即刷新…</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light"/>
+    <style name="AppTheme" parent="AppBaseTheme"/>
+    <style name="NPWidget">
+        <item name="android:textAppearance">?android:attr/textAppearance</item>
+    </style>
+    <style name="NPWidget.Holo.Light.NumberPicker" parent="NPWidget.Holo.NumberPicker">
+        <!--<item name="virtualButtonPressedDrawable">@drawable/item_background_holo_light</item>-->
+    </style>
+    <style name="NPWidget.Holo.NumberPicker" parent="NPWidget.NumberPicker">
+        <!-- <item name="solidColor">@android:color/white</item> -->
+        <item name="selectionDivider">@drawable/line_data_pick_diviler_green</item><!-- np_numberpicker_selection_divider -->
+        <item name="selectionDividerHeight">1dip</item>
+        <item name="internalLayout">@layout/number_picker_with_selector_wheel</item>
+        <item name="internalMinWidth">64dip</item>
+        <item name="internalMaxHeight">180dip</item>
+        <!--<item name="virtualButtonPressedDrawable">@drawable/item_background_holo_dark</item>-->
+    </style>
+    <style name="NPWidget.NumberPicker">
+        <item name="android:orientation">vertical</item>
+        <item name="android:fadingEdge">vertical</item>
+        <item name="android:fadingEdgeLength">50dip</item>
+    </style>
+    <style name="PROGRESS_DIALOG" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+    <style name="SwipeBackLayout">
+        <item name="edge_size">50dip</item>
+        <item name="shadow_left">@drawable/shadow_left</item>
+        <item name="shadow_right">@drawable/shadow_right</item>
+        <item name="shadow_bottom">@drawable/shadow_bottom</item>
+    </style>
+    <style name="info_progress">
+        <item name="android:indeterminateDrawable">@drawable/progress_album</item>
+        <item name="android:minWidth">30dip</item>
+        <item name="android:maxWidth">30dip</item>
+        <item name="android:minHeight">30dip</item>
+        <item name="android:maxHeight">30dip</item>
+    </style>
+    <style name="middle_progress">
+        <item name="android:indeterminateDrawable">@drawable/progress_m</item>
+        <item name="android:minWidth">20dip</item>
+        <item name="android:maxWidth">20dip</item>
+        <item name="android:minHeight">20dip</item>
+        <item name="android:maxHeight">20dip</item>
+    </style>
+    <style name="title_common">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2.0</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="title_drop">
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

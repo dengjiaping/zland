@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    style="@style/RootBg1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dp">
+
+    <com.zhisland.android.blog.common.view.AvatarView
+        android:id="@+id/ivAvatar"
+        android:layout_width="@dimen/app_avatar_size"
+        android:layout_height="@dimen/app_avatar_size"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp" />
+
+    <FrameLayout
+        android:id="@+id/rlRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dp">
+
+        <TextView
+            android:id="@+id/tvApprove"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/rect_bwhite_sdc_cmiddle"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="批准"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_14"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvStatue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="正和岛会员"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_12"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="17dp"
+        android:layout_toLeftOf="@id/rlRight"
+        android:layout_toRightOf="@id/ivAvatar">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:paddingRight="70dp"
+            android:singleLine="true"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <LinearLayout
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tvName"
+            android:layout_alignRight="@id/tvName"
+            android:layout_alignTop="@id/tvName"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp">
+
+            <TextView
+                android:id="@+id/tvTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_invite_search_tag"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:singleLine="true"
+                android:textColor="@color/color_dc"
+                android:textSize="@dimen/txt_10"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvComAndPos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlName"
+        android:layout_marginLeft="12dp"
+        android:layout_toLeftOf="@id/rlRight"
+        android:layout_toRightOf="@id/ivAvatar"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14" />
+
+    <View
+        android:id="@+id/view_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_below="@id/ivAvatar"
+        android:background="@color/color_div" />
+</RelativeLayout>
+
+
+
+

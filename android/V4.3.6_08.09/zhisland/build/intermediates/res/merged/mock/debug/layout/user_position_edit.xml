@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:fillViewport="true" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvEditHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="18dp"
+                android:layout_marginTop="60dp"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_16"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/profile_img_business_selected"
+                android:gravity="center"
+                android:text="商业机构" />
+
+            <ImageView
+                android:id="@+id/ivIndentify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="-24dp"
+                android:layout_marginTop="64dp"
+                android:layout_toRightOf="@id/tvEditHead"
+                android:src="@drawable/profile_img_authentication_full"
+                android:visibility="gone" >
+            </ImageView>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/llCompany"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp" >
+
+            <TextView
+                android:id="@+id/tvCompanyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="top"
+                android:paddingTop="12dp"
+                android:text="公司名称"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_16" />
+
+            <EditText
+                android:id="@+id/etCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入公司名称"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
+                android:textColor="@color/color_f1"
+                android:textColorHint="@color/color_div"
+                android:textSize="@dimen/txt_16" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vDiv1"
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/color_div" />
+
+        <LinearLayout
+            android:id="@+id/llPosition"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp" >
+
+            <TextView
+                android:id="@+id/tvPositionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="top"
+                android:paddingTop="12dp"
+                android:text="当前职务"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_16" />
+
+            <EditText
+                android:id="@+id/etPosition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入您的当前职务"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
+                android:textColor="@color/color_f1"
+                android:textColorHint="@color/color_div"
+                android:textSize="@dimen/txt_16" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vDiv2"
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/color_div" />
+
+        <RelativeLayout
+            android:id="@+id/llDefaultPosition"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp" >
+
+            <TextView
+                android:id="@+id/tvDefaultPositionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:text="设为默认任职"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_14" />
+
+            <ImageView
+                android:id="@+id/btnSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/sel_switch" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvGotoCompanyDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:text="编辑公司信息 >"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_14" />
+
+        <RelativeLayout
+            android:id="@+id/rlBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tvSumm"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:drawableLeft="@drawable/register_img_info_notification"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="修改认证公司职务，请联系服务岛丁"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_14"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvBtnText"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:background="@drawable/sel_bg_btn_sred"
+                android:gravity="center"
+                android:text="删除该任职"
+                android:textColor="@color/color_ac"
+                android:textSize="@dimen/txt_14" />
+
+            <View
+                android:id="@+id/bottomDiv"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_above="@id/tvBtnText"
+                android:layout_marginBottom="10dp"
+                android:background="@color/color_div" />
+
+            <ImageView
+                android:id="@+id/ivBtnIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:layout_toLeftOf="@id/tvBtnText"
+                android:src="@drawable/profile_btn_write"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

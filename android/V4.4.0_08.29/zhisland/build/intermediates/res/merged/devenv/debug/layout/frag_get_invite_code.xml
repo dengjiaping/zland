@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/RootBg27B297" >
+
+    <ImageView
+        android:id="@+id/btnFinish"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/app_titlebar_height"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/sel_btn_close_white" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+
+        <ImageView
+            android:id="@+id/ivEmpty"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/register_invitationcode_img_envelope" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivEmpty"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="17dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="您已获得岛亲专享邀请权"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_20"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnGotoInvite"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_below="@id/tvDesc"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/sel_bg_btn_white"
+            android:text="立即去邀请"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_18" />
+
+        <TextView
+            android:id="@+id/tvSummer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnGotoInvite"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            android:text="使用通讯录发送给企业高管，共同拓展商务人脉"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_16" />
+
+        <RelativeLayout
+            android:id="@+id/rlRegSummer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnGotoInvite"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/ivRegSummerLogo"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="6dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/register_img_info_notification" />
+
+            <TextView
+                android:id="@+id/tvRegSummer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/ivRegSummerLogo"
+                android:text="开通后会发送通知您"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_16" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

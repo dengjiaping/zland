@@ -1,0 +1,509 @@
+package com.zhisland.android.blog.im.controller;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnCreateContextMenuListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.common.app.ZhislandApplication;
+import com.zhisland.android.blog.common.base.TitleBarProxy;
+import com.zhisland.android.blog.common.base.TitleCreator;
+import com.zhisland.android.blog.common.dto.User;
+import com.zhisland.android.blog.common.eb.EBUser;
+import com.zhisland.android.blog.common.view.AvatarView;
+import com.zhisland.android.blog.common.view.EmptyView;
+import com.zhisland.android.blog.common.view.RedDotView;
+import com.zhisland.android.blog.contacts.controller.FragContactList;
+import com.zhisland.android.blog.freshtask.eb.BusFreshTask;
+import com.zhisland.android.blog.freshtask.eb.EventTitleClick;
+import com.zhisland.android.blog.im.controller.holder.HolderChatSessionHeader;
+import com.zhisland.android.blog.im.eb.EBMessage;
+import com.zhisland.android.blog.profile.controller.detail.ActProfileDetail;
+import com.zhisland.android.blog.tabhome.View.TitleFreshTaskView;
+import com.zhisland.im.data.DBMgr;
+import com.zhisland.im.data.IMBase;
+import com.zhisland.im.data.IMChat;
+import com.zhisland.im.data.IMContact;
+import com.zhisland.im.event.EventFriend;
+import com.zhisland.lib.component.act.TitleType;
+import com.zhisland.lib.component.adapter.BaseListAdapter;
+import com.zhisland.lib.component.frag.FragPullList;
+import com.zhisland.lib.rxjava.RxBus;
+import com.zhisland.lib.util.StringUtil;
+import com.zhisland.lib.view.title.OnTitleClickListner;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import de.greenrobot.event.EventBus;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+
+/**
+ * the chat session list
+ *
+ * @author arthur
+ */
+public class FragChatSessions extends FragPullList<IMChat> {
+
+    private static final String TAG = "chatsession";
+    private static final int TAG_LEFT_BTN = 111;
+    private static final int TAG_RIGHT_IV_BTN = 1004;
+
+    private ChatSessionAdapter adapter;
+    private TitleBarProxy titleBar;
+    private TitleFreshTaskView titleFreshTaskView;
+    private ImageView ivRightBtn;
+    private XmppTitleListener xmppTitleListener;
+    private Subscription subscribe;
+
+    HashMap<String, User> jidUserMap = new HashMap<String, User>();
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        adapter = new ChatSessionAdapter(activity);
+        getPullProxy().setAdapter(adapter);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        LinearLayout root = (LinearLayout) inflater.inflate(
+                R.layout.frag_tab_item, null);
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(
+                LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        root.setLayoutParams(lp);
+        root.addView(super
+                        .onCreateView(inflater, container, savedInstanceState),
+                new LayoutParams(LayoutParams.MATCH_PARENT,
+                        LayoutParams.MATCH_PARENT));
+
+        titleBar = new TitleBarProxy();
+        titleBar.configTitle(root, TitleType.TITLE_LAYOUT,
+                new OnTitleClickListner() {
+
+                    @Override
+                    public void onTitleClicked(View view, int tagId) {
+                        switch (tagId) {
+                            case TAG_LEFT_BTN:
+                                //跳转任务列表
+                                BusFreshTask.Bus().post(new EventTitleClick());
+                                break;
+                            case TAG_RIGHT_IV_BTN:
+                                FragContactList.invoke(getActivity(),
+                                        FragContactList.INTENT_VALUE_TYPE_SEARCH);
+                                break;
+                        }
+                    }
+                });
+
+        ivRightBtn = TitleCreator.Instance().createImageButton(getActivity(),
+                -1);
+        ivRightBtn.setImageResource(R.drawable.bg_nav_add);
+        titleBar.addRightTitleButton(ivRightBtn, TAG_RIGHT_IV_BTN);
+        titleFreshTaskView = new TitleFreshTaskView(getActivity());
+        titleFreshTaskView.addLeftTitle(titleBar, TAG_LEFT_BTN);
+        xmppTitleListener = new XmppTitleListener(titleBar, "聊天");
+        EventBus.getDefault().register(xmppTitleListener);
+        return root;
+    }
+
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        EventBus.getDefault().register(this);
+        this.pullView.setMode(Mode.DISABLED);
+        internalView.setDivider(null);
+        List<IMChat> chats = DBMgr.getHelper().getChatDao().getChats();
+        IMChat headerItem = new IMChat();
+        headerItem.id = -1l;
+        headerItem.contact = "";
+        if (chats == null) {
+            chats = new ArrayList<>();
+        }
+        chats.add(0, headerItem);
+        com.zhisland.android.blog.common.dto.DBMgr.getMgr().getUserDao()
+                .addIconIdMapOfChat(jidUserMap, chats);
+        EmptyView ev = new EmptyView(getActivity());
+        ev.setImgRes(R.drawable.img_envelope_empty);
+        ev.setPrompt("暂时没有消息记录");
+        ev.setBtnVisibility(View.INVISIBLE);
+        getPullProxy().getPullView().setEmptyView(ev);
+        getPullProxy().onLoadSucessfully(chats);
+
+        registerMessageCountRxBus();
+    }
+
+    /**
+     * 新增粉丝/互动消息/系统消息 rxbus
+     */
+    private void registerMessageCountRxBus() {
+        subscribe = RxBus.getDefault().toObservable(EBMessage.class).
+                observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<EBMessage>() {
+            @Override
+            public void call(EBMessage eb) {
+                if (eb.type == EBMessage.TYPE_MESSAGE_REFRESH) {
+                    // 刷新消息count
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onDestroy() {
+        if (subscribe != null && !subscribe.isUnsubscribed()){
+            subscribe.unsubscribe();
+        }
+        EventBus.getDefault().unregister(this);
+        EventBus.getDefault().unregister(xmppTitleListener);
+        super.onDestroy();
+    }
+
+    @Override
+    public void loadNormal() {
+
+    }
+
+    @Override
+    public String getPageName() {
+        return "ChatList";
+    }
+
+    public void refreshTitle() {
+        xmppTitleListener.refreshTitle();
+    }
+
+    /**
+     * 好友变更通知
+     *
+     * @param event
+     */
+    public void onEventMainThread(EventFriend event) {
+        if (event.action == EventFriend.ACTION_DELETE) {
+            // event.action == EventFriend.ACTION_DELETE 包括自己删除别人，和别人删除自己。
+            // 自己删除别人时，删除IMContact数据并且清空聊天记录。
+            // 别人删除自己时，更新IMContact数据并且保留聊天记录。
+            IMContact ic = null;
+            if (event.contact != null) {
+                ic = DBMgr.getHelper().getContactDao()
+                        .getByJid(event.contact.jid);
+                List<IMChat> chats = getPullProxy().getAdapter().getData();
+                if (ic == null && chats != null) {
+                    // 通过判断ic 是否为空来判断是否是否为，自己删除别人。
+                    IMChat delChat = null;
+                    for (IMChat chat : chats) {
+                        if (event.contact.jid.equals(chat.contact)) {
+                            delChat = chat;
+                            break;
+                        }
+                    }
+                    getPullProxy().getAdapter().removeItem(delChat);
+                    jidUserMap.remove(delChat.contact);
+                }
+            }
+        }
+    }
+
+    public void onEventMainThread(EBUser eb) {
+        switch (eb.getType()) {
+            case EBUser.TYPE_GET_USER_DETAIL:
+                List<IMChat> chats = getPullProxy().getAdapter().getData();
+                for (IMChat chat : chats) {
+                    if (chat.contact != null
+                            && eb.getUser() != null
+                            && chat.contact
+                            .equals(IMContact.buildJid(eb.getUser().uid))) {
+                        chat.name = eb.getUser().name;
+                        chat.avatar = eb.getUser().userAvatar;
+                        com.zhisland.android.blog.common.dto.DBMgr.getMgr().getUserDao()
+                                .addIconIdMapOfChat(jidUserMap, chat);
+                    }
+                }
+                ((ChatSessionAdapter) getPullProxy().getAdapter())
+                        .updateUserInfi(eb.getUser());
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 聊天变更通知
+     *
+     * @param chat
+     */
+    public void onEventMainThread(IMChat chat) {
+        List<IMChat> chats = getPullProxy().getAdapter().getData();
+        if (chats == null) {
+            switch (chat.action) {
+                case IMBase.ADD:
+                case IMBase.UPDATE: {
+                    this.getPullProxy().getAdapter().insert(chat, 1);
+                    com.zhisland.android.blog.common.dto.DBMgr.getMgr().getUserDao()
+                            .addIconIdMapOfChat(jidUserMap, chat);
+                    break;
+                }
+            }
+        } else {
+            switch (chat.action) {
+                case IMBase.ADD: {
+                    this.getPullProxy().getAdapter().insert(chat, 1);
+                    com.zhisland.android.blog.common.dto.DBMgr.getMgr().getUserDao()
+                            .addIconIdMapOfChat(jidUserMap, chat);
+                    break;
+                }
+                case IMBase.DELETE: {
+                    IMChat imchat = null;
+                    for (IMChat ic : chats) {
+                        if (ic.contact.equals(chat.contact)) {
+                            imchat = ic;
+                            break;
+                        }
+                    }
+                    if (imchat != null) {
+                        getPullProxy().getAdapter().removeItem(imchat);
+                        jidUserMap.remove(imchat.contact);
+                    }
+                    break;
+                }
+                case IMBase.UPDATE: {
+                    IMChat imchat = null;
+                    for (IMChat ic : chats) {
+                        if (ic.contact.equals(chat.contact)) {
+                            imchat = ic;
+                            break;
+                        }
+                    }
+                    if (imchat != null) {
+                        chats.remove(imchat);
+                        getPullProxy().getAdapter().insert(chat, 1);
+                        com.zhisland.android.blog.common.dto.DBMgr.getMgr().getUserDao()
+                                .addIconIdMapOfChat(jidUserMap, chat);
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * 刷新新手任务title
+     */
+    public void refreshTitleFreshTask(boolean showFreshTask, boolean showRedDot) {
+        if (titleFreshTaskView != null) {
+            titleFreshTaskView.refreshTitleFreshTask(showFreshTask, showRedDot);
+        }
+    }
+
+    class ChatSessionAdapter extends BaseListAdapter<IMChat> {
+
+        private Context context;
+
+        private List<ContactHolder> holders = new ArrayList<ContactHolder>();
+
+        public ChatSessionAdapter(Context context) {
+            super();
+            this.context = context;
+        }
+
+        @Override
+        public int getViewTypeCount() {
+            return 2;
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            IMChat item = getItem(position);
+            if (item.id > 0) {
+                return 0;
+            }
+            return 1;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            int viewType = getItemViewType(position);
+            switch (viewType) {
+                case 0: {
+                    if (convertView == null) {
+                        convertView = inflater.inflate(R.layout.item_contact, null);
+                        ContactHolder holder = new ContactHolder(context, convertView);
+                        holders.add(holder);
+                        convertView.setTag(holder);
+                    }
+                    ContactHolder holder = (ContactHolder) convertView.getTag();
+                    IMChat item = getItem(position);
+                    holder.fill(item);
+                    break;
+                }
+                case 1: {
+                    convertView = LayoutInflater.from(getActivity()).inflate(R.layout.head_chat_session, null);
+                    new HolderChatSessionHeader(getActivity(), convertView);
+                    break;
+                }
+            }
+
+            return convertView;
+        }
+
+        public void updateUserInfi(User user) {
+            if (user == null) {
+                return;
+            }
+
+            for (ContactHolder holder : holders) {
+                if (holder.curItem != null
+                        && holder.curItem.contact.equals(IMContact
+                        .buildJid(user.uid))) {
+                    holder.curItem.name = user.name;
+                    holder.curItem.avatar = user.userAvatar;
+
+                    User userItem = jidUserMap
+                            .get(IMContact.buildJid(user.uid));
+                    if (userItem != null) {
+                        userItem.name = user.name;
+                        userItem.userAvatar = user.userAvatar;
+                    }
+                    holder.fill(holder.curItem);
+                }
+            }
+        }
+
+        @Override
+        protected void recycleView(View view) {
+
+        }
+
+        class ContactHolder implements OnClickListener, OnMenuItemClickListener {
+
+            private static final int MENU_DELETE = 101;
+            private Context context;
+
+            @InjectView(R.id.iv_contact_item_icon)
+            public AvatarView avatarView;
+
+            @InjectView(R.id.tv_contact_item_name)
+            public TextView tvName;
+
+            @InjectView(R.id.tv_contact_item_content)
+            public TextView tvContent;
+
+            @InjectView(R.id.tv_contact_item_count)
+            public RedDotView tvCount;
+
+            @InjectView(R.id.iv_contact_item_divider)
+            public View divider;
+
+            @InjectView(R.id.time)
+            public TextView tvTime;
+
+            private IMChat curItem;
+
+            public ContactHolder(Context context, View convertView) {
+                ButterKnife.inject(this, convertView);
+                this.context = context;
+                convertView.setOnClickListener(this);
+                avatarView.setOnClickListener(this);
+                convertView
+                        .setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+
+                            @Override
+                            public void onCreateContextMenu(ContextMenu menu,
+                                                            View v, ContextMenuInfo menuInfo) {
+                                menu.clear();
+                                menu.add(0, MENU_DELETE, menu.size(), "删除")
+                                        .setOnMenuItemClickListener(
+                                                ContactHolder.this);
+                            }
+                        });
+            }
+
+            public void fill(IMChat contact) {
+                this.curItem = contact;
+                tvName.setText(contact.name);
+
+                User user = jidUserMap.get(contact.contact);
+                if (user != null) {
+                    avatarView.fill(user, true);
+                } else {
+                    avatarView.fill(curItem.avatar, false);
+                }
+                tvContent.setText(contact.message);
+                tvTime.setVisibility(View.VISIBLE);
+                String time = StringUtil.dateConvertFrom(curItem.time);
+                tvTime.setText(time);
+                if (curItem.unread != 0) {
+
+                    tvCount.setVisibility(View.VISIBLE);
+                    if (curItem.unread > 99) {
+                        tvCount.setText("99+");
+                    } else {
+                        tvCount.setText(curItem.unread + "");
+                    }
+                } else {
+                    tvCount.setVisibility(View.GONE);
+                }
+            }
+
+            public void recycle() {
+                this.curItem = null;
+            }
+
+            @Override
+            public void onClick(View v) {
+                if (v instanceof AvatarView) {
+                    ActProfileDetail.invoke(context, IMContact.parseUid(curItem.contact));
+                } else {
+                    ActChat.invoke(context, curItem.contact);
+                }
+            }
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case MENU_DELETE: {
+                        DBMgr.getHelper().getChatDao().deleteChat(curItem.id);
+                        break;
+                    }
+                }
+                return false;
+            }
+        }
+
+    }
+
+    @Override
+    protected boolean reportUMOnCreateAndOnDestory() {
+        return false;
+    }
+
+    public void pageStart() {
+        ZhislandApplication.trackerPageStart(getPageName());
+    }
+
+    public void pageEnd() {
+        ZhislandApplication.trackerPageEnd(getPageName());
+    }
+}

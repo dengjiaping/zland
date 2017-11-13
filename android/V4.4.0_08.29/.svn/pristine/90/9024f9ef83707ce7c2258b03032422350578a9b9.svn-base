@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llSceneRootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    style="@style/RootBgImgContactCardBg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rlSceneCardTop"
+        android:layout_width="match_parent"
+        android:layout_height="170dp" >
+
+        <com.zhisland.android.blog.common.view.RoundAngleImageView
+            xmlns:raiv="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ivUcFigure"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:scaleType="centerCrop"
+            raiv:leftDown="false"
+            raiv:rightDown="false"
+            raiv:roundHeights="@dimen/app_corner_largest"
+            raiv:roundWidths="@dimen/app_corner_largest" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="3dp"
+            android:background="@drawable/img_mask_bottom" />
+
+        <TextView
+            android:id="@+id/tvUcCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="万科企业 创始人董事会主席"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_14" />
+
+        <TextView
+            android:id="@+id/tvUcName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tvUcCompany"
+            android:layout_alignLeft="@id/tvUcCompany"
+            android:layout_marginBottom="5dp"
+            android:text="王石"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_18" />
+
+        <ImageView
+            android:id="@+id/ivUcType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tvUcName"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/tvUcName"
+            android:src="@drawable/img_label_v_lifelong"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp" >
+
+        <TextView
+            android:id="@+id/tvUcDes"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="万科企业股份有限公司创始人，现任董事会主席，兼任中国房地产协会常务理事11万科企业股份有限公司创始人，现任董事会主席，兼任中国房地产协会常务理事11万科企业股份有万科企业股份有限公司创始人，现任董事会主席，兼任中国房地产协会常务理事11限公司创始人，现任董事会主席，兼任中国房地产协会常务理事11"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_divider_height"
+            android:background="@drawable/line_divider_all" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:paddingBottom="4dp"
+            android:layout_height="50dp" >
+
+            <TextView
+                android:id="@+id/tvYueState"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="您已发送邀约"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_14" />
+
+            <TextView
+                android:id="@+id/tvSignTime"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="11:20到场"
+                android:textColor="@color/color_dc"
+                android:textSize="@dimen/txt_14" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

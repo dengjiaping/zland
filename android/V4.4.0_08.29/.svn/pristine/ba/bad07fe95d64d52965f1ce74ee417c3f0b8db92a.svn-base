@@ -1,0 +1,480 @@
+package com.zhisland.android.blog.im.controller;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.RemoteException;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.beem.project.beem.BeemService;
+import com.beem.project.beem.service.Message;
+import com.beem.project.beem.service.aidl.IChat;
+import com.beem.project.beem.service.aidl.IChatManagerListener;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.im.view.FragChatViewController;
+import com.zhisland.android.blog.im.view.FragChatViewController.OnFragChatListener;
+import com.zhisland.android.blog.im.view.ISessController;
+import com.zhisland.android.blog.im.view.adapter.ImSessAdapter;
+import com.zhisland.im.BeemApplication;
+import com.zhisland.im.data.DBMgr;
+import com.zhisland.im.data.IMBase;
+import com.zhisland.im.data.IMContact;
+import com.zhisland.im.data.IMMessage;
+import com.zhisland.im.util.Constants;
+import com.zhisland.lib.bitmap.ImageResizer;
+import com.zhisland.lib.component.frag.FragPullList;
+import com.zhisland.lib.util.DensityUtil;
+import com.zhisland.lib.util.MLog;
+import com.zhisland.lib.util.StringUtil;
+import com.zhisland.lib.util.file.FileMgr;
+import com.zhisland.lib.util.file.FileMgr.DirType;
+import com.zhisland.lib.util.file.FileUtil;
+
+import java.io.File;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import de.greenrobot.event.EventBus;
+
+public class FragChat extends FragPullList<IMMessage> implements
+        ISessController, OnFragChatListener {
+
+    private static final String TAG = "fragchat";
+    protected static final int MESSAGE_COUNT_PER_TIME = 100;
+    protected static final int LIST_SCROLL_BOTTOM_MAGIC_NUM = -100000;
+
+    protected long mChatSessionId = -1;
+    protected ImSessAdapter mChatAdapter;
+    protected IMContact mContact;
+    protected IMContact lastChatContact;
+    private IChat mChat;
+    private final IChatManagerListener mChatManagerListener = new ChatManagerListener();
+    FragChatViewController viewHolder;
+
+    /**
+     * the updater of chat messages
+     *
+     * @param msg
+     */
+    public void onEventMainThread(IMMessage msg) {
+        if (!msg.contact.equals(mContact.jid))
+            return;
+
+        List<IMMessage> msgs = getPullProxy().getAdapter().getData();
+        if (msgs == null) {
+            switch (msg.action) {
+                case IMBase.ADD:
+                case IMBase.UPDATE: {
+                    this.getPullProxy().getAdapter().add(msg);
+                    if (internalView.getLastVisiblePosition() >= mChatAdapter
+                            .getCount() - 1 || viewHolder.isKeyboardShown()) {
+                        viewHolder.showLastItem();
+                    }
+                    break;
+                }
+            }
+        } else {
+            switch (msg.action) {
+                case IMBase.ADD: {
+                    this.getPullProxy().getAdapter().add(msg);
+                    if (internalView.getLastVisiblePosition() >= mChatAdapter
+                            .getCount() - 1 || viewHolder.isKeyboardShown()) {
+                        viewHolder.showLastItem();
+                    }
+                    break;
+                }
+                case IMBase.DELETE: {
+                    IMMessage imchat = null;
+                    for (IMMessage ic : msgs) {
+                        if (ic.id == msg.id) {
+                            imchat = ic;
+                            break;
+                        }
+                    }
+                    if (imchat != null)
+                        msgs.remove(imchat);
+                    break;
+                }
+                case IMBase.UPDATE: {
+                    mChatAdapter.refresh(msg.thread, msg.status, msg.progress);
+                    break;
+                }
+            }
+        }
+    }
+
+    // ==============send start================
+    @Override
+    public void onSendText(String content) {
+        if (!StringUtil.isNullOrEmpty(content)
+                && !StringUtil.isNullOrEmpty(content.trim())) {
+            sendTextMessage(content);
+        }
+    }
+
+    @Override
+    public void onSendAudio(String audioTmpFilePath, int time) {
+        sendAudio(audioTmpFilePath, time);
+    }
+
+    @Override
+    public void sendImageMessage(String path) {
+        sendImage(path);
+    }
+
+    @Override
+    public void sendVideoMessage(String path, int videoDuration) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void onStartRecordAudio() {
+        mChatAdapter.release();
+    }
+
+    @Override
+    public void OnBigEmotionClick(View v) {
+        if (v != null && v.getTag() != null) {
+            String emotionName = (String) v.getTag();
+            // sendBigEmotionMessage(emotionName);
+            // TODO send big emotion
+        }
+    }
+
+    @Override
+    public void onInviteMemeberClicked() {
+        // TODO invite member
+        // if (onInviteListener != null) {
+        // onInviteListener.onInvite();
+        // }
+    }
+
+    @Override
+    public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+
+        int oldCount = mChatAdapter.getCount();
+        loadHistoryMessage(false);
+        int newCount = mChatAdapter.getCount();
+        int oldPos = newCount - oldCount + 1;
+        pullView.getRefreshableView().setSelection(oldPos);
+        pullView.onRefreshComplete();
+        viewHolder.smoothToPreItem(oldPos);
+
+    }
+
+    // ================send end=============
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mChatAdapter = new ImSessAdapter(getActivity());
+        getPullProxy().setAdapter(mChatAdapter);
+        getPullProxy().needRefreshOnResume = false;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        mContact = (IMContact) getActivity().getIntent().getSerializableExtra(ActChat.INK_CONTACT);
+        View view = inflater.inflate(R.layout.chat_session, null);
+        viewHolder = new FragChatViewController(getActivity(), view, this);
+        viewHolder.setOnFragChatListener(this);
+        mChatAdapter.setAdapterListener(viewHolder);
+        EventBus.getDefault().register(this);
+
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        tryConnectChat();
+    }
+
+    private void tryConnectChat() {
+        try {
+            if (BeemApplication.getInstance().getChatMgr() != null) {
+                BeemApplication.getInstance().getChatMgr()
+                        .addChatCreationListener(mChatManagerListener);
+            }
+            changeCurrentChat(mContact);
+        } catch (RemoteException e) {
+            MLog.e(TAG, e.getMessage(), e);
+        }
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        EventBus.getDefault().unregister(this);
+        try {
+            if (BeemApplication.getInstance().getChatMgr() != null) {
+                BeemApplication.getInstance().getChatMgr()
+                        .removeChatCreationListener(mChatManagerListener);
+            }
+        } catch (RemoteException e) {
+            MLog.e(TAG, e.getMessage(), e);
+        }
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        viewHolder.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        DBMgr.getHelper().getChatDao().clearUnreadCount(mContact.jid);
+        if (mChat != null) {
+            try {
+                mChat.setOpen(true);
+            } catch (RemoteException e) {
+                Log.e(TAG, e.getMessage());
+            }
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mChat != null) {
+            try {
+                mChat.setOpen(false);
+            } catch (RemoteException e) {
+                Log.e(TAG, e.getMessage());
+            }
+        }
+    }
+
+    private void loadHistoryMessage(boolean newChat) {
+
+        if (newChat) {
+            mChatAdapter.clearItems();
+        }
+        // Message msgOldest = mChatAdapter.getOldestMsg();
+        long maxId = Long.MAX_VALUE;
+        int newMsgCount;
+        if (mChatAdapter.getCount() > 0) {
+            maxId = mChatAdapter.getFirstItem().id;
+        }
+        newMsgCount = DBMgr.getHelper().getChatDao()
+                .getUnreadCount(mContact.jid);
+        int loadCount = newMsgCount + MESSAGE_COUNT_PER_TIME;
+        List<IMMessage> messages = DBMgr.getHelper().getMsgDao()
+                .loadMessages(mContact.jid, maxId, loadCount);
+        this.mChatAdapter.insert(messages);
+        if (newMsgCount > 0) {
+            int msgSize = messages.size();
+            if (msgSize >= newMsgCount) {
+
+                internalView.setSelectionFromTop((msgSize - newMsgCount),
+                        0);
+            } else if (msgSize > 0) {
+                internalView.setSelectionFromTop(0, 0);
+            }
+        }
+        if (newChat) {
+            internalView.setSelection(mChatAdapter.getCount() - 1);
+        }
+        getPullProxy().onRefreshFinished();
+    }
+
+    public boolean collapsePanel() {
+        if (viewHolder != null)
+            return viewHolder.collapsePanel();
+        return false;
+    }
+
+    // ===========================
+
+    /**
+     * Change the displayed chat.
+     *
+     * @param contact the targeted contact of the new chat
+     * @throws RemoteException If a Binder remote-invocation error occurred.
+     */
+    private void changeCurrentChat(IMContact contact) throws RemoteException {
+
+        MLog.d(BeemService.TAG, "change current chat");
+
+        if (BeemApplication.getInstance().getChatMgr() != null) {
+            if (mChat != null) {
+                mChat.setOpen(false);
+            }
+            mChat = BeemApplication.getInstance().getChatMgr().getChat(contact.jid);
+            try {
+                if (mChat == null) {
+                    mChat = BeemApplication.getInstance().getChatMgr()
+                            .createChat(mContact.jid, null);
+                    mChat.setOpen(true);
+                }
+            } catch (RemoteException e) {
+                MLog.e(BeemService.TAG,
+                        "create chat failed: " + e.getMessage(), e);
+            }
+            if (mChat != null) {
+                mChat.setOpen(true);
+            }
+        }
+        // if (mContact == null)
+        mContact = contact;
+
+        mChatAdapter.setUser(mContact);
+
+        if (isFirstChatChange(contact)) {
+            loadHistoryMessage(true);
+            lastChatContact = contact;
+        }
+    }
+
+    private boolean isFirstChatChange(IMContact contact) {
+        return contact != lastChatContact;
+    }
+
+    @Override
+    public String getPageName() {
+        return "ChatMessage";
+    }
+
+    /**
+     * This class is in charge of getting the new chat in the activity if
+     * someone talk to you.
+     */
+    private class ChatManagerListener extends IChatManagerListener.Stub {
+
+        /**
+         * Constructor.
+         */
+        public ChatManagerListener() {
+        }
+
+        @Override
+        public void chatCreated(IChat chat, boolean locally) {
+            try {
+                String contactJid = mContact.jid;
+                String chatJid = chat.getParticipantJid();
+                if (chatJid.equals(contactJid)) {
+                    // This should not be happened but to be sure
+                    if (mChat != null) {
+                        mChat.setOpen(false);
+                    }
+                    mChat = chat;
+                    mChat.setOpen(true);
+                    loadHistoryMessage(true);
+                }
+            } catch (RemoteException ex) {
+                Log.e(TAG,
+                        "A remote exception occurs during the creation of a chat",
+                        ex);
+            }
+        }
+    }
+
+    // =================send messages======================
+
+    /**
+     * send text message
+     *
+     * @param content
+     */
+    private void sendTextMessage(String content) {
+        // TODO Auto-generated method stub
+        Message msgToSend = new Message(mContact.jid,
+                Message.MSG_TYPE_CHAT);
+        msgToSend.setTimestamp(new Date());
+        msgToSend.setSubType(Constants.MSG_TYPE_TEXT);
+        msgToSend.setBody(content);
+        send(msgToSend);
+    }
+
+    /**
+     * send image message
+     *
+     * @param path
+     */
+    private void sendImage(String path) {
+        Message msgToSend = new Message(mContact.jid,
+                Message.MSG_TYPE_CHAT);
+        msgToSend.setTimestamp(new Date());
+        msgToSend.setSubType(Constants.MSG_TYPE_IMAGE);
+        File file = new File(path);
+        if (file.length() > 4 * 1024 * 1024) {
+            Bitmap bmLarge = ImageResizer.decodeFileByMaxWidth(path, 2048);
+            if (bmLarge != null) {
+                path = FileUtil.saveBitmapToFile(bmLarge, DirType.LARGE_IMAGE,
+                        UUID.randomUUID().toString() + ".jpg");
+
+                bmLarge.recycle();
+                bmLarge = null;
+            }
+        }
+
+        Bitmap bm = ImageResizer.decodeFileByMaxWidth(path, DensityUtil.getWidth() / 3);
+        String thumb = ImageResizer.bitmapToBase64(bm);
+        msgToSend.setBody(thumb);
+        msgToSend.setLocal(path);
+        send(msgToSend);
+    }
+
+    /**
+     * send image message
+     *
+     * @param path
+     */
+    private void sendAudio(String path, int time) {
+        String chatPath = FileMgr.Instance().getFilepath(DirType.CHAT,
+                UUID.randomUUID().toString() + ".amr");
+        if (FileUtil.copyFile(new File(path), new File(chatPath))) {
+            Message msgToSend = new Message(mContact.jid,
+                    Message.MSG_TYPE_CHAT);
+            msgToSend.setTimestamp(new Date());
+            msgToSend.setSubType(Constants.MSG_TYPE_AUDIO);
+            String base64String = FileUtil.encodeBase64File(chatPath);
+            msgToSend.setLocal(chatPath);
+            msgToSend.setBody(base64String);
+            msgToSend.setDuration(time);
+            send(msgToSend);
+        }
+    }
+
+    protected void send(Message msg) {
+        IMContact ic = DBMgr.getHelper().getContactDao()
+                .getByJid(mContact.jid);
+        if (ic == null || !ic.isFriend()) {
+            IMMessage msgPrompt = new IMMessage();
+            msgPrompt.body = "你与" + mContact.name + "已不是好友";
+            msgPrompt.time = System.currentTimeMillis();
+            msgPrompt.isRead = true;
+            msgPrompt.type = Constants.MSG_TYPE_SECTIOIN_TITLE;
+            getPullProxy().getAdapter().add(msgPrompt);
+        } else {
+            if (mChat == null) {
+                tryConnectChat();
+            }
+            try {
+                mChat.sendMessage(msg);
+            } catch (Exception e) {
+                MLog.e(TAG, e.getMessage(), e);
+                showToast("发送失败，请检查网络。");
+            }
+        }
+        viewHolder.showLastItem();
+    }
+
+    @Override
+    public void loadNormal() {
+        loadHistoryMessage(false);
+    }
+
+}

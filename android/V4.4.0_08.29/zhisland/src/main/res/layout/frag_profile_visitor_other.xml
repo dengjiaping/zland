@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBg1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/custom_titile"
+        layout="@layout/titlebar_with_image"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_height" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="75dp">
+
+        <LinearLayout
+            android:layout_width="240dp"
+            android:layout_height="282dp"
+            android:background="@drawable/img_profile_visitor_bg"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="50dp">
+
+            <ImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:src="@drawable/avatar_default_man" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingTop="22dp"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_22" />
+
+            <TextView
+                android:id="@+id/tvComAndPos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="3"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_14" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="当前为访客用户"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_14" />
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/vLineBottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:background="@color/color_div" />
+
+    <TextView
+        android:id="@+id/tvHasAttention"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_titlebar_height"
+        android:gravity="center"
+        android:text="已关注"
+        android:textColor="@color/color_btn"
+        android:textSize="@dimen/txt_14" />
+
+</LinearLayout>

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/raw/ormlite_config.txt",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/src/main/res/raw/ormlite_config.txt"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/raw/ormlite_im.txt",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/exploded-aar/V4.4.0_08.29/zhim_lib/unspecified/res/raw/ormlite_im.txt"
+    },
+    {
+        "merged": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/res/merged/devenv/debug/raw/ormlite_config_load_new.txt",
+        "source": "/Users/lipengju/zhisland/android/V4.4.0_08.29/zhisland/build/intermediates/exploded-aar/V4.4.0_08.29/zhlib/unspecified/res/raw/ormlite_config_load_new.txt"
+    }
+]

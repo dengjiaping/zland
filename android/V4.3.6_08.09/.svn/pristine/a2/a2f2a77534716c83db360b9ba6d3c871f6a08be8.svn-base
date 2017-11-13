@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+    >
+
+    <com.zhisland.android.blog.common.view.AvatarView
+        android:id="@+id/ivReqAvatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="16dp"
+        android:background="@color/white"
+        />
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="张三丰"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_16"
+        android:layout_toRightOf="@id/ivReqAvatar"
+        android:layout_alignTop="@id/ivReqAvatar"
+        android:layout_marginLeft="8dp"
+        />
+
+    <TextView
+        android:id="@+id/tvCompany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="正和岛产品技术部 测试"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_16"
+        android:layout_toRightOf="@id/ivReqAvatar"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/tvUserName"
+        android:singleLine="true"
+        android:ellipsize="end"
+        />
+
+
+
+    <TextView
+        android:id="@+id/tvIgnore"
+        android:layout_width="62dp"
+        android:layout_height="30dp"
+        android:text="推荐"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_16"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rect_sdc_clarge"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        />
+
+</RelativeLayout>

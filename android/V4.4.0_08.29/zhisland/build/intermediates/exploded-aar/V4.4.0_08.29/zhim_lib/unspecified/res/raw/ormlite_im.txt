@@ -1,0 +1,176 @@
+#
+# generated on 2016/09/20 09:42:26
+#
+# --table-start--
+dataClass=com.zhisland.im.data.IMChat
+tableName=imchat
+# --table-fields-start--
+# --field-start--
+fieldName=id
+columnName=chat_id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=contact
+columnName=contact
+# --field-end--
+# --field-start--
+fieldName=type
+columnName=type
+# --field-end--
+# --field-start--
+fieldName=name
+columnName=name
+# --field-end--
+# --field-start--
+fieldName=avatar
+columnName=avatar
+# --field-end--
+# --field-start--
+fieldName=message
+columnName=message
+# --field-end--
+# --field-start--
+fieldName=time
+columnName=time
+dataPersister=DATE_LONG
+# --field-end--
+# --field-start--
+fieldName=unread
+columnName=unread
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.zhisland.im.data.IMMessage
+tableName=im_message
+# --table-fields-start--
+# --field-start--
+fieldName=id
+columnName=col_id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=thread
+columnName=col_thread
+# --field-end--
+# --field-start--
+fieldName=contact
+columnName=col_contact
+# --field-end--
+# --field-start--
+fieldName=type
+columnName=col_type
+# --field-end--
+# --field-start--
+fieldName=status
+columnName=col_status
+# --field-end--
+# --field-start--
+fieldName=progress
+columnName=col_progress
+# --field-end--
+# --field-start--
+fieldName=direction
+columnName=col_direction
+# --field-end--
+# --field-start--
+fieldName=subject
+columnName=col_subject
+# --field-end--
+# --field-start--
+fieldName=body
+columnName=col_body
+# --field-end--
+# --field-start--
+fieldName=display
+columnName=col_display
+# --field-end--
+# --field-start--
+fieldName=time
+columnName=col_time
+# --field-end--
+# --field-start--
+fieldName=chat
+columnName=col_chat
+# --field-end--
+# --field-start--
+fieldName=local
+columnName=col_local
+# --field-end--
+# --field-start--
+fieldName=url
+columnName=col_url
+# --field-end--
+# --field-start--
+fieldName=token
+columnName=col_token
+# --field-end--
+# --field-start--
+fieldName=size
+columnName=col_size
+# --field-end--
+# --field-start--
+fieldName=duration
+columnName=col_duration
+# --field-end--
+# --field-start--
+fieldName=title
+columnName=col_title
+# --field-end--
+# --field-start--
+fieldName=description
+columnName=col_description
+# --field-end--
+# --field-start--
+fieldName=isRead
+columnName=col_is_read
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.zhisland.im.data.IMUser
+tableName=imuser
+# --table-fields-start--
+# --field-start--
+fieldName=jid
+columnName=jid
+id=true
+# --field-end--
+# --field-start--
+fieldName=name
+columnName=name
+# --field-end--
+# --field-start--
+fieldName=desc
+columnName=desc
+# --field-end--
+# --field-start--
+fieldName=c
+columnName=char
+# --field-end--
+# --field-start--
+fieldName=avatar
+columnName=avatar
+# --field-end--
+# --field-start--
+fieldName=time
+columnName=time
+# --field-end--
+# --field-start--
+fieldName=version
+columnName=version
+# --field-end--
+# --field-start--
+fieldName=userJson
+columnName=userjson
+# --field-end--
+# --field-start--
+fieldName=relation
+columnName=relation
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

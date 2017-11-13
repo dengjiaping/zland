@@ -1,0 +1,202 @@
+-optimizationpasses 5
+-dontshrink
+-dontoptimize
+-dontpreverify
+-verbose
+-dontskipnonpubliclibraryclasses
+-dontskipnonpubliclibraryclassmembers
+
+-allowaccessmodification
+-keepattributes *Annotation*
+-renamesourcefileattribute SourceFile
+-keepattributes SourceFile,LineNumberTable
+-repackageclasses ''
+
+#butterknife start
+-dontwarn butterknife.internal.**
+-keep class **$$ViewInjector { *; }
+-keepnames class * { @butterknife.InjectView *;}
+#butterknife end
+
+##########魔窗开始#############
+-keep class com.zxinsight.** {*;}
+-dontwarn com.zxinsight.**
+############魔窗结束############
+
+
+###############orm lite start#######
+-keepattributes *Annotation*
+-keepattributes Signature
+-keep class com.j256.**
+-keepclassmembers class com.j256.** { *; }
+-keep enum com.j256.**
+-keepclassmembers enum com.j256.** { *; }
+-keep interface com.j256.**
+-keepclassmembers interface com.j256.** { *; }
+-keep class com.j256.** {
+   *;
+}
+-keepclassmembers class * {
+	@com.j256.ormlite.field.DatabaseField *;
+}
+###############orm lite end#######
+
+
+
+#########zhisland start#######
+-keepclassmembers enum com.zhisland.android.blog.** { *; }
+-keep enum com.zhisland.android.blog.**
+-keep class * extends com.zhisland.lib.OrmDto{
+ *;
+}
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class sun.misc.Unsafe { *; }
+-keep class * extends com.zhisland.lib.view.web.JSBase{
+ *;
+}
+#########zhisland end#######
+
+-keep class com.alipay.android.app.IAliPay{*;}
+-keep class com.alipay.android.app.IAlixPay{*;}
+-keep class com.alipay.android.app.IRemoteServiceCallback{*;}
+
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.TabActivity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+
+-keep class org.apache.**{
+  *;
+}
+
+-keep public class * extends android.view.View {
+    public <init>(android.content.Context);
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+    public void set*(...);
+}
+
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+
+-keepclassmembers class * extends android.content.Context {
+   public void *(android.view.View);
+   public void *(android.view.MenuItem);
+}
+
+-keepclassmembers class * implements android.os.Parcelable {
+    static android.os.Parcelable$Creator CREATOR;
+}
+
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
+
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+-keepclassmembers class * { 
+  public <init>(android.content.Context); 
+} 
+
+
+#########uemng start##########
+-keepclassmembers class * {
+   public <init>(org.json.JSONObject);
+}
+-keep public class com.zhisland.people.R$*{
+public static final int *;
+}
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+############umeng end############
+
+-dontwarn android.support.v4.**  
+-keep class android.support.v4.** { *; }  
+-keep public class * extends android.support.v4.**  
+-keep public class * extends android.app.Fragment 
+
+-dontwarn org.apache.commons.logging.LogFactory
+-dontwarn org.apache.http.annotation.NotThreadSafe
+-dontwarn org.apache.http.annotation.Immutable
+-dontwarn org.apache.http.annotation.ThreadSafe
+-dontwarn org.apache.james.mime4j.util.MimeUtil
+
+-dontwarn org.apache.http.**
+
+#######tencent start########
+-keep class com.tencent.mm.sdk.openapi.WXMediaMessage {*;}
+-keep class com.tencent.mm.sdk.openapi.** implements com.tencent.mm.sdk.openapi.WXMediaMessage$IMediaObject {*;}
+########tencent end########
+
+###个推开始######
+-dontwarn com.igexin.**
+-keep class com.igexin.**{*;}
+###个推结束######
+
+################Pinyin4j start################
+-dontwarn demo.Pinyin4jAppletDemo**
+################Pinyin4j end################
+
+##############all share start###############
+-dontwarn cn.sharesdk.**
+##############all share end################
+
+######EventBus start#######################
+-keepclassmembers class ** {
+    public void onEvent*(**);
+}
+######EventBus end#######################
+
+#######RXJava|\Android\RXBindingstart######################
+-keep class rx.** { *; }
+-keep class rx.android.** { *; }
+-keep class com.jakewharton.rxbinding.** { *; }
+-dontwarn rx.internal.util.unsafe.**
+-dontwarn com.jakewharton.rxbinding.**
+#######rxjava end#######################
+
+#######okhttp start#######################
+-keep class okhttp3.** { *; }
+-keep class com.squareup.okhttp.** { *; }
+-dontwarn com.squareup.**
+-dontwarn okio.**
+#######okhttp end#######################
+
+#######retrofit start#######################
+-keep class retrofit.** { *; }
+-dontwarn retrofit.**
+#######retrofit end#######################
+
+# ProGuard configurations for NetworkBench Lens
+-keep class com.networkbench.** { *; }
+-dontwarn com.networkbench.**
+-keepattributes Exceptions, Signature, InnerClasses
+# End NetworkBench Lens

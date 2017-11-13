@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_bg1"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:id="@+id/llItem"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:paddingRight="8dp" >
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/tvWhoCanSee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_12" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_16" />
+
+    <ImageView
+        android:id="@+id/ivPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="7dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/profile_btn_phone" />
+
+</LinearLayout>

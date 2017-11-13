@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:title="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <com.zhisland.android.blog.common.view.pullzoom.PullToZoomScrollViewEx
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <RelativeLayout
+                android:id="@+id/rlHead"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/ivHeadBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/llScrollBody"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-50dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/llBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <View
+                            android:id="@+id/vTrans"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp" />
+
+                        <View
+                            android:id="@+id/vSolid"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/vTrans"
+                            android:background="@color/white" />
+
+                        <LinearLayout
+                            android:id="@+id/llStock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="45dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@id/vTrans"
+                            android:layout_marginRight="15dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal"
+                            android:visibility="gone" >
+
+                            <TextView
+                                android:id="@+id/tvStockCodeTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="股票代码"
+                                android:textColor="@color/color_f2"
+                                android:textSize="@dimen/txt_14" />
+
+                            <TextView
+                                android:id="@+id/tvStockCode"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center_vertical"
+                                android:maxWidth="180dp"
+                                android:text="0982HK"
+                                android:textColor="@color/color_sc"
+                                android:textSize="@dimen/txt_16" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvCompanyType"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/vTrans"
+                            android:gravity="right|center_vertical"
+                            android:paddingRight="15dp"
+                            android:text="初创期"
+                            android:textColor="@color/color_dc"
+                            android:textSize="@dimen/txt_14" />
+
+                        <ImageView
+                            android:id="@+id/ivLogo"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/profile_img_logo_show"
+                            android:padding="1dp"
+                            android:scaleType="fitXY" >
+                        </ImageView>
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/tvCompanyName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:ellipsize="end"
+                            android:maxLength="40"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="10dp"
+                            android:text="米未文化传媒有限公司"
+                            android:textColor="@color/color_f1"
+                            android:textSize="@dimen/txt_16" />
+
+                        <com.zhisland.android.blog.common.view.flowlayout.TagFlowLayout
+                            android:id="@+id/llTag"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="1dp" />
+
+                        <View
+                            android:id="@+id/vDiv1"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@color/color_div" />
+
+                        <TextView
+                            android:id="@+id/tvCompanyDescTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@color/white"
+                            android:text="公司简介"
+                            android:textColor="@color/color_f3"
+                            android:textSize="@dimen/txt_14" />
+
+                        <TextView
+                            android:id="@+id/tvCompanyDesc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:lineSpacingExtra="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:textColor="@color/color_f2"
+                            android:textSize="@dimen/txt_16" >
+                        </TextView>
+
+                        <View
+                            android:id="@+id/vDiv2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_margin="15dp"
+                            android:background="@color/color_div" />
+
+                        <TextView
+                            android:id="@+id/tvCompanyUrlTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@color/white"
+                            android:text="公司官网"
+                            android:textColor="@color/color_f3"
+                            android:textSize="@dimen/txt_14" />
+
+                        <TextView
+                            android:id="@+id/tvCompanyUrl"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@color/white"
+                            android:textColor="@color/color_dc"
+                            android:textSize="@dimen/txt_16" >
+                        </TextView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llPrompt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <ImageView
+                        android:id="@+id/ivError"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="center"
+                        android:src="@drawable/wifi_wrong" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="您的手机网络不太顺畅"
+                        android:textColor="@color/color_f1"
+                        android:textSize="@dimen/txt_18" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="请检查您的手机是否联网"
+                        android:textColor="@color/color_f2"
+                        android:textSize="@dimen/txt_14" />
+
+                    <Button
+                        android:id="@+id/btnReload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/rect_bwhite_sdc_clarge"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="25dp"
+                        android:paddingRight="25dp"
+                        android:paddingTop="8dp"
+                        android:text="重新加载"
+                        android:textColor="@color/color_dc"
+                        android:textSize="@dimen/txt_16" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </com.zhisland.android.blog.common.view.pullzoom.PullToZoomScrollViewEx>
+
+    <com.zhisland.android.blog.common.view.ScrollTitleBar
+        android:id="@+id/rlTitle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_titlebar_height"
+        title:leftButtonChangeImg="@drawable/sel_btn_back"
+        title:leftButtonImg="@drawable/sel_btn_back"
+        title:rightButtonChangeImg="@drawable/profile_btn_pencil"
+        title:rightButtonImg="@drawable/nav_btn_pencil_profile"
+        title:titleTextContent="公司详情" />
+
+</RelativeLayout>

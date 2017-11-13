@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlEvent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvEventTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_18" />
+
+            <TextView
+                android:id="@+id/tvEventTimeAndLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:paddingBottom="9dp"
+                android:paddingTop="5dp"
+                android:singleLine="true"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_12" />
+
+            <TextView
+                android:id="@+id/tvEventAttend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_12"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <!-- 活动图标 限时优惠 已开始/已结束 -->
+        <RelativeLayout
+            android:layout_width="96dp"
+            android:layout_height="72dp">
+
+            <ImageView
+                android:id="@+id/ivEventIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_info_default_pic" />
+
+            <ImageView
+                android:id="@+id/ivEventDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/campaign_img_tag_discount"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvEventState"
+                android:layout_width="50dp"
+                android:layout_height="19dp"
+                android:layout_alignParentRight="true"
+                android:background="@color/color_black_80"
+                android:gravity="center"
+                android:text="停止报名"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_10"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_divider_height"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/color_div" />
+</LinearLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlItemRoot"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rect_bbg1_sdiv_c10">
+
+    <com.zhisland.android.blog.common.view.AvatarView
+        android:id="@+id/ivReqAvatar"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/avatar_default" />
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/ivReqAvatar"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/ivReqAvatar"
+        android:text="张三丰"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_10" />
+
+    <TextView
+        android:id="@+id/tvCompany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserName"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@id/ivReqAvatar"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="正和岛科技有限公司 产品经理"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_10" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/tvUserName"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="2dp"
+        android:text="8月7日"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_10" />
+
+    <TextView
+        android:id="@+id/tvDes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivReqAvatar"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="久违的好友,请为我认证成为海客....."
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/tvApproved"
+        android:layout_width="78dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tvDes"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rect_bdc_clarge"
+        android:gravity="center"
+        android:text="批准"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/tvIgnore"
+        android:layout_width="78dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/tvDes"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_toLeftOf="@id/tvApproved"
+        android:background="@drawable/rect_sdc_clarge"
+        android:gravity="center"
+        android:text="忽略"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_16" />
+
+</RelativeLayout>

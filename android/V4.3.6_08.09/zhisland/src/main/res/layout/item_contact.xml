@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	style="@style/RootBgWhite"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="15dp" >
+
+    <com.zhisland.android.blog.common.view.AvatarView
+        android:id="@+id/iv_contact_item_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/avatar_default" />
+    
+    <com.zhisland.android.blog.common.view.RedDotView
+        android:id="@+id/tv_contact_item_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/iv_contact_item_icon"
+        android:layout_alignTop="@id/iv_contact_item_icon"
+        android:background="@drawable/red_dot2"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/txt_12"
+        android:visibility="gone" />
+
+    <TextView
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:id="@+id/tv_contact_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_contact_item_icon"
+        android:layout_toLeftOf="@+id/time"
+        android:textColor="@color/txt_black"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_contact_item_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_contact_item_name"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/iv_contact_item_icon"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="#80878C"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/iv_contact_item_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:visibility="gone" />
+
+    <CheckBox
+        android:id="@+id/selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@color/color_ac"
+        android:focusable="false"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/invite"
+        android:layout_width="60dp"
+        android:layout_height="34dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@color/color_dc"
+        android:focusable="false"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_contact_item_name"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/txt_light_gray"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_contact_item_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_below="@id/iv_contact_item_icon"
+        android:layout_marginTop="15dp"
+        android:background="@color/color_div"
+        android:visibility="visible" />
+
+</RelativeLayout>

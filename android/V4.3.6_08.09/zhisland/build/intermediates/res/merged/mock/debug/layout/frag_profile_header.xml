@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlProfileHead"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:id="@+id/ivProfileHead"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/img_campaign_default"
+        android:scaleType="centerCrop" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/img_mask_bottom" />
+
+    <TextView
+        android:id="@+id/tvProfileComAndPos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="20dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/color_bg1"
+        android:textSize="@dimen/txt_12" />
+
+    <TextView
+        android:id="@+id/tvProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tvProfileComAndPos"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/color_bg1"
+        android:textSize="@dimen/txt_20" />
+
+    <TextView
+        android:id="@+id/tvProfileAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:drawablePadding="10dp"
+        android:drawableTop="@drawable/sel_btn_add_profile_pic"
+        android:text="点击添加形象照"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_18"
+        android:visibility="gone" />
+
+</RelativeLayout>

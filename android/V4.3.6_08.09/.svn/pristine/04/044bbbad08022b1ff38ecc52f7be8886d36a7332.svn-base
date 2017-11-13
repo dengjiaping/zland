@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/rect_bwhite_sdiv_clarge"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:paddingBottom="30dp"
+              android:paddingLeft="27dp"
+              android:paddingRight="27dp"
+              android:paddingTop="40dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="5dp"
+        android:text="为了快速发现好友\n需要读取你的手机通讯录"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_18"/>
+
+    <TextView
+        android:id="@+id/tvVisitContact"
+        style="@style/LOGIN_BUTTON"
+        android:layout_marginTop="15dp"
+        android:text="访问通讯录"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="超过5000位顶级企业家信任正和岛，我们有严密的安全措施保护您的隐私"/>
+
+    <TextView
+        android:id="@+id/tvNotAddFriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:text="不添加好友"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_16"/>
+</LinearLayout>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBg2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/rect_bwhite_sdiv_clarge"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp">
+
+            <com.zhisland.android.blog.common.view.AvatarView
+                android:id="@+id/ivAvatar"
+                android:layout_width="@dimen/app_avatar_size"
+                android:layout_height="@dimen/app_avatar_size"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/ivAvatar"
+                android:ellipsize="end"
+                android:paddingRight="50dp"
+                android:singleLine="true"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_16" />
+
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tvName"
+                android:layout_alignRight="@id/tvName"
+                android:layout_alignTop="@id/tvName"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp">
+
+                <TextView
+                    android:id="@+id/tvTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_invite_search_tag"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:singleLine="true"
+                    android:text="已邀请"
+                    android:textColor="@color/color_dc"
+                    android:textSize="@dimen/txt_10"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvComAndPos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvName"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/ivAvatar"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/color_f2"
+                android:textSize="@dimen/txt_14" />
+
+            <TextView
+                android:id="@+id/tvMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivAvatar"
+                android:paddingBottom="16dp"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_18" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="14dp"
+            android:paddingLeft="32dp"
+            android:paddingTop="44dp"
+            android:text="我确认"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <LinearLayout
+            android:id="@+id/llReliable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:orientation="horizontal"
+            android:paddingBottom="6dp"
+            android:paddingTop="6dp">
+
+            <ImageView
+                android:id="@+id/ivCheckReliable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/chk_default" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="12dp"
+                android:text="他的姓名、公司、职位真实可靠"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_16" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvWarn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="36dp"
+            android:paddingTop="4dp"
+            android:text="当前用户职业身份可能不符合海客要求"
+            android:textColor="@color/color_ac"
+            android:textSize="@dimen/txt_12"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/llComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="6dp">
+
+            <ImageView
+                android:id="@+id/ivCheckComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/chk_default" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="12dp"
+                android:text="愿意与他成为好友并为其评价"
+                android:textColor="@color/color_f1"
+                android:textSize="@dimen/txt_16" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rect_bwhite_sdiv_clarge"
+            android:gravity="left|top"
+            android:hint="必填，请用一句话评价对方。该信息将显示在其个人主页，以便其他企业家了解他。"
+            android:minLines="4"
+            android:padding="10dp"
+            android:textColor="@color/color_f1"
+            android:textColorHint="@color/color_f3"
+            android:textSize="@dimen/txt_16"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvCommit"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/sel_bg_btn_bgreen"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="确认"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_18" />
+
+    </LinearLayout>
+</ScrollView>

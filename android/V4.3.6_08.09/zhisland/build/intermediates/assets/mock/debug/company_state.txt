@@ -1,0 +1,5 @@
+develop_stage_10	筹备上市	2	develop_stage
+develop_stage_15	新三板企业	1	develop_stage
+develop_stage_20	国内主板上市	1	develop_stage
+develop_stage_25	海外上市	1	develop_stage
+develop_stage_30	其他	2	develop_stage

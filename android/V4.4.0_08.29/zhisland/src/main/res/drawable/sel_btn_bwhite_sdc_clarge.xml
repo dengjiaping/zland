@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/rect_bwhite_sdc_clarge" android:state_enabled="true" android:state_pressed="false"/>
+    <item android:drawable="@drawable/rect_bwhite_sdcp_clarge" android:state_enabled="true" android:state_pressed="true"/>
+    <item android:drawable="@drawable/rect_bbg1_sf3_clarge" android:state_enabled="false"/>
+
+</selector>

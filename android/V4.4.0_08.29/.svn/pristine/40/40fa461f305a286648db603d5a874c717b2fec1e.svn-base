@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:scrollbars="none"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        >
+
+        <com.zhisland.android.blog.common.view.InternationalPhoneView
+            android:id="@+id/internationalPhoneView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="48dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_divider_height"
+            android:background="@color/color_div"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etLoginPwd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true"
+                    android:textColor="@color/color_f1"
+                    android:textColorHint="@color/color_f3"
+                    android:textSize="@dimen/txt_16"/>
+
+                <ImageView
+                    android:id="@+id/ivRtPwdEye"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="10dp"
+                    android:src="@drawable/bg_eye" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_divider_height"
+                android:background="@color/color_div"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnLoginByPwd"
+            style="@style/LOGIN_BUTTON"
+            android:layout_marginTop="20dp"
+            android:enabled="false"
+            android:text="登录"/>
+
+        <TextView
+            android:id="@+id/tvLoginByVerifyCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:text="使用短信验证码登录"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_14"
+            />
+
+    </LinearLayout>
+</ScrollView>

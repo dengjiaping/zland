@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	style="@style/RootBgWhite"
+    android:padding="10dp" >
+
+    <LinearLayout
+        android:id="@+id/rl_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- 头像 -->
+
+        <FrameLayout
+            android:id="@+id/flChangeAvatar"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="35dp"
+            android:layout_marginTop="25dp" >
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/sel_btn_tribe_capture" />
+
+            <ImageView
+                android:id="@+id/ivChangeAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_settingprofile"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/tvChangeAvatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:textColor="#ffd5b269"
+                android:text="设置头像"
+                android:textSize="@dimen/txt_12" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rect_bwhite_sdiv_clarge"
+            android:orientation="vertical"
+            android:padding="2dp" >
+
+            <!-- 姓名 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="left|center_vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:text="名称"
+                    android:textColor="@color/color_f2"
+                    android:textSize="@dimen/txt_20" />
+
+                <EditText
+                    android:id="@+id/etTribeName"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@color/white"
+                    android:gravity="left|center_vertical"
+                    android:hint="给我个响亮的名字呗"
+                    android:singleLine="true"
+                    android:textColor="@color/color_f1"
+                    android:textColorHint="@color/color_f3"
+                    android:textSize="@dimen/txt_18" />
+
+                <TextView
+                    android:text="*"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/txt_18"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/color_sc" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_line_height"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/color_div" />
+
+            <!-- 联系方式 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="left|center_vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:text="描述"
+                    android:textColor="@color/color_f2"
+                    android:textSize="@dimen/txt_20" />
+
+                <EditText
+                    android:id="@+id/etTribeDes"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@color/white"
+                    android:gravity="left|center_vertical"
+                    android:hint="再来句随文描述吧"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/color_f1"
+                    android:textColorHint="@color/color_f3"
+                    android:textSize="@dimen/txt_18" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_line_height"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/color_div" />
+
+            <!-- 公司 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="left|center_vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:text="加入描述"
+                    android:textColor="@color/color_f2"
+                    android:textSize="@dimen/txt_20" />
+
+                <EditText
+                    android:id="@+id/etTribeLimit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@color/white"
+                    android:gravity="left|center_vertical"
+                    android:hint="希望什么成员加入"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/color_f1"
+                    android:textColorHint="@color/color_f3"
+                    android:textSize="@dimen/txt_18" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

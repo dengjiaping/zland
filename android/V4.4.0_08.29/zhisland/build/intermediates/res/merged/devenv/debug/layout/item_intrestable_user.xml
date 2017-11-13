@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_intrest_user"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/ivIntrestAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/ivIntrestRank"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tvIntrestName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:maxLength="10"
+        android:singleLine="true"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_16" />
+
+    <TextView
+        android:id="@+id/tvIntrestPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:maxLength="10"
+        android:singleLine="true"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_12" />
+
+    <LinearLayout
+        android:id="@+id/llIntrestUserFollow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:id="@+id/tvIntrestFollow"
+            android:layout_width="0dp"
+            android:layout_height="26dp"
+            android:layout_weight="2"
+            android:background="@drawable/sel_bg_btn_bgreen"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="+关注"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_14" />
+
+        <TextView
+            android:id="@+id/tvIntrestIgnore"
+            android:layout_width="0dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text="忽略"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_12" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvIntrestFollowed"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="已关注"
+        android:textColor="@color/color_f4"
+        android:textSize="@dimen/txt_14"
+        android:visibility="gone" />
+
+</LinearLayout>

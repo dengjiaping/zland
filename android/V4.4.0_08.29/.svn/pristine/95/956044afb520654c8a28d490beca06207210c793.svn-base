@@ -1,0 +1,97 @@
+package com.zhisland.android.blog.im.controller.holder;
+
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroupOverlay;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.message.view.impl.FragFansMessageList;
+import com.zhisland.android.blog.message.view.impl.FragInteractionMessage;
+import com.zhisland.android.blog.message.view.impl.FragSystemMessageList;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
+/**
+ * 对话列表的头部
+ * <p/>
+ * Created by arthur on 2016/9/13.
+ */
+public class HolderChatSessonHeader {
+
+    private Context context;
+    private View fansView, interactionView, systemView;
+    public ChatHeaderItemHolder fansHolder, interactionHolder, systemHolder;
+
+    public HolderChatSessonHeader(final Context context, View headerView) {
+        this.context = context;
+        fansView = headerView.findViewById(R.id.vChatFans);
+        fansHolder = new ChatHeaderItemHolder(fansView);
+
+        interactionView = headerView.findViewById(R.id.vChatInteraction);
+        interactionHolder = new ChatHeaderItemHolder(interactionView);
+
+        systemView = headerView.findViewById(R.id.vChatSystem);
+        systemHolder = new ChatHeaderItemHolder(systemView);
+
+        fansView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragFansMessageList.Invoke(context);
+            }
+        });
+        interactionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragInteractionMessage.Invoke(context);
+            }
+        });
+        systemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragSystemMessageList.Invoke(context);
+            }
+        });
+
+        fansHolder.fill(R.drawable.sel_im_addfans, "新增粉丝", 0);
+        interactionHolder.fill(R.drawable.sel_im_interaction, "互动消息", 0);
+        systemHolder.fill(R.drawable.sel_im_inform, "系统通知", 0);
+        systemHolder.vChatHeaderLine.setVisibility(View.GONE);
+
+    }
+
+
+    public static class ChatHeaderItemHolder {
+        @InjectView(R.id.ivChatHeaderAvatar)
+        ImageView ivChatHeaderAvatar;
+        @InjectView(R.id.tvChatHeaderName)
+        TextView tvChatHeaderName;
+        @InjectView(R.id.ivChatHeaderArrow)
+        ImageView ivChatHeaderArrow;
+        @InjectView(R.id.tvChatHeaderNotify)
+        TextView tvChatHeaderNotify;
+        @InjectView(R.id.vChatHeaderLine)
+        View vChatHeaderLine;
+
+        ChatHeaderItemHolder(View view) {
+            ButterKnife.inject(this, view);
+        }
+
+        public void fill(int resId, String title, int num) {
+            ivChatHeaderAvatar.setImageResource(resId);
+            tvChatHeaderName.setText(title);
+            if (num < 1) {
+                ivChatHeaderArrow.setVisibility(View.VISIBLE);
+                tvChatHeaderNotify.setVisibility(View.GONE);
+            } else {
+                ivChatHeaderArrow.setVisibility(View.GONE);
+                tvChatHeaderNotify.setVisibility(View.VISIBLE);
+                String notifyText = num > 99 ? "99+" : num + "";
+                tvChatHeaderNotify.setText(notifyText);
+            }
+        }
+
+    }
+}

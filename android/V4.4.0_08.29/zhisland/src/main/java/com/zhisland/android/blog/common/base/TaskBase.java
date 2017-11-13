@@ -1,0 +1,182 @@
+package com.zhisland.android.blog.common.base;
+
+import android.app.Activity;
+import android.text.TextUtils;
+
+import com.zhisland.android.blog.aa.controller.ActRegisterAndLogin;
+import com.zhisland.android.blog.aa.controller.ActGuide;
+import com.zhisland.android.blog.aa.controller.SplashActivity;
+import com.zhisland.android.blog.common.app.AppUtil;
+import com.zhisland.android.blog.common.app.Config;
+import com.zhisland.android.blog.common.app.HomeUtil;
+import com.zhisland.android.blog.common.app.PrefUtil;
+import com.zhisland.android.blog.common.app.ZhislandApplication;
+import com.zhisland.android.blog.common.util.CodeUtil;
+import com.zhisland.android.blog.common.util.ZHExceptionUtil;
+import com.zhisland.android.blog.contacts.api.TaskGetFriendListByUid;
+import com.zhisland.android.blog.freshtask.eb.EventFreshTask;
+import com.zhisland.android.blog.profile.dto.UserDetail;
+import com.zhisland.lib.async.http.task.HttpTask;
+import com.zhisland.lib.async.http.task.TaskCallback;
+import com.zhisland.lib.component.application.EnvType;
+import com.zhisland.lib.util.StringUtil;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpResponseException;
+
+import java.util.HashMap;
+
+import de.greenrobot.event.EventBus;
+
+public abstract class TaskBase<S, P> extends HttpTask<S> {
+
+    private static final String MARKS = "marks";
+
+    /**
+     * head 中的标示为1代表“是”，表示肯定。
+     */
+    private static final String MARKS_YES = "1";
+
+    public TaskBase(Object context, final TaskCallback<S> responseCallback) {
+        super(context, responseCallback, true);
+    }
+
+    public TaskBase(Object context, final TaskCallback<S> responseCallback,
+                    boolean shouldCancel) {
+        super(context, responseCallback, shouldCancel);
+    }
+
+    @Override
+    protected S handleStringProxy(HttpResponse response) throws Exception {
+        handleHeaderInfo(response);
+        S s = super.handleStringProxy(response);
+        return s;
+    }
+
+    @Override
+    protected void onFailure(Throwable failture) {
+        super.onFailure(failture);
+        ZHExceptionUtil.getInstance().dispatchException(failture, isBackgroundTask());
+    }
+
+    /**
+     * head 中的标示，第一位代表是否需要重新拉取user信息,第二位代表需要拉取IM好友列表
+     * 0代表无变化，1代表有变化
+     */
+    protected void handleHeaderInfo(HttpResponse response) {
+        if (response.containsHeader(MARKS)) {
+            String marks = response.getFirstHeader(MARKS).getValue();
+            if (marks != null) {
+                String firstMark = String.valueOf(marks.charAt(0));
+                String secondMark = String.valueOf(marks.charAt(1));
+                if (firstMark.equals(MARKS_YES)) {
+                    //重新拉取用户信息，成功后再去拉取权限，以及新手任务列表。不然如果uc出问题，userDetail拉不到，任务列表能拉到，这样会一直访问接口，造成客户端卡。
+                    ZHApis.getUserApi().getUserDetail(null,
+                            PrefUtil.Instance().getUserId(), new TaskCallback<UserDetail>() {
+                                @Override
+                                public void onSuccess(UserDetail content) {
+                                    // 拉取权限
+                                    ZHApis.getCommonApi().getPermissions(ZhislandApplication.APP_CONTEXT,
+                                            null);
+                                    EventBus.getDefault().post(new EventFreshTask(EventFreshTask.TYPE_GET_FRESH_TASK, null));
+                                }
+
+                                @Override
+                                public void onFailure(Throwable error) {
+
+                                }
+                            });
+                } else if (secondMark.equals(MARKS_YES)) {
+                    TaskGetFriendListByUid task = new TaskGetFriendListByUid(ZhislandApplication.APP_CONTEXT,
+                            null);
+                    task.execute();
+                }
+            }
+        }
+    }
+
+    @Override
+    protected Throwable handleFailureMessageInBackGround(Throwable error,
+                                                         String responseBody) {
+
+        if (error != null) {
+            Activity latestActivity = ZhislandApplication.getCurrentActivity();
+            if (error instanceof HttpResponseException
+                    && latestActivity != null) {
+
+                HttpResponseException e = (HttpResponseException) error;
+                int statusCode = e.getStatusCode();
+                switch (statusCode) {
+                    case CodeUtil.CODE_NOT_EXIST:
+                    case CodeUtil.CODE_ILLEGAL:
+                    case CodeUtil.CODE_TOKEN_INVITATION:
+                    case CodeUtil.CODE_AUTHENTICATION_INFORMATION_NOT_COMPLETE:
+
+                        if ((latestActivity instanceof SplashActivity)
+                                || (latestActivity instanceof ActGuide)
+                                || (latestActivity instanceof ActRegisterAndLogin))
+                            break;
+
+                        this.cancel();
+                        HomeUtil.logout();
+
+                        break;
+                }
+            }
+        }
+        return error;
+    }
+
+    @Override
+    protected String getUrl() {
+        String partUrl = getPartureUrl();
+        if (!StringUtil.isNullOrEmpty(partUrl)) {
+            if (partUrl.startsWith("/")) {
+                partUrl = partUrl.substring(1, partUrl.length());
+            }
+        }
+        return getBaseUrl() + partUrl;
+    }
+
+    @Override
+    protected String getBaseUrl() {
+        return Config.getHostUrl();
+    }
+
+    /**
+     * api version
+     */
+    protected String getApiVersion() {
+        return "";
+    }
+
+    /**
+     * 是否为后台task, 如果是后台task，则当接口访问失败后，不弹失败toast
+     */
+    protected boolean isBackgroundTask(){
+        return false;
+    }
+
+    @Override
+    protected HashMap<String, String> applyHeader(
+            HashMap<String, String> headers) {
+
+        HashMap<String, String> header = super.applyHeader(headers);
+        header.put("device_id", AppUtil.Instance().getDeviceId());
+        header.put("version", AppUtil.Instance().getVersionName());
+        header.put("os", "android");
+        header.put("osVersion", android.os.Build.VERSION.RELEASE);
+        header.put("uid", "" + PrefUtil.Instance().getUserId());
+        header.put("Content-Type",
+                "application/x-www-form-urlencoded; charset=UTF-8");
+        header.put("atk", PrefUtil.Instance().getToken());
+        if (!TextUtils.isEmpty(getApiVersion())){
+            header.put("apiVersion", getApiVersion());
+        }
+        if(Config.ENV_TYPE == EnvType.ENV_TEST_INTERNET){
+            header.put("channelId","prerelease");
+        }
+        return header;
+    }
+
+}

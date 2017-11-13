@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:id="@+id/tv_chat_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:id="@+id/view_chat_row_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chat_pic_mask_right" >
+
+        <ProgressBar
+            android:id="@+id/pb_chat_row_sending"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="true"
+            android:indeterminateDuration="100"
+            android:indeterminateDrawable="@drawable/progress_white"
+            android:indeterminateOnly="true" />
+
+        <TextView
+            android:id="@+id/tv_chat_progress_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pb_chat_row_sending"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text=" 0%"
+            android:textColor="@color/color_bg1"
+            android:textSize="@dimen/txt_18" />
+    </RelativeLayout>
+
+</RelativeLayout>

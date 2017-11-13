@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp" >
+
+    <LinearLayout
+        android:layout_width="128dp"
+        android:layout_height="135dp"
+        android:background="@drawable/rect_bwhite_sdiv_clarge"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp" >
+
+            <com.zhisland.android.blog.common.view.AvatarView
+                android:id="@+id/ivGuestAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvGuestName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/tvGuestComp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="2"
+            android:maxLines="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/color_f3"
+            android:textSize="@dimen/txt_10" />
+    </LinearLayout>
+
+</LinearLayout>

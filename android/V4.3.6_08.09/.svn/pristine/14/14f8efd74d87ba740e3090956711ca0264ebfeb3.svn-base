@@ -1,0 +1,11 @@
+
+apply plugin: 'com.android.library'
+
+dependencies {
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "23.0.3"
+}
+

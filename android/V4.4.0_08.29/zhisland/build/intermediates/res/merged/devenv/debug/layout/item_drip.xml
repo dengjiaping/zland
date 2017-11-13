@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/llDripRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="15dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="15dp" >
+
+        <TextView
+            android:id="@+id/tvDripTitle"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_14" />
+
+        <EditText
+            android:id="@+id/etDripContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint=""
+            android:textColor="@color/color_f1"
+            android:textColorHint="@color/color_f3"
+            android:textSize="@dimen/txt_16" />
+        
+        <TextView
+            android:id="@+id/tvDripContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint=""
+            android:textColor="@color/color_f1"
+            android:textColorHint="@color/color_f3"
+            android:textSize="@dimen/txt_16" />
+
+        <TextView
+            android:id="@+id/tvDripRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="＊"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_16"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/dripViewLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_divider_height"
+        android:background="@color/color_div" />
+
+</LinearLayout>

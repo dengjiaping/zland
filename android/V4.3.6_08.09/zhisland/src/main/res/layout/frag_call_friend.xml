@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="扩大你的人脉圈"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_22"/>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="召唤几个重要的人一起加入正和岛"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <ListView
+            android:id="@+id/lvData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:divider="@drawable/line_divider_all"
+            android:dividerHeight="@dimen/app_divider_height"
+            />
+
+        <ImageView
+            android:id="@+id/ivMask"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/task_img_mask"
+            />
+
+    </RelativeLayout>
+
+    <!-- 代码中计算高度，高度为屏幕的 1/3 -->
+    <LinearLayout
+        android:id="@+id/llBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvBottomBtn"
+            style="@style/LOGIN_BUTTON"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:text="召唤所有好友"/>
+
+        <TextView
+            android:id="@+id/tvJump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="15dp"
+            android:padding="5dp"
+            android:text="跳过"
+            android:textColor="@color/color_dc"
+            android:textSize="@dimen/txt_16"/>
+    </LinearLayout>
+</LinearLayout>

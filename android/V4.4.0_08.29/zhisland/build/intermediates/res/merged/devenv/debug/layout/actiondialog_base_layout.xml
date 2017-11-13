@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/RootBgTransparent"
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    <LinearLayout
+        android:id="@+id/llDialogMainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvDialogCancel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rect_bwhite_clargest"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_20" />
+
+</LinearLayout>

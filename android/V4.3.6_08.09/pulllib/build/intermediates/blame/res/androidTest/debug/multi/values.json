@@ -1,0 +1,273 @@
+[
+    {
+        "outputFile": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/res/merged/androidTest/debug/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 1511,
+                    "endColumn": 63,
+                    "endOffset": 1570
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 1511,
+                        "endColumn": 63,
+                        "endOffset": 1570
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 1575,
+                    "endColumn": 63,
+                    "endOffset": 1634
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 1575,
+                        "endColumn": 63,
+                        "endOffset": 1634
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 1639,
+                    "endColumn": 54,
+                    "endOffset": 1689
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 1639,
+                        "endColumn": 54,
+                        "endOffset": 1689
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 1694,
+                    "endColumn": 56,
+                    "endOffset": 1746
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 1694,
+                        "endColumn": 56,
+                        "endOffset": 1746
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 1751,
+                    "endColumn": 54,
+                    "endOffset": 1801
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 1751,
+                        "endColumn": 54,
+                        "endOffset": 1801
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 1806,
+                    "endColumn": 37,
+                    "endOffset": 1839
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 1806,
+                        "endColumn": 37,
+                        "endOffset": 1839
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 1844,
+                    "endColumn": 39,
+                    "endOffset": 1879
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 1844,
+                        "endColumn": 39,
+                        "endOffset": 1879
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 1884,
+                    "endColumn": 36,
+                    "endOffset": 1916
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 1884,
+                        "endColumn": 36,
+                        "endOffset": 1916
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 1921,
+                    "endColumn": 73,
+                    "endOffset": 1990
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 1921,
+                        "endColumn": 73,
+                        "endOffset": 1990
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 1995,
+                    "endColumn": 113,
+                    "endOffset": 2104
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1995,
+                        "endColumn": 113,
+                        "endOffset": 2104
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 2109,
+                    "endColumn": 107,
+                    "endOffset": 2212
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 2109,
+                        "endColumn": 107,
+                        "endOffset": 2212
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 2217,
+                    "endColumn": 60,
+                    "endOffset": 2273
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 2217,
+                        "endColumn": 60,
+                        "endOffset": 2273
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 2278,
+                    "endColumn": 66,
+                    "endOffset": 2340
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 2278,
+                        "endColumn": 66,
+                        "endOffset": 2340
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 2345,
+                    "endColumn": 64,
+                    "endOffset": 2405
+                },
+                "from": {
+                    "file": "/Users/lipengju/zhisland/android/V4.3.6_08.09/pulllib/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 2345,
+                        "endColumn": 64,
+                        "endOffset": 2405
+                    }
+                }
+            }
+        ]
+    }
+]

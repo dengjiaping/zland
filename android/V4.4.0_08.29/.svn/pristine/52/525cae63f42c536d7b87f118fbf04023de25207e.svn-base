@@ -1,0 +1,263 @@
+package com.zhisland.android.blog.common.app;
+
+import com.zhisland.android.blog.aa.controller.FragModifyEnv;
+import com.zhisland.android.blog.common.dto.User;
+import com.zhisland.lib.component.application.EnvType;
+import com.zhisland.lib.component.application.ZHApplication;
+
+/**
+ * product environment configuration
+ */
+public class Config {
+
+    public static final String API_PART = "/bms-api-app"; //API的part url
+    public static int ENV_TYPE = EnvType.ENV_DEV;
+
+    /**
+     * Host
+     */
+    public static String getHostUrl() {
+        switch (ENV_TYPE) {
+            case EnvType.ENV_TEST:
+            case EnvType.ENV_DEV:
+            case EnvType.ENV_CUSTOM:
+                return String.format("http://%s:8090/bms-api-app/", getHost());
+            case EnvType.ENV_TEST_INTERNET:
+            case EnvType.ENV_RELEASE:
+                return String.format("http://%s/bms-api-app/", getHost());
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * https Host
+     */
+    public static String getHttpsHostUrl() {
+        switch (ENV_TYPE) {
+            case EnvType.ENV_TEST:
+            case EnvType.ENV_DEV:
+            case EnvType.ENV_CUSTOM:
+                return String.format("https://%s:8443/bms-api-app/", getHost());
+            case EnvType.ENV_TEST_INTERNET:
+            case EnvType.ENV_RELEASE:
+                return String.format("https://%s/bms-api-app/", getHost());
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * retrofit Host
+     */
+    public static String getRetrofitBaseUrl() {
+        switch (ENV_TYPE) {
+            case EnvType.ENV_TEST:
+            case EnvType.ENV_DEV:
+            case EnvType.ENV_CUSTOM:
+                return String.format("http://%s:8090", getHost());
+            case EnvType.ENV_TEST_INTERNET:
+            case EnvType.ENV_RELEASE:
+                return String.format("http://%s", getHost());
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * retrofit https Host
+     */
+    public static String getRetrofitHttpsBaseUrl() {
+        switch (ENV_TYPE) {
+            case EnvType.ENV_TEST:
+            case EnvType.ENV_DEV:
+            case EnvType.ENV_CUSTOM:
+                return String.format("https://%s:8443", getHost());
+            case EnvType.ENV_TEST_INTERNET:
+            case EnvType.ENV_RELEASE:
+                return String.format("https://%s", getHost());
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * 获取环境的host名
+     */
+    private static String getHost() {
+        switch (ENV_TYPE) {
+            case EnvType.ENV_TEST:
+                return "192.168.2.93";
+            case EnvType.ENV_DEV:
+                return "192.168.2.69";
+            case EnvType.ENV_TEST_INTERNET:
+//                return "tzh.zhisland.com";
+            case EnvType.ENV_RELEASE:
+                return "www.zhisland.com";
+            case EnvType.ENV_CUSTOM:
+                return PrefUtil.Instance().getByKey(FragModifyEnv.CUSTOM_HOST, "");
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * 上传url
+     */
+    public static String getUploadBaseUrl() {
+        switch (ENV_TYPE) {
+            case EnvType.ENV_DEV:
+            case EnvType.ENV_TEST:
+                return String.format("http://%s:8060/bms-api-upload/", getHost());
+            case EnvType.ENV_TEST_INTERNET:
+                return "http://www.zhisland.com/bms-api-upload/";
+            case EnvType.ENV_RELEASE:
+                return "http://www.zhisland.com/bms-api-upload/";
+            default:
+                return String.format("http://%s:8060/bms-api-upload/", getHost());
+        }
+    }
+
+    // ===================================
+    // =============IM config start=======
+
+    /**
+     * XMPP server
+     */
+    public static String getIMHost() {
+        switch (ZHApplication.APP_CONFIG.getEnvType()) {
+            case EnvType.ENV_DEV:
+            case EnvType.ENV_CUSTOM:
+                return "192.168.2.44";
+            case EnvType.ENV_TEST:
+                return "192.168.2.90";
+            case EnvType.ENV_TEST_INTERNET:
+                return "211.151.0.69";
+            case EnvType.ENV_RELEASE:
+                return "im.zhisland.com";
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * 获取XMPP的domain配置
+     */
+    public static String getIMDomain() {
+        switch (ZHApplication.APP_CONFIG.getEnvType()) {
+            case EnvType.ENV_DEV:
+            case EnvType.ENV_CUSTOM:
+                return "bi-44";
+            case EnvType.ENV_TEST:
+                return "zhisland.com";
+            case EnvType.ENV_TEST_INTERNET:
+                return "zhisland.com";
+            case EnvType.ENV_RELEASE:
+                return "zhisland.com";
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * XMPP port
+     */
+    public static String getIMPort() {
+        return "5222";
+    }
+
+    /**
+     * XMPP客户端的resouce配置
+     */
+    public static String getIMResource() {
+        return "zhapp";
+    }
+
+    /**
+     * 组织机构首页
+     */
+    public static String getOrgUrl() {
+        return "http://org.zhisland.com/wz/org/list/institute/index";
+    }
+
+    /**
+     * 部落首页
+     *
+     * @return
+     */
+    public static String getTribeUrl() {
+        return "http://org.zhisland.com/wz/org/list/tribe/index";
+    }
+
+    /**
+     * 组织机构网页的Domain
+     */
+    public static String getOrgDomain() {
+        return ".zhisland.com/";
+    }
+
+    /**
+     * 用户权限的跳转url, 根据当前用户身份
+     */
+    public static String getUserPermissionUrl(User user) {
+        String baseUrl = "";
+        switch (ENV_TYPE) {
+            case EnvType.ENV_TEST:
+            case EnvType.ENV_DEV:
+            case EnvType.ENV_CUSTOM:
+                baseUrl = "http://test.share.zhisland.com/app/user/privilege?";
+                break;
+            case EnvType.ENV_TEST_INTERNET:
+            case EnvType.ENV_RELEASE:
+                baseUrl = "http://share.zhisland.com/app/user/privilege?";
+                break;
+        }
+        String type = "type=" + user.userType;
+        String uid = "uid=" + user.uid;
+        return baseUrl + type + "&" + uid;
+    }
+
+    /**
+     * 用户权限的跳转url, 根据意图位置
+     */
+    public static String getUserPermissionUrl(User user, String intent) {
+        String baseUrl = "";
+        switch (ENV_TYPE) {
+            case EnvType.ENV_TEST:
+            case EnvType.ENV_DEV:
+            case EnvType.ENV_CUSTOM:
+                baseUrl = "http://test.share.zhisland.com/app/user/privilege?";
+                break;
+            case EnvType.ENV_TEST_INTERNET:
+            case EnvType.ENV_RELEASE:
+                baseUrl = "http://share.zhisland.com/app/user/privilege?";
+                break;
+        }
+        String type = "type=" + user.userType;
+        String uid = "uid=" + user.uid;
+        String t = "t=" + intent;
+        return baseUrl + type + "&" + uid + "&" + t;
+    }
+
+    /**
+     * 用户权限的跳转url，指定看某个用户身份的权益页
+     *
+     * @param type 想看的用户type ： 1=海客，2=绿岛，3=蓝岛，4=终身岛邻
+     */
+    public static String getUserPermissionUrl(int type) {
+        String baseUrl = "";
+        switch (ENV_TYPE) {
+            case EnvType.ENV_TEST:
+            case EnvType.ENV_DEV:
+            case EnvType.ENV_CUSTOM:
+                baseUrl = "http://test.share.zhisland.com/app/user/privilege?t=";
+                break;
+            case EnvType.ENV_TEST_INTERNET:
+            case EnvType.ENV_RELEASE:
+                baseUrl = "http://share.zhisland.com/app/user/privilege?t=";
+                break;
+        }
+        return baseUrl + type;
+    }
+
+}

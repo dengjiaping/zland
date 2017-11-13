@@ -1,0 +1,9 @@
+resource_demand_1	合作伙伴
+resource_demand_2	人才
+resource_demand_3	场地
+resource_demand_4	专业服务
+resource_demand_5	渠道
+resource_demand_6	媒体
+resource_demand_7	资金
+resource_demand_8	行业经验
+resource_demand_9	其他

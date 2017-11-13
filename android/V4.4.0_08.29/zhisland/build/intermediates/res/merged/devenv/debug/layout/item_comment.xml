@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dp"
+    android:paddingTop="20dp">
+
+    <ImageView
+        android:id="@+id/ivFirstAvatar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="12dp" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="16dp"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_10" />
+
+    <RelativeLayout
+        android:id="@+id/rlName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/tvTime"
+        android:layout_toRightOf="@id/ivFirstAvatar">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:singleLine="true"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_16" />
+
+        <ImageView
+            android:id="@+id/ivUserType"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignBottom="@id/tvName"
+            android:layout_alignRight="@id/tvName"
+            android:layout_marginBottom="2dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlName"
+        android:layout_marginRight="16dp"
+        android:layout_toRightOf="@id/ivFirstAvatar"
+        android:singleLine="true"
+        android:textColor="@color/color_f3"
+        android:textSize="@dimen/txt_12" />
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPosition"
+        android:layout_toRightOf="@id/ivFirstAvatar"
+        android:paddingBottom="3dp"
+        android:paddingRight="16dp"
+        android:paddingTop="15dp"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_16" />
+
+    <LinearLayout
+        android:id="@+id/llDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tvContent"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/sel_btn_info_like"
+            android:drawablePadding="5dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_12" />
+
+        <View
+            android:layout_width="@dimen/app_line_height"
+            android:layout_height="12dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="16dp"
+            android:background="@color/color_div" />
+
+        <TextView
+            android:id="@+id/tvComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:text="回复"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_12" />
+
+        <View
+            android:id="@+id/vLineDelete"
+            android:layout_width="@dimen/app_line_height"
+            android:layout_height="12dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="15dp"
+            android:background="@color/color_div" />
+
+        <TextView
+            android:id="@+id/tvDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:text="删除"
+            android:textColor="@color/color_f1"
+            android:textSize="@dimen/txt_12" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vCommentLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/llDelete"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="16dp"
+        android:layout_toRightOf="@id/ivFirstAvatar"
+        android:background="@drawable/bg_point_line" />
+
+    <LinearLayout
+        android:id="@+id/llComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vCommentLine"
+        android:layout_toRightOf="@id/ivFirstAvatar"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingRight="16dp"
+        android:paddingTop="10dp">
+
+        <include
+            android:id="@+id/rlOne"
+            layout="@layout/item_reply"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" />
+
+        <include
+            android:id="@+id/rlTwo"
+            layout="@layout/item_reply"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" />
+
+        <include
+            android:id="@+id/rlThree"
+            layout="@layout/item_reply"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" />
+
+        <include
+            android:id="@+id/rlFour"
+            layout="@layout/item_reply"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" />
+
+        <include
+            android:id="@+id/rlFive"
+            layout="@layout/item_reply"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" />
+
+        <TextView
+            android:id="@+id/tvMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="更多回复"
+            android:textColor="@color/color_f2"
+            android:textSize="@dimen/txt_12" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vBottomLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_below="@id/llComment"
+        android:background="@color/color_div" />
+
+    <View
+        android:id="@+id/vBottomSpace"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/llComment" />
+</RelativeLayout>

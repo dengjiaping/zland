@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_event_tag"
+        android:orientation="vertical">
+
+
+        <ListView
+            android:id="@+id/llEventOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
+            android:scrollbars="none"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="11dp"
+            android:divider="@color/color_div"
+            android:dividerHeight="@dimen/app_divider_height"
+            android:listSelector="@android:color/transparent"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/campaign_background_order"/>
+
+    </LinearLayout>
+
+    <!-- popupWindow 剩余填充view ，用于点击空白区域关闭popupWindow -->
+    <View
+        android:id="@+id/viewOrderFill"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"/>
+</LinearLayout>

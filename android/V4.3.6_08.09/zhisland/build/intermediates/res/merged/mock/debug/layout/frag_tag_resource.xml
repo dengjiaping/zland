@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBgWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:id="@+id/llCategoryTag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="按类别查找"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_14" />
+
+            <com.zhisland.android.blog.common.view.flowlayout.TagFlowLayout
+                android:id="@+id/tflCategoryTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="35dp"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llHistoryTag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="历史搜索"
+                android:textColor="@color/color_f3"
+                android:textSize="@dimen/txt_14" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2.5dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/color_div" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/color_div" />
+
+            <com.zhisland.android.blog.find.view.SearchHistoryView
+                android:id="@+id/llHistoryContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

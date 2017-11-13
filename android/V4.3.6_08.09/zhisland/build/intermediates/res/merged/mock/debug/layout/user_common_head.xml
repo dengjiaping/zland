@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    style="@style/RootBgWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    <ImageView
+        android:id="@+id/ivUCHHead"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/profile_img_job" />
+
+    <TextView
+        android:id="@+id/tvUCHDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivUCHHead"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="各个领域 都有我的足迹"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_18" >
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUCHDesc"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/btnUCH"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/sel_bg_btn_bgreen"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp" >
+
+            <ImageView
+                android:id="@+id/ivUCHBtnIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:src="@drawable/profile_btn_write" />
+
+            <TextView
+                android:id="@+id/tvUCHBtnText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="添加当前任职"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_18" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnUCHRight"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/sel_bg_btn_blightblue"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/ivUCHBtnIconRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:src="@drawable/profile_btn_write" />
+
+            <TextView
+                android:id="@+id/tvUCHBtnTextRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="添加当前任职"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_18" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

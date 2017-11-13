@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/rlPriceCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_shadow_card"
+    >
+
+    <TextView
+        android:id="@+id/tvKnowMore"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="了解他更多 >"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_14"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tvKnowMore"
+        android:layout_marginTop="130dp">
+
+        <ImageView
+            android:id="@+id/ivUserFigure"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_campaign_default"/>
+
+        <ImageView
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/img_mask_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"/>
+
+        <TextView
+            android:id="@+id/tvToUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/color_white_90"
+            android:textSize="@dimen/txt_12"/>
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tvToUser"
+            android:layout_alignLeft="@id/tvToUser"
+            android:layout_alignRight="@id/tvToUser"
+            android:layout_marginBottom="2dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_18"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@drawable/img_comment"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingBottom="18dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:id="@+id/tvCommentContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_18"/>
+
+        <TextView
+            android:id="@+id/tvPublisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="11dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/color_white_80"
+            android:textSize="@dimen/txt_14"/>
+    </LinearLayout>
+
+</RelativeLayout>

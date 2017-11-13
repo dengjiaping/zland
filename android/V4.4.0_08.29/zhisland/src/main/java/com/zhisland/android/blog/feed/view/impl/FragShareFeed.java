@@ -1,0 +1,228 @@
+package com.zhisland.android.blog.feed.view.impl;
+
+import android.app.Activity;
+import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+
+import com.zhisland.android.blog.R;
+import com.zhisland.android.blog.common.base.CommonFragActivity;
+import com.zhisland.android.blog.common.dto.User;
+import com.zhisland.android.blog.common.uri.AUriMgr;
+import com.zhisland.android.blog.feed.bean.Feed;
+import com.zhisland.android.blog.feed.bean.FeedViewType;
+import com.zhisland.android.blog.feed.model.IShareFeedModel;
+import com.zhisland.android.blog.feed.model.ModelFactory;
+import com.zhisland.android.blog.feed.presenter.ShareFeedPresenter;
+import com.zhisland.android.blog.feed.view.IShareFeedView;
+import com.zhisland.android.blog.feed.view.impl.holder.AttachCreator;
+import com.zhisland.android.blog.feed.view.impl.holder.AttachHolder;
+import com.zhisland.android.blog.feed.view.impl.holder.FeedHolder;
+import com.zhisland.android.blog.feed.view.impl.holder.FeedViewListener;
+import com.zhisland.lib.mvp.presenter.BasePresenter;
+import com.zhisland.lib.mvp.view.FragBaseMvps;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
+/**
+ * Created by arthur on 2016/9/6.
+ */
+public class FragShareFeed extends FragBaseMvps implements IShareFeedView {
+
+
+    private static final int ID_PUBLISH = 1001;
+    private static final int ID_CANCEL = 1002;
+    private static final String INK_FEED = "ink_feed";
+    private static final String INK_ID = "ink_id";
+
+    @InjectView(R.id.etShareFeed)
+    EditText etShareFeed;
+    @InjectView(R.id.llShareFeedAttach)
+    LinearLayout llShareFeedAttach;
+
+    private ShareFeedPresenter shareFeedPresenter;
+
+
+    //region 静态方法
+
+    //调起分享新鲜事的界面
+    public static void Invoke(Context context, Feed feed, long attachId) {
+        CommonFragActivity.CommonFragParams params = new CommonFragActivity.CommonFragParams();
+        params.title = "分享到商圈";
+        params.clsFrag = FragShareFeed.class;
+        params.enableBack = false;
+        params.titleBtns = new ArrayList<>(2);
+
+        CommonFragActivity.TitleBtn pubBtn = new CommonFragActivity.TitleBtn(ID_PUBLISH, CommonFragActivity.TitleBtn.TYPE_TXT);
+        pubBtn.btnText = "发布";
+        pubBtn.isLeft = false;
+        pubBtn.textColor = context.getResources().getColor(R.color.color_dc);
+        params.titleBtns.add(pubBtn);
+
+        pubBtn = new CommonFragActivity.TitleBtn(ID_CANCEL, CommonFragActivity.TitleBtn.TYPE_TXT);
+        pubBtn.btnText = "取消";
+        pubBtn.isLeft = true;
+        pubBtn.textColor = context.getResources().getColor(R.color.color_f2);
+        params.titleBtns.add(pubBtn);
+
+        params.runnable = new CommonFragActivity.TitleRunnable() {
+            @Override
+            protected void execute(Context context, Fragment fragment) {
+                if (!(fragment instanceof FragShareFeed))
+                    return;
+
+                FragShareFeed fragShareFeed = (FragShareFeed) fragment;
+                switch (tagId) {
+                    case ID_CANCEL:
+                        fragShareFeed.shareFeedPresenter.onQuitClicked();
+                        break;
+                    case ID_PUBLISH: {
+                        fragShareFeed.shareFeedPresenter.onPublishClicked();
+                        break;
+                    }
+                    default:
+                        break;
+                }
+            }
+        };
+
+        Intent intent = CommonFragActivity.createIntent(context, params);
+        intent.putExtra(INK_FEED, feed);
+        intent.putExtra(INK_ID, attachId);
+        context.startActivity(intent);
+
+    }
+    //endregion
+
+
+    //region 生命周期
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+    }
+
+    @Override
+    public void onOkClicked(String tag, Object arg) {
+        shareFeedPresenter.onQuitOkClicked();
+    }
+
+    @Override
+    public void onNoClicked(String tag, Object arg) {
+        shareFeedPresenter.onQuitNoClicked();
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        View root = inflater.inflate(R.layout.frag_share_feed, null);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        root.setLayoutParams(params);
+        ButterKnife.inject(this, root);
+        return root;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+    //endregion
+
+
+    //region 重载方法
+    @Override
+    protected Map<String, BasePresenter> createPresenters() {
+        Map<String, BasePresenter> presenterMap = new HashMap<>(1);
+
+        shareFeedPresenter = new ShareFeedPresenter();
+        IShareFeedModel shareFeedModel = ModelFactory.createShareFeedModel();
+        shareFeedPresenter.setModel(shareFeedModel);
+        presenterMap.put(ShareFeedPresenter.class.getSimpleName(), shareFeedPresenter);
+
+        Feed feed = (Feed) getActivity().getIntent().getSerializableExtra(INK_FEED);
+        long attachId = getActivity().getIntent().getLongExtra(INK_ID, 0);
+        shareFeedPresenter.setData(feed, attachId);
+
+        return presenterMap;
+    }
+
+    @Override
+    public String getPageName() {
+        return "分享新鲜事";
+    }
+    //endregion
+
+
+    //region IShareFeed implementation
+    @Override
+    public void updateView(Feed feed) {
+        AttachHolder attachHolder = AttachCreator.Instance().getAttachHolder(getActivity(), FeedViewType.INFO, true);
+        llShareFeedAttach.removeAllViews();
+        llShareFeedAttach.addView(attachHolder.getView());
+        attachHolder.fillAttach(feed, new FeedViewListener() {
+            @Override
+            public void onUserClicked(FeedHolder feedHolder, User user) {
+
+            }
+
+            @Override
+            public void onPraiseClicked(FeedHolder feedHolder, Feed curFeed) {
+
+            }
+
+            @Override
+            public void onCommentClicked(FeedHolder feedHolder, Feed curFeed) {
+
+            }
+
+            @Override
+            public void onTransemitClicked(FeedHolder feedHolder, Feed curFeed) {
+
+            }
+
+            @Override
+            public void onAttachClicked(Feed feed, Object obj) {
+//                shareFeedPresenter.onAttachClicked();
+            }
+
+            @Override
+            public void onFeedCicked(Feed curFeed) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public String getText() {
+        return etShareFeed.getEditableText().toString();
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
+    }
+
+    @Override
+    public void gotoUri(String uri) {
+        AUriMgr.instance().viewRes(getActivity(), uri);
+    }
+
+    //endregion
+
+
+}

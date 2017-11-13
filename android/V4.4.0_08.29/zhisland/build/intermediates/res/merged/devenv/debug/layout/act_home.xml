@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white">
+
+    <com.zhisland.lib.view.tab.TabBarView
+        android:id="@id/tab_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_titlebar_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white" />
+
+    <View
+        android:id="@+id/vHomeDiv"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:layout_above="@id/tab_bar"
+        android:background="@color/color_div" />
+
+    <FrameLayout
+        android:id="@id/tab_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/vHomeDiv" />
+
+
+    <RelativeLayout
+        android:id="@+id/home_anim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#cc000000"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivCloseAnim"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/btn_closed_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

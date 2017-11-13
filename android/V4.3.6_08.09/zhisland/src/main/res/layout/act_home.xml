@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@id/tab_container"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_line_height"
+        android:background="@color/color_div" />
+
+    <com.zhisland.lib.view.tab.TabBarView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@id/tab_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_titlebar_height"
+        android:background="@color/white" />
+
+</LinearLayout>

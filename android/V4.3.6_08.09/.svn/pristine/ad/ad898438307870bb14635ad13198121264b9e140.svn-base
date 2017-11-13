@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/tvFRTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:text="正和岛是链接企业家信任的平台"
+        android:textColor="@color/color_f1"
+        android:textSize="@dimen/txt_22"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:text="通过手机联系人建立你的信任链"
+        android:textColor="@color/color_f2"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/txt_18"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="58dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/register_img_identification"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="为保障你的隐私，通讯录信息仅用于查找好友"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_14"/>
+
+    <TextView
+        android:id="@+id/tvVisitContact"
+        style="@style/LOGIN_BUTTON"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="24dp"
+        android:text="同意访问通讯录"
+        />
+
+</LinearLayout>

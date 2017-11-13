@@ -1,0 +1,185 @@
+
+-optimizationpasses 5
+-dontshrink
+-dontoptimize
+-dontpreverify
+-verbose
+-dontskipnonpubliclibraryclasses
+-dontskipnonpubliclibraryclassmembers
+
+-allowaccessmodification
+-keepattributes *Annotation*
+-renamesourcefileattribute SourceFile
+-keepattributes SourceFile,LineNumberTable
+-repackageclasses ''
+
+#############butterknife start###############
+-dontwarn butterknife.internal.**
+-keep class **$$ViewInjector { *; }
+-keepnames class * { @butterknife.InjectView *;}
+#############butterknife end#################
+
+
+##########suaqre wire and okio start###########
+
+-dontwarn com.facebook.android.BuildConfig
+-dontwarn rx.**
+-dontwarn okio.**
+-dontwarn com.squareup.okhttp.*
+-dontwarn retrofit.appengine.UrlFetchClient
+-keepattributes Annotation
+-keep class okio.** { *; }
+-keep class com.squareup.wire.** { *; }
+-keepclasseswithmembers class * {
+    @retrofit.http.* <methods>; }
+-keepattributes Signature
+-keepclassmembers class ** {
+ 	@com.squareup.wire.ProtoField public *;
+ 	@com.squareup.wire.ProtoEnum public *;
+}
+
+-keep public class * extends com.squareup.wire.Message$Builder{*;}
+
+##############suaqre wire and okio end###########
+
+###############orm lite start#######
+-keep class com.j256.**
+-keepclassmembers class com.j256.** { *; }
+-keep enum com.j256.**
+-keepclassmembers enum com.j256.** { *; }
+-keep interface com.j256.**
+-keepclassmembers interface com.j256.** { *; }
+-keepattributes Signature
+-keep class com.j256.** {
+   *;
+}
+###############orm lite end#######
+
+-keep public class org.jsoup.** {
+public *;
+}
+
+##################zhisland start#######
+-keep class * extends com.zhisland.lib.data.OrmDto{
+ *;
+}
+-keep public class com.google.gson.** {
+  *;
+}
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.examples.android.model.** { *; }
+-keep class com.google.gson.stream.** { *; }
+-keep class * extends com.zhisland.lib.webview.JSBase{
+ *;
+}
+#################正和岛 end#######
+
+-keep class com.alipay.android.app.IAliPay{*;}
+-keep class com.alipay.android.app.IAlixPay{*;}
+-keep class com.alipay.android.app.IRemoteServiceCallback{*;}
+
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.TabActivity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+
+-keep class org.apache.**{
+  *;
+}
+
+-keep public class * extends android.view.View {
+    public <init>(android.content.Context);
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+    public void set*(...);
+}
+
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+
+-keepclassmembers class * extends android.content.Context {
+   public void *(android.view.View);
+   public void *(android.view.MenuItem);
+}
+
+-keepclassmembers class * implements android.os.Parcelable {
+    static android.os.Parcelable$Creator CREATOR;
+}
+
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
+
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+
+
+-keepclassmembers class * { 
+  public <init>(android.content.Context); 
+} 
+
+-keep class com.zhisland.data.** { 
+   *;
+}
+################uemng start##########
+-keepclassmembers class * {
+   public <init>(org.json.JSONObject);
+}
+-keep public class com.zhisland.people.R$*{
+public static final int *;
+}
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+############umeng end############
+
+-dontwarn android.support.v4.**  
+-keep class android.support.v4.** { *; }  
+-keep public class * extends android.support.v4.**  
+-keep public class * extends android.app.Fragment 
+
+-dontwarn org.apache.commons.logging.LogFactory
+-dontwarn org.apache.http.annotation.NotThreadSafe
+-dontwarn org.apache.http.annotation.Immutable
+-dontwarn org.apache.http.annotation.ThreadSafe
+-dontwarn org.apache.james.mime4j.util.MimeUtil
+
+#####################tencent start########
+-keep class com.tencent.mm.sdk.openapi.WXMediaMessage {*;}
+-keep class com.tencent.mm.sdk.openapi.** implements com.tencent.mm.sdk.openapi.WXMediaMessage$IMediaObject {*;}
+#####################tencent end########
+
+###################信鸽开始######
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep class com.tencent.android.tpush.**  {* ;}
+-keep class com.tencent.mid.**  {* ;}
+##################信鸽结束######

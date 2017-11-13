@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RootBgWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/left"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/img_ignore_namecard"
+        android:gravity="center"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:text="忽略"
+        android:textColor="@color/color_f2"
+        android:textSize="@dimen/txt_18" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/color_div" />
+
+    <TextView
+        android:id="@+id/right"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/img_exchange_namecard"
+        android:gravity="center"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:text="加好友"
+        android:textColor="@color/color_dc"
+        android:textSize="@dimen/txt_18" />
+
+</LinearLayout>
